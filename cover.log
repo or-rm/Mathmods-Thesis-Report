@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  28 MAY 2018 18:46
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  19 JUN 2018 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1427,7 +1427,7 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 \@cover@ax=\skip78
 \@cover@ay=\skip79
 \@cover@margin=\skip80
-Package hyperref Info: Option `colorlinks' set `true' on input line 668.
+Package hyperref Info: Option `colorlinks' set `true' on input line 669.
 ) (./cover.aux)
 \openout1 = `cover.aux'.
 
@@ -1555,13 +1555,18 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 zlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-File: cover.jpg Graphic file (type QTm)
- <use  "cover.jpg" >
-File: cover/logo_white.pdf Graphic file (type QTm)
- <use  "cover/logo_white.pdf" >
+File: SagradaFamilia.jpg Graphic file (type QTm)
+ <use  "SagradaFamilia.jpg" >
 File: cover/logo_white.pdf Graphic file (type QTm)
 
-<use  "cover/logo_white.pdf" > [1
+<use  "cover/logo_white.pdf" >
+File: cover/logo_white.pdf Graphic file (type QTm)
+ <use  "cover/logo_white.pdf" >
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]\EU1/Arial(0)/m/n/60 Optimal
+ []
+
+[1
 
 
 
@@ -1573,12 +1578,12 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 27.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 27.
  ) 
 Here is how much of TeX's memory you used:
- 39149 strings out of 493638
- 719900 string characters out of 6146796
+ 39151 strings out of 493638
+ 719876 string characters out of 6146796
  806396 words of memory out of 5000000
- 42049 multiletter control sequences out of 15000+600000
+ 42050 multiletter control sequences out of 15000+600000
  4435 words of font info for 48 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,6n,94p,10403b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,6n,94p,10403b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on cover.pdf (1 page).

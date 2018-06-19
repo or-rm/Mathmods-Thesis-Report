@@ -223,6 +223,7 @@
 \definecolor{tudelft-purple}{cmyk}{0.98,1,0,0.35}
 \definecolor{tudelft-turquoise}{cmyk}{0.82,0,0.21,0.08}
 \definecolor{tudelft-sky-blue}{cmyk}{0.45,0,0.06,0.06}
+\definecolor{tudelft-blue}{cmyk}{0.99,0.60,0.0,0.24}
 \definecolor{tudelft-lavender}{cmyk}{0.45,0.2,0,0.07}
 \definecolor{tudelft-orange}{cmyk}{0.02,0.56,0.84,0}
 \definecolor{tudelft-warm-purple}{cmyk}{0.58,1,0,0.02}
@@ -448,17 +449,17 @@
           \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
              \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
                  %% Print the title and optional subtitle at the top in white.
-                   {\titlefont\color{\@titlecolor}\fontsize{58}{58}\selectfont\@title}
+                   {\largetitlestyle\color{\@titlecolor}\fontsize{58}{58}\selectfont\@title}
                     \ifx\@subtitle\undefined\else
 %                     \\[3mm]
                      \vfill
                      
-                     {\titlefont\color{\@subtitlecolor}\fontsize{52}{52}\selectfont\@subtitle}
+                     {\largetitlestyle\color{\@subtitlecolor}\fontsize{40}{40}\selectfont\@subtitle}
                    \fi
                  %% Print the author.
                    \vfill
                   
-                   {\titlefont\color{\@authorcolor}\fontsize{52}{52}\selectfont\@author}
+                   {\largetitlestyle\color{\@authorcolor}\fontsize{30}{30}\selectfont\@author}
                    \ifx\@cover@text\undefined\else
                      \vfill
                      
@@ -492,16 +493,16 @@
           \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
               \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
                   %% Print the title and optional subtitle at the top in white.
-                  {\largetitlestyle\color{\@titlecolor}\fontsize{96}{96}\selectfont\@title}
+                  {\titlefont\color{\@titlecolor}\fontsize{60}{60}\selectfont\@title}
   %                {\tudsffamily\color{\@titlecolor}\fontsize{96}{96}\selectfont\@title}
                   \ifx\@subtitle\undefined\else
                       \\[3mm]
-                      {\tudsffamily\color{\@subtitlecolor}\fontsize{22}{32}\selectfont\@subtitle}
+                      {\tudsffamily\color{\@subtitlecolor}\bfseries\fontsize{32}{32}\selectfont\@subtitle}
                   \fi
                   %% Print the author at the bottom in cyan.
                   \vfill
   %                {\tudtitlefamily\color{\@authorcolor}\fontsize{26}{26}\selectfont\@author}
-                  {\largetitlestyle\color{\@authorcolor}\fontsize{26}{26}\selectfont\@author}
+                  {\titlefont\color{\@authorcolor}\fontsize{26}{26}\selectfont\@author}
               \end{minipage}
           };
           %% Draw the back box in cyan.
@@ -510,7 +511,7 @@
           \ifx\@affiliation\undefined\else
   %            \node at (back bottom right)[rotate=90,anchor=south west,inner sep=\@cover@margin]{
               \node at (acorner)[rotate=90,anchor=south west,inner sep=\@cover@margin]{
-                  \tudsffamily\color{\@afilcolor}\@affiliation
+                  \tudsffamily\bfseries\color{\@afilcolor}\@affiliation
               };
           \fi
 %          \ifKV@cover@back\ifx\@cover@text\undefined\else

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  28 MAY 2018 19:13
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  19 JUN 2018 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1427,7 +1427,7 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 \@cover@ax=\skip78
 \@cover@ay=\skip79
 \@cover@margin=\skip80
-Package hyperref Info: Option `colorlinks' set `true' on input line 668.
+Package hyperref Info: Option `colorlinks' set `true' on input line 669.
 ) (/usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 Package: changes 2015/04/27 v2.0.4 changes package
 
@@ -1483,12 +1483,7 @@ Package: truncate 2001/08/20  ver 3.6
 \@Trunc@RestHyph=\toks41
 )
 \Changes@Len@summ=\skip85
-)
-
-LaTeX Warning: Unused global option(s):
-    [whitelogo].
-
-(./report.aux)
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -1507,7 +1502,7 @@ LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 4.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 4.
- (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 4.
@@ -1574,6 +1569,14 @@ LaTeX Info: Redefining \nameref on input line 4.
 \openout4 = `report.out'.
 
  ABD: EveryShipout initializing macros
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 32.
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
@@ -1615,19 +1618,10 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 zlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-File: tank.jpg Graphic file (type QTm)
- <use  "tank.jpg" >
-File: cover/logo_black.pdf Graphic file (type QTm)
- <use  "cover/logo_black.pdf" >
-Underfull \hbox (badness 10000) in paragraph at lines 47--47
-[]\EU1/Arial(0)/m/n/58 The Optimal
- []
-
-
-Underfull \hbox (badness 5460) in paragraph at lines 47--47
-\EU1/Arial(0)/m/n/58 Transport Prob-
- []
-
+File: Barcelona2.jpg Graphic file (type QTm)
+ <use  "Barcelona2.jpg" >
+File: cover/logo_white.pdf Graphic file (type QTm)
+ <use  "cover/logo_white.pdf" >
 [1
 
 
@@ -1659,97 +1653,67 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-File: cover/logo_black.pdf Graphic file (type QTm)
+File: cover/logo.pdf Graphic file (type QTm)
 
-<use  "cover/logo_black.pdf" > [1]) (./TeX/preface.tex [2
+<use  "cover/logo.pdf" > [1]) (./TeX/preface.tex [2
 
 ]) [3] [4
 
-]
-(./report.toc)
+] (./report.toc)
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
- [5] [6
+
+[5] [6
 
 ] (./TeX/chapter-1.tex
 Chapter 1.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 8.00012pt on input line 3.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 6.00009pt on input line 3.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 5.00008pt on input line 3.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 7.99988pt on input line 3.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 5.99991pt on input line 3.
-LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 4.99992pt on input line 3.
+) (./TeX/chapter-2.tex [1
 
-Overfull \hbox (16.16283pt too wide) in paragraph at lines 23--24
-[]\EU1/BookmanOldStyle(0)/m/n/10 The contents of the report are included betwee
-n the \EU1/CourierNewPS(0)/m/n/10 \begin{document} \EU1/BookmanOldStyle(0)/m/n/
-10 and \EU1/CourierNewPS(0)/m/n/10 \end{document}
- []
+] [2
 
-[1
+]
+Chapter 2.
+) (./TeX/chapter-3.tex [3] [4
 
-] [2]
-Overfull \hbox (6.44171pt too wide) in paragraph at lines 63--66
-[]\EU1/CourierNewPS(0)/m/n/10 \titleoffsetx{OffsetX},\titleoffsety{OffsetY} \EU
-1/BookmanOldStyle(0)/m/n/10 If the cover page contains a page-
- []
+]
+Chapter 3.
+) (./TeX/chapter-4.tex [5] [6
 
-[3]
-Overfull \hbox (2.12965pt too wide) in paragraph at lines 114--115
-[]\EU1/BookmanOldStyle(0)/m/n/10 Chapters are subdivided into sections, subsect
-ions, subsubsections, and, optionally, para-
- []
+]
+Chapter 4.
+) (./TeX/chapter-5.tex [7] [8
 
+]
+Chapter 5.
+) (./TeX/chapter-6.tex [9] [10
 
-Overfull \hbox (15.16736pt too wide) in paragraph at lines 132--133
-[]\EU1/BookmanOldStyle(0)/m/n/10 The corporate colors of the TU Delft are cyan,
- black and white, available via \EU1/CourierNewPS(0)/m/n/10 \color{[]tudelft-
- []
+]
+Chapter 6.
+) (./report.bbl [11] [12
 
+]
 
-Overfull \hbox (14.15434pt too wide) in paragraph at lines 132--133
-\EU1/BookmanOldStyle(0)/m/n/10 the basic colors []\EU1/CourierNewPS(0)/m/n/10 t
-udelft-sea-green[]\EU1/BookmanOldStyle(0)/m/n/10 , []\EU1/CourierNewPS(0)/m/n/1
-0 tudelft-green[]\EU1/BookmanOldStyle(0)/m/n/10 , []\EU1/CourierNewPS(0)/m/n/10
- tudelft-dark-blue[]\EU1/BookmanOldStyle(0)/m/n/10 , []\EU1/CourierNewPS(0)/m/n
-/10 tudelft-purple[]\EU1/BookmanOldStyle(0)/m/n/10 ,
- []
+Package natbib Warning: Empty `thebibliography' environment on input line 8.
 
-
-Overfull \hbox (7.71718pt too wide) in paragraph at lines 132--133
-[]\EU1/CourierNewPS(0)/m/n/10 tudelft-turquoise[] \EU1/BookmanOldStyle(0)/m/n/1
-0 and []\EU1/CourierNewPS(0)/m/n/10 tudelft-sky-blue[]\EU1/BookmanOldStyle(0)/m
-/n/10 , as well as the accent colors []\EU1/CourierNewPS(0)/m/n/10 tudelft-lave
-nder[]\EU1/BookmanOldStyle(0)/m/n/10 ,
- []
-
-[4]) (./report.bbl [5] [6
-
-])
+)
 \Changes@OutFile=\write6
 \openout6 = `report.soc'.
 
- [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
+ [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 73.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 73.
  (./report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 69.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 69.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 73.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 73.
  ) 
 Here is how much of TeX's memory you used:
- 39687 strings out of 493638
- 730023 string characters out of 6146796
- 817407 words of memory out of 5000000
- 42485 multiletter control sequences out of 15000+600000
- 9731 words of font info for 103 fonts, out of 8000000 for 9000
+ 39631 strings out of 493638
+ 728025 string characters out of 6146796
+ 811371 words of memory out of 5000000
+ 42437 multiletter control sequences out of 15000+600000
+ 7101 words of font info for 75 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,11n,94p,10423b,666s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,94p,10423b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (15 pages).
+Output written on report.pdf (21 pages).
