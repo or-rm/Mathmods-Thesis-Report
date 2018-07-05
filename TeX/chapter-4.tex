@@ -1,2 +1,21 @@
 \chapter{Optimal Transport Theory}
+\begin{problem} Given two probability measures $\mu \in \PlanSp\parentheses{X}$ and $\nu \in \PlanSp\parentheses{Y}$ and a cost function $c: X \times Y \rightarrow \braces{0, +\infty}$, solve
+	
+	\begin{equation}
+		\inf\braces{\Monge:=\int c(x, T(x)) \diff \mu(x): \ \ \Tmeasure{\mu}{T}=\nu }\label{eq: Monge's Problem.}\tag{MP}
+	\end{equation}
+\end{problem}
+
+
+\begin{definition}{coupling}
+	
+\end{definition}
+
+
+\begin{problem}Given $\mu \in \PlanSp\parentheses{X}$, $\nu \in \PlanSp\parentheses{Y}$, and $c: X\times Y \rightarrow \brackets{0, +\infty}$, we consider the problem
+	\begin{equation}
+		\inf\braces{\Kantorovich := \int_{X\times Y} c \diff\gamma : \gamma \in \TransPlansSet{\mu}{\nu}}\label{eq: Kantorovich's Problem.}\tag{KP}
+	\end{equation}
+where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
+\end{problem}
 \section{Kantorovich formulation as relaxation}

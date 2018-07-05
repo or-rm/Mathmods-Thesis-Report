@@ -1,2 +1,88 @@
 \chapter{Preliminaries.}
 \section{Notation}
+\begin{tabular}{ l l }
+	$\Real$ & Real numbers field. \\ 
+	$\Realex$ & $ \Real \cup \braces{+\infty}$. That is $[-\infty, \infty]$ \\
+	$\Real_+ $ & The set of nonnegative real numbers, that is the interval $[0, \infty)$.\\
+	$\Realex_+$ & The set of nonnegative extended real numbers, that is the interval $[0, \infty]$\\
+	$\delta_x$ & The Dirac mass at point x. \\
+	$\Real^d $ & The $d$-dimensional Euclidean space.\\
+	$\PlanSp\parentheses{X}$ & Space of probabilities on $X$. \\	
+	$\mu \ll\nu$ & The measure is absolutely continuous with respect to $\nu$. \\
+	$\indicator{\Omega} $ & Indicator function of a set $\Omega$. If $x\in \Omega$ then $\indicator{\Omega}(x)=1$. If $x\in \Omega^c$, we have $\indicator{\Omega}(x)=0$.\\
+	$\mu \measurerestr A$ & A measure $\mu$ restricted to a set $A$.\\
+	$\omega_d$ & The Measure of the unite ball in $\Real^d$. \\
+	$\wedge$ & The min operator, that is $a\wedge b:=\min\braces{a,b}$. \\
+	$\vee$ & The max operator, that is $a\vee b:=\max\braces{a,b}$. \\
+	$\Tmeasure{\mu}{T}$ &  The image measure of $\mu$ through the map $T$.\\
+	$\domainrestr{\Omega}{f}$ & The restriction of a function $f$ to a set $\Omega$. \\
+	$\TransPlansSet{\mu}{\nu}$ & The set of transport plans from $\mu$ to $\nu$.\\
+	$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
+	$\WassersteinDist{p}$ & Wasserstein distance of order $p$. \\	
+	$\WassersteinSp{p}$ & Wasserstein space of order $p$.\\
+ 	$\gamma_T$ & The transport plan in $\TransPlansSet{\mu}{\nu}$.\\
+	$\Monge$ & Monge cost of a map $T$. \\
+	$\Kantorovich$ & Kantorovich cost of a plan $\gamma$. \\	
+	$\mu \otimes \nu$ & The product measure of $\mu$ and $\nu$ such that $\mu \otimes \nu (A\times B)= \mu(A)\nu(B)$.\\
+	$M^{k\times h}$ & The set of real matrices with $k$ rows and $h$ columns. \\
+	$M^\top$ & Transpose of a matrix $M$. \\
+	i.i.d. & Independent and identical probability distributions.\\
+	l.s.c. & Lower semicontinuous.
+\end{tabular}
+
+
+
+\section{Definitions.}
+\begin{definition}[Lower Semicontinuity.]
+	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have \begin{equation*}
+		f(x)\leq \liminf_{n\in \Naturals} f(x_n)
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Sequentially compact.]
+	A subset $K$ of a metric space $X$ is said to be compact if from any sequence $x_n$, we can extract a converging subsequence $x_{n_k} \rightarrow x \in K$.
+\end{definition}
+We can see from the above definition that any continuous function is lower-semicontinuous. 
+
+\begin{definition}[Compactness.]
+		A subset $K$ of a metric space $X$ is compact if every open cover of $K$ has a finite subcover. 
+\end{definition}
+
+\begin{theorem}
+	A subset of a metric space is compact if and only if it is sequentially compact.
+\end{theorem}
+
+\begin{theorem}{Maxima and Minima}
+	Let $X$ be a compact metric space and $f: X\rightarrow \Real$ is continuous, real-valued function. Then $f$ is bounded on $X$ and attains its maximum and minimum. That is, there are $x$, $y$ belonging to $X$ such that,
+	\begin{equation*}
+		f(x)=\inf_{z\in X}f(z) \qquad \mand \qquad f(y)=\sup_{z \in X} f(z)
+	\end{equation*}
+\end{theorem}
+Continuity is a strong requirement. Luckily we can assure the existence of a minimizer on lower-semicontinuous functions (or maximizer on upper-semicontinuous). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion, we take a minimizer sequence and we prove the space in which we are trying to find a minimizer element is compact.
+\begin{theorem}{Weierstrass' criterion for existence of minimizers.}
+	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$.
+	\begin{proof}
+		Define $l:=\inf\braces{f(x): \, x \in X} \in \Realex$, notice that $l=+\infty$ only if $f$ is identically $+\infty$, then this case is trivial since any point minimizes $f$. By compactness there exists a minimizing sequence $x_n$, that is $f(x_n)\rightarrow l$. By compactness we can extract a subsequence converging to some $\hat x$ such that $\hat x \in X$. By lower-semicontinuity of $f$, we have that $f(\hat x)\liminf_n f(x_n)=l$. Since $l$ is the infimum $l\leq f(\hat x)$. This proves that $l=f(\hat{x}) \in \Real$.
+	\end{proof}
+\end{theorem}
+
+We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum. 
+\begin{definition}{Topological dual}
+	
+\end{definition}
+
+\begin{definition}{Weak compactness in dual spaces}
+	A sequence $x_n$ in a Banach space $X$ is said to be weakly convergin to $x$, and we write $x_n \rightharpoonup x$, if for every $\xi \in \asterisk{X}$. We have $\anglesbox{\xi, x_n}\rightarrow \anglesbox{\xi, x}$. A sequence
+\end{definition}
+
+Let $\parentheses{X_1, \mathcal{A}_1, \mu_1}$ and $\parentheses{X_2, \mathcal{A}_2, \mu_2}$ be two spaces with finite nonnegative measures. On the space $X_1\times X_2$ we consider sets of the form $\mathcal{A} 1\times\mathcal{A}_2$, where $A_i \in \mathcal{A}_i$, called measurable rectangles. Let $\mu_1\times \mu _2(A_1 \times A_2 )$  := μ 1 (A 1 )μ 2 (A 2 ).
+Extending the function μ 1 ×μ 2 by additivity to finite unions of pairwise disjoint
+measurable rectangles we obtain a finitely additive function on the algebra R
+generated by such rectangles. We observe that such an extension of μ 1 ×μ 2 to
+R is well-defined (is independent of partitions of the set into pairwise disjoint
+measurable rectangles), which is obvious by the additivity of μ 1 and μ 2 . Fi-
+nally, let A 1 ⊗A 2 denote the σ-algebra generated by all measurable rectangles;
+this σ-algebra is called the product of the σ-algebras A 1 and A 2 .
+
+\begin{theorem} The set function $\mu_1\times \mu_2$is countably additive on the algebra generated by all measurable rectangles and uniquely extends to a countably additive measure, denoted by $\mu_1\otimes\mu_2$, on the Lebesgue completion of this algebra denoted by $\mathcal{A} 1\otimes\mathcal{A} 2$
+\end{theorem}

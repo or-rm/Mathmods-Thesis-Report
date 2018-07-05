@@ -1,6 +1,9 @@
 \documentclass{tudelft-report}
 \usepackage{natbib}
 \usepackage{changes}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
 \begin{document}
 
 %% Use Roman numerals for the page numbers of the title pages and table of
@@ -51,16 +54,20 @@
 \input{TeX/title}
 
 \input{TeX/preface}
-
+\input{lib/symbols}
+\input{lib/fields}
+\input{lib/boxing}
+\input{lib/transport}
+\input{lib/operators}
 \tableofcontents
 
 %% Use Arabic numerals for the page numbers of the chapters.
 \mainmatter
 
 \input{TeX/chapter-1}
-\input{TeX/chapter-2}
-\input{TeX/chapter-3}
-\input{TeX/chapter-4}
+\input{TeX/chapter-2} %Basics in Convex Analysis
+\input{TeX/chapter-3} %Linear Programming
+\input{TeX/chapter-4} %Optimal Transport Theory
 \input{TeX/chapter-5}
 \input{TeX/chapter-6}
 %% Use letters for the chapter numbers of the appendices.
