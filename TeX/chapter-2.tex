@@ -4,3 +4,65 @@
 Let $f: X \rightarrow \Realex$ be a convex and lower-semicontinuous function.
 Assume that there exists $x_0 \in X$ such that $f(x_0) = -\infty$. Then $f$ is nowhere finite on $X$.
 \end{proposition} 
+
+
+\begin{theorem} If $ f_\alpha $ is an arbitrary family of lower semi-continuous functions on $X$, then $f=\sup_\alpha f_\alpha$ is also lower-semicontinuous.
+\end{theorem}
+
+
+\begin{definition}[Convex conjugate function]
+Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$. We call the convex conjugate to the function $\asterisk{f}: \asterisk{X}\rightarrow \Realex$, defined as
+\begin{equation*}
+	\asterisk{f}(\asterisk{x})=\sup_{x\in X} \braces{\anglesbox{\asterisk{x}, x}-f(x)}
+\end{equation*}	
+\end{definition}
+
+\begin{proposition}
+	The convex conjugate $\asterisk{f}:\asterisk{X}\rightarrow \Realex$ of a function $f:X\rightarrow\Realex$ is convex.
+	\begin{proof}
+		Let $\asterisk{x}, \asterisk{y}$ elements of the dual space $\asterisk{X}$, and $t\in[0,1]$,
+		\begin{align*}
+			\asterisk{f}\parentheses{t\asterisk{x}+(1-t)\asterisk{y}}&=\sup_{x\in X}\braces{\anglesbox{t\asterisk{x}+(1-t)\asterisk{y}, x}-f(x)} \\
+			&=\sup_{x\in X}\braces{\anglesbox{t\asterisk{x}+(1-t)\asterisk{y}, x}-tf(x)-(1-t)f(x)}\\
+			&=\sup_{x\in X}\braces{t\anglesbox{\asterisk{x}, x}+(1-t)\anglesbox{\asterisk{y}, x}-tf(x)-(1-t)f(x)}\\
+			&\leq \sup_{x, y \in X} \braces{t\anglesbox{\asterisk{x}, x}+(1-t)\anglesbox{\asterisk{y}, y}-tf(x)-(1-t)f(y)}\\
+			&=t\sup_{x \in X} \braces{\anglesbox{\asterisk{x}, x}-f(x)}+(1-t)t\sup_{y \in X} \braces{\anglesbox{\asterisk{y}, y}-f(y)}\\
+			&=t\asterisk{f}(\asterisk{x})+(1-t)\asterisk{f}(\asterisk{y}).
+		\end{align*}
+		Therefore $\asterisk{f}$ is convex regardless the convexity of $f$.
+	\end{proof}
+\end{proposition}
+
+\begin{theorem} 
+	A function $f:\Real^d \rightarrow \Realex$ is convex and lower-semicontinuous if and only if $f^{**}=f$.
+\end{theorem}
+	
+\begin{lemma}[Convex envelope theorem]
+	Let $X$ be a reflexive Banach Space. Then the convex conjugate function $f^*$ is the maximum convex functional below $f$ (also called convex envelope), i.e. if $\varrho$ is convex functional and $\varrho(x)\leq f(x)$, $\forall x \in X$. Then, $f^{**}(x)\leq f(x)$, and $\varrho(x)\leq f^{**}(u)$, $\forall x \in U $. In particular $f^{**} = f$ if and only if J is convex.
+\end{lemma}
+
+\begin{definition}[Legendre Transform]
+	Let $f: \Real^d\rightarrow \Realex$ be a convex function, we call the Legendre transform $f^*$
+	\begin{equation*}
+	f^*(y)=\sup_{x\in \Real^d} \braces{x\cdot y -f(x)}
+	\end{equation*}
+\end{definition}
+\begin{corollary}
+	A function $f:\Real^d\rightarrow\Realex$  is convex and l.s.c. if and only if $f^{∗∗}=f$.
+\end{corollary}
+
+\begin{definition}[Subdifferential]
+	Given a proper convex function $f: X\rightarrow (-\infty, \infty]$, the subdifferential of such a function is the mapping $\partial f: X\rightarrow X^*$ defined by,
+	\begin{equation*}
+		\partial f (x)= \braces{x^*\in X^*; f(x)-f(y) \leq \anglesbox{x^*, x-y},\ \forall y \in X}
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}[Geometrical version of Hahn-Banach Theorem]
+	Let $M$ be a vector subspace of the topological vector space X. Suppose $K$ is a non-empty convex open subset of $X$ with $K\cap M=\emptyset$. Then there is a closed hyperplane $N \in X$ containing M with $K \cap N = \emptyset$.
+\end{theorem}
+
+\begin{theorem}
+	The epigraph of a convex and lower semicontinuous function is a closed convex set in
+	$\Real^d\times\Real$, and can be written as the intersection of the half-spaces which contain it.
+\end{theorem}

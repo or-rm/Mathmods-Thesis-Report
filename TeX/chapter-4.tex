@@ -1,17 +1,68 @@
 \chapter{Optimal Transport Theory}
-\begin{problem} Given two probability measures $\mu \in \PlanSp\parentheses{X}$ and $\nu \in \PlanSp\parentheses{Y}$ and a cost function $c: X \times Y \rightarrow \braces{0, +\infty}$, solve
+
+To introduce the optimal transport problem please imagine we are asked by a consortium of factories to design a plan for distributing their products among its many costumers in such a way that the transportation costs are minimal. \\
+
+
+We can start the approach of this problem considering the costumers as members of the set $X$ and the factories as members of a set $Y$. We want to know which factory $y\in Y$ is going to supply a costumer $x\in X$, i.e. $y=T(x)\in Y$. Therefore, we can estimate the transportation cost $c(x, T(x))$ of supplying a costumer $x$ with a factory $y=T(x)$. We see that our problem is reduced to find an assigning map from the set of costumers to the set of factories in such a way that the total cost $C(X, Y)=\sum_{x\in X} c(x, T(x))$ is minimal.  
+\\
+\begin{figure}[H]
+	\centering
+	\caption{Illustration of the problem of Factories supplying Costumers.}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Factories-Costumers.png}
+		\caption{Factories represented by squares. Costumers represented by circles.}
+	\end{subfigure}
+	\hfil
+	\begin{subfigure}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Factories-Costumers-Assignation.png}
+		\caption{Factories represented by squares. Costumers represented by circles. Assignation of a factory to a costumer represented by a line.}
+	\end{subfigure}	
+\end{figure}
+
+Gaspard Monge was a French mathematician who introduced for the first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. 
+In order to give a more precise idea of the problem, we make use of modern mathematical language and notation to state it as follows: Given two densities of mass $f$ and $g$, Monge was interested in finding a map $T:\Real^3\rightarrow\Real^3$ pushing the one onto the other,
+\begin{equation}
+	\int_A g(y) \dy = \int_{T^{-1}(A)} f(x) \dx  \label{eq: Integral-Borel-MP}
+\end{equation}
+For any Borel subset $A\subset\Real^3$. And the transport also should minimize the quantity, 
+\begin{equation*}
+	\int_{\Real^3} \abs{x-T(x)} f(x)\dx
+\end{equation*}
+We need to mention that given the context for which the problem was formulated, originally it was bind to $\Real^3$ or $\Real^2$ but we can consider the general case in $\Real^d$. Notice that the problem requires a notion of measure. Then we find convenient to consider the measures $\mu$ on $X \subset \Real^d$ and $\nu$ on $Y \subset \Real^d$ induced by the densities $f$ and $g$ respectively. Therefore, we need to search for the optimum in the set of measurables maps $T:X \rightarrow Y$ such that the condition \eqref{eq: Integral-Borel-MP} is translated to,
+
+\begin{equation}
+	(T_\#\mu)(A)=\mu(T^{-1}(A))
+\end{equation}
+for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  In the Euclidean frameworks if we assume $f$, $g$ and $T$ regular enough and $T$ also injective, this equality implies,
+\begin{equation}
+	g(T(x))\det\parentheses{\D T(x)}=f(x) \label{eq: PDE Monge condition.}
+\end{equation} 
+The equation \eqref{eq: PDE condition.} is nonlinear in $T$ making difficult the analysis of the Monge Problem. Especially 
+
+\begin{figure}[H]
+	\centering
+	\caption{}
+	\includegraphics[width=0.4\textwidth]{Monge-Problem-densities.png}
+\end{figure}
+\begin{problem} Given two probability measures $\mu \in \PlanSp\parentheses{X}$ and $\nu \in \PlanSp\parentheses{Y}$ and a cost function $c: X \times Y \rightarrow \braces{0, +\infty}$, the Monge's problem consists in finding a map $T:X\rightarrow Y$
 	
-	\begin{equation}
-		\inf\braces{\Monge:=\int c(x, T(x)) \diff \mu(x): \ \ \Tmeasure{\mu}{T}=\nu }\label{eq: Monge's Problem.}\tag{MP}
-	\end{equation}
+\begin{equation}
+\inf\braces{\Monge:=\int_X c(x, T(x)) \diff \mu(x): \ \ \Tmeasure{\mu}{T}=\nu }\label{eq: Monge's Problem.}\tag{MP}
+\end{equation}
 \end{problem}
 
-
-\begin{definition}{coupling}
-	
+\begin{definition}
+The space of Borel probability measures on $\X$ is denoted by $\PlanSp(\X)$. The weak topology on $\PlanSp(\X)$ is induced by convergence against bounded continuous test functions on $\X$, that is $C_b(\X)$.
 \end{definition}
 
+\begin{definition}[Coupling] Let $(\X, \mu)$ and $(\Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $X$ and $Y$ on some probability space $(\Omega, \mathcal{P})$ such that $\law(X)=\mu$, $\law(Y)=\nu$. The couple $(X,Y)$ is called a coupling of $(\mu, \nu)$.  
+\end{definition}
 
+\begin{theorem} Let $(\X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If
+	$(X_1 , X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(Z_1 , Z_2, Z_3)$ such
+	that $(Z_1, Z_2)$ has the same law as $(X_1 , X_2)$ and $(Z_2, Z_3)$ has the same
+	law as $(Y_2 , Y_3)$.
+\end{theorem}
 \begin{problem}Given $\mu \in \PlanSp\parentheses{X}$, $\nu \in \PlanSp\parentheses{Y}$, and $c: X\times Y \rightarrow \brackets{0, +\infty}$, we consider the problem
 	\begin{equation}
 		\inf\braces{\Kantorovich := \int_{X\times Y} c \diff\gamma : \gamma \in \TransPlansSet{\mu}{\nu}}\label{eq: Kantorovich's Problem.}\tag{KP}
@@ -19,3 +70,20 @@
 where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 \end{problem}
 \section{Kantorovich formulation as relaxation}
+
+\begin{theorem}
+	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in  \PlanSp$ and
+	$c:X\times Y \rightarrow \Real$  a continuous function. Then  \eqref{eq: Kantorovich's Problem.} admits a solution.
+\end{theorem} 
+
+
+
+\section{Cyclical Monotonicity.}
+
+\begin{definition}
+	Let $X , Y$ be arbitrary sets, and $c:X\times Y \rightarrow (-\infty, \infty]$ be a cost function. A subset $\Gamma \subset X \times Y$ is said to be c-cyclically monotone if, for any $N\in\Naturals$, and any family of points $(x_1, y_1), (x_2, y_2), \dots (x_N, y_N)$ of $\Gamma$, the inequality
+	\begin{equation*}
+		\sum_{i=1}^{N} c(x_i, y_i) \leq \sum_{i=1}^{N} c(x_i, y_{i+1}) 
+	\end{equation*} 
+	considering $N+1=1$. 
+\end{definition}
