@@ -243,7 +243,7 @@
 % \if@print
     \colorlet{title}{black}
 %\else
-%    \colorlet{title}{tudelft-cyan}
+%    \colorlet{title}{tudelft-blue}
 %\fi
 
 %% We use A4 paper with slightly smaller margins than the default (scale = 0.7).

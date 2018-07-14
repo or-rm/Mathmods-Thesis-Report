@@ -21,9 +21,9 @@ We can start the approach of this problem considering the costumers as members o
 
 Gaspard Monge was a French mathematician who introduced for the first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. 
 In order to give a more precise idea of the problem, we make use of modern mathematical language and notation to state it as follows: Given two densities of mass $f$ and $g$, Monge was interested in finding a map $T:\Real^3\rightarrow\Real^3$ pushing the one onto the other,
-\begin{equation}
+\begin{equation*}
 	\int_A g(y) \dy = \int_{T^{-1}(A)} f(x) \dx  \label{eq: Integral-Borel-MP}
-\end{equation}
+\end{equation*}
 For any Borel subset $A\subset\Real^3$. And the transport also should minimize the quantity, 
 \begin{equation*}
 	\int_{\Real^3} \abs{x-T(x)} f(x)\dx
@@ -37,11 +37,11 @@ for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  In the 
 \begin{equation}
 	g(T(x))\det\parentheses{\D T(x)}=f(x) \label{eq: PDE Monge condition.}
 \end{equation} 
-The equation \eqref{eq: PDE condition.} is nonlinear in $T$ making difficult the analysis of the Monge Problem. Especially 
+The equation \eqref{eq: PDE Monge condition.} is nonlinear in $T$ making difficult the analysis of the Monge Problem. Moreover, proving existence of a minimizer under this setting.  
 
 \begin{figure}[H]
 	\centering
-	\caption{}
+	\caption{Monge problem. Finding a map.}
 	\includegraphics[width=0.4\textwidth]{Monge-Problem-densities.png}
 \end{figure}
 \begin{problem} Given two probability measures $\mu \in \PlanSp\parentheses{X}$ and $\nu \in \PlanSp\parentheses{Y}$ and a cost function $c: X \times Y \rightarrow \braces{0, +\infty}$, the Monge's problem consists in finding a map $T:X\rightarrow Y$
@@ -76,9 +76,15 @@ where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 	$c:X\times Y \rightarrow \Real$  a continuous function. Then  \eqref{eq: Kantorovich's Problem.} admits a solution.
 \end{theorem} 
 
-
-
 \section{Cyclical Monotonicity.}
+
+\begin{definition}[c-transform]
+	Let $X$ and $Y$ be sets, and $c:X\times Y \rightarrow (-\infty, \infty]$. A function $\psi: X\rightarrow \Realex$ is said to be c-convex if it is not identically to $+\infty$ and there exists $\psi^c: Y \rightarrow \Realex$
+	
+	\begin{equation}
+		\psi^c(y)= \inf_{x\in X} c(x,y)-\psi(x).
+	\end{equation}
+\end{definition}
 
 \begin{definition}
 	Let $X , Y$ be arbitrary sets, and $c:X\times Y \rightarrow (-\infty, \infty]$ be a cost function. A subset $\Gamma \subset X \times Y$ is said to be c-cyclically monotone if, for any $N\in\Naturals$, and any family of points $(x_1, y_1), (x_2, y_2), \dots (x_N, y_N)$ of $\Gamma$, the inequality
@@ -87,3 +93,22 @@ where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 	\end{equation*} 
 	considering $N+1=1$. 
 \end{definition}
+Since any permutation $\sigma$ over the set $\braces{1, \dots, N}$ can be written as a product of disjoint cycles, we have that this property satisfies,
+\begin{equation}
+		\sum_{i=1}^{N} c(x_i, y_i) \leq \sum_{i=1}^{N} c(x_i, y_{\sigma(i)}) 
+\end{equation}
+\begin{definition}[Support of transport plan.]
+	Given a separable metric space $X$, the support of a measure $\gamma$ is defined as the smallest closed set on which $\gamma$ is concentrated,
+	\begin{equation}
+	\spt(\gamma)\ :=\underset{\small{\begin{array}{c}
+		\gamma(X\backslash A)=0\\ A=\bar{A}  \end{array}}}{\bigcap A} 		
+	\end{equation} 
+\end{definition}
+
+We can fix a point $(x_0, y_0) \in \spt(\gamma)$, 
+\begin{theorem}
+	
+\end{theorem}
+
+
+\section{Wasserstein Spaces. $\WassersteinSp{p}$}

@@ -1,45 +1,35 @@
 \chapter{Preliminaries.}
-\section{Notation}
-\begin{tabular}{ l l }
-	$\Real$ & Real numbers field. \\ 
-	$\Realex$ & $ \Real \cup \braces{+\infty}$. That is $[-\infty, \infty]$ \\
-	$\Real_+ $ & The set of nonnegative real numbers, that is the interval $[0, \infty)$.\\
-	$\Realex_+$ & The set of nonnegative extended real numbers, that is the interval $[0, \infty]$\\
-	$\delta_x$ & The Dirac mass at point x. \\
-	$\Real^d $ & The $d$-dimensional Euclidean space.\\
-	$\id$ & Identity map.\\
-	$\PlanSp\parentheses{X}$ & Space of probabilities on $X$. \\	
-	$\mu \ll\nu$ & The measure is absolutely continuous with respect to $\nu$. \\
-	$\indicator{\Omega} $ & Indicator function of a set $\Omega$. If $x\in \Omega$ then $\indicator{\Omega}(x)=1$. If $x\in \Omega^c$, we have $\indicator{\Omega}(x)=0$.\\
-	$\mu \measurerestr A$ & A measure $\mu$ restricted to a set $A$.\\
-	$\omega_d$ & The Measure of the unite ball in $\Real^d$. \\
-	$\wedge$ & The min operator, that is $a\wedge b:=\min\braces{a,b}$. \\
-	$\vee$ & The max operator, that is $a\vee b:=\max\braces{a,b}$. \\
-	$\D T(x)$ & Jacobian matrix of a map $T(x)$. \\
-	$\Tmeasure{\mu}{T}$ &  The image measure of $\mu$ through the map $T$.\\
-	$\domainrestr{\Omega}{f}$ & The restriction of a function $f$ to a set $\Omega$. \\
-	$\TransPlansSet{\mu}{\nu}$ & The set of transport plans from $\mu$ to $\nu$.\\
-	$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
-	$\WassersteinDist{p}$ & Wasserstein distance of order $p$. \\	
-	$\WassersteinSp{p}$ & Wasserstein space of order $p$.\\
- 	$\gamma_T$ & The transport plan in $\TransPlansSet{\mu}{\nu}$ induced by a map $T$. That is $\gamma_T = (\id, T)_\#\mu$ and $T_\#\mu=\nu$. \\
-	$\Monge$ & Monge cost of a map $T$. \\
-	$\Kantorovich$ & Kantorovich cost of a plan $\gamma$. \\	
-	$\mu \otimes \nu$ & The product measure of $\mu$ and $\nu$ such that $\mu \otimes \nu (A\times B)= \mu(A)\nu(B)$.\\
-	$M^{k\times h}$ & The set of real matrices with $k$ rows and $h$ columns. \\
-	$M^\top$ & Transpose of a matrix $M$. \\
-	i.i.d. & Independent and identical probability distributions.\\
-	l.s.c. & Lower semicontinuous.
-\end{tabular}
-
-
-
 \section{Definitions and important theorems to remember.}
 
-We start this chapter reminding the basic definitions in topology and measure theory.
-\begin{definition}[]
+We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. 
+
+We start with the definition of topology that is needed to introduce a notion of continuity. We refer to \cite{munkres2000topology} for more details.
+\begin{definition}[Topology]
+	A topology on a set $X$ is a collection $\mathcal T$ of subsets of $X$ having the following properties
+	\begin{itemize}
+		\item  The space $X$ itself and $\emptyset$ are in $\mathcal T$.
+		\item  The union of the elements of any sub-collection of $\mathcal T$ is in $\mathcal T$.
+		\item The intersection of the elements of any finite sub-collection of $\mathcal T$ is in $\mathcal T$.
+	\end{itemize}
 \end{definition}
 
+A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The elements of $\mathcal T$ are called open sets. The complements of the sets of $\mathcal T$ are called closed sets. We call a neighborhood of $x$ an element of $\mathcal{T}$ containing $x$.
+
+\begin{definition}[Topological Basis.]
+	Give a set $X$ endowed with a topology $\mathcal T$. We call a basis for $\mathcal{T}$ is a collection $\mathcal{B}$ of subsets of $X$ (called basis elements), such that,
+	\begin{enumerate}
+		\item  For each $x\in X$, there is at least one basis element $B$ containing $x$. 
+		\item  If $x$ belongs to the intersection of two basis elements $B_1$ and $B_2$, then there is a basis element $B_3$ containing $x$ such that $B_3 \in B_1 \cap B_2$. 
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Dense set]
+	A subset $D$ of a topological space $X$ is dense in $X$ if for any point $x$ in $X$, any neighborhood of $x$ contains at least one point from $D$.
+\end{definition}
+
+\begin{definition}[Separable space]
+	A topological space is called separable if it contains a countable, dense subset.
+\end{definition}
 
 \begin{definition}
 	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
@@ -95,7 +85,7 @@ Continuity is a strong requirement. Luckily we can assure the existence of a min
 	\end{proof}
 \end{theorem}
 
-We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum.
+We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum. Explanation about notions of convergence with bounded functionals and vanishing in infinity functions. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$ if $X$ and both notions of convergence coincide.
 
 \begin{definition}[Topological Dual]
 	If $X$ is a normed space, the dual space $\asterisk{X}=\mathcal B(X, \Real)$. Consists of all linear and bounded functionals mapping from $X$ to $\Real$.
@@ -120,7 +110,7 @@ The Banach-Alaouglu's theorem is a well known result in functional analysis, an 
 		\abs{\mu}\parentheses{\X \backslash K_\epsilon} < \epsilon
 	\end{equation*} 
 \end{definition}
-Note that $C_0(X)=C_b(X)=C(X)$ if $X$ is compact and both notions of convergence coincide.
+
 
 \begin{theorem}[Prokhorov]
 	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $\X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.

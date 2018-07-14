@@ -1,2 +1,33 @@
 \chapter{Linear Programming}
-\section{Interior Methods}
+Linear programming is a well studied branch of the mathematics that studies the optimization of linear functions under linear constrains. The study of linear programming started during the second part of the 1940s, as a technique military oriented problems.
+
+We can formulate the problem in its general form as follows:
+
+\begin{problem}
+	Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A} \in M^{m\times n}$ 
+\end{problem}
+\begin{align}
+	&\min & \mathbf{c}^\top\mathbf{x} &\\
+	&\subject& \mathbf{A}\mathbf{x}&=\mathbf{b} & \label{eq: Linear Constraints} \\
+	& &\mathbf{x}&\geq 0 &
+\end{align} 
+
+Where . $\mathbf{A}$ is a $m\times n$ matrix, and $\mathbf{b}$ is an m-dimensional column vector. The vector inequality means $\mathbf{x}\geq 0$ means that each component is nonnegative. This problem has a solution if $n>m$. 
+
+Consider the system of equalities \eqref{eq: Linear Constraints}, the vector $\mathbf{b}$ belongs to $\Real^m$.
+
+
+\begin{definition}
+	Given the set of $m$ simultaneous linear equations \eqref{eq: Linear Constraints} with $n$ unknowns, let $\mathbf{B}$ be any nonsingular $m\times m$ submatrix made up of columns of $\mathbb{A}$. Then if all $n-m$ 
+\end{definition}
+
+\begin{definition}
+	If one or more of the basic variables in a basic solution has value zero, that solution is said to be degenerate solution basic solution
+\end{definition}
+
+\begin{theorem}[Fundamental theorem of linear programming.] Given a linear program in 
+\end{theorem}
+
+\section{Simplex Method.}
+
+\section{Interior Method.}
