@@ -4,6 +4,7 @@
 We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. 
 
 We start with the definition of topology that is needed to introduce a notion of continuity. We refer to \cite{munkres2000topology} for more details.
+
 \begin{definition}[Topology]
 	A topology on a set $X$ is a collection $\mathcal T$ of subsets of $X$ having the following properties
 	\begin{itemize}
@@ -31,32 +32,14 @@ A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The element
 	A topological space is called separable if it contains a countable, dense subset.
 \end{definition}
 
-\begin{definition}
-	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
-	\begin{equation*}
-	\liminf_{x\rightarrow x_0} f(x)= \sup_{V\in \mathcal{V}(x_0)} \inf_{s\in V}\ f(s)
-	\end{equation*}
-	\begin{equation*}
-	\limsup_{x\rightarrow x_0} f(x)= \inf_{V\in \mathcal{V}(x_0)} \sup_{s\in V}\ f(s)
-	\end{equation*}
-	
-The above definitions can be expressed in terms of sequences of real numbers. Let $(x_n)_{n \in \Naturals}$ be a sequence in $X$, the above formulation is equivalent to say.
-\begin{equation*}
-	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\inf_{m\geq n} x_m}
-\end{equation*}
-Equivalently for $\limsup$,
-	\begin{equation*}
-	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\sup_{m\geq n} x_m}
-	\end{equation*}
+\begin{definition}[Hausdorff space]
 
-Please note that the convergence to some point $x_0$, $(x_n)_{n\in \Naturals}\rightarrow x_0$ is not required in the last definitions.
 \end{definition}
 
-\begin{definition}[Lower Semicontinuity]
-	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have \begin{equation*}
-		f(x)\leq \liminf_{n\in \Naturals} f(x_n)
-	\end{equation*}
+\begin{definition}[Distance and metric space]
 \end{definition}
+
+
 
 \begin{definition}[Sequentially compact]
 	A subset $K$ of a metric space $X$ is said to be compact if from any sequence $x_n$, we can extract a converging subsequence $x_{n_k} \rightarrow x \in K$.
@@ -71,13 +54,65 @@ We can see from the above definition that any continuous function is lower-semic
 	A subset of a metric space is compact if and only if it is sequentially compact.
 \end{theorem}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}[Banach Space]
+\end{definition}
+
+
+\begin{definition}[Hilbert Space]
+\end{definition}
+
+\begin{definition}[Proper convex function]
+	Let $f: X\rightarrow\Realex$, a function taking values in the extended real number line. We call it proper convex function if $\exists x \in X$ such that 
+	\begin{equation*}
+	f(x)<\infty
+	\end{equation*}
+	And $\forall x \in X$,
+	\begin{equation}
+	f(x)>-\infty
+	\end{equation}
+\end{definition}
+
+
+\begin{definition}[Liminf and Limsup]
+	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
+	\begin{equation*}
+	\liminf_{x\rightarrow x_0} f(x)= \sup_{V\in \mathcal{V}(x_0)} \inf_{s\in V}\ f(s)
+	\end{equation*}
+	\begin{equation*}
+	\limsup_{x\rightarrow x_0} f(x)= \inf_{V\in \mathcal{V}(x_0)} \sup_{s\in V}\ f(s)
+	\end{equation*}
+	
+	The above definitions can be expressed in terms of sequences of real numbers. Let $(x_n)_{n \in \Naturals}$ be a sequence in $X$, the above formulation is equivalent to say.
+	\begin{equation*}
+	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\inf_{m\geq n} x_m}
+	\end{equation*}
+	Equivalently for $\limsup$,
+	\begin{equation*}
+	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\sup_{m\geq n} x_m}
+	\end{equation*}
+	
+	Please note that the convergence to some point $x_0$, $(x_n)_{n\in \Naturals}\rightarrow x_0$ is not required in the last definitions.
+\end{definition}
+
+\begin{definition}[Lower Semicontinuity]
+	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have \begin{equation*}
+	f(x)\leq \liminf_{n\in \Naturals} f(x_n)
+	\end{equation*}
+\end{definition}
+
+
 \begin{theorem}[Maxima and Minima]
 	Let $X$ be a compact metric space and $f: X\rightarrow \Real$ is continuous, real-valued function. Then $f$ is bounded on $X$ and attains its maximum and minimum. That is, there are $x$, $y$ belonging to $X$ such that,
 	\begin{equation*}
-		f(x)=\inf_{z\in X}f(z) \qquad \mand \qquad f(y)=\sup_{z \in X} f(z)
+	f(x)=\inf_{z\in X}f(z) \qquad \mand \qquad f(y)=\sup_{z \in X} f(z)
 	\end{equation*}
 \end{theorem}
-Continuity is a strong requirement. Luckily we can assure the existence of a minimizer on lower-semicontinuous functions (or maximizer on upper-semicontinuous). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
+Continuity is a strong requirement. Luckily we can assure the existence of a minimizer of lower-semicontinuous functionals (or maximizer for upper-semicontinuity). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
+
 \begin{theorem}[Weierstrass' criterion for existence of minimizers]
 	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$.
 	\begin{proof}
@@ -98,41 +133,80 @@ We can apply the above analysis using a notion of upper-semicontinuity and compa
 \begin{theorem}[Banach-Alaouglu]
 	If $X$ is separable and $\xi_n$ is a bounded sequence in $\asterisk{X}$, then there exists a subsequence $\xi_{n_k}$ weakly converging to some $\xi \in \asterisk{X}$.
 \end{theorem}
+
 The Banach-Alaouglu's theorem is a well known result in functional analysis, an equivalent formulation is saying the closed unit ball in $\asterisk{X}$ is weak-* compact.
 
 \begin{definition}
-	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every
-	$\epsilon> 0$, there exists a compact subset $K\subset X$S such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
+	Let $F:X\rightarrow \Realex$ be a given functional bounded from below on a metric space $X$.  Let $\mathcal G$ be the set of lower semicontinuous functions $G: X\rightarrow \Realex$, such that $G\leq F$. We call a relaxation the supremum of $\mathcal G$.  This functional does exist since the supremum of an arbitrary family of lower semicontinuous functions is also lower semicontinuous. It is possible to have a representation formula as follows:
+	\begin{equation}
+	\bar F(x) = \inf \braces{\liminf_{n\in \Naturals} F(x_n):\ x_n\rightarrow x}.
+	\end{equation}
+	As consequence of this definition we see that $F \geq \bar F$ implies $\inf F \geq \inf \bar F$. Let $l=\inf F$ then $F\geq l$. A constant function is lower semicontinuous. Therefore, $\bar F \geq l$ and $\inf \bar F \geq \inf F$. Implying that the infimum of both $F$ and its regularization $\bar F$ coincide, i.e. $\inf \bar F = \inf F$. 
 \end{definition}
 
-\begin{definition}[Tightness] Let $(\X, \mathcal T)$ a topological space, and let $\mathcal A$ a $\sigma$-algebra on $\X$ that contains the topology $\mathcal{T}$. Let $M$ be a collection of measures defined on $\mathcal{A}$. The collection $M$ is called tight  if for every $\epsilon>0$ there is a compact subset $K_\epsilon$  of $\X$ such that, for all measures $\mu\in M$ we have,
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Measure Theory
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Sigma Algebra]
+An algebra of sets $\mathcal{A}$ is a class of subsets of some fixed set $X$ (called the space) such that
+
+\begin{itemize}
+	\item $X$ and $\emptyset$ belong to $\mathcal{A}$.
+	\item If $A, B \in \mathcal{A}$, then $A\cap B \in \mathcal{A}$, $A\cup B \in \mathcal A$, $A\backslash B \in \mathcal A$.
+
+An algebra of sets is a $\sigma$-algebra if for any sequence of sets $A_n \in \mathcal A$ we have $\mathcal{A}\ni \bigcup_{n\in \Naturals}  A_n $.
+\end{itemize}
+\end{definition}
+\begin{definition}[Measure Space]
+\end{definition}
+
+\begin{definition}[Measure and Probability]
+
+\end{definition}
+
+
+\begin{definition}[Borel $\sigma$-algebra]
+	
+	The Borel $\sigma$-algebra $\mathcal{B}(\Real^n)$ of $\Real^n$ is the $\sigma$-algebra generated by all open sets. The sets in a Borel $\sigma$-algebra are called Borel sets. For any set $E\subset \Real^n$, let $\mathcal B(E)$ denote the class of all sets of the form $E\cap B$, where $B\in\mathcal B(\Real^n)$.
+\end{definition}
+
+\begin{definition}[Product $\sigma$-algebra ]
+
+\end{definition}
+
+\begin{definition}[Image Measure]
+	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
 	\begin{equation*}
-		\abs{\mu}\parentheses{\X \backslash K_\epsilon} < \epsilon
+		\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^-1(B)}, \quad \forall B \in \mathcal{A}_Y.
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}
+	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $\mu$ be a nonnegative measure. A $\mathcal{A}_2$-measurable function $g$ on $Y$ is integrable with respect the measure $\mu\circ f^{-1}$ precisely when the function $g\circ f$ is integrable with respect to $\mu$. In addition we have, 
+	\begin{equation*}
+		\int_Y g(y)\mu\circ f^{-1}(\dy) = \int_X g(f(x))\mu(\dx)
+	\end{equation*}
+\end{theorem}
+
+
+\begin{definition}
+	A measure over a set $\Omega$ is atomless if $\forall x \in \Omega$, we have  $\mu(\{x\})=0$.
+\end{definition}
+
+
+\begin{definition}[Tightness] Let $(X, \mathcal T)$ a topological space, and let $\mathcal A$ a $\sigma$-algebra on $X$ that contains the topology $\mathcal{T}$. Let $M$ be a collection of measures defined on $\mathcal{A}$. The collection $M$ is called tight  if for every $\epsilon>0$ there is a compact subset $K_\epsilon$  of $\X$ such that, for all measures $\mu\in M$ we have,
+	\begin{equation*}
+	\abs{\mu}\parentheses{\X \backslash K_\epsilon} < \epsilon
 	\end{equation*} 
+\end{definition}
+
+\begin{definition}
+	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$S such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
 \end{definition}
 
 
 \begin{theorem}[Prokhorov]
 	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $\X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
 \end{theorem}
-
-\begin{definition}
-	Let $F:X\rightarrow \Realex$ be a given functional bounded from below on a metric space $X$.  Let $\mathcal G$ be the set of lower semicontinuous functions $G: X\rightarrow \Realex$, such that $G\leq F$. We call a relaxation the supremum of $\mathcal G$.  This functional does exist since the supremum of an arbitrary family of lower semicontinuous functions is also lower semicontinuous. It is possible to have a representation formula as follows:
-	\begin{equation}
-		\bar F(x) = \inf \braces{\liminf_{n\in \Naturals} F(x_n):\ x_n\rightarrow x}.
-	\end{equation}
-	As consequence of this definition we see that $F \geq \bar F$ implies $\inf F \geq \inf \bar F$. Let $l=\inf F$ then $F\geq l$. A constant function is lower semicontinuous. Therefore, $\bar F \geq l$ and $\inf \bar F \geq \inf F$. Implying that the infimum of both $F$ and its regularization $\bar F$ coincide, i.e. $\inf \bar F = \inf F$. 
-\end{definition}
-\begin{definition}
-	A measure over a set $\Omega$ is atomless if $\forall x \in \Omega$, we have  $\mu(\{x\})=0$.
-\end{definition}
-\begin{definition}[Proper convex function]
-	Let $f: X\rightarrow\Realex$, a function taking values in the extended real number line. We call it proper convex function if $\exists x \in X$ such that 
-	\begin{equation*}
-		f(x)<\infty
-	\end{equation*}
-	And $\forall x \in X$,
-	\begin{equation}
-		f(x)>-\infty
-	\end{equation}
-\end{definition}

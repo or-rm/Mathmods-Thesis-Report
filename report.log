@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  15 JUL 2018 01:48
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  19 JUL 2018 04:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1717,85 +1717,158 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--1
 
 ]
 Chapter 1.
-[3]
-Overfull \hbox (6.05867pt too wide) in paragraph at lines 64--65
+
+Overfull \hbox (6.05867pt too wide) in paragraph at lines 47--48
 []\EU1/BookmanOldStyle(0)/m/n/10 We can see from the above definition that any 
 continuous function is lower-semicontinuous. 
  []
 
-[4]) (./TeX/chapter-2.tex [5] [6
-
-]
+[3] [4] [5]) (./TeX/chapter-2.tex [6]
 Chapter 2.
-[7]) (./TeX/chapter-3.tex [8]
-Chapter 3.
-) (./TeX/chapter-4.tex [9
+[7
 
-] [10
+]) (./TeX/chapter-3.tex [8]
+Chapter 3.
+[9
 
 ]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.69 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Display math should end with $$.
+<to be read again> 
+                   \par 
+l.69 
+     
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.70 \end{equation}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! You can't use `\eqno' in vertical mode.
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.70 \end{equation}
+                   
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.70 \end{equation}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.70 \end{equation}
+                   
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+! Text line contains an invalid character.
+l.72 ...for  and (4), respectively, then c T x ^^B
+                                                   ^^B T b.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.72 ... and (4), respectively, then c T x ^^B ^^B
+                                                   T b.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+) (./TeX/chapter-4.tex [10]
 Chapter 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-File: ./Pictures/Factories-Costumers.png Graphic file (type QTm)
-<use  "./Pictures/Factories-Costumers.png" >
-File: ./Pictures/Factories-Costumers-Assignation.png Graphic file (type QTm)
+File: ./Pictures/Factories-Customers.png Graphic file (type QTm)
+<use  "./Pictures/Factories-Customers.png" >
+File: ./Pictures/Factories-Customers-Assignation.png Graphic file (type QTm)
 
-<use  "./Pictures/Factories-Costumers-Assignation.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 6--20
+<use  "./Pictures/Factories-Customers-Assignation.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 8--22
 
  []
 
-[11]
+[11
+
+]
 File: ./Pictures/Monge-Problem-densities.png Graphic file (type QTm)
  <use  "./Pictures/Monge-Problem-densities.png" > [12]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 104.
+LaTeX Font Warning: Command \small invalid in math mode on input line 149.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 104.
+(Font)              scaled to size 9.00014pt on input line 149.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 6.00009pt on input line 104.
+(Font)              scaled to size 6.00009pt on input line 149.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 5.00008pt on input line 104.
+(Font)              scaled to size 5.00008pt on input line 149.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 104.
+(Font)              scaled to size 8.99986pt on input line 149.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 5.99991pt on input line 104.
+(Font)              scaled to size 5.99991pt on input line 149.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 4.99992pt on input line 104.
+(Font)              scaled to size 4.99992pt on input line 149.
+[13]
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 14.4002pt on input line 114.
+(Font)              scaled to size 14.4002pt on input line 158.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 7.0001pt on input line 114.
+(Font)              scaled to size 7.0001pt on input line 158.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 14.39977pt on input line 114.
+(Font)              scaled to size 14.39977pt on input line 158.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 6.9999pt on input line 114.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 114.
+(Font)              scaled to size 6.9999pt on input line 158.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symbb' on input line 114.
+(hyperref)                removing `math shift' on input line 158.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 114.
+(hyperref)                removing `\symbb' on input line 158.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 114.
+(hyperref)                removing `subscript' on input line 158.
 
-) (./TeX/chapter-5.tex [13] [14
 
-]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 158.
+
+) (./TeX/chapter-5.tex [14]
 Chapter 5.
-) (./TeX/chapter-6.tex [15] [16
+) (./TeX/chapter-6.tex [15
+
+] [16
 
 ]
 Chapter 6.
@@ -1811,14 +1884,18 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
  (./report.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 82.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 40017 strings out of 493638
- 735673 string characters out of 6146796
- 831172 words of memory out of 5000000
- 42742 multiletter control sequences out of 15000+600000
- 11427 words of font info for 129 fonts, out of 8000000 for 9000
+ 40035 strings out of 493638
+ 736122 string characters out of 6146796
+ 832172 words of memory out of 5000000
+ 42758 multiletter control sequences out of 15000+600000
+ 11443 words of font info for 131 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,12n,94p,10423b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,13n,94p,10423b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on report.pdf (27 pages).
