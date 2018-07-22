@@ -86,42 +86,55 @@ The idea behind Kantorovich's formulation is to consider instead of transportati
 
 Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. In a better manner we would like to know how much of our total material is distributed in a way $(x, y)$ in such a way to be consistent with information we have the initial and final material configuration. We call this way to design the transportation strategy a transport plan. In terms of probability, we are constructing a joint probability measure for $X\times Y$ with marginals given by the measures $\mu \in \PlanSp(X)$ and $\nu \in \PlanSp(Y)$.
 
-Please note that in contrast to a map, we can always assign to a point $x\in Y$ as many points in $Y$ as we want, just considering the constraints that we are not creating or destroying mass. Moreover, notice that this way to see the problem is more general, since we can always create a transportation plan given a transportation map, i.e. 
+Please note that in contrast to a map, we can always assign to a point $x\in Y$ as many points in $Y$ as we want, just considering the constraints that we are not creating or destroying mass. 
 
-\begin{equation*}
-	\Tmeasure{\mu}{(\id, T)}=\gamma \in \PlanSp(X\times Y)
-\end{equation*}. 
 
-If $T$ is a transportation map it is easy to check that indeed $\Tmeasure{\gamma}{\pi_x}=\mu$ and $\Tmeasure{\gamma}{\pi_y}=\nu$. The beauty of Kantorovich's formulation lies on the fact that it is always possible to find a transport. Moreover, the space of transport plans is compact. 
+We introduce the following notation. 
 
-\begin{definition}[Coupling] Let $(X, \mu)$ and $(Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $\X$ and $\Y$ on some probability space $(\Omega, \mathcal{P})$ such that $\law(\X)=\mu$, $\law(\Y)=\nu$. The couple $(\X,\Y)$ is called a coupling of $(\mu, \nu)$.  
+\begin{definition}[Coupling]
+Let $\mu$ and $\nu$ be probability measures of a probability space $\parentheses{X, \mathcal{A}_X}$ and $\parentheses{Y, \mathcal{A}_Y}$. Finding a coupling between $\mu$ and $\nu$ means to construct a measure $\gamma$ on the space $X\times Y$ (precisely on the product $\sigma$-algebra $\mathcal{A}_X\otimes\mathcal{A}_Y$) such that $\mu$ and $\nu$ are admitted as marginals on $X$ and $Y$ respectively. That is the measure of the projections $\pi_x$ and $\pi_y$
 \end{definition}
-
+ 
+ Let $(X, \mu)$ and $(Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $\X$ and $\Y$ on some probability space $(\Omega, \mathcal{P})$ such that $\law(\X)=\mu$, $\law(\Y)=\nu$. The couple $(\X,\Y)$ is called a coupling of $(\mu, \nu)$.  
+ 
 \begin{definition}[Deterministic Coupling]
 A coupling $(\X,\Y)$ is said to be deterministic if there exists a measurable function $T: X \rightarrow Y$ such that $\Y = T(\X)$.
 \end{definition}
 
-The increasing rearregement on $\Real$. Let $\mu$, $\nu$ be two probability measures on $\Real$. Define their cumulative distribution functions by,
+The increasing rearrangement on $\Real$ is an example of a coupling between two probability measures over one dimensional euclidean space. Let $\mu$, $\nu$ be two probability measures on $\Real$. Define their cumulative distribution functions by,
 \begin{equation*}
 	F(x)=\int_{-\infty}^{x}\dmu, \qquad G(y)=\int_{-\infty}^{y}\dnu	
 \end{equation*}
-The inverses
-\begin{align*}
-	F^{-1}(t)=\inf\braces{x\in \Real; F(x)>t}; \\
-	G^{-1}(t)=\inf\braces{y\in \Real; G(y)>t};
-\end{align*}
+Cumulative distributions not always are invertible, since they are not always strictly increasing. Although we can define their pseudo-inverses as follow,
+\begin{align}
+	F^{-1}(t)=\inf\braces{x\in \Real; F(x)>t}; \label{eq: Increasing rearregement F}\\
+	G^{-1}(t)=\inf\braces{y\in \Real; G(y)>t}; \label{eq: Increasing rearregement G}
+\end{align}
+and we set the map $T$ as,
+\begin{equation}
+	T=G^{-1}\circ F \label{eq: Increasing rearregement map.}
+\end{equation}
+We see if $\mu$ is atomless then $\Tmeasure{\mu}{T}=\nu$.
 
-The \textit{Knothe-Rosenblatt coupling} between two Stochastic variables $\Real^n$. Let $\mu$ and $\nu$ be two probability measures on $\Real^n$, such that $\mu$ is absolutely continuous with respect to Lebesgue measure.  is constructed in the following way:
+The above coupling is useful to construct the \textit{Knothe-Rosenblatt coupling} between two Stochastic variables $\Real^n$ is another interesting coupling. Let $\mu$ and $\nu$ be two probability measures on $\Real^n$, such that $\mu$ is absolutely continuous with respect to Lebesgue measure.  is constructed in the following way:
 
 \begin{enumerate}
-	\item Take the marginal of the first projection on the first variable; this gives probability measures $\mu_1\parentheses{\dx_1}$, $\nu_1\parentheses{\dy_1}$ on $\Real$, with $\mu_1$ being atomless. Then define $y_1=T_1(x_1)$ by the formul
-	\item Now take the marginal on the first two variables and disintegrate it with respect to the first variable. This gives probability measures $\mu_2\parentheses{\dx_1\dx_2}$
-	\item 
+	\item Take the marginal of the first projection on the first variable; this gives probability measures $\mu_1\parentheses{\dx_1}$, $\nu_1\parentheses{\dy_1}$ on $\Real$, with $\mu_1$ being atomless. Then define $y_1=T_1(x_1)$ by the formula \eqref{eq: Increasing rearregement map.} with $F$ and $G$ considered as they are in \eqref{eq: Increasing rearregement F} and \eqref{eq: Increasing rearregement G} respectively.
+	
+	\item Now take the marginal on the first two variables and disintegrate it with respect to the first variable. This gives probability measures $\mu_2\parentheses{\dx_1\dx_2}=\mu(\dx_1)\mu_2(\dx_2 | \dx_1)$, $\nu_2 (\dy_1\dy_2)=\nu_1(\dy_1)\nu_2(\dy_2)$. Then, for each given $y_1\in \Real$, set $y_1=T_1(x_1)$, and then define $y_2=T_2(x_2; x_1)$ under the increasing rearrangement formula.  
 \end{enumerate} 
 
 
 \begin{lemma}[Gluing lemma] Let $(\X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(X_1 , X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(Z_1 , Z_2, Z_3)$ such that $(Z_1, Z_2)$ has the same law as $(X_1 , X_2)$ and $(Z_2, Z_3)$ has the same law as $(Y_2 , Y_3)$.
 \end{lemma}
+
+Notice that this way to see the problem is more general, since we can always create a transportation plan given a transportation map, i.e. 
+
+\begin{equation*}
+\Tmeasure{\mu}{(\id, T)}=\gamma \in \PlanSp(X\times Y)
+\end{equation*}. 
+
+If $T$ is a transportation map it is easy to check that indeed $\Tmeasure{\gamma}{\pi_x}=\mu$ and $\Tmeasure{\gamma}{\pi_y}=\nu$. The beauty of Kantorovich's formulation lies on the fact that it is always possible to find a transport. Moreover, the space of transport plans is compact.
 
 
 \begin{problem}Given $\mu \in \PlanSp\parentheses{X}$, $\nu \in \PlanSp\parentheses{Y}$, and $c: X\times Y \rightarrow \brackets{0, +\infty}$, we consider the problem
