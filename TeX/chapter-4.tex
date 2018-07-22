@@ -21,17 +21,11 @@ We see that our problem is reduced to find an assigning map from the set of cust
 	\end{subfigure}	
 \end{figure}
 
-Gaspard Monge was a French mathematician who introduced for the very first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. 
+Gaspard Monge was a French mathematician who introduced for the very first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. We see that Monge presented a more continuous flavor of the problem.
 
+We remark that we are not interested in the quantity of mass we are transporting. This information it is not relevant for the problem or has no sense its consideration (for example the factories-customer problem). We are interested in finding a way to assign or distribute elements among two sets. We are interested in applications concerning the transportation of a finite amount of mass. Therefore, it is reasonable to state our problem in terms of probability measures.  
 
-We see that Monge presented a more continuous flavor of the transportation problem. In order to avoid ambiguity we make use of modern notation to state a precise idea behind the Monge's problem.
-
-We find convenient the use of measures to describe in a better setting our problem. 
-Consider the measures $\mu$ on $X \subset \Real^d$ and $\nu$ on $Y \subset \Real^d$ induced by the nonnegative densities $f$ and $g$ respectively. Moreover, we are only interested in situations 
-
-The space of Borel probability measures on $X$ is denoted by $\PlanSp(X)$. The weak topology on $\PlanSp(X)$ is induced by convergence against bounded continuous test functions on $X$, that is $C_b(X)$.
-
-Given two densities of mass $f$ and $g$, Monge was interested in finding a map $T:\Real^3\rightarrow\Real^3$ pushing the one onto the other,
+Formally, given two densities of mass $f$ and $g$, Monge was interested in finding a map $T:\Real^3\rightarrow\Real^3$ pushing the one onto the other,
 
 \begin{equation*}
 	\int_A g(y) \dy = \int_{T^{-1}(A)} f(x) \dx  \label{eq: Integral-Borel-MP}
@@ -40,15 +34,13 @@ For any Borel subset $A\subset\Real^3$. And the transport also should minimize t
 \begin{equation*}
 	\int_{\Real^3} \abs{x-T(x)} f(x)\dx
 \end{equation*}
-We need to mention that given the context for which the problem was formulated, originally it was binded to $\Real^3$ or $\Real^2$ but we can consider the general case in $\Real^d$. 
-
 
 Therefore, we need to search for the optimum in the set of measurables maps $T:X \rightarrow Y$ such that the condition \eqref{eq: Integral-Borel-MP} is translated to,
 
 \begin{equation}
 	(T_\#\mu)(A)=\mu(T^{-1}(A))
 \end{equation}
-for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  In the Euclidean frameworks if we assume $f$, $g$ and $T$ regular enough and $T$ also injective, this equality implies,
+for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  Notice that given the context for which the problem was formulated, originally it was binded to $\Real^3$ or $\Real^2$ but we can consider the general case in $\Real^d$. In the Euclidean frameworks if we assume $f$, $g$ and $T$ regular enough and $T$ also injective, this equality implies,
 \begin{equation}
 	g(T(x))\det\parentheses{\D T(x)}=f(x) \label{eq: PDE Monge condition.}
 \end{equation} 
@@ -57,7 +49,9 @@ for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  In the 
 	\caption{Monge problem. Finding a map.}
 	\includegraphics[width=0.4\textwidth]{Monge-Problem-densities.png}
 \end{figure}
+
 The equation \eqref{eq: PDE Monge condition.} is nonlinear in $T$ making difficult the analysis of the Monge's Problem. Moreover, the constrain makes this problem hard to handle since it is not close even under weak convergence. 
+
 
 To appreciate this fact, consider $\mu = \Lebesgue^1\measurerestr[0,1]$ and the hat functions $h_k$ defined as follow,
 
@@ -72,6 +66,8 @@ Then take the sequence $f_n:[0,1]\rightarrow [0,1]$,
 \begin{equation}
 	f_n(x)=\sum_{i=0}^{n-1}h_n\parentheses{x-\frac{i}{n}}
 \end{equation}
+
+
 We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to check that $\mu\parentheses{f_n^{-1}\left(A\right)}=\Lebesgue^1\parentheses{A}$ for every open set $A\in [0,1]$. In the other hand, the sequence converges weakly to $f_n\weakconvergence f=\frac{1}{2}$, which obviously makes $\Tmeasure{\mu}{f}\neq\Lebesgue^1\measurerestr [0,1]$. 
 
 
@@ -82,20 +78,46 @@ We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to ch
 \end{equation}
 \end{problem}
 
-Monge analyzed geometric properties of the solution to this problem. Although, the problem of the existence stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove existence of a minimizer. 
+Monge analyzed geometric properties of the solution to this problem. Although, the question of the existence of a optimal map stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove existence of a minimizer. 
 
-If we try to formulate our factories-customer problem through finding an assignation map, we are excluding the situations in which one customer is supplied by two or more factories.
+Formulating our factories-customer problem through finding an assignation map, we are excluding the situations in which one customer can be supplied by two or more factories, or for Monge's problem we are ignoring the possibility of splitting a unit of mass into small pieces that can be assigned simultaneously to different places. 
+
+The idea behind Kantorovich's formulation is to consider instead of transportation maps from one space to another, transportation plans, that is joint probability measures with their marginals given by the initial and final configurations.
+
+Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. In a better manner we would like to know how much of our total material is distributed in a way $(x, y)$ in such a way to be consistent with information we have the initial and final material configuration. We call this way to design the transportation strategy a transport plan. In terms of probability, we are constructing a joint probability measure for $X\times Y$ with marginals given by the measures $\mu \in \PlanSp(X)$ and $\nu \in \PlanSp(Y)$.
+
+Please note that in contrast to a map, we can always assign to a point $x\in Y$ as many points in $Y$ as we want, just considering the constraints that we are not creating or destroying mass. Moreover, notice that this way to see the problem is more general, since we can always create a transportation plan given a transportation map, i.e. 
+
+\begin{equation*}
+	\Tmeasure{\mu}{(\id, T)}=\gamma \in \PlanSp(X\times Y)
+\end{equation*}. 
+
+If $T$ is a transportation map it is easy to check that indeed $\Tmeasure{\gamma}{\pi_x}=\mu$ and $\Tmeasure{\gamma}{\pi_y}=\nu$. The beauty of Kantorovich's formulation lies on the fact that it is always possible to find a transport. Moreover, the space of transport plans is compact. 
 
 \begin{definition}[Coupling] Let $(X, \mu)$ and $(Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $\X$ and $\Y$ on some probability space $(\Omega, \mathcal{P})$ such that $\law(\X)=\mu$, $\law(\Y)=\nu$. The couple $(\X,\Y)$ is called a coupling of $(\mu, \nu)$.  
 \end{definition}
-
-
 
 \begin{definition}[Deterministic Coupling]
 A coupling $(\X,\Y)$ is said to be deterministic if there exists a measurable function $T: X \rightarrow Y$ such that $\Y = T(\X)$.
 \end{definition}
 
-$\gamma=\Tmeasure{\mu}{\parentheses{\id, T}}=(\mu, \nu)$
+The increasing rearregement on $\Real$. Let $\mu$, $\nu$ be two probability measures on $\Real$. Define their cumulative distribution functions by,
+\begin{equation*}
+	F(x)=\int_{-\infty}^{x}\dmu, \qquad G(y)=\int_{-\infty}^{y}\dnu	
+\end{equation*}
+The inverses
+\begin{align*}
+	F^{-1}(t)=\inf\braces{x\in \Real; F(x)>t}; \\
+	G^{-1}(t)=\inf\braces{y\in \Real; G(y)>t};
+\end{align*}
+
+The \textit{Knothe-Rosenblatt coupling} between two Stochastic variables $\Real^n$. Let $\mu$ and $\nu$ be two probability measures on $\Real^n$, such that $\mu$ is absolutely continuous with respect to Lebesgue measure.  is constructed in the following way:
+
+\begin{enumerate}
+	\item Take the marginal of the first projection on the first variable; this gives probability measures $\mu_1\parentheses{\dx_1}$, $\nu_1\parentheses{\dy_1}$ on $\Real$, with $\mu_1$ being atomless. Then define $y_1=T_1(x_1)$ by the formul
+	\item Now take the marginal on the first two variables and disintegrate it with respect to the first variable. This gives probability measures $\mu_2\parentheses{\dx_1\dx_2}$
+	\item 
+\end{enumerate} 
 
 
 \begin{lemma}[Gluing lemma] Let $(\X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(X_1 , X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(Z_1 , Z_2, Z_3)$ such that $(Z_1, Z_2)$ has the same law as $(X_1 , X_2)$ and $(Z_2, Z_3)$ has the same law as $(Y_2 , Y_3)$.
@@ -111,6 +133,7 @@ where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 
 
 
+
 \section{Kantorovich formulation as relaxation}
 
 \begin{theorem}
@@ -120,8 +143,7 @@ where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 
 \section{Cyclical Monotonicity.}
 
-Consider a similar situation to the factories-customers example, but the consortium has already a fixed distribution plan. They know that transportation costs are high and they want to make them cheaper. Currently, in this expensive plan we choose one factory and we search  
-
+Consider a similar situation to the factories-customers example, but the consortium has already a fixed distribution plan. They know that transportation costs are high and they want to make them cheaper. 
 
 \begin{definition}[c-transform]
 	Let $X$ and $Y$ be sets, and $c:X\times Y \rightarrow (-\infty, \infty]$. A function $\psi: X\rightarrow \Realex$ is said to be c-convex if it is not identically to $+\infty$ and there exists $\psi^c: Y \rightarrow \Realex$

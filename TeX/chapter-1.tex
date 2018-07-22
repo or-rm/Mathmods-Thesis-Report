@@ -1,9 +1,11 @@
 \chapter{Preliminaries.}
+We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications.
+
+ 
 \section{Definitions and important theorems to remember.}
 
-We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. 
-
-We start with the definition of topology that is needed to introduce a notion of continuity. We refer to \cite{munkres2000topology} for more details.
+\subsection{Topology.}
+We start with the definition of topology that is needed to introduce a notion of continuity. We refer to \cite{munkres2000topology} for more details in topology.
 
 \begin{definition}[Topology]
 	A topology on a set $X$ is a collection $\mathcal T$ of subsets of $X$ having the following properties
@@ -55,9 +57,10 @@ We can see from the above definition that any continuous function is lower-semic
 \end{theorem}
 
 
+\subsection{Functional Analysis.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{definition}[Banach Space]
 \end{definition}
 
@@ -76,6 +79,32 @@ We can see from the above definition that any continuous function is lower-semic
 	\end{equation}
 \end{definition}
 
+\begin{definition}[Projection of a Cartesian Product.]
+	Let $\pi_1: X\times Y \rightarrow X$ be defined by the equation
+	\begin{equation*}
+		\pi_1(x,y)= x;
+	\end{equation*}
+	
+	Equivalently, let $\pi_2: X\times Y \rightarrow Y$ be defined by,
+	\begin{equation*}
+		\pi_2(x,y)=y
+	\end{equation*}
+	This maps $\pi_1$ and $\pi_2$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
+\end{definition}
+We can generalize a definition over a general Cartesian product. Given a set $X$, we define a \textit{$J$-tuple} of elements of $X$ to be a function $\mathbf{x}:J\rightarrow X$. If $\alpha$ is an element of $J$, we often denote the value of $\mathbf{x}$ at $\alpha$ by $x_\alpha$ rather than $\mathbf{x}(\alpha)$; we call it the $\alpha$-th coordinate of $\mathbf{x}$. And we often denote the function $\mathbf{x}$ by the symbol.
+\begin{equation*}
+	(x_\alpha)_{\alpha \in J}
+\end{equation*} 
+
+Let $\braces{A_\alpha}_{\alpha \in J}$ be a set of indexed family of sets; let $X=\bigcup_{\alpha \in J}A_{\alpha}$. The \textit{Cartesian product} of this indexed family, denoted by
+\begin{equation*}
+	\prod_{\alpha \in J}A_\alpha
+\end{equation*}	
+is defined to be the set of all $J$-tuples $\parentheses{x_\alpha}_{\alpha \in J}$ of elements of $X$ such that $x_\alpha \in A_\alpha$ for each $\alpha \in J$. That is, it is the set of all functions,
+\begin{equation*}
+\mathbf{x}: J\rightarrow \bigcup_{\alpha \in J} A_\alpha
+\end{equation*}
+such that $\mathbf{x}(\alpha)\in A_\alpha$ for each $\alpha \in J$.
 
 \begin{definition}[Liminf and Limsup]
 	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
@@ -99,7 +128,8 @@ We can see from the above definition that any continuous function is lower-semic
 \end{definition}
 
 \begin{definition}[Lower Semicontinuity]
-	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have \begin{equation*}
+	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have 
+	\begin{equation*}
 	f(x)\leq \liminf_{n\in \Naturals} f(x_n)
 	\end{equation*}
 \end{definition}
@@ -111,7 +141,7 @@ We can see from the above definition that any continuous function is lower-semic
 	f(x)=\inf_{z\in X}f(z) \qquad \mand \qquad f(y)=\sup_{z \in X} f(z)
 	\end{equation*}
 \end{theorem}
-Continuity is a strong requirement. Luckily we can assure the existence of a minimizer of lower-semicontinuous functionals (or maximizer for upper-semicontinuity). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
+Continuity is a strong requirement. Luckily, we can assure the existence of a minimizer of lower-semicontinuous functionals (or maximizer for upper-semicontinuity). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
 
 \begin{theorem}[Weierstrass' criterion for existence of minimizers]
 	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$.
@@ -120,7 +150,7 @@ Continuity is a strong requirement. Luckily we can assure the existence of a min
 	\end{proof}
 \end{theorem}
 
-We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum. Explanation about notions of convergence with bounded functionals and vanishing in infinity functions. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$ if $X$ and both notions of convergence coincide.
+We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum. \textbf{Explanation about notions of convergence with bounded functionals and vanishing in infinity functions}. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$ if $X$ and both notions of convergence coincide.
 
 \begin{definition}[Topological Dual]
 	If $X$ is a normed space, the dual space $\asterisk{X}=\mathcal B(X, \Real)$. Consists of all linear and bounded functionals mapping from $X$ to $\Real$.
@@ -145,36 +175,66 @@ The Banach-Alaouglu's theorem is a well known result in functional analysis, an 
 \end{definition}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Measure Theory
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Measure Theory}
 \begin{definition}[Sigma Algebra]
-An algebra of sets $\mathcal{A}$ is a class of subsets of some fixed set $X$ (called the space) such that
-
-\begin{itemize}
-	\item $X$ and $\emptyset$ belong to $\mathcal{A}$.
-	\item If $A, B \in \mathcal{A}$, then $A\cap B \in \mathcal{A}$, $A\cup B \in \mathcal A$, $A\backslash B \in \mathcal A$.
-
-An algebra of sets is a $\sigma$-algebra if for any sequence of sets $A_n \in \mathcal A$ we have $\mathcal{A}\ni \bigcup_{n\in \Naturals}  A_n $.
-\end{itemize}
-\end{definition}
-\begin{definition}[Measure Space]
-\end{definition}
-
-\begin{definition}[Measure and Probability]
-
+	
+	An algebra of sets $\mathcal{A}$ is a class of subsets of some fixed set $X$ (called the space) such that
+	
+	\begin{itemize}
+		\item $X$ and $\emptyset$ belong to $\mathcal{A}$.
+		\item If $A, B \in \mathcal{A}$, then $A\cap B \in \mathcal{A}$, $A\cup B \in \mathcal A$, $A\backslash B \in \mathcal A$.
+	\end{itemize}
+	
+	An algebra of sets is a $\sigma$-algebra if for any sequence of sets $A_n \in \mathcal A$ we have $\mathcal{A}\ni \bigcup_{n\in \Naturals}  A_n $.
 \end{definition}
 
+\begin{definition}[Measure Space] 
+	A pair $(X, \mathcal A)$ consisting of a set $X$ and a $\sigma$-algebra $\mathcal A$ of its subsets is called a measurable space.
+\end{definition}
 
 \begin{definition}[Borel $\sigma$-algebra]
-	
 	The Borel $\sigma$-algebra $\mathcal{B}(\Real^n)$ of $\Real^n$ is the $\sigma$-algebra generated by all open sets. The sets in a Borel $\sigma$-algebra are called Borel sets. For any set $E\subset \Real^n$, let $\mathcal B(E)$ denote the class of all sets of the form $E\cap B$, where $B\in\mathcal B(\Real^n)$.
 \end{definition}
 
+
+\begin{definition}[Measure]
+	A real-valued set function $\mu:\mathcal{A}\rightarrow \Realex$ on a class of sets $\mathcal A$ is called countably additive if 
+	\begin{equation*}
+		\mu\parentheses{\bigcup_{n=1}^{\infty} A_n}=\sum_{n=1}^{\infty}\mu(A_n)
+	\end{equation*}
+	for all pairwise disjoint sets $A_n$ in $\mathcal A$ such that $\mathcal \ni \bigcup_{n=1}^{\infty}$. A countably additive set function defined on an algebra is called a measure.
+\end{definition}
+
+\begin{definition}
+	A countably additive measure $\mu$ on a $\sigma$-algebra of subsets of a space $X$ is called a probability measure if $\mu\geq 0$ and $\mu(X)=1$.
+	A triple $(X, \mathcal A, \mu)$ is called a measure space if $\mu$ is a
+	nonnegative measure on a $\sigma$-algebra A of subset of a set X. If $\mu$ is a probability measure, then $(X, \mathcal A, \mu)$ is called a probability space. 
+\end{definition}
+
+
+\begin{definition}[Probability]
+	A countably additive measure $\mu$ on a $\sigma$-algebra of subsets of a space $X$ is called a probability measure if $\mu \geq 0$ and $\mu(X)= 1$.
+	
+	A triple $(X, \mathcal A, \mu )$ is called a measure space if $\mu$ is a
+	nonnegative measure on a $\sigma$-algebra $\mathcal A$ of subset of a set $X$. If $\mu$ is a probability measure, then $(X, \mathcal A, \mu)$ is called a probability space.
+\end{definition}
+
+
+
 \begin{definition}[Product $\sigma$-algebra ]
+Let $\left(X_1 , \mathcal{A}_1 , \mu_1 \right)$ and $\left(X_1 , \mathcal{A}_1 , \mu_1 \right)$ be two spaces with finite nonnegative measures. On the space $X_1\times X_2$ we consider sets of the form $A_1\times A_2$, where $A_i \in \mathcal{A}_i$, called measurable rectangles. Let $\mu_1\times \mu_2 \parentheses{A_1\times A_2}:= \mu_1(A_1)\mu_2(A_2)$. 
+
+Let $A_1\otimes A_2$ denote the $\sigma$-algebra generated by all measurable rectangles; this $\sigma$-algebra is called the product of the $\sigma$-algebras $A_1$ and $A_2$.  
 
 \end{definition}
+
+
+\begin{theorem}
+The set function $\mu_1\times \mu_2$ is countably additive on the algebra generated by all measurable rectangles and uniquely extends to a countably additive measure, denoted by $\mu_1\otimes \mu_2$.
+\end{theorem}
+
+
 
 \begin{definition}[Image Measure]
 	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
@@ -183,6 +243,7 @@ An algebra of sets is a $\sigma$-algebra if for any sequence of sets $A_n \in \m
 	\end{equation*}
 \end{definition}
 
+
 \begin{theorem}
 	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $\mu$ be a nonnegative measure. A $\mathcal{A}_2$-measurable function $g$ on $Y$ is integrable with respect the measure $\mu\circ f^{-1}$ precisely when the function $g\circ f$ is integrable with respect to $\mu$. In addition we have, 
 	\begin{equation*}
@@ -190,23 +251,54 @@ An algebra of sets is a $\sigma$-algebra if for any sequence of sets $A_n \in \m
 	\end{equation*}
 \end{theorem}
 
+The space of Borel probability measures on $X$ is denoted by $\PlanSp(X)$. The weak topology on $\PlanSp(X)$ is induced by convergence against bounded continuous test functions on $X$, that is $C_b(X)$.
 
-\begin{definition}
-	A measure over a set $\Omega$ is atomless if $\forall x \in \Omega$, we have  $\mu(\{x\})=0$.
+\begin{definition}[Atom and atomless measures]
+	The set $A \in \mathcal A$ is called an atom of the measure $\mu$
+	if $\mu(A) > 0$ and every set $B \subset A$ from $\mathcal A$ has measure either $0$ or $\mu(A)$. If there are no atoms, then the measure $\mu$ is called atomless. 
 \end{definition}
 
-
-\begin{definition}[Tightness] Let $(X, \mathcal T)$ a topological space, and let $\mathcal A$ a $\sigma$-algebra on $X$ that contains the topology $\mathcal{T}$. Let $M$ be a collection of measures defined on $\mathcal{A}$. The collection $M$ is called tight  if for every $\epsilon>0$ there is a compact subset $K_\epsilon$  of $\X$ such that, for all measures $\mu\in M$ we have,
+A measure over a set $\Omega\subset \Real$ is atomless if $\forall x \in \Omega$, we have  $\mu(\{x\})=0$. The Dirac's measure is not atomless. 
+\begin{definition}[Absolutely continuity and singularity]
+	Let $\mu$ and $\nu$ be countably additive measures on a measurable space $\parentheses{X, \mathcal A}$. 
+	\begin{itemize}
+		\item The measure $\nu$ is called absolutely continuous with respect to $\mu$ if $\abs{\nu}(A)=0$ for every set $A$ with $\abs{\mu}=0$. We use the notation $\nu \ll \mu$.
+		\item The measure $\nu$ is called singular with respect to $\mu$ if there exists a set $A\in \mathcal{A}$ such that
+		\begin{equation*}
+			\abs{\mu}(A)=0 \quad \text{ and }\quad  \abs{v}(X\backslash A)=0
+		\end{equation*}
+	\end{itemize}
+	
+	If $\nu \ll \mu $ and $\mu \ll \nu$, then the measures $\mu$ and $\nu$ are equivalent. We use the notation $\mu \sim \nu$ to refer this situation.
+\end{definition}
+The above definition allows us to introduce the Radon-Nikodym theorem that is one of the main results in measure theory.
+\begin{theorem}[Radon–Nikodym theorem]
+	Let $\mu$ and $\nu$ be two finite measures on a space $(X, \mathcal A)$.
+	The measure $\nu$ is absolutely continuous with respect to the measure $\mu$ precisely	when there exists a $\mu$-integrable function $f$ such that $\nu$ is given by
 	\begin{equation*}
-	\abs{\mu}\parentheses{\X \backslash K_\epsilon} < \epsilon
+		v(A)=\int_A f\dmu
+	\end{equation*}
+\end{theorem}
+\begin{definition}[Tightness] Let $(X, \mathcal T)$ a topological space, and let $\mathcal A$ a $\sigma$-algebra on $X$ that contains the topology $\mathcal{T}$. Let $M$ be a collection of measures defined on $\mathcal{A}$. The collection $M$ is called tight  if for every $\epsilon>0$ there is a compact subset $K_\epsilon$ of $X$ such that, for all measures $\mu\in M$ we have,
+	\begin{equation*}
+	\abs{\mu}\parentheses{X \backslash K_\epsilon} < \epsilon
 	\end{equation*} 
 \end{definition}
 
 \begin{definition}
-	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$S such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
+	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$ such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
 \end{definition}
 
 
 \begin{theorem}[Prokhorov]
-	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $\X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
+	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
 \end{theorem}
+
+\begin{definition}
+	Let $\parentheses{X, \mathcal A, \mu}$ be a probability space. Then every Borel-measurable mapping $\X: X\rightarrow \Real$ with for all $B\in \mathcal B(\Real) $ is a random variable, denoted by $\X: \parentheses{X, \mathcal A}\rightarrow \parentheses{\Real, \mathcal B (\Real)} $
+\end{definition}
+
+
+
+\begin{definition}[Transport plans]
+\end{definition}

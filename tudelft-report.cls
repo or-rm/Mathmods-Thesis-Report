@@ -186,7 +186,7 @@
     %% The default style for text is Tahoma (sans-serif).
 %    \setlength\@largetitlesize{96pt}
     \renewcommand*\familydefault{\sfdefault}
-    %% The default style for titles is Bookman Old Style (serif). 
+    %% The default style for titles is Bookman Old Style (serif).
     \def\titlefont{\tudsffamily}
     \def\largetitlefont{\tudtitlefamily}
     \def\titleshape{}
@@ -234,7 +234,7 @@
 \def\@pagecolor{tudelft-cyan}
 %\if@whitetitle
 %  \def\titlecolor{tudelft-white}
-%\else   
+%\else
 %  \def\titlecolor{tudelft-black}
 %\fi
 
@@ -445,7 +445,7 @@
           \addtolength\@cover@fronttextheight{-4\@cover@margin}
           \coordinate (tcorner) at ($(top left)+(2\@cover@margin,-2\@cover@margin)$);
           \coordinate (front top left) at (tcorner);
-%%          \coordinate (back top left) at ($(tcorner)+(-\@cover@backboxwidth,\@cover@backboxheight)$);     
+%%          \coordinate (back top left) at ($(tcorner)+(-\@cover@backboxwidth,\@cover@backboxheight)$);
           \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
              \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
                  %% Print the title and optional subtitle at the top in white.
@@ -453,16 +453,16 @@
                     \ifx\@subtitle\undefined\else
 %                     \\[3mm]
                      \vfill
-                     
+
                      {\largetitlestyle\color{\@subtitlecolor}\fontsize{40}{40}\selectfont\@subtitle}
                    \fi
                  %% Print the author.
                    \vfill
-                  
+
                    {\largetitlestyle\color{\@authorcolor}\fontsize{30}{30}\selectfont\@author}
                    \ifx\@cover@text\undefined\else
                      \vfill
-                     
+
                      {\titlefont\color{\@covertextcolor}\fontsize{18}{18}\selectfont\@cover@text}
                    \fi
              \end{minipage}
@@ -527,7 +527,7 @@
 %                  \end{minipage}
 %              };
 %          \fi
-         
+
        \fi
     \end{tikzpicture}
     %% Restore the margins and turn the page white again.
@@ -667,4 +667,3 @@
     linkcolor=title,
     urlcolor=title
 }
-
