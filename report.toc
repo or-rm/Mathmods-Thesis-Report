@@ -8,22 +8,25 @@
 \contentsline {chapter}{\numberline {3}Linear Programming}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Duality}{12}{section.3.1}
 \contentsline {section}{\numberline {3.2}Simplex Method.}{12}{section.3.2}
-\contentsline {section}{\numberline {3.3}Interior Method.}{12}{section.3.3}
+\contentsline {section}{\numberline {3.3}Interior Methods.}{12}{section.3.3}
 \contentsline {chapter}{\numberline {4}Optimal Transport Theory}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Kantorovich formulation as relaxation}{16}{section.4.1}
-\contentsline {section}{\numberline {4.2}Cyclical Monotonicity.}{16}{section.4.2}
-\contentsline {section}{\numberline {4.3}Properties of Optimal plans.}{17}{section.4.3}
-\contentsline {section}{\numberline {4.4}Wasserstein Spaces. $\symbb {W}_{p}$}{17}{section.4.4}
-\contentsline {chapter}{\numberline {5}Computation of an Optimal Transport}{19}{chapter.5}
-\contentsline {section}{\numberline {5.1}Linear Programming Formulation.}{19}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Simplex Method Algorithm and Duality.}{19}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Sinkhorn-Knopp Algorithm.}{19}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Simulated Annealing.}{19}{subsection.5.1.3}
-\contentsline {section}{\numberline {5.2}Continuous Formulation. Beckman Problem and Optimal Transport.}{19}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Douglas-Rachford Solver}{19}{subsection.5.2.1}
-\contentsline {chapter}{\numberline {6}Applications}{21}{chapter.6}
-\contentsline {section}{\numberline {6.1}Isoperimetric Inequality.}{21}{section.6.1}
-\contentsline {section}{\numberline {6.2}Dynamical Optimal transport.}{21}{section.6.2}
-\contentsline {section}{\numberline {6.3}Approximation of Euler Equations.}{21}{section.6.3}
-\contentsline {chapter}{Bibliography}{23}{appendix*.8}
+\contentsline {subsection}{\numberline {4.0.1}Existence of a minimizer for Kantorovich's Problem.}{17}{subsection.4.0.1}
+\contentsline {section}{\numberline {4.1}Kantorovich formulation as relaxation}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}Cyclical Monotonicity and Duality.}{19}{section.4.2}
+\contentsline {section}{\numberline {4.3}Properties of Optimal plans.}{20}{section.4.3}
+\contentsline {section}{\numberline {4.4}Wasserstein Spaces. $\symbb {W}_{p}$}{20}{section.4.4}
+\contentsline {chapter}{\numberline {5}Computation of an Optimal Transport}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Linear Programming Formulation.}{21}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Simplex Method Algorithm and Duality.}{21}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Sinkhorn-Knopp Algorithm.}{21}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Heuristic Methods.}{21}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Continuous Formulation.}{21}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Beckman Problem and Optimal Transport.}{21}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Douglas-Rachford Solver}{21}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}Applications}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}Isoperimetric Inequality.}{23}{section.6.1}
+\contentsline {section}{\numberline {6.2}Dynamical Optimal transport.}{23}{section.6.2}
+\contentsline {section}{\numberline {6.3}Approximation of Euler Equations.}{23}{section.6.3}
+\contentsline {section}{\numberline {6.4}Track of a Dynamic.}{23}{section.6.4}
+\contentsline {chapter}{Bibliography}{25}{appendix*.10}
 \contentsfinish 

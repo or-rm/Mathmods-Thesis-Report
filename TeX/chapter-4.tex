@@ -3,7 +3,7 @@
 To introduce the optimal transport problem please imagine we are asked by a consortium of factories to design a plan for distributing their products among its many customers in such a way that the transportation costs are minimal. \\
 
 
-We can start the approach of this problem considering the customers as members of the set $X$ and the factories as members of a set $Y$. We want to know which factory $y\in Y$ is going to supply a customer $x\in X$, i.e. we represent such assignation of a factory to a customer as map $y=T(x)\in Y$. Therefore, we can estimate the transportation cost $c(x, T(x))$ of supplying a customer $x$ with a factory $y=T(x)$. 
+We can start the approach of this problem considering the customers as members of the set $X$ and the factories as members of a set $Y$. We want to know which factory $y\in Y$ is going to supply a customer $x\in X$, i.e. we represent such assignation of a factory to a customer as map $y=T(x)\in Y$. Therefore, we can estimate the transportation cost $c(x, T(x))$ of supplying a customer $x$ with a factory $y=T(x)$.  \\
 
 We see that our problem is reduced to find an assigning map from the set of customers to the set of factories in such a way that the total cost $C(X, Y)=\sum_{x\in X} c(x, T(x))$ is minimal.  
 \\
@@ -21,9 +21,9 @@ We see that our problem is reduced to find an assigning map from the set of cust
 	\end{subfigure}	
 \end{figure}
 
-Gaspard Monge was a French mathematician who introduced for the very first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. We see that Monge presented a more continuous flavor of the problem.
+Gaspard Monge was a French mathematician who introduced for the very first time the optimal transport problem as \textit{d\'eblais et remblais} in 1781. Monge was interested in finding a map that distributes an amount of sand or soil extracted from the earth or a mine distributed according to a density $f$, onto a new construction whose density of mass is characterized by a density $g$, in such a way the average displacement is minimal. We see that Monge presented a more continuous flavor of the problem. \\
 
-We remark that we are not interested in the quantity of mass we are transporting. This information it is not relevant for the problem or has no sense its consideration (for example the factories-customer problem). We are interested in finding a way to assign or distribute elements among two sets. We are interested in applications concerning the transportation of a finite amount of mass. Therefore, it is reasonable to state our problem in terms of probability measures.  
+We remark that we are not interested in the quantity of mass we are transporting. This information it is not relevant for the problem or has no sense its consideration (for example the factories-customer problem). We are interested in finding a way to assign or distribute elements among two sets. We are interested in applications concerning the transportation of a finite amount of mass. Therefore, it is reasonable to state our problem in terms of probability measures.  \\
 
 Formally, given two densities of mass $f$ and $g$, Monge was interested in finding a map $T:\Real^3\rightarrow\Real^3$ pushing the one onto the other,
 
@@ -38,9 +38,9 @@ For any Borel subset $A\subset\Real^3$. And the transport also should minimize t
 Therefore, we need to search for the optimum in the set of measurables maps $T:X \rightarrow Y$ such that the condition \eqref{eq: Integral-Borel-MP} is translated to,
 
 \begin{equation}
-	(T_\#\mu)(A)=\mu(T^{-1}(A))
+	(T_\#\mu)(A)=\mu(T^{-1}(A))\qquad \text{  for every measurable set } A\subset X.
 \end{equation}
-for every measurable set $A$. In other words, we need $T_\# \mu = \nu$.  Notice that given the context for which the problem was formulated, originally it was binded to $\Real^3$ or $\Real^2$ but we can consider the general case in $\Real^d$. In the Euclidean frameworks if we assume $f$, $g$ and $T$ regular enough and $T$ also injective, this equality implies,
+In other words, we need $T_\# \mu = \nu$.  Notice that given the context for which the problem was formulated, originally it was binded to $\Real^3$ or $\Real^2$ but we can consider the general case in $\Real^d$. In the Euclidean frameworks if we assume $f$, $g$ and $T$ regular enough and $T$ also injective, this equality implies,
 \begin{equation}
 	g(T(x))\det\parentheses{\D T(x)}=f(x) \label{eq: PDE Monge condition.}
 \end{equation} 
@@ -74,89 +74,235 @@ We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to ch
 \begin{problem} Given two probability measures $\mu \in \PlanSp\parentheses{X}$ and $\nu \in \PlanSp\parentheses{Y}$ and a cost function $c: X \times Y \rightarrow \braces{0, +\infty}$, the Monge's problem consists in finding a map $T:X\rightarrow Y$
 	
 \begin{equation}
-\inf\braces{\Monge:=\int_X c(x, T(x)) \diff \mu(x): \ \ \Tmeasure{\mu}{T}=\nu }\label{eq: Monge's Problem.}\tag{MP}
+\inf\braces{\Monge:=\int_X c(x, T(x)) \diff \mu(x): \quad \Tmeasure{\mu}{T}=\nu }\label{eq: Monge's Problem.}\tag{MP}
 \end{equation}
 \end{problem}
 
-Monge analyzed geometric properties of the solution to this problem. Although, the question of the existence of a optimal map stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove existence of a minimizer. 
+Monge analyzed geometric properties of the solution to this problem. Although, the question of the existence of a optimal map stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove existence of a minimizer. \\
 
-Formulating our factories-customer problem through finding an assignation map, we are excluding the situations in which one customer can be supplied by two or more factories, or for Monge's problem we are ignoring the possibility of splitting a unit of mass into small pieces that can be assigned simultaneously to different places. 
+When we formulate our factories-customer problem through finding an assignation map, we are excluding the situations in which one customer can be supplied by two or more factories, or in the case of the Monge's problem we are ignoring the possibility of splitting a unit of mass into small pieces that can be assigned simultaneously to different places. \\
 
-The idea behind Kantorovich's formulation is to consider instead of transportation maps from one space to another, transportation plans, that is joint probability measures with their marginals given by the initial and final configurations.
+The idea behind Kantorovich's formulation is to consider the transportation maps from one space to another as transportation plans, that is joint probability measures with their marginals given by the initial and final configurations.\\
 
-Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. In a better manner we would like to know how much of our total material is distributed in a way $(x, y)$ in such a way to be consistent with information we have the initial and final material configuration. We call this way to design the transportation strategy a transport plan. In terms of probability, we are constructing a joint probability measure for $X\times Y$ with marginals given by the measures $\mu \in \PlanSp(X)$ and $\nu \in \PlanSp(Y)$.
+Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. We would like to know how much of our total material is distributed from $x$ to $y$, in such a way to be consistent with information we have the initial and final material configuration. That is, we would like to know the optimal way to concentrate mass to the points $(x, y)$ in such a way we are not creating neither destroying mass. \\
 
-Please note that in contrast to a map, we can always assign to a point $x\in Y$ as many points in $Y$ as we want, just considering the constraints that we are not creating or destroying mass. 
+Designing the transportation strategy using the above procedure is called a transport plan. In terms of probability theory, we are constructing a joint probability measure for $X\times Y$ with marginals given by the measures $\mu \in \PlanSp(X)$ and $\nu \in \PlanSp(Y)$. \\
 
-
-We introduce the following notation. 
+Please note that in contrast to a map, we can always assign to a point $x\in Y$ as many points in $Y$ as we want, just considering the constraints given by the densities $\mu$ and $\nu$. We introduce the following notation to give the necessary formalism to this approach. 
 
 \begin{definition}[Coupling]
-Let $\mu$ and $\nu$ be probability measures of a probability space $\parentheses{X, \mathcal{A}_X}$ and $\parentheses{Y, \mathcal{A}_Y}$. Finding a coupling between $\mu$ and $\nu$ means to construct a measure $\gamma$ on the space $X\times Y$ (precisely on the product $\sigma$-algebra $\mathcal{A}_X\otimes\mathcal{A}_Y$) such that $\mu$ and $\nu$ are admitted as marginals on $X$ and $Y$ respectively. That is the measure of the projections $\pi_x$ and $\pi_y$
+Let $\mu$ and $\nu$ be probability measures of a probability space $\parentheses{X, \mathcal{A}_X}$ and $\parentheses{Y, \mathcal{A}_Y}$. Finding a coupling between $\mu$ and $\nu$ means to construct a measure $\gamma$ on the space $X\times Y$ (precisely on the product $\sigma$-algebra $\mathcal{A}_X\otimes\mathcal{A}_Y$) such that $\mu$ and $\nu$ are admitted as marginals on $X$ and $Y$ respectively. That is $\Tmeasure{\gamma}{\proj_x}=\mu$ and $\Tmeasure{\gamma}{\proj_y}=\nu$. \label{def: Coupling}
 \end{definition}
  
- Let $(X, \mu)$ and $(Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $\X$ and $\Y$ on some probability space $(\Omega, \mathcal{P})$ such that $\law(\X)=\mu$, $\law(\Y)=\nu$. The couple $(\X,\Y)$ is called a coupling of $(\mu, \nu)$.  
- 
+
+The above definition is equivalently to say that coupling two measures means to find a probability measure $\gamma$, such that for all measurable sets $A\subset X$ and $B\subset Y$, one has $\gamma\brackets{A\times Y}=\mu\brackets{A}$, $\gamma\brackets{A\times X}=\nu\brackets{B}$.
+
+Moreover, for all integrable (nonnegative measurable) functions $\phi, \psi$ on $X$ and $Y$,
+\begin{equation*}
+	\int_{X\times Y}\parentheses{\phi(x)+\psi(y)}\diff\gamma(x,y)=\int_{X}\phi\dmu+\int_{Y}\psi\dnu
+\end{equation*}
+
+Since definition \ref{def: Coupling} is given for measures on probabilistic spaces, we can rephrase it in terms of stochastic variables. Let $(X, \mu)$ and $(Y, \nu)$ be two probability spaces. Coupling $\mu$ and $\nu$ means constructing two random variables $\X$ and $\Y$ on some probability space, such that $\law(\X)=\mu$, $\law(\Y)=\nu$. The couple $\parentheses{\X,\Y}$ is called a coupling of $\parentheses{\mu, \nu}$. \\
+
+Notice that this approach to solve the problem is more general, since we can always create a transportation plan given a transportation map, i.e. 
+
+\begin{equation*}
+\Tmeasure{\mu}{(\id, T)}=\gamma \in \PlanSp(X\times Y)
+\end{equation*}
+
+If $T$ is a transportation map it is easy to check that indeed $\Tmeasure{\gamma}{\parentheses{\proj_x}}=\mu$ and $\Tmeasure{\gamma}{\parentheses{\proj_y}}=\nu$.  This inspires a definition for a coupling between two measures generated by a transport map. \\
+
+
 \begin{definition}[Deterministic Coupling]
-A coupling $(\X,\Y)$ is said to be deterministic if there exists a measurable function $T: X \rightarrow Y$ such that $\Y = T(\X)$.
+Let $\parentheses{X, \mu}$ and $\parentheses{Y, \nu}$ be two probabilistic spaces. If there exists a measurable map $T:X\rightarrow Y$ such that $\Tmeasure{\mu}{T}=\nu$. We call the measure $\Tmeasure{\mu}{\parentheses{\id, T}}=\gamma \in \PlanSp(X\times Y)$ a deterministic coupling of $\mu$ and $\nu$.
 \end{definition}
+
+For the sake of simplicity, we refer as $\gamma_T$ a transportation plan generated from a transportation map $T$.
+
+
+In terms of stochastic variables, a coupling $(\X,\Y)$ is said to be deterministic if there exists a measurable function $T: X \rightarrow Y$ such that $\Y = T(\X)$. Equivalently, $\parentheses{\X, \Y}$ is a deterministic coupling of $\mu$ and $\nu$, if its law $\gamma=\law(\parentheses{\X,\Y})$ is concentrated on the graph of a measurable map $T:X\rightarrow Y$. Other way to rephrase it is saying that $\mu=\law(\X)$, $\Y=T(\X)$, where $T$ is a change of variables from $\mu$ to $\nu$, for all $\nu$-integrable (nonnegative measurable)  function $\phi$,
+
+\begin{equation*}
+	\int_Y \phi(y)\dnu(y) = \int_X \phi(T(x))\dmu(x).
+\end{equation*}
+
+
+We use the notation $\Pi(\mu, \nu)$ to refer the \textbf{set of couplings} of $\mu$ and $\nu$. That is,
+
+\begin{equation}
+	\Pi(\mu, \nu)=\braces{\gamma \in \PlanSp\parentheses{X\times Y}: \Tmeasure{\gamma}{\parentheses{\proj_x}}=\mu \ \mand \ \Tmeasure{\gamma}{\parentheses{\proj_x}}=\nu}
+\end{equation}
+
 
 The increasing rearrangement on $\Real$ is an example of a coupling between two probability measures over one dimensional euclidean space. Let $\mu$, $\nu$ be two probability measures on $\Real$. Define their cumulative distribution functions by,
 \begin{equation*}
 	F(x)=\int_{-\infty}^{x}\dmu, \qquad G(y)=\int_{-\infty}^{y}\dnu	
 \end{equation*}
+
 Cumulative distributions not always are invertible, since they are not always strictly increasing. Although we can define their pseudo-inverses as follow,
 \begin{align}
-	F^{-1}(t)=\inf\braces{x\in \Real; F(x)>t}; \label{eq: Increasing rearregement F}\\
-	G^{-1}(t)=\inf\braces{y\in \Real; G(y)>t}; \label{eq: Increasing rearregement G}
+	F^{-1}(t)=\inf\braces{x\in \Real; F(x)>t}, \label{eq: Increasing rearregement F}\\
+	G^{-1}(t)=\inf\braces{y\in \Real; G(y)>t}. \label{eq: Increasing rearregement G}
 \end{align}
-and we set the map $T$ as,
-\begin{equation}
-	T=G^{-1}\circ F \label{eq: Increasing rearregement map.}
-\end{equation}
-We see if $\mu$ is atomless then $\Tmeasure{\mu}{T}=\nu$.
+Then, we set the map $T$ as $T=G^{-1}\circ F$. If $\mu$ is atomless then $\Tmeasure{\mu}{T}=\nu$.
 
-The above coupling is useful to construct the \textit{Knothe-Rosenblatt coupling} between two Stochastic variables $\Real^n$ is another interesting coupling. Let $\mu$ and $\nu$ be two probability measures on $\Real^n$, such that $\mu$ is absolutely continuous with respect to Lebesgue measure.  is constructed in the following way:
+The increasing rearrangement coupling is useful to construct the \textit{Knothe-Rosenblatt coupling} between two Stochastic variables $\Real^n$. Let $\mu$ and $\nu$ be two probability measures on $\Real^n$, such that $\mu$ is absolutely continuous with respect to Lebesgue measure. This coupling is constructed in the following way:
 
 \begin{enumerate}
-	\item Take the marginal of the first projection on the first variable; this gives probability measures $\mu_1\parentheses{\dx_1}$, $\nu_1\parentheses{\dy_1}$ on $\Real$, with $\mu_1$ being atomless. Then define $y_1=T_1(x_1)$ by the formula \eqref{eq: Increasing rearregement map.} with $F$ and $G$ considered as they are in \eqref{eq: Increasing rearregement F} and \eqref{eq: Increasing rearregement G} respectively.
+	\item Take the marginal of the first projection on the first variable; this gives probability measures $\mu_1\parentheses{\dx_1}$, $\nu_1\parentheses{\dy_1}$ on $\Real$, with $\mu_1$ being atomless. Then define $y_1=T_1(x_1)$ by the composition of the pseudo-inverse functions of the increasing rearrangement, with $F$ and $G$ considered as they are in \eqref{eq: Increasing rearregement F} and \eqref{eq: Increasing rearregement G} respectively.
 	
-	\item Now take the marginal on the first two variables and disintegrate it with respect to the first variable. This gives probability measures $\mu_2\parentheses{\dx_1\dx_2}=\mu(\dx_1)\mu_2(\dx_2 | \dx_1)$, $\nu_2 (\dy_1\dy_2)=\nu_1(\dy_1)\nu_2(\dy_2)$. Then, for each given $y_1\in \Real$, set $y_1=T_1(x_1)$, and then define $y_2=T_2(x_2; x_1)$ under the increasing rearrangement formula.  
+	\item Now take the marginal on the first two variables and disintegrate it with respect to the first variable. This gives probability measures $\mu_2\parentheses{\dx_1\dx_2}=\mu_1(\dx_1)\mu_2\parentheses{\dx_2 |x_1}$, $\nu_2 (\dy_1\dy_2)=\nu_1(\dy_1)\nu_2\parentheses{\dy_2|y_1}$. For each given $y_1\in \Real$, we set $y_1=T_1(x_1)$, and then we define $y_2=T_2(x_2; x_1)$ under the increasing rearrangement formula of $\mu\parentheses{\dx_2| x_1}$ into $\nu\parentheses{\dy_2| y_1}$.
+	
+	\item We repeat the construction, adding one variable after another. For example, after the assignation $x_1\rightarrow y_1$ has been determined, the conditional probability of $x_2$ is seen as a one-dimensional probability on a small slice of width $\dx_1$, and it can be transported to the conditional probability of $y_2$ seen as one dimensional probability of a slice of width $\dy_1$. After $n$ constructions, this procedure maps $\Y=T(\X)$.
 \end{enumerate} 
 
+The \textit{Knothe-Rosenblatt coupling} has the property that its Jacobian matrix of the change of variable $T$ is upper triangular with positive entries on the diagonal. 	
 
-\begin{lemma}[Gluing lemma] Let $(\X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(X_1 , X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(Z_1 , Z_2, Z_3)$ such that $(Z_1, Z_2)$ has the same law as $(X_1 , X_2)$ and $(Z_2, Z_3)$ has the same law as $(Y_2 , Y_3)$.
+
+\begin{lemma}[Gluing lemma] If $\Z$ is a function of $\Y$ and $\Y$ is a function of $\X$, then $\Z$ is a function of $\X$. Let $(X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(\X_1 , \X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , \Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(\Z_1 , \Z_2, \Z_3)$ such that $(\Z_1, \Z_2)$ has the same law as $(\X_1 ,\X_2)$ and $(\Z_2, \Z_3)$ has the same law as $(\Y_2, \Y_3)$.
 \end{lemma}
-
-Notice that this way to see the problem is more general, since we can always create a transportation plan given a transportation map, i.e. 
-
-\begin{equation*}
-\Tmeasure{\mu}{(\id, T)}=\gamma \in \PlanSp(X\times Y)
-\end{equation*}. 
-
-If $T$ is a transportation map it is easy to check that indeed $\Tmeasure{\gamma}{\pi_x}=\mu$ and $\Tmeasure{\gamma}{\pi_y}=\nu$. The beauty of Kantorovich's formulation lies on the fact that it is always possible to find a transport. Moreover, the space of transport plans is compact.
 
 
 \begin{problem}Given $\mu \in \PlanSp\parentheses{X}$, $\nu \in \PlanSp\parentheses{Y}$, and $c: X\times Y \rightarrow \brackets{0, +\infty}$, we consider the problem
 	\begin{equation}
-		\inf\braces{\Kantorovich := \int_{X\times Y} c \diff\gamma : \gamma \in \TransPlansSet{\mu}{\nu}}\label{eq: Kantorovich's Problem.}\tag{KP}
+		\inf\braces{\Kantorovich := \int_{X\times Y} c \diff\gamma : \qquad \gamma \in \TransPlansSet{\mu}{\nu}}\label{eq: Kantorovich's Problem.}\tag{KP}
 	\end{equation}
 where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 \end{problem}
 
+It is a fact for The Kantorovich's formulation that it is always possible to find a transport plan, to see this fact it is enough to take $\gamma=\mu\otimes \nu$. Such a thing it is not always possible with transportation maps (deterministic couplings). For example, consider a measure $\mu$ on $\Real^d$, concentrated on $N$ different atoms $x_i \in \Real^d$, 
+\begin{equation*}
+\mu=\frac{1}{N}\sum_{i=0}^{N-1} \delta_{x_i}
+\end{equation*} 
+
+Where $\delta_{x_i}$ is the Dirac mass at point $x_i$. Consider $N$ open balls on $\Real^d$ centered at $x_i$ with radius $\epsilon_i > 0$, such that they disjoint pairwise. Let $D=\bigcup_{i=0}^{N-1} \ball{x_i}{\epsilon_i}$ be the union of these balls. Let $\nu$ be a the Hausdorff measure of over $D\subset \Real^d$. That is $\nu=\Hausdorff\measurerestr D$. We see that it is impossible to couple $\mu$ and $\nu$ deterministically; since there is no map $T$, such that $\Tmeasure{\mu}{T}=\nu$. \\
+
+\begin{figure}[H]	
+	\begin{center}
+	\caption{Transportation maps. There is no deterministic coupling for $\mu$ and $\nu$, but there is a transportation plan.}
+	\includegraphics[width=0.5\textwidth]{No-Transport-Map.png}
+	\label{fig: No deterministic coupling.}
+	\end{center}	
+\end{figure}
 
 
+\subsection{Existence of a minimizer for Kantorovich's Problem.}
+
+The beauty of Kantorovich's formulation lies on the fact that the set of transport plans is compact under weak convergence making it a suitable framework to use the Weierstrass' criterion to show the existence of a minimizer. 
+
+\begin{theorem} Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in \PlanSp(Y)$ and a cost function $c: X\times Y \rightarrow \Real$ a continuous function. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
+\end{theorem}
+\begin{proof}
+	To prove the existence we make use of the Weierstrass’ criterion for existence of minimizers. Therefore, we need to prove that $\Kantorovich$ is at least lower semicontinuous and compactness of the space $\Pi(\mu, \nu)$ under some topology. 
+	
+	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$. 
+	
+	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$. The Banach-Alaouglu's theorem for weak-* compactness in dual spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. Proving that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$. We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
+\end{proof}
+
+Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer.
+
+\begin{theorem}
+	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
+\end{theorem}
+
+\begin{theorem}
+	If f W X ! R [ fC1g is a lower semi-continuous function, bounded
+	from below, on a metric space $X$, then the functional
+	́ J W M C .X/ ! R [ fC1g
+	defined on positive measures on X through J./ WD f d is lower semi-continuous
+	for the weak convergence of measures.
+\end{theorem}
+
+\begin{theorem}
+Let $X$ and $Y$ be Polish spaces, i.e., complete and separable metric spaces, lower semi-continuous. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
+\end{theorem}
+
+\begin{theorem}
+	Let be probabilities on X Y and a W X ! X Q and
+	Q
+	b W Y ! Y Q be measurable maps valued in two separable metric spaces X Q and Y.
+	Let c W X Q Y Q !  ́ R C be a continuous
+	function
+	with
+	c.a;
+	b/
+
+	f
+	.a/
+	C
+	g.b/
+	with
+	f
+	;
+	g
+	́
+	continuous and  Then
+	ˆ
+
+	ˆ
+	c.a.x/; b.y// d n !
+	X Y
+	c.a.x/; b.y// d:
+\end{theorem}
 
 \section{Kantorovich formulation as relaxation}
 
-\begin{theorem}
-	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in  \PlanSp$ and
-	$c:X\times Y \rightarrow \Real$  a continuous function. Then  \eqref{eq: Kantorovich's Problem.} admits a solution.
-\end{theorem} 
+There are situations in which is possible to find a deterministic coupling between two measures, but not an optimal one for a cost function $c:X\times Y \rightarrow \Realex$. A common example, popular in the literature, is the following: consider as cost function $c:\Real^2\times\Real^2 \rightarrow \Real$, the Euclidean distance $c(x,y)=\abs{x-y}$, the measure $\mu=\Hausdorff\measurerestr D$ as the Hausdorff measure for the segment  $D=\braces{\parentheses{0, t}^\top \in \Real^2:\, \text{ for } t\in [0,1]}$. 
 
-\section{Cyclical Monotonicity.}
+Let $D_1$ and $D_2$ be the segments given by,
+\begin{align*}
+D_1 = \braces{\parentheses{-1, t}^\top\in\Real^2:\, \text{ for } t\in [0,1]} \\
+D_2 = \braces{\parentheses{+1, t}^\top\in\Real^2:\, \text{ for } t\in [0,1]}
+\end{align*}
 
-Consider a similar situation to the factories-customers example, but the consortium has already a fixed distribution plan. They know that transportation costs are high and they want to make them cheaper. 
+And we set the measure $\nu$ as follows, 
+\begin{equation*}
+\nu=\frac{\Hausdorff\measurerestr D_1 + \Hausdorff \measurerestr D_2}{2}
+\end{equation*}
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{No-Optimal-Transport.png}
+	\caption{There is a deterministic coupling for $\mu$ and $\nu$, but no optimal one. The map $T_n$ shown in this picture with $n=4$.}	
+	\end{center}
+
+\end{figure}
+
+
+There are many ways to construct a transportation map for this situation. Consider the maps $T_n$ constructed splitting the segment $D$ into $2n$ equal parts and the segments $D_1$ and $D_2$ in $n$ equal parts. We label the parts of the segment $D$ with the integer numbers from $0$ to $2n-1$. Then the map $T_n$ assign the parts of $D$ labeled with even numbers to the right hand side segment $D_2$ and the parts labeled with odd numbers to the left right side segment $D_1$. 
+
+Formally, let $k=0, \dots, 2n-1$ be an integer used to label the equal parts of $D$,
+
+\begin{equation*}
+T_n\parentheses{\begin{pmatrix}0\\t\end{pmatrix}\in D}=\begin{cases}
+\begin{pmatrix}1\\  2t - \frac{k}{2n}\end{pmatrix} & k \text{ even } \mand \ t \in \left[\frac{k}{2n}, \frac{k+1}{2n}\right),  \\
+\begin{pmatrix}-1 \\  2t- \frac{k+1}{2n}\end{pmatrix} &  k \text{ odd } \mand \ t \in \left(\frac{k}{2n}, \frac{k+1}{2n}\right].
+\end{cases}
+\end{equation*}
+
+We can find an upper boundary for the total cost $C(T_n)$
+\begin{align*}
+C(T_n)&=\int_{D}\abs{x-T_n(x)} \dmu(x)\\&=2n\int_{0}^{\frac{1}{2n}}\sqrt{1+4t^2} \dt\\ &\leq 2n\parentheses{\int_{0}^{\frac{1}{2n}}1+4t^2\dt}^{1/2}\parentheses{\int_{0}^{\frac{1}{2n}}\dt}^{1/2}\\ &= \sqrt{1+\frac{1}{3n^3}}\\&\leq 1+\frac{1}{n}
+\end{align*}
+
+Let $\gamma_{T_n}$ be deterministic coupling generated by $T_n$. We see that we can find always find a cheaper plan $\gamma_{T_{n+1}}$ for any $n\in \Naturals$. This sequence of transportation plans converges weakly to the plan $\gamma_{T_n}\weakconvergence \gamma_{T}=\frac{\gamma_{T^+}}{2}	+ \frac{\gamma_{T^-}}{2}$. Where $T^{+}$ and $T^{-}$ are given by:
+
+\begin{align*}
+T^{+}(x)&=x+\begin{pmatrix} 1 \\ 0\end{pmatrix}\\
+T^{-}(x)&=x-\begin{pmatrix} 1 \\ 0\end{pmatrix}
+\end{align*} 
+
+
+The idea is that the mass of each point $x\in D$ is split in two and equally distributed among $D_1$ and $D_2$ assigning one half of the mass respectively. Note that this distribution is an optimal plan for the cost function $c(x,y)=\abs{x-y}$. Because of the triangle inequality, sending the mass from $x\in D$ to any other point of $D_1$ and $D_2$ different than those assigned by the maps $T^{\pm}$, implies a higher cost.
+
+
+From the last example we see that a sequence of deterministic couplings converges to a transportation plan that is a solution for Kantorovich's problem \eqref{eq: Kantorovich's Problem.}, but clearly it is not for Monge's problem \eqref{eq: Monge's Problem.}. We also gave one example where \eqref{eq: Monge's Problem.} has no solution. Assume for a moment that Monge's  situation where indeed does exist a solution for Monge's problem, then the following question arises: Is there any situation where Monge's problem and Kantorovich's problem have the same solution?
+
+
+\section{Cyclical Monotonicity and Duality.}
+
+Consider a similar situation to the factories-customers example, but in this new hypothetical situation the consortium has already a fixed transportation plan. They know that the costs are high and they want to make them cheaper. For this purpose they prefer to sell the goods directly from the factories, and the customers 
 
 \begin{definition}[c-transform]
 	Let $X$ and $Y$ be sets, and $c:X\times Y \rightarrow (-\infty, \infty]$. A function $\psi: X\rightarrow \Realex$ is said to be c-convex if it is not identically to $+\infty$ and there exists $\psi^c: Y \rightarrow \Realex$
@@ -177,17 +323,36 @@ Since any permutation $\sigma$ over the set $\braces{1, \dots, N}$ can be writte
 \begin{equation}
 		\sum_{i=1}^{N} c(x_i, y_i) \leq \sum_{i=1}^{N} c(x_i, y_{\sigma(i)}) 
 \end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The subdifferentials  of convex functions on $\Real^n$ are characterized in terms of a monotonicity property. \textbf{Restate Rockafaller}
+
+\begin{theorem}[Rockafellar]
+\label{th: Rockafellar CM}
+Let $\Gamma$ be a c-cyclically monotone set. In order that there exists a closed proper convex function $f$ on $\Real^n$ such that $\Gamma \subset \partial f(x) $ for  every $x$, it is necessary and sufficient that $\Gamma$ be cyclically monotone. 
+\end{theorem}
+
+The theorem \ref{th: Rockafellar CM} is a well known theorem in convex analysis. It basically states that every cyclically monotone set is contained in the graph of the subdifferential of a convex function.
+
+
 \begin{definition}[Support of transport plan.]
 	Given a separable metric space $X$, the support of a measure $\gamma$ is defined as the smallest closed set on which $\gamma$ is concentrated,
 	\begin{equation}
 	\spt(\gamma)\ :=\underset{\small{\begin{array}{c}
-		\gamma(X\backslash A)=0\\ A=\bar{A}  \end{array}}}{\bigcap A} 		
+			\gamma(X\backslash A)=0\\ A=\bar{A}  \end{array}}}{\bigcap A} 		
 	\end{equation} 
 \end{definition}
-We can fix a point $(x_0, y_0) \in \spt(\gamma)$, then 
-\begin{theorem}
-	
-\end{theorem}
+%We can fix a point $(x_0, y_0) \in \spt(\gamma)$, then 
+
 
 \section{Properties of Optimal plans.}
+
+\begin{theorem}[Convexity of optimal plans]
+
+\end{theorem}
+\textbf{aca usamos las definiciones de c-convexity y L2 norm para encontrar el optimal map de una gaussiana.}
+
+
 \section{Wasserstein Spaces. $\WassersteinSp{p}$}
+

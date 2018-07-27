@@ -34,19 +34,19 @@ A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The element
 	A topological space is called separable if it contains a countable, dense subset.
 \end{definition}
 
+Topologies in which one element is not a closed set, or in which a sequence can converge to more than one point, are not really interesting for practical problems. If such things are allowed the theorems that one can prove are limited. A mathematician Felix Hausdorff suggested to add the following condition:
+  
 \begin{definition}[Hausdorff space]
-
+A topological space $X$ is called a Hausdorff space if for each pair $x_1$, $x_2$ of distinct points of $X$, there exist neighborhoods $U_1$, and $U_2$ of $x_1$ and $x_2$, respectively, that are disjoint. 
 \end{definition}
 
-\begin{definition}[Distance and metric space]
+\begin{definition}[Distance and metric spaces]
 \end{definition}
-
 
 
 \begin{definition}[Sequentially compact]
 	A subset $K$ of a metric space $X$ is said to be compact if from any sequence $x_n$, we can extract a converging subsequence $x_{n_k} \rightarrow x \in K$.
 \end{definition}
-We can see from the above definition that any continuous function is lower-semicontinuous. 
 
 \begin{definition}[Compactness]
 		A subset $K$ of a metric space $X$ is compact if every open cover of $K$ has a finite subcover. 
@@ -60,38 +60,37 @@ We can see from the above definition that any continuous function is lower-semic
 \subsection{Functional Analysis.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{definition}[Linear Space]
+\end{definition}
 
 \begin{definition}[Banach Space]
 \end{definition}
 
+\begin{definition}[Inner product]
+\end{definition}
 
 \begin{definition}[Hilbert Space]
 \end{definition}
 
 \begin{definition}[Proper convex function]
-	Let $f: X\rightarrow\Realex$, a function taking values in the extended real number line. We call it proper convex function if $\exists x \in X$ such that 
-	\begin{equation*}
-	f(x)<\infty
-	\end{equation*}
-	And $\forall x \in X$,
-	\begin{equation}
-	f(x)>-\infty
-	\end{equation}
+	Let $f: X\rightarrow\Realex$, a function taking values in the extended real number line. We call it proper convex function if $\exists x \in X$ such that $f(x)<\infty$. And $\forall x \in X$, $f(x)>-\infty$.
 \end{definition}
 
 \begin{definition}[Projection of a Cartesian Product.]
-	Let $\pi_1: X\times Y \rightarrow X$ be defined by the equation
+	Let $\proj_x: X\times Y \rightarrow X$ be defined by the equation
 	\begin{equation*}
-		\pi_1(x,y)= x;
+		\proj_x(x,y)= x;
 	\end{equation*}
 	
-	Equivalently, let $\pi_2: X\times Y \rightarrow Y$ be defined by,
+	Equivalently, let $\proj_y: X\times Y \rightarrow Y$ be defined by,
 	\begin{equation*}
-		\pi_2(x,y)=y
+		\proj_y(x,y)=y
 	\end{equation*}
-	This maps $\pi_1$ and $\pi_2$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
+	These maps $\proj_x$ and $\proj_y$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
 \end{definition}
+
 We can generalize a definition over a general Cartesian product. Given a set $X$, we define a \textit{$J$-tuple} of elements of $X$ to be a function $\mathbf{x}:J\rightarrow X$. If $\alpha$ is an element of $J$, we often denote the value of $\mathbf{x}$ at $\alpha$ by $x_\alpha$ rather than $\mathbf{x}(\alpha)$; we call it the $\alpha$-th coordinate of $\mathbf{x}$. And we often denote the function $\mathbf{x}$ by the symbol.
+
 \begin{equation*}
 	(x_\alpha)_{\alpha \in J}
 \end{equation*} 
@@ -134,6 +133,7 @@ such that $\mathbf{x}(\alpha)\in A_\alpha$ for each $\alpha \in J$.
 	\end{equation*}
 \end{definition}
 
+We can see from the above definition that any continuous function is lower-semicontinuous. 
 
 \begin{theorem}[Maxima and Minima]
 	Let $X$ be a compact metric space and $f: X\rightarrow \Real$ is continuous, real-valued function. Then $f$ is bounded on $X$ and attains its maximum and minimum. That is, there are $x$, $y$ belonging to $X$ such that,
@@ -144,7 +144,7 @@ such that $\mathbf{x}(\alpha)\in A_\alpha$ for each $\alpha \in J$.
 Continuity is a strong requirement. Luckily, we can assure the existence of a minimizer of lower-semicontinuous functionals (or maximizer for upper-semicontinuity). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
 
 \begin{theorem}[Weierstrass' criterion for existence of minimizers]
-	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$.
+	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$ such $f(\hat x)=\min\braces{f(x):\ x\in X}$.
 	\begin{proof}
 		Define $l:=\inf\braces{f(x): \, x \in X} \in \Realex$, notice that $l=+\infty$ only if $f$ is identically $+\infty$, then this case is trivial since any point minimizes $f$. By compactness there exists a minimizing sequence $x_n$, that is $f(x_n)\rightarrow l$. By compactness we can extract a subsequence converging to some $\hat x$ such that $\hat x \in X$. By lower-semicontinuity of $f$, we have that $f(\hat x)\liminf_n f(x_n)=l$. Since $l$ is the infimum $l\leq f(\hat x)$. This proves that $l=f(\hat{x}) \in \Real$.
 	\end{proof}
@@ -175,8 +175,10 @@ The Banach-Alaouglu's theorem is a well known result in functional analysis, an 
 \end{definition}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Measure Theory}
+
+We refer \cite{bogachev2007Measure}
 \begin{definition}[Sigma Algebra]
 	
 	An algebra of sets $\mathcal{A}$ is a class of subsets of some fixed set $X$ (called the space) such that
@@ -192,8 +194,6 @@ The Banach-Alaouglu's theorem is a well known result in functional analysis, an 
 \begin{definition}[Measure Space] 
 	A pair $(X, \mathcal A)$ consisting of a set $X$ and a $\sigma$-algebra $\mathcal A$ of its subsets is called a measurable space.
 \end{definition}
-
-
 
 \begin{definition}[Borel $\sigma$-algebra]
 	The Borel $\sigma$-algebra $\mathcal{B}(\Real^n)$ of $\Real^n$ is the $\sigma$-algebra generated by all open sets. The sets in a Borel $\sigma$-algebra are called Borel sets. For any set $E\subset \Real^n$, let $\mathcal B(E)$ denote the class of all sets of the form $E\cap B$, where $B\in\mathcal B(\Real^n)$.
@@ -216,14 +216,21 @@ In this text consider the Borel $\sigma$-algebra unless noted otherwise.
 \end{definition}
 
 
+\begin{definition}[]
+\end{definition}
+
+\begin{definition}[Lebesgue Measure]
+\end{definition}
+
+\begin{definition}[Hausdorff Measure]
+\end{definition}
+
 \begin{definition}[Probability]
 	A countably additive measure $\mu$ on a $\sigma$-algebra of subsets of a space $X$ is called a probability measure if $\mu \geq 0$ and $\mu(X)= 1$.
 	
 	A triple $(X, \mathcal A, \mu )$ is called a measure space if $\mu$ is a
 	nonnegative measure on a $\sigma$-algebra $\mathcal A$ of subset of a set $X$. If $\mu$ is a probability measure, then $(X, \mathcal A, \mu)$ is called a probability space.
 \end{definition}
-
-
 
 \begin{definition}[Product $\sigma$-algebra ]
 Let $\left(X_1 , \mathcal{A}_1 , \mu_1 \right)$ and $\left(X_1 , \mathcal{A}_1 , \mu_1 \right)$ be two spaces with finite nonnegative measures. On the space $X_1\times X_2$ we consider sets of the form $A_1\times A_2$, where $A_i \in \mathcal{A}_i$, called measurable rectangles. Let $\mu_1\times \mu_2 \parentheses{A_1\times A_2}:= \mu_1(A_1)\mu_2(A_2)$. 
@@ -232,12 +239,9 @@ Let $A_1\otimes A_2$ denote the $\sigma$-algebra generated by all measurable rec
 
 \end{definition}
 
-
 \begin{theorem}
 The set function $\mu_1\times \mu_2$ is countably additive on the algebra generated by all measurable rectangles and uniquely extends to a countably additive measure, denoted by $\mu_1\otimes \mu_2$.
 \end{theorem}
-
-
 
 \begin{definition}[Image Measure]
 	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
