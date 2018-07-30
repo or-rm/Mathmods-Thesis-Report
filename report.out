@@ -21,7 +21,7 @@
 \BOOKMARK [2][-]{subsection.5.1.3}{Heuristic\040Methods.}{section.5.1}% 21
 \BOOKMARK [1][-]{section.5.2}{Continuous\040Formulation.}{chapter.5}% 22
 \BOOKMARK [2][-]{subsection.5.2.1}{Beckman\040Problem\040and\040Optimal\040Transport.}{section.5.2}% 23
-\BOOKMARK [2][-]{subsection.5.2.2}{Douglas-Rachford\040Solver}{section.5.2}% 24
+\BOOKMARK [2][-]{subsection.5.2.2}{Proximal\040Splitting\040Algorithms.}{section.5.2}% 24
 \BOOKMARK [0][-]{chapter.6}{Applications}{}% 25
 \BOOKMARK [1][-]{section.6.1}{Isoperimetric\040Inequality.}{chapter.6}% 26
 \BOOKMARK [1][-]{section.6.2}{Dynamical\040Optimal\040transport.}{chapter.6}% 27

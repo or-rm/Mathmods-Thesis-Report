@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  28 JUL 2018 00:08
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 JUL 2018 01:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1711,7 +1711,7 @@ File: cover/logo.pdf Graphic file (type QTm)
 
 ] (./TeX/Notation.tex)
 (./TeX/chapter-1.tex
-Overfull \hbox (14.52982pt too wide) in paragraph at lines 2--1
+Overfull \hbox (15.95059pt too wide) in paragraph at lines 2--1
 []
  []
 
@@ -1726,21 +1726,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--1
 
 ]
 Chapter 1.
-[3] [4]
-Overfull \hbox (6.05867pt too wide) in paragraph at lines 136--137
+[3] [4] [5]
+Overfull \hbox (6.05867pt too wide) in paragraph at lines 208--209
 []\EU1/BookmanOldStyle(0)/m/n/10 We can see from the above definition that any 
-continuous function is lower-semicontinuous. 
+continuous function is lower-semicontinuous.
  []
 
-[5] [6]) (./TeX/chapter-2.tex [7] [8
-
-]
+[6] [7] [8] [9]) (./TeX/chapter-2.tex [10]
 Chapter 2.
-[9]) (./TeX/chapter-3.tex [10]
-Chapter 3.
 [11
 
-]) (./TeX/chapter-4.tex [12]
+]) (./TeX/chapter-3.tex [12]
+Chapter 3.
+[13
+
+]) (./TeX/chapter-4.tex [14]
 Chapter 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1771,7 +1771,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-[13
+[15
 
 ]
 File: ./Pictures/Monge-Problem-densities.png Graphic file (type QTm)
@@ -1780,7 +1780,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[14]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
@@ -1810,7 +1810,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-[15] [16]
+[17] [18]
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
@@ -1833,55 +1833,60 @@ File: ./Pictures/No-Transport-Map.png Graphic file (type QTm)
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 189.
 
-[17]
+[19]
 File: ./Pictures/No-Optimal-Transport.png Graphic file (type QTm)
- <use  "./Pictures/No-Optimal-Transport.png" > [18] [19]
+ <use  "./Pictures/No-Optimal-Transport.png" > [20] [21]
+Missing character: There is no ̋ in font [fonts/Arial_Italic.ttf]/OT:mapping=te
+x-text;mapping=tex-text;!
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 350.
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 339.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 350.
+(Font)              scaled to size 9.00014pt on input line 339.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 350.
+(Font)              scaled to size 8.99986pt on input line 339.
+[22]
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 14.4002pt on input line 364.
+(Font)              scaled to size 14.4002pt on input line 353.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 7.0001pt on input line 364.
+(Font)              scaled to size 7.0001pt on input line 353.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 14.39977pt on input line 364.
+(Font)              scaled to size 14.39977pt on input line 353.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 6.9999pt on input line 364.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 364.
+(Font)              scaled to size 6.9999pt on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symbb' on input line 364.
+(hyperref)                removing `math shift' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 364.
+(hyperref)                removing `\symbb' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 364.
+(hyperref)                removing `subscript' on input line 353.
 
-) (./TeX/chapter-5.tex [20]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 353.
+
+) (./TeX/chapter-5.tex [23] [24
+
+]
 Chapter 5.
-) (./TeX/chapter-6.tex [21
-
-] [22
+) (./TeX/chapter-6.tex [25] [26
 
 ]
 Chapter 6.
-) (./report.bbl [23] [24
+) (./report.bbl [27] [28
 
 ])
 \Changes@OutFile=\write6
 \openout6 = `report.soc'.
 
- [25]
+ [29]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
  (./report.aux)
@@ -1889,12 +1894,12 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 82.
  ) 
 Here is how much of TeX's memory you used:
- 40122 strings out of 493638
- 738619 string characters out of 6146796
- 834267 words of memory out of 5000000
- 42816 multiletter control sequences out of 15000+600000
+ 40129 strings out of 493638
+ 738699 string characters out of 6146796
+ 834268 words of memory out of 5000000
+ 42823 multiletter control sequences out of 15000+600000
  13661 words of font info for 157 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,14n,94p,10425b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (33 pages).
+Output written on report.pdf (37 pages).

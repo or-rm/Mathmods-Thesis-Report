@@ -200,51 +200,38 @@ The beauty of Kantorovich's formulation lies on the fact that the set of transpo
 	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$. The Banach-Alaouglu's theorem for weak-* compactness in dual spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. Proving that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$. We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
 \end{proof}
 
-Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer.
+Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer. 
 
+
+\begin{lemma}
+	Let $X$ be a metric space. If $f:X\rightarrow\Realex$ is a lower semi-continuous function, bounded from below, then the functional  $J:\PMeasureSp(X)\rightarrow \Realex$ defined on the space of finite positive measures on $X$, given by
+	\begin{equation*}
+		J(\mu)=\int f \dmu
+	\end{equation*} 
+	is lower semi-continuous for the weak convergence of measures. \label{lemma: Monotone Convergence implies l.s.c}
+\end{lemma}
+\begin{proof}
+	Let $(f_n)_{n\in \Naturals}$ be a sequence of continuous and bounded functions, converging increasingly to $f$. Consider the functionals $J_n: \PMeasureSp(X)\rightarrow\Realex$, defined as
+	\begin{equation*}
+			J_n(\mu)=\int f_n \dmu
+	\end{equation*}	
+	Every $J_n$ is continuous for the weak convergence. We set $J(\mu)=\int f \dmu$. We see that $J_n(\mu) \leq J(\mu)$ for any $\mu$. Since our functions are bounded, and $f$ is bounded from below, and our measures are finite, we can make use of monotone convergence theorem, $J_n(\mu)\rightarrow J(\mu)$, having as result $J(\mu)=\sup_{n} J_n(\mu)$. Since we have that $J(\mu)$ is the supremum of continuous functions we can assure that that $J$ is lower semicontinuous.
+\end{proof}
 \begin{theorem}
 	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
 \end{theorem}
 
-\begin{theorem}
-	If f W X ! R [ fC1g is a lower semi-continuous function, bounded
-	from below, on a metric space $X$, then the functional
-	́ J W M C .X/ ! R [ fC1g
-	defined on positive measures on X through J./ WD f d is lower semi-continuous
-	for the weak convergence of measures.
-\end{theorem}
+\begin{proof}
+We make use of lemma \ref{lemma: Monotone Convergence implies l.s.c}, setting $f=c$ on the space $X\times Y$. We apply again Weierstrass criterion proving existence of a minimizer.
+\end{proof}
 
 \begin{theorem}
-Let $X$ and $Y$ be Polish spaces, i.e., complete and separable metric spaces, lower semi-continuous. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
+Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
 \end{theorem}
 
-\begin{theorem}
-	Let be probabilities on X Y and a W X ! X Q and
-	Q
-	b W Y ! Y Q be measurable maps valued in two separable metric spaces X Q and Y.
-	Let c W X Q Y Q !  ́ R C be a continuous
-	function
-	with
-	c.a;
-	b/
-
-	f
-	.a/
-	C
-	g.b/
-	with
-	f
-	;
-	g
-	́
-	continuous and  Then
-	ˆ
-
-	ˆ
-	c.a.x/; b.y// d n !
-	X Y
-	c.a.x/; b.y// d:
-\end{theorem}
+\begin{lemma}
+	Let $X$ and $Y$ 
+\end{lemma}
 
 \section{Kantorovich formulation as relaxation}
 
@@ -281,7 +268,8 @@ T_n\parentheses{\begin{pmatrix}0\\t\end{pmatrix}\in D}=\begin{cases}
 \end{cases}
 \end{equation*}
 
-We can find an upper boundary for the total cost $C(T_n)$
+We can find an upper boundary for the total cost $C(T_n)$,
+
 \begin{align*}
 C(T_n)&=\int_{D}\abs{x-T_n(x)} \dmu(x)\\&=2n\int_{0}^{\frac{1}{2n}}\sqrt{1+4t^2} \dt\\ &\leq 2n\parentheses{\int_{0}^{\frac{1}{2n}}1+4t^2\dt}^{1/2}\parentheses{\int_{0}^{\frac{1}{2n}}\dt}^{1/2}\\ &= \sqrt{1+\frac{1}{3n^3}}\\&\leq 1+\frac{1}{n}
 \end{align*}
@@ -298,6 +286,14 @@ The idea is that the mass of each point $x\in D$ is split in two and equally dis
 
 
 From the last example we see that a sequence of deterministic couplings converges to a transportation plan that is a solution for Kantorovich's problem \eqref{eq: Kantorovich's Problem.}, but clearly it is not for Monge's problem \eqref{eq: Monge's Problem.}. We also gave one example where \eqref{eq: Monge's Problem.} has no solution. Assume for a moment that Monge's  situation where indeed does exist a solution for Monge's problem, then the following question arises: Is there any situation where Monge's problem and Kantorovich's problem have the same solution?
+
+
+\begin{lemma}
+On a compact subset  ̋$\Omega \subset \Real^d$, the set of plans $\gamma_T$ induced by a transport is dense in the set of plans $\Pi(\mu, \nu) $ whenever $\mu$ is atomless.
+\end{lemma}
+\begin{theorem}
+On a compact subset $\Omega \subset \Real^d$,  $\Kantorovich$ is the relaxation of $J(\gamma)$. In particular, $\inf J = \min K$, and hence Monge and Kantorovich problems have the same infimum.
+\end{theorem}
 
 
 \section{Cyclical Monotonicity and Duality.}

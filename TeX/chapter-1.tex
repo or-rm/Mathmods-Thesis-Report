@@ -16,8 +16,17 @@ We start with the definition of topology that is needed to introduce a notion of
 	\end{itemize}
 \end{definition}
 
-A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The elements of $\mathcal T$ are called open sets. The complements of the sets of $\mathcal T$ are called closed sets. We call a neighborhood of $x$ an element of $\mathcal{T}$ containing $x$.
+A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The elements of $\mathcal T$ are called open sets. The complements of the sets of $\mathcal T$ are called closed sets. The interior of a set $A$, is defined as the biggest open set contained in $A$. Similarly, the closure of a set $A$, is defined as the smallest closed set containing $A$. We use indistinctly the notation $\inter(A)$ and $A^{\circ}$ for the interior of a set $A$. In the same way, for the closure we use the notation $\closu(A)$ or $\bar{A}$. An equivalent way to define the same ideas is give by the following,
 
+\begin{align*}
+	\inter(A)=\bigcup_{B \text{ is open.}} B \\
+	\closu(A)=\bigcap_{B \text{ is closed.}} B
+\end{align*}
+
+We remark that a set is open if and only if $A=A^{\circ}$, and a set is closed if and only if $A=\bar{A}$.  
+
+
+We call a neighborhood of $x$ an element of $\mathcal{T}$ containing $x$.
 \begin{definition}[Topological Basis.]
 	Give a set $X$ endowed with a topology $\mathcal T$. We call a basis for $\mathcal{T}$ is a collection $\mathcal{B}$ of subsets of $X$ (called basis elements), such that,
 	\begin{enumerate}
@@ -25,6 +34,8 @@ A pair $\parentheses{X, \mathcal{T}}$ is called a topological space. The element
 		\item  If $x$ belongs to the intersection of two basis elements $B_1$ and $B_2$, then there is a basis element $B_3$ containing $x$ such that $B_3 \in B_1 \cap B_2$. 
 	\end{enumerate}
 \end{definition}
+
+
 
 \begin{definition}[Dense set]
 	A subset $D$ of a topological space $X$ is dense in $X$ if for any point $x$ in $X$, any neighborhood of $x$ contains at least one point from $D$.
@@ -40,9 +51,23 @@ Topologies in which one element is not a closed set, or in which a sequence can 
 A topological space $X$ is called a Hausdorff space if for each pair $x_1$, $x_2$ of distinct points of $X$, there exist neighborhoods $U_1$, and $U_2$ of $x_1$ and $x_2$, respectively, that are disjoint. 
 \end{definition}
 
-\begin{definition}[Distance and metric spaces]
+\begin{definition}[Distance]
+\end{definition}
+\begin{definition}[Metric Spaces]
+	
 \end{definition}
 
+\begin{definition}[Completeness]
+	A metric space $X$ is called complete if every Cauchy-Sequence of points in $X$ has a limit that is also in $X$. 
+\end{definition}
+
+\begin{definition}[Completely metrizable space]
+	
+\end{definition}
+There is a subtle difference between complete metric space and completely metrizable space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.
+\begin{definition}[Polish space]
+	We call Polish space to any topological space that is separable and completely metrizable.
+\end{definition}
 
 \begin{definition}[Sequentially compact]
 	A subset $K$ of a metric space $X$ is said to be compact if from any sequence $x_n$, we can extract a converging subsequence $x_{n_k} \rightarrow x \in K$.
@@ -57,8 +82,31 @@ A topological space $X$ is called a Hausdorff space if for each pair $x_1$, $x_2
 \end{theorem}
 
 
+\begin{definition}[Liminf and Limsup]
+	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
+	\begin{equation*}
+	\liminf_{x\rightarrow x_0} f(x)= \sup_{V\in \mathcal{V}(x_0)} \inf_{s\in V}\ f(s)
+	\end{equation*}
+	\begin{equation*}
+	\limsup_{x\rightarrow x_0} f(x)= \inf_{V\in \mathcal{V}(x_0)} \sup_{s\in V}\ f(s)
+	\end{equation*}
+	The above definitions can be expressed in terms of sequences of real numbers. Let $(x_n)_{n \in \Naturals}$ be a sequence in $X$, the above formulation is equivalent to say.
+	\begin{equation*}
+	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\inf_{m\geq n} x_m}
+	\end{equation*}
+	Equivalently for $\limsup$,
+	\begin{equation*}
+	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\sup_{m\geq n} x_m}
+	\end{equation*}
+	Please note that the convergence to some point $x_0$, $(x_n)_{n\in \Naturals}\rightarrow x_0$ is not required in the last definitions.
+\end{definition}
+
+
 \subsection{Functional Analysis.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Functional Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 \begin{definition}[Linear Space]
 \end{definition}
@@ -71,6 +119,50 @@ A topological space $X$ is called a Hausdorff space if for each pair $x_1$, $x_2
 
 \begin{definition}[Hilbert Space]
 \end{definition}
+
+\begin{definition}[Continuity]
+	
+\end{definition}
+
+
+For a given be a metric space $X$ . We denote the set of continuous, real-valued functions $f:X\rightarrow \Real$ by $C(X)$.
+
+\begin{theorem}
+	Let $K\subset X$ a compact subset of a metric space $X$. The space $C(K)$ is complete.
+\end{theorem}
+A natural norm on spaces of continuous functions is the uniform norm (also called infinity norm), which is defined by,
+\begin{equation*}
+\norm{f}_{\infty}=\sup_{x\in X} \abs{f(x)}
+\end{equation*}
+The norm $\norm{f}_{\infty}$ is finite if and only if $f$ is bounded. And we use $C_b(X)$ to refer the space of bounded functions on $X$.
+
+\begin{definition}
+	Let $f$ be a real valued function, $f:X\rightarrow \Real$ on a metric space. The \textbf{support of a function}, $\supp f$ is the closure of the set on which $f$ is nonzero.
+	\begin{equation*}
+	\supp f = \closu\parentheses{{\braces{x\in X: \quad f(x)\neq 0}}}
+	\end{equation*}
+	
+\end{definition}
+We say that $f$ has compact support if $\supp f$ is a compact subset of $X$, and denote the space of continuous functions on $X$ with compact support by $C_c(X)$.
+
+The space $C_c(X)$ is a linear subspace of $C_b(X)$, but it does not need to be closed. 
+
+\begin{definition}
+	Suppose that X is a separable and locally compact metric space.	We say that a real valued function $f$ belongs to $C_0(X)$ if and only if $f\in C(X)$, and for every $\epsilon >0$, there exists a compact set $K\subset X$ such that $\abs{f}<\epsilon$ on $X\backslash K$. 
+\end{definition}
+
+\begin{definition}
+	Let $\mathcal F$ be a family of functions from a metric space $\parentheses{X, d}$ to a metric space $\parentheses{Y, d}$. The family $\mathcal{F}$ is equicontinuous if for every $x\in X$ and $\epsilon > 0$ there is $\delta >0$ such that $d(x,y)<\delta$ implies $d(f(x), f(y))<\epsilon$ for all $f\in \mathcal F$.
+\end{definition}
+
+\begin{theorem}
+	An equicontinuous family of functions from a compact metric space to a metric space is uniformly equicontinuous. 
+\end{theorem}
+
+\begin{theorem}[Ascoli-Arzel\`a]
+	Let $K$ be a compact metric space. A subset $M$ of the set of continuous functions $M\subset C(K)$ is compact if and only if it is closed, bounded and equicontinuous. That is any sequence $(f_n)_{n\in\Naturals}$ in $M$ admits a subsequence converging to $f$ in $M$.
+\end{theorem} 
+
 
 \begin{definition}[Proper convex function]
 	Let $f: X\rightarrow\Realex$, a function taking values in the extended real number line. We call it proper convex function if $\exists x \in X$ such that $f(x)<\infty$. And $\forall x \in X$, $f(x)>-\infty$.
@@ -105,26 +197,6 @@ is defined to be the set of all $J$-tuples $\parentheses{x_\alpha}_{\alpha \in J
 \end{equation*}
 such that $\mathbf{x}(\alpha)\in A_\alpha$ for each $\alpha \in J$.
 
-\begin{definition}[Liminf and Limsup]
-	Let $X$ be a Hausdorff space. Let $\mathcal{V}(x_0)$ be a topological basis of $X$, such that all $V\in \mathcal{V}$ contains $x_0$. Let $f: X\rightarrow \Realex$ a functional valued in $\Realex$. We define, 
-	\begin{equation*}
-	\liminf_{x\rightarrow x_0} f(x)= \sup_{V\in \mathcal{V}(x_0)} \inf_{s\in V}\ f(s)
-	\end{equation*}
-	\begin{equation*}
-	\limsup_{x\rightarrow x_0} f(x)= \inf_{V\in \mathcal{V}(x_0)} \sup_{s\in V}\ f(s)
-	\end{equation*}
-	
-	The above definitions can be expressed in terms of sequences of real numbers. Let $(x_n)_{n \in \Naturals}$ be a sequence in $X$, the above formulation is equivalent to say.
-	\begin{equation*}
-	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\inf_{m\geq n} x_m}
-	\end{equation*}
-	Equivalently for $\limsup$,
-	\begin{equation*}
-	\liminf_{n\in \Naturals} x_n := \lim_{n\rightarrow \infty} \parentheses{\sup_{m\geq n} x_m}
-	\end{equation*}
-	
-	Please note that the convergence to some point $x_0$, $(x_n)_{n\in \Naturals}\rightarrow x_0$ is not required in the last definitions.
-\end{definition}
 
 \begin{definition}[Lower Semicontinuity]
 	On a complete metric space $X$, a function $f: X\rightarrow\Realex$ is said to be lower semi-continuous (l.s.c.) if for every sequence $\parentheses{x_n}_{n\in\Naturals}$ converging to $x\in X$, we have 
@@ -133,7 +205,34 @@ such that $\mathbf{x}(\alpha)\in A_\alpha$ for each $\alpha \in J$.
 	\end{equation*}
 \end{definition}
 
-We can see from the above definition that any continuous function is lower-semicontinuous. 
+We can see from the above definition that any continuous function is lower-semicontinuous. In other words, lower-semicontinuity is a milder requirement than continuity, although it preserves interesting properties that can be exploited in optimization.  
+
+\begin{proposition}
+	Let $f: X \rightarrow \Realex$ be a convex and lower-semicontinuous function.
+	Assume that there exists $x_0 \in X$ such that $f(x_0) = -\infty$. Then $f$ is nowhere finite on $X$.
+\end{proposition} 
+
+
+\begin{theorem} If $ f_\alpha $ is an arbitrary family of lower semi-continuous functions on $X$, then $f=\sup_\alpha f_\alpha$ is also lower-semicontinuous.
+\end{theorem}
+
+
+\begin{definition}[Lipschitz condition]
+
+\end{definition}
+
+\begin{theorem}
+	Let $f:X\rightarrow \Realex\backslash{-\infty}$ be a function bounded from below. Then $f$ is l.s.c. if and only if there exists a sequence $(f_n)_{n\in \Naturals}$ of $k$-Lipschitz functions such that for every $x\in X$, $f_n(x)$ converges increasingly to $f(x)$.
+\end{theorem}
+
+\begin{definition}
+	Let $F:X\rightarrow \Realex$ be a given functional bounded from below on a metric space $X$.  Let $\mathcal G$ be the set of lower semicontinuous functions $G: X\rightarrow \Realex$, such that $G\leq F$. We call a relaxation the supremum of $\mathcal G$.  This functional does exist since the supremum of an arbitrary family of lower semicontinuous functions is also lower semicontinuous. It is possible to have a representation formula as follows:
+	\begin{equation}
+	\bar F(x) = \inf \braces{\liminf_{n\in \Naturals} F(x_n):\ x_n\rightarrow x}.
+	\end{equation}
+	As consequence of this definition we see that $F \geq \bar F$ implies $\inf F \geq \inf \bar F$. Let $l=\inf F$ then $F\geq l$. A constant function is lower semicontinuous. Therefore, $\bar F \geq l$ and $\inf \bar F \geq \inf F$. Implying that the infimum of both $F$ and its regularization $\bar F$ coincide, i.e. $\inf \bar F = \inf F$. 
+\end{definition}
+
 
 \begin{theorem}[Maxima and Minima]
 	Let $X$ be a compact metric space and $f: X\rightarrow \Real$ is continuous, real-valued function. Then $f$ is bounded on $X$ and attains its maximum and minimum. That is, there are $x$, $y$ belonging to $X$ such that,
@@ -141,6 +240,7 @@ We can see from the above definition that any continuous function is lower-semic
 	f(x)=\inf_{z\in X}f(z) \qquad \mand \qquad f(y)=\sup_{z \in X} f(z)
 	\end{equation*}
 \end{theorem}
+
 Continuity is a strong requirement. Luckily, we can assure the existence of a minimizer of lower-semicontinuous functionals (or maximizer for upper-semicontinuity). The usual procedure to prove existence of a minimizer is making use of Weierstrass' criterion. We take a minimizing sequence and then we prove that the space in which we are trying to find a minimizer element is compact.
 
 \begin{theorem}[Weierstrass' criterion for existence of minimizers]
@@ -150,7 +250,7 @@ Continuity is a strong requirement. Luckily, we can assure the existence of a mi
 	\end{proof}
 \end{theorem}
 
-We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum. \textbf{Explanation about notions of convergence with bounded functionals and vanishing in infinity functions}. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$ if $X$ and both notions of convergence coincide.
+We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum.
 
 \begin{definition}[Topological Dual]
 	If $X$ is a normed space, the dual space $\asterisk{X}=\mathcal B(X, \Real)$. Consists of all linear and bounded functionals mapping from $X$ to $\Real$.
@@ -165,15 +265,6 @@ We can apply the above analysis using a notion of upper-semicontinuity and compa
 \end{theorem}
 
 The Banach-Alaouglu's theorem is a well known result in functional analysis, an equivalent formulation is saying the closed unit ball in $\asterisk{X}$ is weak-* compact.
-
-\begin{definition}
-	Let $F:X\rightarrow \Realex$ be a given functional bounded from below on a metric space $X$.  Let $\mathcal G$ be the set of lower semicontinuous functions $G: X\rightarrow \Realex$, such that $G\leq F$. We call a relaxation the supremum of $\mathcal G$.  This functional does exist since the supremum of an arbitrary family of lower semicontinuous functions is also lower semicontinuous. It is possible to have a representation formula as follows:
-	\begin{equation}
-	\bar F(x) = \inf \braces{\liminf_{n\in \Naturals} F(x_n):\ x_n\rightarrow x}.
-	\end{equation}
-	As consequence of this definition we see that $F \geq \bar F$ implies $\inf F \geq \inf \bar F$. Let $l=\inf F$ then $F\geq l$. A constant function is lower semicontinuous. Therefore, $\bar F \geq l$ and $\inf \bar F \geq \inf F$. Implying that the infimum of both $F$ and its regularization $\bar F$ coincide, i.e. $\inf \bar F = \inf F$. 
-\end{definition}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Measure Theory}
@@ -199,15 +290,17 @@ We refer \cite{bogachev2007Measure}
 	The Borel $\sigma$-algebra $\mathcal{B}(\Real^n)$ of $\Real^n$ is the $\sigma$-algebra generated by all open sets. The sets in a Borel $\sigma$-algebra are called Borel sets. For any set $E\subset \Real^n$, let $\mathcal B(E)$ denote the class of all sets of the form $E\cap B$, where $B\in\mathcal B(\Real^n)$.
 \end{definition}
 
-In this text consider the Borel $\sigma$-algebra unless noted otherwise. 
+Given a topological space, in this text consider the Borel $\sigma$-algebra unless stated otherwise. 
 
 \begin{definition}[Measure]
 	A real-valued set function $\mu:\mathcal{A}\rightarrow \Realex$ on a class of sets $\mathcal A$ is called countably additive if 
 	\begin{equation*}
 		\mu\parentheses{\bigcup_{n=1}^{\infty} A_n}=\sum_{n=1}^{\infty}\mu(A_n)
 	\end{equation*}
-	for all pairwise disjoint sets $A_n$ in $\mathcal A$ such that $\mathcal \ni \bigcup_{n=1}^{\infty}$. A countably additive set function defined on an algebra is called a measure.
+	for all pairwise disjoint sets $A_n$ in $\mathcal A$ such that $\mathcal A \ni \bigcup_{n=1}^{\infty}A_i$. A countably additive set function defined on an algebra is called a measure.
 \end{definition}
+
+Given a measure space $X$, we denote $\MeasureSp(X)$ and $\PMeasureSp(X)$ to refer the set of finite measures and positive finite measures on $X$, respectively. 
 
 \begin{definition}
 	A countably additive measure $\mu$ on a $\sigma$-algebra of subsets of a space $X$ is called a probability measure if $\mu\geq 0$ and $\mu(X)=1$.
@@ -215,9 +308,6 @@ In this text consider the Borel $\sigma$-algebra unless noted otherwise.
 	nonnegative measure on a $\sigma$-algebra A of subset of a set X. If $\mu$ is a probability measure, then $(X, \mathcal A, \mu)$ is called a probability space. 
 \end{definition}
 
-
-\begin{definition}[]
-\end{definition}
 
 \begin{definition}[Lebesgue Measure]
 \end{definition}
@@ -286,14 +376,84 @@ The above definition allows us to introduce the Radon-Nikodym theorem that is on
 		v(A)=\int_A f\dmu
 	\end{equation*}
 \end{theorem}
+
+\begin{definition}[$L^p$ Spaces]
+	
+\end{definition}
+
+
+\begin{definition}
+	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$ such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
+\end{definition}
+
+
+
+
+\begin{theorem}[Lebesgue dominated convergence theorem]
+	Suppose that $\mu$-integrable functions $f_n$ converge almost everywhere to a function $f$. If there exists a $\mu$-integrable function $\Phi$ such that,
+	\begin{equation*}
+		\abs{f_n}(x)\leq \Phi (x), \quad \text{almost everywhere for every } n
+	\end{equation*}
+	then the function is integrable and
+	\begin{equation*}
+		\int_X f(x)\dmu(x) = \lim_{n\rightarrow\infty} \int_X f_n(x)\dmu(x)
+	\end{equation*}
+	In addition,
+	\begin{equation*}
+		\lim_{n\rightarrow \infty } \int \abs{f(x)-f_n(x)}\dmu(x) =0
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Monotone Convergence]
+	Let $(f_n)_{n\in \Naturals}$ be a sequence of $\mu$-integrable functions such that $f_n(x) \leq f_{n+1}$ almost everywhere for each $n \in \Naturals$. Suppose that
+	\begin{equation}
+	\sup_{n\in \Naturals}\int_X f_n(x)\dmu(x) < \infty
+	\end{equation}
+	
+	Then the function $f(x)=\lim_{n\rightarrow\infty} f_n(x)$ is almost everywhere finite and integrable. In addition the following equality holds,
+	\begin{equation*}
+		\int_X f(x)\dmu(x) = \lim_{n\rightarrow\infty} \int_X f_n(x)\dmu(x)	
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Fatou's Theorem]
+	Let $(f_n)_{n\in \Naturals}$ be a sequence of nonnegative $\mu$-integrable functions convergent to a function $f$ almost everywhere and let
+	\begin{equation*}
+		\sup_{n\in \Naturals} \int_X f_n(x)\dmu(x)\leq K <\infty
+	\end{equation*}
+	
+	Then, the function $f$ is $\mu$-integrable and 
+	\begin{equation*}
+		\int_X f(x)\dmu(x) \leq K
+	\end{equation*}
+	
+	Moreover, 
+	\begin{equation*}
+		\int_X f(x)\dmu(x)\leq \liminf_{n\rightarrow\infty} \int_{X} f_n (x)\dmu(x)
+	\end{equation*}
+\end{theorem}
+
+\begin{corollary}
+	Let $\parentheses{f_n}_{n\in \Naturals}$ be a sequence of nonnegative $\mu$-integrable functions such that 
+	\begin{equation*}
+		\sup_{n\in \Naturals}\int_{X} f_n(x)\dmu(x) \leq K < \infty
+	\end{equation*}
+	Then the function $\liminf_{n\rightarrow \infty} f_n$ is $\mu$-integrable and one has 
+	\begin{equation}
+		\int_X \liminf_{n\rightarrow\infty}f_n(x)\dmu(x)\leq \liminf_{n\rightarrow \infty} \int_X f_n(x)\dmu(x) \leq K
+	\end{equation}
+\end{corollary}
+
+\begin{corollary}
+The dominated convergence theorem and Fatou’s theorem remain valid if in place of almost everywhere convergence in their hypotheses we require convergence of $(f_n)_{n\in \Naturals}$ to $f$ in measure $\mu$.
+\end{corollary}
+
+
+
 \begin{definition}[Tightness] Let $(X, \mathcal T)$ a topological space, and let $\mathcal A$ a $\sigma$-algebra on $X$ that contains the topology $\mathcal{T}$. Let $M$ be a collection of measures defined on $\mathcal{A}$. The collection $M$ is called tight  if for every $\epsilon>0$ there is a compact subset $K_\epsilon$ of $X$ such that, for all measures $\mu\in M$ we have,
 	\begin{equation*}
 	\abs{\mu}\parentheses{X \backslash K_\epsilon} < \epsilon
 	\end{equation*} 
-\end{definition}
-
-\begin{definition}
-	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$ such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
 \end{definition}
 
 
@@ -304,3 +464,29 @@ The above definition allows us to introduce the Radon-Nikodym theorem that is on
 \begin{definition}
 	Let $\parentheses{X, \mathcal A, \mu}$ be a probability space. Then every Borel-measurable mapping $\X: X\rightarrow \Real$ with for all $B\in \mathcal B(\Real) $ is a random variable, denoted by $\X: \parentheses{X, \mathcal A}\rightarrow \parentheses{\Real, \mathcal B (\Real)} $
 \end{definition}
+
+\begin{definition}[Duality between $C_0$ and $\MeasureSp$ ]
+		
+\end{definition}
+
+
+\textbf{Explanation about notions of convergence with bounded functionals and vanishing in infinity functions}. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$ if $X$ and both notions of convergence coincide.
+
+
+
+\begin{theorem}[Rademacher]
+	Let $f:\Real^d\rightarrow\Real$ be a Lipschitz continuous function. Then the set of points where $f$ is not differentiable is negligible for the Lebesgue measure.
+\end{theorem}
+
+
+\begin{lemma}
+If $\mu$, $\nu$ are two probability measures on the real line $\Real$ and $\mu$ is atomless, then there exists at least a transport map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
+\end{lemma}
+
+\begin{lemma}
+There exists a Borel map $\sigma_d: \Real^d\rightarrow \Real$ which is injective, its image is a Borel subset of $\Real$, and its inverse map is Borel measurable as well.
+\end{lemma}
+
+\begin{theorem}
+If $\mu$ and $\nu$ are two probability measures on $\Real^d$ and $\mu$ is atomless, then there exists at least a transport map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
+\end{theorem}
