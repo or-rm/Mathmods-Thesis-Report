@@ -7,12 +7,14 @@
 \contentsline {chapter}{\numberline {2}Basics in Convex Analysis.}{11}{chapter.2}
 \contentsline {chapter}{\numberline {3}Linear Programming}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Duality}{14}{section.3.1}
-\contentsline {section}{\numberline {3.2}Simplex Method.}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Interior Methods.}{14}{section.3.3}
+\contentsline {section}{\numberline {3.2}Complementary Slackness.}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}Simplex Method.}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Interior Methods.}{14}{section.3.4}
 \contentsline {chapter}{\numberline {4}Optimal Transport Theory}{15}{chapter.4}
 \contentsline {subsection}{\numberline {4.0.1}Existence of a minimizer for Kantorovich's Problem.}{19}{subsection.4.0.1}
 \contentsline {section}{\numberline {4.1}Kantorovich formulation as relaxation}{20}{section.4.1}
 \contentsline {section}{\numberline {4.2}Cyclical Monotonicity and Duality.}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Duality}{23}{subsection.4.2.1}
 \contentsline {section}{\numberline {4.3}Properties of Optimal plans.}{23}{section.4.3}
 \contentsline {section}{\numberline {4.4}Wasserstein Spaces. $\symbb {W}_{p}$}{23}{section.4.4}
 \contentsline {chapter}{\numberline {5}Computation of an Optimal Transport}{25}{chapter.5}

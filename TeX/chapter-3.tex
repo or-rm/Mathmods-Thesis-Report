@@ -4,17 +4,16 @@ Linear programming is a well studied branch of the mathematics that studies the 
 We can formulate the problem in its general form as follows:
 
 \begin{problem}
-Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A} \in M^{m\times n}$ 
+\label{pro: Linear Programming General Formulation.}
+Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A} \in M^{m\times n}$, the problem consists in finding $\mathbf{x}\in\Real^n$ such that 
 \begin{align}
 	&\min & \mathbf{c}^\top\mathbf{x} \label{eq: Linear Programming Min}&\\
 	&\subject& \mathbf{A}\mathbf{x}&=\mathbf{b} & \label{eq: Linear Programming Constraints} \\
 	& &\mathbf{x}&\geq 0 & \label{eq: Linear Programming cone}
 \end{align} 
+We refer to this formulation as the \textbf{primal}.
 \end{problem}
-Where $\mathbf{A}$ is a $m\times n$ matrix, and $\mathbf{b}$ is an m-dimensional column vector. The vector inequality means $\mathbf{x}\geq 0$ means that each component is nonnegative. This problem has a solution if $n>m$. 
-
-Consider the system of equalities \eqref{eq: Linear Programming Constraints}, the vector $\mathbf{b}$ belongs to $\Real^m$.
-
+Where $\mathbf{A}$ is a $m\times n$ matrix, and $\mathbf{b}\in\Real^m$ is an m-dimensional column vector. The vector inequality $\mathbf{x}\geq 0$ means that each component is nonnegative. This problem has a solution if $n>m$. 
 
 \begin{definition}
 	Given the set of $m$ simultaneous linear equations \eqref{eq: Linear Programming Constraints} with $n$ unknowns, let $\mathbf{B}$ be any nonsingular $m\times m$ submatrix made up of columns of $\mathbb{A}$. Then if all $n-m$ 
@@ -24,7 +23,7 @@ Consider the system of equalities \eqref{eq: Linear Programming Constraints}, th
 	If one or more of the basic variables in a basic solution has value zero, that solution is said to be degenerate solution basic solution
 \end{definition}
 
-\begin{theorem}[Fundamental theorem of linear programming.] Given a linear program in the standard form \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone} where $\mathbb{A}$ is a $m\times n $ matrix of rank $m$,
+\begin{theorem}[Fundamental theorem of linear programming.] Given a linear program in the standard form \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone} where $\mathbf{A}$ is a $m\times n $ matrix of rank $m$,
 	\begin{itemize}
 		\item if there is a feasible solution, there is a basic feasible solution.
 		\item if there is an optimal solution, there is an optimal basic feasible solution. 
@@ -63,11 +62,45 @@ The constraint set $K$ corresponding to \eqref{eq: Linear Programming Constrains
 \begin{corollary}
 	If the convex polytope $K$ corresponding to \eqref{eq: Linear Programming Constrains and cone} is bounded, then $K$ is a convex polyhedron. That is, $K$ consists of points that are convex combinations of a finite number of points.
 \end{corollary}
+
 \section{Duality}
 
-\begin{lemma}[Weak Duality lemma]
-If $\mathbf{x}$ and $\mathbf{v}$ are feasible for  and , respectively, then c T \textbf{xxxx} xT b.
-\end{lemma}
-\section{Simplex Method.}
+\begin{problem}
+	\label{pro: Linear Programming Dual Formulation.}
+	Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A}\in M^{m\times n}$ and a column vector. We say that the dual for the primal formulation \ref{pro: Linear Programming General Formulation.} is given by,	
+	\begin{align}
+		&\max & \pmb{\lambda}^\top\mathbf{b} \label{eq: Dual Linear Programming Max}&\\
+		&\subject& \pmb{\lambda}^\top\mathbf{A}&\leq \mathbf{c} & \label{eq: Dual Linear Programming Constraints} \\
+		& &\pmb{\lambda}&\geq 0 & \label{eq: Dual Linear Programming cone}
+	\end{align}
+\end{problem}
 
+\begin{lemma}[Weak Duality lemma]
+If $\mathbf{x}$ and $\pmb{\lambda}$ are feasible for \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints}, respectively then $\mathbf{c}^\top\mathbf{x}\geq \pmb{\lambda}^\top\mathbf{b}$
+\end{lemma}
+
+\begin{proof}
+	We see that following inequality holds for equations \eqref{eq: Linear Programming Constraints}, \eqref{eq: Dual Linear Programming Constraints} and the cone $\mathbf{x}\geq 0$,
+	\begin{equation}
+			\pmb{\lambda}^\top \mathbf{b}=\pmb{\lambda}^\top\left(\mathbf{Ax}\right)\leq \mathbf{c}^\top\mathbf{x}
+	\end{equation}
+\end{proof}
+
+\begin{corollary}
+	\label{cor: Dual Primal equality}
+	If $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are feasible for the \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints} respectively and  $\mathbf{c}^\top \mathbf{x}_0=\pmb{\lambda}_0^\top\mathbf{b}$, then $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are optimal for their respective problems.
+\end{corollary}
+
+This corollary is the result of the Weak Duality lemma. Since a feasible vector to the primal problem yields an upper bound on the value of the dual problem. In the other hand, a feasible vector to the dual problem yields a lower bound on the value of the primal problem. The values associated with the primal problem are all larger than the values associated with the dual problem. We see that having a feasible pair $\mathbf{x}_0$ and $\pmb{\lambda}_0$ for their respective problems, satisfying the equality means that each problem has reached its optimal value. 
+
+\begin{theorem}[Duality Theorem]
+	If the problem \eqref{pro: Linear Programming General Formulation.} has a finite optimal solution then the dual formulation \eqref{pro: Linear Programming Dual Formulation.} also does. In the same manner, if the dual problem \eqref{pro: Linear Programming Dual Formulation.} has solution then the primal also does. Moreover the corresponding values of the objective functions are equal. If either problem has an unbounded objective solution, the other problem has no feasible solution.
+\end{theorem}
+\begin{proof}
+We see from corollary \ref{cor: Dual Primal equality} that the first condition holds. 
+\end{proof}
+
+\section{Complementary Slackness.}
+\section{Simplex Method.}
+	Simplex method is not a polynomial-time algorithm.
 \section{Interior Methods.}
