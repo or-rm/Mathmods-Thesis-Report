@@ -1,5 +1,6 @@
 \chapter{Basics in Convex Analysis.}
-
+\begin{definition}[Variety]
+\end{definition}
 \begin{definition}[Convexity]
 Let $X$ a linear space. 
 \end{definition}
@@ -11,8 +12,13 @@ Let $X$ a linear space.
 \begin{theorem}[Hahn-Banach separation theorem]
 \end{theorem}
 
-\begin{theorem}[Hahn-Banach separation thoerem. Geometric version.]
+\begin{theorem}[Geometrical version of Hahn-Banach Theorem]
+	Let $M$ be a vector subspace of the topological vector space X. Suppose $K$ is a non-empty convex open subset of $X$ with $K\cap M=\emptyset$. Then there is a closed hyperplane $N \in X$ containing M with $K \cap N = \emptyset$.
 \end{theorem}
+
+\begin{definition}[Cone]
+	
+\end{definition}
 
 
 \begin{definition}[Extreme Point]
@@ -50,16 +56,6 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 	Let $X$ be a reflexive Banach Space. Then the convex conjugate function $f^*$ is the maximum convex functional below $f$ (also called convex envelope), i.e. if $\varrho$ is convex functional and $\varrho(x)\leq f(x)$, $\forall x \in X$. Then, $f^{**}(x)\leq f(x)$, and $\varrho(x)\leq f^{**}(u)$, $\forall x \in U $. In particular $f^{**} = f$ if and only if J is convex.
 \end{lemma}
 
-\begin{definition}[Legendre Transform]
-	Let $f: \Real^d\rightarrow \Realex$ be a convex function, we call the Legendre transform $f^*$
-	\begin{equation*}
-	f^*(y)=\sup_{x\in \Real^d} \braces{x\cdot y -f(x)}
-	\end{equation*}
-\end{definition}
-
-\begin{corollary}
-	A function $f:\Real^d\rightarrow\Realex$  is convex and l.s.c. if and only if $f^{∗∗}=f$.
-\end{corollary}
 
 \begin{definition}[Subdifferential]
 	Given a proper convex function $f: X\rightarrow (-\infty, \infty]$, the subdifferential of such a function is the mapping $\partial f: X\rightarrow X^*$ defined by,
@@ -67,10 +63,6 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 		\partial f (x)= \braces{x^*\in X^*; f(x)-f(y) \leq \anglesbox{x^*, x-y},\ \forall y \in X}
 	\end{equation*}
 \end{definition}
-
-\begin{theorem}[Geometrical version of Hahn-Banach Theorem]
-	Let $M$ be a vector subspace of the topological vector space X. Suppose $K$ is a non-empty convex open subset of $X$ with $K\cap M=\emptyset$. Then there is a closed hyperplane $N \in X$ containing M with $K \cap N = \emptyset$.
-\end{theorem}
 
 \begin{theorem}
 	The epigraph of a convex and lower semicontinuous function is a closed convex set in $\Real^d\times\Real$, and can be written as the intersection of the half-spaces which contain it.
@@ -81,8 +73,95 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 \begin{theorem}
 \end{theorem}
 
-An important 
+An important concept in convex programming is duality.
+
+
 \begin{definition}[Duality]
 
 \end{definition}
 
+\section{Convexity in $\Real^n$}
+Since many results are developed in finite dimensions we state some results related to convexity in $\Real^n$.
+\begin{theorem}
+Let $C$ be a convex set and let $y$ be a point exterior to the closure of $C$. Then there is a vector $\mathbf{a}$ such that $\mathbf{a}^\top \mathbf{y} < \inf_{x\in C} \mathbf{a}^\top \mathbf{x}$. 
+\end{theorem}
+
+\begin{definition}
+	A hyperplane in $\Real^n$ is an $(n-1)$-dimensional linear variety.
+\end{definition}
+
+\begin{proposition}
+	Let $\mathbf{a}$ be a nonzero $n$-dimensional column vector, and let $c$ be a real number. The set
+	\begin{equation*}
+		H=\braces{\mathbf{x}\in \Real^n:\quad \mathbf{a}^\top \mathbf{x}=c}
+	\end{equation*}
+	is a hyperplane in $\Real^n$.
+\end{proposition}
+
+\begin{proposition}
+	Let $H$ be a hyperplane in $\Real^n$. Then there is a nonzero $n$-dimensional vector and a constant $c$ such that,
+	\begin{equation*}
+		H=\braces{\mathbf{x}\in\Real^n:\quad \mathbf{a}^\top \mathbf{x}=c}
+	\end{equation*}
+\end{proposition}
+
+\begin{definition}
+	Let $\mathbf{a}$ be a nonzero vector in $\Real^n$ and let $c$ be a real number. Corresponding to the hyperplane $H=\braces{\mathbf{x}:\quad \mathbf{a}^\top \mathbf{x}=c}$ are the positive and negative closed half spaces 
+	\begin{align*}
+		H_+ = \braces{\mathbf{x}:\quad \mathbf{a}^\top \mathbf{x}\geq c}\\
+		H_- = \braces{\mathbf{x}:\quad \mathbf{a}^\top \mathbf{x}\leq c}
+	\end{align*}
+	and the positive and negative open half spaces
+	\begin{align*}
+	\mathring{H}_+ = \braces{\mathbf{x}:\quad \mathbf{a}^\top \mathbf{x}> c}\\
+	\mathring{H}_- = \braces{\mathbf{x}:\quad \mathbf{a}^\top \mathbf{x}< c}
+	\end{align*}
+\end{definition}
+
+Half spaces are convex sets and the union of $H_+$ and $H_-$ is the whole space.
+
+
+\begin{definition}
+	A set which can be expressed as the intersection of a finite number of closed half spaces is said to be a convex polytope.
+\end{definition}
+
+Convex polytopes are the sets obtained as the family of solutions to a set of linear inequalities of the form,
+\begin{align*}
+	\mathbf{a}_1^\top \mathbf{x}&\leq b_1 \\
+	\mathbf{a}_2^\top \mathbf{x}&\leq b_2 \\
+	&\vdots \\
+	\mathbf{a}_m^\top \mathbf{x}&\leq b_m,
+\end{align*}
+since each individual inequality defines a half space and the solution family is the intersection of these half space. 
+
+\begin{definition}
+A nonempty bounded polytope is called a \textbf{polyhedron}.
+\end{definition}
+
+\begin{theorem}
+Let $C$ be convex set and let $\mathbf{y}$ be a point exterior to the closure of $C$. Then there is a vector $\mathbf{a}$ such that $\mathbf{a}^\top \mathbf{y}<\inf_{\mathbf{x}\in C} \mathbf{a}^\top \mathbf{x}$.
+\end{theorem}
+
+\begin{theorem}
+Let $C$ be a convex set and let $\mathbf{y}$ be a boundary point of $C$. Then there is a hyperplane containing $\mathbf{y}$ and containing $C$ in one of its closed half spaces. 
+\end{theorem}
+
+\begin{definition}
+A hyperplane containing a convex set $C$ in one of its closed half spaces and containing a boundary point of $C$ is said to be a supporting hyperplane of $C$.
+\end{definition}
+
+\begin{theorem}
+Let $B$ and $C$ be convex sets with no common relative interior points. Then there is a hyperplane separating $B$ and $D$. In particular, there is a nonzero vector $\mathbf{a}$ such that $\sup_{\mathbf{b}\in B}\mathbf{a}^\top \mathbf{b}\leq \inf_{\mathbf{c}\in C} \mathbf{a}^\top \mathbf{c}$. 
+\end{theorem}
+
+\begin{theorem}
+	Let $C$ be a convex set, $H$ a supporting hyperplane of $C$, and $T$ the intersection of $H$ and $C$. Every extreme point of $T$ is an extreme point of $C$.
+\end{theorem}
+
+\begin{theorem}
+A closed bounded convex set in $\Real^n$ is equal to the closed convex hull of its extreme point.
+\end{theorem}
+
+\begin{theorem}
+A convex polyhedron can be described either as a bounded intersection of a finite number of closed half spaces, or a s the convex hull of a finite number of points. 
+\end{theorem}

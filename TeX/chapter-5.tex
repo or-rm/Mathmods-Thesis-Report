@@ -1,19 +1,51 @@
 \chapter{Computation of an Optimal Transport}
 The approximation of an optimal transport is a challenging problem, computationally speaking. We have found a rich literature on it, and many recent advances in this topic have arisen in the very last years. 
+%We can attack this problem by the approaches of \textbf{First  Discretize then Optimize} or \textbf{First Optimize then Discretize}
 \section{Linear Programming Formulation.}
+Let $X$ and $Y$ be two finite sets having $n$ and $m$ elements respectively. Let $\mu$ a probability measure defined over $X$,
+\begin{equation}
+	\mu=\sum_{i=1}^{n} a_i \delta_{x_i},
+\end{equation} 
+where $X=\braces{x_1, x_2, \dots, x_n}$ and $0\leq\mathbf{a}=\braces{a_1, a_2, \dots, a_n}$, and $\sum_{i=1}^{n}a_i=1$.
+
+Let $\nu$ a probability measure defined over $Y$,
+\begin{equation}
+	\nu=\sum_{i=1}^{m} b_i \delta_{y_i},
+\end{equation}
+where $Y=\braces{y_1, y_2, \dots, y_m}$ and $0\leq\mathbf{b}=\braces{b_1, b_2, \dots, b_m}$, and $\sum_{i=1}^{m}b_i=1$. 
+Let $(\pmb{\gamma})_{i,j}=\gamma_{i,j}$ be a joint probability distribution with marginals given by $\mu$ and $\nu$. That is,
+\begin{align}
+	P(x_i|Y)=\sum_{j=1}^{m}\gamma_{i,j}=a_i\\ P(y_j|X)=\sum_{i=1}^{n}\gamma_{i,j}=b_j
+\end{align}
+Let $c:X\times Y \rightarrow \Real$ a cost function. Since we $X$ and $Y$ are finite dimensional, we find convenient to use the following notation,
+\begin{equation}
+	(\mathbf C)_{i,j}=c_{i,j}=c(x_i, y_j)
+\end{equation}
+Given the matrix nature of the formulation for discrete measures we can compute the total cost by the Frobenius inner product of the two matrices, since $\mathbf{C}$ and $\pmb{\gamma}$ have the same dimensions.
+\begin{equation}
+	\anglesbox{\mathbf{C}, \pmb{\gamma}}=\sum_{\substack{1\leq i \leq n \\ 1\leq j\leq m}}c_{i,j}\gamma_{i,j}=\tr\parentheses{\mathbf{C}^\top\pmb{\gamma}}
+\end{equation}
 \subsection{Simplex Method Algorithm and Duality.}
+We can solve the problem using the simplex method.
 \begin{equation}
-	\argmin{P\in \Pi(\mu, \nu)}{\anglesbox{C, P}}
+	\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
 \end{equation}
+\subsection{The simplex method is Not polynomial time.}
+Consider the following example
+\begin{align}
+	\max \sum_{j=1}^{n} 10^{n-j}x_j\\
+	\subject 2\sum_{j=1}^{i-1}10^{i-j}x_j+x_i \leq 
+\end{align}
+
 \subsection{Sinkhorn-Knopp Algorithm.}
-
-
+Consider the problem adding a regularization.
 \begin{equation}
-	\argmin{P\in \Pi(\mu, \nu)}{\anglesbox{C, P}+\mathbf{H}(P)}
+	\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+H(\pmb{\gamma})}
 \end{equation}
-	
-\subsection{Heuristic Methods.}
-
+Where $H(\gamma)$ is the Shannon's Entropy defined for a matrix,
+\begin{equation}
+	H(\pmb{\gamma})=-\sum_{\substack{1\leq i \leq n\\ 1\leq j \leq m}}\gamma_{i,j}\log(\gamma_{i,j})
+\end{equation} 
 \section{Continuous Formulation.}
 \subsection{Beckman Problem and Optimal Transport.}
 \subsection{Proximal Splitting Algorithms.}

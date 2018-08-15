@@ -260,11 +260,11 @@ We can apply the above analysis using a notion of upper-semicontinuity and compa
 	A sequence $x_n$ in a Banach space $X$ is said to be weakly converging to $x$, and we write $x_n \rightharpoonup x$, if for every $\xi \in \asterisk{X}$. We have $\anglesbox{\xi, x_n}\rightarrow \anglesbox{\xi, x}$. A sequence $\xi_n \in \asterisk{X}$ is said to be weakly-* converging to $\xi$, and we write $\xi_n \rightharpoonup \xi$, if for every $x\in X$ we have $\anglesbox{\xi_n, x} \rightarrow \anglesbox{\xi, n}$.
 \end{definition}
 
-\begin{theorem}[Banach-Alaouglu]
+\begin{theorem}[Banach-Alaoglu]
 	If $X$ is separable and $\xi_n$ is a bounded sequence in $\asterisk{X}$, then there exists a subsequence $\xi_{n_k}$ weakly converging to some $\xi \in \asterisk{X}$.
 \end{theorem}
 
-The Banach-Alaouglu's theorem is a well known result in functional analysis, an equivalent formulation is saying the closed unit ball in $\asterisk{X}$ is weak-* compact.
+The Banach-Alaoglu's theorem is a well known result in functional analysis, an equivalent formulation is saying the closed unit ball in $\asterisk{X}$ is weak-* compact.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Measure Theory}
@@ -332,7 +332,7 @@ The set function $\mu_1\times \mu_2$ is countably additive on the algebra genera
 \begin{definition}[Image Measure]
 	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
 	\begin{equation*}
-		\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^-1(B)}, \quad \forall B \in \mathcal{A}_Y.
+		\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
 	\end{equation*}
 \end{definition}
 
@@ -455,7 +455,9 @@ The dominated convergence theorem and Fatou’s theorem remain valid if in place
 \begin{theorem}[Prokhorov]
 	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
 \end{theorem}
-
+\begin{theorem}[Prokhorov]
+	If $X$ is a Polish space, then a set $P \subset \PlanSp(X)$ is precompact for the weak topology if and only if it is tight.
+\end{theorem}
 \begin{definition}
 	Let $\parentheses{X, \mathcal A, \mu}$ be a probability space. Then every Borel-measurable mapping $\X: X\rightarrow \Real$ with for all $B\in \mathcal B(\Real) $ is a random variable, denoted by $\X: \parentheses{X, \mathcal A}\rightarrow \parentheses{\Real, \mathcal B (\Real)} $
 \end{definition}
@@ -482,4 +484,8 @@ There exists a Borel map $\sigma_d: \Real^d\rightarrow \Real$ which is injective
 
 \begin{theorem}
 If $\mu$ and $\nu$ are two probability measures on $\Real^d$ and $\mu$ is atomless, then there exists at least a map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
+\end{theorem}
+
+\begin{theorem}
+	Consider on a compact metric space $X$, endowed with a probability $\rho \in \PlanSp(X)$, a sequence of partitions $G_n$, each $G_n$ being a family of disjoint subsets, $\bigcup_{i\in I_n}C_{i,n}=X$ for every $n$. Suppose that $size(G_n):=\max_i \parentheses{\diam\parentheses{C_{i,n}}}$ tends to $0$ as $n\rightarrow \infty$ and consider a sequence of probability measures $\rho_n$ on $X$ such that, for every $n$ and $i\in I_p$, we have $\rho_n(C_{i,n})$. Then $\rho_n\weakconvergence\rho$.
 \end{theorem}

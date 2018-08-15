@@ -5,7 +5,7 @@ We can formulate the problem in its general form as follows:
 
 \begin{problem}
 \label{pro: Linear Programming General Formulation.}
-Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A} \in M^{m\times n}$, the problem consists in finding $\mathbf{x}\in\Real^n$ such that 
+Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A} \in \mathbf M^{m\times n}$, the problem consists in finding $\mathbf{x}\in\Real^n$ such that 
 \begin{align}
 	&\min & \mathbf{c}^\top\mathbf{x} \label{eq: Linear Programming Min}&\\
 	&\subject& \mathbf{A}\mathbf{x}&=\mathbf{b} & \label{eq: Linear Programming Constraints} \\
@@ -15,25 +15,31 @@ We refer to this formulation as the \textbf{primal}.
 \end{problem}
 Where $\mathbf{A}$ is a $m\times n$ matrix, and $\mathbf{b}\in\Real^m$ is an m-dimensional column vector. The vector inequality $\mathbf{x}\geq 0$ means that each component is nonnegative. This problem has a solution if $n>m$. 
 
-\begin{definition}
-	Given the set of $m$ simultaneous linear equations \eqref{eq: Linear Programming Constraints} with $n$ unknowns, let $\mathbf{B}$ be any nonsingular $m\times m$ submatrix made up of columns of $\mathbb{A}$. Then if all $n-m$ 
+\begin{definition}[Basic solutions]
+	Given the set of $m$ simultaneous linear equations \eqref{eq: Linear Programming Constraints} with $n$ unknowns, let $\mathbf{B}$ be any nonsingular $m\times m$ submatrix made up of columns of $\mathbf{A}$. Then if all $n-m$ components of $\mathbf{x}$ not associated with columns of $\mathbf{B}$ are set equal to zero, the solution to the resulting set of equations is said to be a \textit{basic solution} of $\mathbf{Ax}=\mathbf{b}$, with respect to the basis $\mathbf{B}$. The components of $\mathbf{x}$ associated with columns of $\mathbf{B}$ are called \textbf{basic variables}.
 \end{definition}
 
-\begin{definition}
-	If one or more of the basic variables in a basic solution has value zero, that solution is said to be degenerate solution basic solution
+We assume that the $m$ rows of $\mathbf{A}$ are linearly independent and $m<n$. Under this assumption the problem have at least one basic solution.
+
+\begin{definition}[Degenerated basic solutions]
+If one or more of the basic variables in a basic solution have value zero, is said to be a \textbf{degenerated basic solution}.
 \end{definition}
+
+\begin{definition}[Feasible solutions.]
+	A vector $\mathbf{x}$ satisfying the constraints \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming Constrains and cone} is said to be \textbf{feasible}. A feasible solution that is also basic is said to be a \textbf{basic feasible} solution. If the solution is also a degenerated basic solution, it is called a \textbf{degenerated basic feasible} solution. 
+\end{definition} 
 
 \begin{theorem}[Fundamental theorem of linear programming.] Given a linear program in the standard form \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone} where $\mathbf{A}$ is a $m\times n $ matrix of rank $m$,
 	\begin{itemize}
-		\item if there is a feasible solution, there is a basic feasible solution.
-		\item if there is an optimal solution, there is an optimal basic feasible solution. 
+		\item If there is a feasible solution, there is a basic feasible solution.
+		\item If there is an optimal solution, there is an optimal basic feasible solution. 
 	\end{itemize}
 \end{theorem}
 Since for a problem having $n$ variables and $m$ constraints there are at most
 \begin{equation*}
 	\binom{n}{m}=\frac{n!}{m!\parentheses{n-m}!}
 \end{equation*}
-basic solutions, the fundamental theorem of linear programming simplifies the problem to a finite number of possibilities. This is a  powerful theoretical result, but practical represents an inefficient method to find an optimal solution. This result has an interesting connection to convexity 
+basic solutions, the fundamental theorem of linear programming simplifies the problem to a finite number of possibilities. This is a  powerful theoretical result, but practical represents an inefficient method to find an optimal solution. This result has an interesting connection to convexity since we are finding the optimal points in the faces of a convex polytope.
 
 \begin{theorem}
 	Let $\mathbf{A}$ be an $m\times n$ matrix of rank $m$ and $\mathbf{b}$ an $m$-vector. Let K be the convex polytope consisting of all $n$-vectors $\mathbf{x}$ satisfying
@@ -49,9 +55,11 @@ basic solutions, the fundamental theorem of linear programming simplifies the pr
 \begin{corollary}
 If the convex set K corresponding to \eqref{eq: Linear Programming Constrains and cone} is nonempty, it has at least one extreme point.
 \end{corollary}
+
 \begin{corollary}
 If there is a finite optimal solution to a linear programming problem, there is a finite optimal solution which is an extreme point of the constraint set.
 \end{corollary}
+
 \begin{corollary}
 The constraint set $K$ corresponding to \eqref{eq: Linear Programming Constrains and cone} possesses at most a finite number of extreme points.
 	\begin{proof}
@@ -63,27 +71,229 @@ The constraint set $K$ corresponding to \eqref{eq: Linear Programming Constrains
 	If the convex polytope $K$ corresponding to \eqref{eq: Linear Programming Constrains and cone} is bounded, then $K$ is a convex polyhedron. That is, $K$ consists of points that are convex combinations of a finite number of points.
 \end{corollary}
 
-\section{Duality}
+\section{Simplex Method.}
 
+The idea of the simplex method is to proceed from one basic feasible solution that belong to the constraint set of a problem in standard form to another, in such a way as to decrease the value of the objective function continually until a minimum is reached. 
+
+Pivoting in a set of simultaneous linear equations is crucial for the development of the algorithm. Remember that the matrix $A$ has $m$ rows and $n$ columns. Let us write the constraint $\mathbf{Ax}=\mathbf{b}$ as follows,
+\begin{equation*}
+x_1\mathbf{a}_1+x_2\mathbf{a}_2+\dots+x_n\mathbf{a}_n=\mathbf{b}
+\end{equation*}
+Where $\mathbf{a}_i$ are $m$-dimensional column vectors of the matrix $\mathbf{A}$, for integers $1\leq i\leq n$. We try to find an expression for $\mathbf{b}$ as a linear combination of the vectors $\mathbf{a}_j$. 
+
+If $m<n$ and the vectors $\mathbf{a}_i$ span the space $\Real^m$, then the representation of $\mathbf{b}$ using column vectors of $\mathbf{A}$ is not unique but a whole family of different representations. However, $\mathbf{b}$ has a unique representation of $m$ linear independent vectors $\mathbf{a}_j$. 
+
+Moreover, every vector $\mathbf{a}_j$, with $1\leq j \leq n$ can be expressed as a linear combination of these basis vectors,
+
+\begin{equation*}
+	\mathbf{a}_j= y_{1,j}\mathbf{a}_1+y_{2,j}\mathbf{a}_2+\dots+y_{m,j}\mathbf{a}_{m}
+\end{equation*}
+
+
+
+
+Without loss of generality we can say that the first $m$ column vectors are linearly independent and therefore they form a basis for $\Real ^m$. We see that if $\mathbf{a}_j$ is a member of a basis, implies that $y_{j,j}=1$ and the coefficients $y_{i,j}=0$ for $i\neq j$. We can use the following tableau to represent the coefficients,  
+\begin{equation}
+	\begin{array}{ccccccccc}
+	\mathbf{a}_1 & \mathbf{a}_2 &\dots &\mathbf{a}_m & \mathbf{a}_{m+1}& \mathbf{a}_{m+2} &\dots &\mathbf{a}_n & \mathbf{b}\\
+	\hline\\
+	1 &0&\dots&0 & y_{1,m+1} & y_{1, m+2} &\dots & y_{1, n} & y_{1,0} \\
+	0 &1&\dots&0 & y_{2,m+1} & y_{2, m+2} &\dots & y_{2, n} & y_{2,0} \\
+	\vdots &\vdots&\ddots &\vdots&\vdots & \vdots & \ddots & \vdots & \vdots \\
+	0 & 0 & \dots & 1 & y_{m, m+1}& y_{m,m+2} &\dots & y_{m,m} & y_{m, 0}
+	\end{array}\label{eq: Linear Programming tableau}
+\end{equation}
+
+For simplicity we consider $y_{0,j}$ the representation for $\mathbf{b}$. Consider the process of changing a vector of the basis by another one. Take $\mathbf{a}_k$, with $1\leq k \leq m$, and we want to substitute it by a vector $\mathbf{a}_l$, with $m+1\leq l \leq n$.
+
+Since any vector $\mathbf{a}_j$ can be expressed in terms of the old basis,
+\begin{equation*}
+	\mathbf{a}_l = y_{kl}\mathbf{a}_k+\sum_{\begin{array}{c}
+		i=1\\i\neq k
+		\end{array}}^{m} y_{il}\mathbf{a}_{i}
+\end{equation*}
+
+From which we solve for $\mathbf{a}_k$,
+\begin{equation*}
+	\mathbf{a}_k=\frac{1}{y_{kl}}\mathbf{a}_l-\sum_{\begin{array}{c}i=1\\i\neq k\end{array}}^{m} \frac{y_{il}}{y_{kl}}\mathbf{a}_{i}
+\end{equation*}
+
+Then we substitute $\mathbf{a}_{k}$ in the linear combination of the old basis for $\mathbf{a}_j$ by the above equation,
+\begin{equation*}
+	\mathbf{a}_j =\frac{y_{kj}}{y_{kl}}\mathbf{a}_l+\sum_{\begin{array}{c}
+			i=1 \\ i\neq k
+		\end{array}}^{m}\parentheses{y_{ij}-\frac{y_{il}}{y_{kl}}}\mathbf{a}_i
+\end{equation*} 
+
+Therefore, we write a new tableau for the system using the following set of equations,
+
+\begin{equation}
+	\begin{cases}
+	y'_{k,j}= \frac{y_{k,j}}{y_{k,l}} & \\
+	y'_{i,j}= y_{i,j}-\frac{y_{i,l}}{y_{k,l}} &  \text{ for }i\neq k \ \mand \ 0\leq i\leq n 
+	\end{cases}
+\end{equation}
+
+
+Pivoting vectors as explained above we can generate a new basic solution from an old one. The problem is that the nonnegative constrain can be violated after pivoting operations. Therefore, it is required to control the pair of variables whose roles are going to be interchanged, in order to take in account only basic feasible solutions.
+
+The fundamental theorem of the linear programming shows that it is only necessary to consider basic feasible solutions of the problem. Until this moment we have not considered the possibility of having as result of the pivoting process a degenerated basic feasible solution. 
+
+For the sake of simplicity, we assume that every basic feasible solution is nondegenerated. This assumption simplifies the description of the simplex method, however the arguments can be modified to include degenerated basic feasible solutions.
+
+Suppose we have the basic feasible solution $\mathbf{x}=\left(x_1, x_2, \dots, x_m, 0,0, \dots, 0\right)$. We are assuming nondegeneracy of the solutions, therefore $x_i>0$ for $i=1,\dots, n$. 
+
+Imagine we want to introduce in the basis the vector $\mathbf{a}_l$, with $l>m$. Since the vectors $\mathbf{a}_i$, for $i=1\dots m$, form a basis. Manipulating the basis representation for $\mathbf{b}$ and $\mathbf{a}_l$, 
+\begin{align*}
+	\mathbf{b}&=x_1\mathbf{a}_1+x_2\mathbf{a}_2+\dots+x_m\mathbf{a}_m + \epsilon \mathbf{a}_l - \epsilon\mathbf{a}_l\\
+	&=\parentheses{x_1-\epsilon y_{1,l}}\mathbf{a}_1+\parentheses{x_2-\epsilon y_{2, l}}\mathbf{a}_2+\dots+\parentheses{x_m-\epsilon y_{m, l}}\mathbf{a}_m +\epsilon \mathbf{a}_l
+\end{align*} 
+For simplicity take $\epsilon \geq 0$. Now we have a $m+1$ representation for $\mathbf{b}$, we see that for $\epsilon=0$ we have the old basis representation. We are trying to generate a new basic feasible solution, then we set the value of $\epsilon$, \begin{equation*}
+	\epsilon=\min_{1\leq i\leq m}\braces{\frac{x_i}{y_{i,l}}: \quad y_{i,l}>0}
+\end{equation*}.
+
+If the minimum is achieved by more than one single index, the new solution is degenerated and any of the vectors with zero component can be regarded as the one leaving the basis.
+
+If all $y_{i,l}\leq 0$ no new basic feasible solution can be obtained. However, we can obtain feasible solutions with arbitrarily large coefficients. That is the set of feasible solutions is unbounded.  
+
+Hence, given a basic feasible solution and arbitrary column vector $\mathbf{a}_l$ of $\mathbf{A}$. We can find either a new basic feasible solution with $\mathbf{a}_l$ as part of its basis and one of the old vectors removed from it, or a set of unbounded feasible solutions. 
+
+In summary, under the assumption that the coefficients $y_{1,0},\dots, y_{m,0}$ are nonnegative, implying that $x_1=y_{1,0},\ x_2=y_{2,0},\ \dots,\ x_m=y_{m,0}$ is feasible. We substitute a vector already in the basis by a vector $\mathbf{a}_l$, in such a way that the solution the new generated coefficients are feasible. We take the smallest ratio to keep the feasibility. In this way we can introduce $\mathbf{a}_l$ as part of the basis creating a new basic feasible solution. 
+
+
+Assume that $\mathbf{A}$ can be written as follows,
+\begin{equation}
+	\mathbf{A}=[\mathbf{B}, \mathbf{D}]
+\end{equation}
+where $\mathbf{B}$ consists of the first $m$ columns of $\mathbf{A}$ corresponding to the basic variables. These columns are linearly independent and they form a basis for $\Real^m$. The matrix $\mathbf{D}$ is a sub-matrix  of $\mathbf{A}$ representing the rest of the columns of $\mathbf{A}$.
+
+In order to write the problem in an appropriate way, we write $\mathbf{x}$ and $\mathbf{c}$ as follows,
+\begin{equation}
+	\mathbf{x}=\parentheses{\mathbf{x}_\mathbf{B}, \mathbf{x}_{\mathbf{D}}}, \qquad \mathbf{c}=\parentheses{\mathbf{c}_{\mathbf{B}}, \mathbf{c}_{\mathbf D}}
+\end{equation}
+Where $\mathbf{x}_{\mathbf{B}}$ has $m$ entries and $\mathbf{x}_{\mathbf{D}}$ has $n-m$ entries; in similar way for $\mathbf{c}_{\mathbf{B}}$ and $\mathbf{c}_{\mathbf D}$. Then, our primal problem can be written as follows,
+\begin{align*}
+	&\min &\mathbf{c}_{\mathbf{B}}^\top\mathbf{x}_{\mathbf{B}} + \mathbf{c}_\mathbf{D}^\top \mathbf{x}_\mathbf{D}&\\
+	&\subject  &\mathbf{B}\mathbf{x}_{\mathbf{B}}+\mathbf{D}\mathbf{x}_{\mathbf{D}}& &\\
+	& &\mathbf{x}_{\mathbf{B}}\geq 0, \quad \mathbf{x}_{\mathbf{D}}\geq 0 & &
+\end{align*}
+
+
+If $\mathbf{x}$ is a basic feasible solution, the corresponding value is give by
+\begin{equation*}
+	z_0=\mathbf{c}_{\mathbf{B}}^T\mathbf{x}_{\mathbf{B}}
+\end{equation*}
+
+We can construct nonbasic feasible solution, setting arbitrary values for $\mathbf{x}_{\mathbf{D}}=\parentheses{x_{m+1}, x_{m+2},\dots, x_{n}}$ and solving for each $x_i$, with $1\leq i\leq m$,
+
+\begin{equation*}
+	x_i=y_{i,0}-\sum_{j=m+1}^{n} y_{i,j}x_{j}
+\end{equation*}
+Let $z$ be a real number given by,
+\begin{equation}
+	z=\mathbf{c}^\top \mathbf{x}=z_0+\parentheses{c_{m+1}-z_{m+1}}x_{m+1}+\parentheses{c_{m+2}-z_{m+2}}x_{m+2}+\dots+\parentheses{c_{n}-z_{n}}x_{n}.  \label{eq: cost after pivot}
+\end{equation}
+where,
+\begin{equation}
+	z_{j}=y_{1,j}c_1+y_{2,j} c_2 +\dots +y_{m,j}c_{m}, \qquad \text{for } m+1\leq j\leq n. \label{eq: i cost after pivot}
+\end{equation}
+From this equation, we can determine if there is any advantage in introducing to the basis one of the nonbasic variables.
+\begin{theorem}[Improvement of basic feasible solution]
+
+Given a nondegenerated basic feasible solution with corresponding objective value $z_0$, suppose that for there is $j$, such that $c_j − z_j < 0$ holds. 
+
+Then there is a feasible solution with objective value $z < z_0$. If the column $\mathbf{a}_j$ can be substituted for some vector in the original basis to yield a new basic feasible solution, this new solution will have $z<z_0$. If $\mathbf{a}_j$ cannot be substituted to yield a basic feasible solution, then the feasible solutions are unbounded and the objective function can be made arbitrarily small.
+\end{theorem}
+
+
+
+%Let $\mathbf{e}_i$ the standard basis, that is $\mathbf{e}_1=(1,0,\dots,0),\ \mathbf{e}_2=(0,1,0,\dots, 0),\ \mathbf{e}_i=(0,\dots, 0,1,0 \dots, 0), \dots, \mathbf{e}_m=(0,0,\dots, 1)$. From the tableau \eqref{eq: Linear Programming tableau} we can see,
+%\begin{equation}
+%x_1\mathbf{e}_1+x_2\mathbf{e}_2+\dots+\mathbf{e}_m=\mathbf{y}_0-x_{m+1}\mathbf{y}_{m+1}-x_{m+2}\mathbf{y}_{m+2}-\dots-x_n\mathbf{y}_{n}	
+%\end{equation}
+%Taking the inner product of this vector equation with $\mathbf{c}_{\mathbf{B}}^\top$.
+%\begin{equation}
+%	\sum_{i=1}^{m}c_i x_i = \mathbf{c}_{\mathbf{B}}^\top \mathbf{y}_0 -\sum_{j=m+1}^{n}z_jx_j
+%\end{equation}
+%
+%Setting $z_j=\mathbf{c}_{\mathbf{B}}^\top \mathbf{y}_j$. Hence, 
+%\begin{equation*}
+%	\mathbf{c}^\top \mathbf{x}=z_0+\sum_{j=m+1}^{n}\parentheses{c_j-z_j}x_j
+%\end{equation*}
+
+\begin{proof}
+Consider equations \eqref{eq: cost after pivot} and \eqref{eq: i cost after pivot}, if $c_j-z_j$ is negative for some $j$, $m+1\leq j\leq n$, then changing $x_j$ from zero to a positive value decreases the total cost $z$.  Let $\parentheses{x_1, x_2, \dots, x_m, 0,\dots, 0}$ a basic feasible solution with $z_0$ and suppose $c_{m+1}-z_{m+1}<0$. New feasible solutions can be constructed of the form $\parentheses{x_1', x_2',\dots, x_{m+1}',0,0,\dots,0}$, with $x_m'>0$, substituting this new solution into equation \eqref{eq: cost after pivot} we obtain,
+\begin{equation*}
+	z-z_0=(c_m+1-z)x_{m+1}'<0
+\end{equation*}
+Hence $z<z_0$ for any such solution. It is clear that we desire to make $x_{m+1}'$ as large as possible.  As $x_{m+1}'$ is increased, the other components change their values. Thus $x_{m+1}'$ can be increased until one $x_i'=0$, for $i\leq m$ in which case we obtain a new basic feasible solution. If no variable $x_i'$ decreases, $x_{m+1}'$ can be increased without bound indicating an unbound solution set and an objective value without lower bound.
+\end{proof} 
+If at any stage $c_j-z_j<0$ for some $j$, it is possible to make $x_j$ positive and decrease the objective function. 
+\begin{theorem}[Optimality Condition Theorem]
+If for some basic feasible solution $c_j-z_j\geq 0$
+for all $j$, then that solution is optimal.
+\end{theorem}
+\begin{proof}
+	This result comes from equation \eqref{eq: cost after pivot}, since any other feasible solution must have $x_i\geq 0$ for all $i$, and hence the value $z$ of the objective will satisfy $z-z_0\geq 0$.
+\end{proof}
+
+Since the main role in this method is played by the constants $c_j-z_j$ we refer them as the \textbf{relative cost coefficients} and we use the notation $r_j=c_j-z_j$. These coefficients measure the cost of a variable relative to a basis.
+
+
+We can summarize the simplex algorithm in the following steps:
+\begin{enumerate}
+	\item Construct a tableau \eqref{eq: Linear Programming tableau} corresponding to a basic feasible solution. The relative cost coefficients $r_j$ can be found by row reduction.
+	\item If $r_j\geq 0$ for all $j$,then the current basic feasible solution is optimal; stop.
+	\item Select $l$ such that $r_l<0$ to determine which nonbasic variable is to become basic.
+	\item Calculate the ratios $y_{i,0}/y_{i,l}$ for $y_{i,l}>0$, $i=1,2,\dots, m$. If no $y_{i,l}>0$. then problem is unbounded; stop. Otherwise, select $k$ as the index $i$ corresponding to the minimum ratio. 
+	\item Apply the pivoting procedure to introduce $\mathbf{a}_l$ substituting $\mathbf{a}_k$ in the basis. Return to step 1.
+\end{enumerate} 
+
+The revised simplex method is a scheme for ordering the computations required by the simplex method, so that unnecessary calculations are avoided. A basic solution has the form $\mathbf{x}=\parentheses{\mathbf{x}_{\mathbf{B}}, \mathbf{0}}$, where $\mathbf{x}_\mathbf{B}=\mathbf{B}^{-1}\mathbf{b}$. 
+
+For any $\mathbf{x}_{\mathbf{D}}$ the necessary value of $\mathbf{x}_{\mathbf{B}}$ as follows,
+
+\begin{equation*}
+	\mathbf{x}_{\mathbf{B}}=\mathbf{B}^{-1}\mathbf{b}-\mathbf{B}^{-1}\mathbf{D}\mathbf{x}_{\mathbf{D}}
+\end{equation*}
+
+Therefore, we substitute the above equation in the cost expression,
+\begin{align*}
+	z&=\mathbf{c}_{\mathbf{B}}^\top\parentheses{\mathbf{B}^{-1}\mathbf{b}-\mathbf{B}^{-1}\mathbf{Dx}_{\mathbf D}}+\mathbf{c}_{\mathbf{D}}^T \mathbf{x}_{\mathbf D}\\
+	&=\mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}\mathbf{b}+\parentheses{\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}\mathbf{D}}\mathbf{x}_{\mathbf{D}}
+\end{align*}
+
+
+Thus, the vector $\mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}\mathbf{B}^{-1}\mathbf{D}$ is the relative cost for non-basic variables. The components of this vector are used to determine which vector bring into the basis.
+
+\begin{enumerate}
+	\item Calculate the current relative cost coefficients $\mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}\mathbf{B}^{-1}\mathbf{D}$. It is more efficient and numerically stable to solve the linear system $\mathbf{v}^\top = \mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}$, then compute the relative vector
+	$ \mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{v}^\top\mathbf{B}^{-1}\mathbf{D}$. If $\mathbf{r}_{\mathbf{D}}\geq \mathbf{0}$ then the current solution is optimal, stop.
+	\item Determine the vector $\mathbf{a}_l$ is to enter the basis by selecting the most negative cost coefficient, and calculate $\mathbf{q}=\mathbf{B}^{-1}\mathbf{a}_q$ which gives the vector $\mathbf{a}_q$ in terms of the current basis.
+	\item If no $y_{i,l}>0$ then the problem is unbounded; stop. Otherwise calculate the ratios $y_{i,l}/y_{i,l}>0$ to determine which vector is to leave the basis.
+	\item Update $\mathbf{B}^{-1}$ and the current solution $\mathbf{B}^{-1}b$. Return to step 1.
+\end{enumerate}
+
+\section{Duality}
 \begin{problem}
 	\label{pro: Linear Programming Dual Formulation.}
 	Given a cost vector $\mathbf{c}\in \Real^n$, a linear operator $\mathbf{A}\in M^{m\times n}$ and a column vector. We say that the dual for the primal formulation \ref{pro: Linear Programming General Formulation.} is given by,	
 	\begin{align}
 		&\max & \pmb{\lambda}^\top\mathbf{b} \label{eq: Dual Linear Programming Max}&\\
-		&\subject& \pmb{\lambda}^\top\mathbf{A}&\leq \mathbf{c} & \label{eq: Dual Linear Programming Constraints} \\
-		& &\pmb{\lambda}&\geq 0 & \label{eq: Dual Linear Programming cone}
+		&\subject& \pmb{\lambda}^\top\mathbf{A}&\leq \mathbf{c} & \label{eq: Dual Linear Programming Constraints} 
+%		& &\pmb{\lambda}&\geq 0 & \label{eq: Dual Linear Programming cone}
 	\end{align}
 \end{problem}
 
 \begin{lemma}[Weak Duality lemma]
-If $\mathbf{x}$ and $\pmb{\lambda}$ are feasible for \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints}, respectively then $\mathbf{c}^\top\mathbf{x}\geq \pmb{\lambda}^\top\mathbf{b}$
+If $\mathbf{x}$ and $\pmb{\lambda}$ are feasible for \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints}, respectively then $\mathbf{c}^\top\mathbf{x}\geq \pmb{\lambda}^\top\mathbf{b}$.
 \end{lemma}
 
 \begin{proof}
 	We see that following inequality holds for equations \eqref{eq: Linear Programming Constraints}, \eqref{eq: Dual Linear Programming Constraints} and the cone $\mathbf{x}\geq 0$,
-	\begin{equation}
+	\begin{equation*}
 			\pmb{\lambda}^\top \mathbf{b}=\pmb{\lambda}^\top\left(\mathbf{Ax}\right)\leq \mathbf{c}^\top\mathbf{x}
-	\end{equation}
+	\end{equation*}
 \end{proof}
 
 \begin{corollary}
@@ -91,16 +301,65 @@ If $\mathbf{x}$ and $\pmb{\lambda}$ are feasible for \eqref{eq: Linear Programmi
 	If $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are feasible for the \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints} respectively and  $\mathbf{c}^\top \mathbf{x}_0=\pmb{\lambda}_0^\top\mathbf{b}$, then $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are optimal for their respective problems.
 \end{corollary}
 
-This corollary is the result of the Weak Duality lemma. Since a feasible vector to the primal problem yields an upper bound on the value of the dual problem. In the other hand, a feasible vector to the dual problem yields a lower bound on the value of the primal problem. The values associated with the primal problem are all larger than the values associated with the dual problem. We see that having a feasible pair $\mathbf{x}_0$ and $\pmb{\lambda}_0$ for their respective problems, satisfying the equality means that each problem has reached its optimal value. 
+This corollary is the result of the Weak Duality lemma. A feasible vector to the primal problem yields an upper bound on the value of the dual problem. In the other hand, a feasible vector to the dual problem yields a lower bound on the value of the primal problem. The values associated with the primal problem are all larger than the values associated with the dual problem. We see that having a feasible pair $\mathbf{x}_0$ and $\pmb{\lambda}_0$ for their respective problems, satisfying the equality means that each problem has reached its optimal value. 
 
 \begin{theorem}[Duality Theorem]
-	If the problem \eqref{pro: Linear Programming General Formulation.} has a finite optimal solution then the dual formulation \eqref{pro: Linear Programming Dual Formulation.} also does. In the same manner, if the dual problem \eqref{pro: Linear Programming Dual Formulation.} has solution then the primal also does. Moreover the corresponding values of the objective functions are equal. If either problem has an unbounded objective solution, the other problem has no feasible solution.
+	If the problem \eqref{pro: Linear Programming General Formulation.} has a finite optimal solution then the dual formulation \eqref{pro: Linear Programming Dual Formulation.} also does. In the same manner, if the dual problem \eqref{pro: Linear Programming Dual Formulation.} has solution then the primal also does. Moreover, the corresponding values of the objective functions are equal. If either problem has an unbounded objective solution, the other problem has no feasible solution.
 \end{theorem}
 \begin{proof}
-We see from corollary \ref{cor: Dual Primal equality} that the first condition holds. 
+We see from corollary \ref{cor: Dual Primal equality} that the first condition holds. If the primal is unbounded and $\pmb{\lambda}$ is feasible for the dual we must have, $\pmb{\lambda}\mathbf{b}\leq -M$ for arbitrarily large $M$, leading to a contradiction. 
+
+Suppose that the primal problem has a finite optimal solution with value $z_0$. In the space $\Real^{m+1}$ define the convex set
+\begin{equation*}
+	C=\braces{\parentheses{r, \mathbf{w}}:\ r=\alpha z_0-\mathbf{c}^\top\mathbf{x},\ \mathbf{w}=\alpha \mathbf{b}-\mathbf{A}\mathbf{x},\ \mathbf{x}\geq \mathbf{0}, \alpha\geq 0}
+\end{equation*}
+We see that $C$ is a closed cone convex cone. We need to find a point $(\bar r, \bar{\mathbf{w}}) \notin C$, in order to apply the Hahn–Banach separation theorem to prove the existence of a vector $\pmb{\lambda}\in\mathbb{R}^m$ satisfying a condition that allow us to introduce the Weak Duality lemma. Our proposition is the point $(1, \mathbf{0}) \notin C$. We see that, for $\alpha>0$ and $\mathbf{w}=0$,  $\mathbf{w}=\alpha\mathbf{b}-\mathbf{A}\mathbf{x}_0=0$ with $\mathbf{x}_0\geq 0$, then $\mathbf{x}=\mathbf{x}_0/\alpha$ is feasible for the primal problem. 
+
+Hence $r/\alpha=z_0-\mathbf{c}^\top\mathbf{x}\leq 0$, implying that $r\leq 0$. For $\alpha = 0$, we have $\mathbf{w}=-\mathbf{Ax}_0=\mathbf{0}$ with $\mathbf{x}_0\geq \mathbf{0}$ and $\mathbf{c}^\top\mathbf{x}_0=-1$. If $\mathbf{x}$ is any feasible solution to the primal implies $\mathbf{x}+\beta\mathbf{x}_0$ is feasible for $\beta\geq 0$ and therefore we can obtain an objective value as small as we want, contradicting the fact that the primal has a bounded solution. Therefore, $(1, \mathbf{0})\notin C$. By the Hahn-Banach's separation theorem we can find a hyperplane separating $C$ and $(1, \mathbf{0})$. Thus we can find a non zero vector $(s, \pmb\lambda)\in \Real^{m+1}$ and constant $c$ satisfying
+\begin{equation*}
+	s<c=\inf\braces{sr+\pmb{\lambda}^\top\mathbf{w}:\ (r, \mathbf{w})\in C}.
+\end{equation*}
+Since $C$ is a cone, it follows that $c\geq 0$.  Imagine we have a point $(\tilde r, \tilde \mathbf{w}) \in C$, such that $s\tilde r+\pmb{\lambda}^\top\tilde\mathbf{w}< 0$, then for $\beta>0$ big enough we the point $\parentheses{\beta \tilde r, \beta \tilde \mathbf{w}}$ can violate the hyperplane inequality. In the other hand, $\parentheses{0, \mathbf{0}}\in C$, then $c=0$. Thus, $s<0$ without loss of generality we can take $s=-1$, resulting for any $\parentheses{r, \mathbf{w}}\in C$,
+\begin{equation}
+-r+\pmb{\lambda}^\top\mathbf{w}\geq 0
+\end{equation} 
+We proved the existence of $\pmb{\lambda}\in \Real^m$ holding the above inequality. Using the definition of $C$,
+\begin{equation}
+	\parentheses{\mathbf{c}-\pmb{\lambda}^\top\mathbf{A}}-\alpha z_0+\alpha \pmb{\lambda}^\top \mathbf{b}\geq 0
+\end{equation} 
+for all $\mathbb{x}\geq \mathbf{0}$, and $\alpha\geq 0$. Setting $\alpha=0$ we have the inequality $\pmb{\lambda}^\top \leq \mathbf{c}^\top$, which says $\pmb{\lambda}$ is feasible for the dual. Setting $\mathbf{x}=\mathbf{0}$ and $\alpha = 1$ results in $\pmb{\lambda}^\top \mathbf{b}\geq z_0$. Therefore, by means of the Weak Duality lemma we have that $\pmb{\lambda}^\top\mathbf{b}=z_0$ and by corollary \ref{cor: Dual Primal equality} we have that $\pmb{\lambda}$ is optimal for the dual. 
 \end{proof}
 
 \section{Complementary Slackness.}
-\section{Simplex Method.}
-	Simplex method is not a polynomial-time algorithm.
+
+\begin{theorem}
+Let $\mathbf{x}$ and $\pmb{\lambda}$ be feasible solutions for the primal and dual programs, respectively. A necessary and sufficient condition that they both be optimal solutions is that for all $i$.
+\begin{itemize}
+	\item $x_i>0 \implies \pmb{\lambda}^\top \mathbf{a}_i=c_i$
+	\item $x_i=0 \impliedby \pmb{\lambda}^\top \mathbf{a}_i<c_i$ 
+\end{itemize}
+
+\end{theorem}
+
+\begin{proof}
+If the above conditions hold, then $\parentheses{\pmb{\lambda}^\top \mathbf{A}-\mathbf{c}^\top}\mathbf{x}=0$. By the means of the Weak Duality lemma and corollary \ref{cor: Dual Primal equality}, $\pmb{\lambda}^\top\mathbf b =\mathbf c ^ \top\mathbf x$ implies two solutions are optimal. Conversely, if the two solutions are optimal, by the means of the Duality Theorem $\pmb{\lambda}^\top \mathbf{b}= \mathbf{c}^\top \mathbf{x}$. Since each component of $\mathbf{x}$ is nonnegative and each component of  $\pmb{\lambda}^\top\mathbf{A}-\mathbf{c}^\top$ is nonpositive, and the above conditions must hold.
+\end{proof}
+
+\subsection{The Dual simplex Method.}
+For general linear programs the dual simplex method is most frequently used,
+\subsection{The Primal-Dual Simplex Method.}
+This method begins with a feasible solution to the dual problem that is improved at each step by optimizing an associated restricted primal problem. As the method progresses it can be regarded as striving to achieve the complementary slackness conditions for optimality. 
+
+The primal-dual method was developed for solving a linear program arising in network flow problems, and it continues to be the most efficient procedure for these problems.
+
+Consider the linear program \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone}. Also, consider it dual stated by the equations \eqref{eq: Dual Linear Programming Max} and \eqref{eq: Dual Linear Programming Constraints}.  
+
+Given a feasible solution $\pmb{\lambda}$ to the dual, define the subset $P$ of $1,2,\dots, n$ by $i\in P$ if $\pmb{\lambda}\mathbf{a}_i=c_i$ where $\mathbf{a}_i$ is the $i$-th column of $\mathbf{A}$. Thus, since $\pmb{\lambda}$ is dual feasible.
+
+\section{Min-Max Theorems}
+
+\begin{equation}
+\max_{\mathbf y\in Y}\parentheses{\min_{\mathbf x \in X}	\parentheses{\mathbf{x}^\top\mathbf{A}\mathbf{y}+\mathbf{B}\mathbf{x} +\mathbf{C}\mathbf{y}}} =\min_{\mathbf x\in X}\parentheses{\max_{\mathbf y \in Y}	\parentheses{\mathbf{x}^\top\mathbf{A}\mathbf{y}+\mathbf{B}\mathbf{x} +\mathbf{C}\mathbf{y}}}
+\end{equation}
+
 \section{Interior Methods.}
