@@ -28,7 +28,7 @@ Given the matrix nature of the formulation for discrete measures we can compute 
 \subsection{Simplex Method Algorithm and Duality.}
 We can solve the problem using the simplex method.
 \begin{equation}
-	\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
+	\Theta(\mu, \nu)=\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
 \end{equation}
 \subsection{The simplex method is Not polynomial time.}
 Consider the following example
@@ -40,12 +40,19 @@ Consider the following example
 \subsection{Sinkhorn-Knopp Algorithm.}
 Consider the problem adding a regularization.
 \begin{equation}
-	\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+H(\pmb{\gamma})}
+	\Theta_\epsilon(\mu, \nu)=\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
 \end{equation}
 Where $H(\gamma)$ is the Shannon's Entropy defined for a matrix,
 \begin{equation}
 	H(\pmb{\gamma})=-\sum_{\substack{1\leq i \leq n\\ 1\leq j \leq m}}\gamma_{i,j}\log(\gamma_{i,j})
 \end{equation} 
+
+\begin{theorem}
+	The Linear programming program after adding the regularization, becomes a strictly convex program.
+\end{theorem}
+\begin{theorem}
+	$\Theta_\epsilon(\mu, \nu)$ converges to the solution with maximum entropy as $\epsilon\rightarrow 0$
+\end{theorem}
 \section{Continuous Formulation.}
 \subsection{Beckman Problem and Optimal Transport.}
 \subsection{Proximal Splitting Algorithms.}

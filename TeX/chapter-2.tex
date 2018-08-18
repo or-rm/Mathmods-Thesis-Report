@@ -2,7 +2,7 @@
 \begin{definition}[Variety]
 \end{definition}
 \begin{definition}[Convexity]
-Let $X$ a linear space. 
+Let $X$ be a linear space. 
 \end{definition}
 \begin{definition}[Graph and Epigraph]
 \end{definition}
@@ -48,14 +48,15 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 	\end{proof}
 \end{proposition}
 
-\begin{theorem} 
-	A function $f:\Real^d \rightarrow \Realex$ is convex and lower-semicontinuous if and only if $f^{**}=f$.
-\end{theorem}
-	
-\begin{lemma}[Convex envelope theorem]
-	Let $X$ be a reflexive Banach Space. Then the convex conjugate function $f^*$ is the maximum convex functional below $f$ (also called convex envelope), i.e. if $\varrho$ is convex functional and $\varrho(x)\leq f(x)$, $\forall x \in X$. Then, $f^{**}(x)\leq f(x)$, and $\varrho(x)\leq f^{**}(u)$, $\forall x \in U $. In particular $f^{**} = f$ if and only if J is convex.
-\end{lemma}
 
+	
+\begin{theorem}[Convex envelope theorem]
+	Let $X$ be a reflexive Banach Space. Then the convex conjugate function $f^*$ is the maximum convex functional below $f$ (also called convex envelope), i.e. if $\varrho$ is convex functional and $\varrho(x)\leq f(x)$, $\forall x \in X$. Then, $f^{**}(x)\leq f(x)$, and $\varrho(x)\leq f^{**}(u)$, $\forall x \in U $. In particular $f^{**} = f$ if and only if J is convex.
+\end{theorem}
+
+\begin{corollary} 
+	A function $f:\Real^d \rightarrow \Realex$ is convex and lower-semicontinuous if and only if $f^{**}=f$.
+\end{corollary}
 
 \begin{definition}[Subdifferential]
 	Given a proper convex function $f: X\rightarrow (-\infty, \infty]$, the subdifferential of such a function is the mapping $\partial f: X\rightarrow X^*$ defined by,
@@ -64,6 +65,11 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 	\end{equation*}
 \end{definition}
 
+\begin{definition}[Gateaux derivative.]
+\end{definition}
+\begin{theorem}
+	Any convex function is Gateaux-differentiable.
+\end{theorem}
 \begin{theorem}
 	The epigraph of a convex and lower semicontinuous function is a closed convex set in $\Real^d\times\Real$, and can be written as the intersection of the half-spaces which contain it.
 \end{theorem}

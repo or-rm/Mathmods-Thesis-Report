@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -17,8 +17,14 @@ L.~Kantorovich.
 
 \bibitem[Munkres(2000)]{munkres2000topology}
 J.R. Munkres.
-\newblock \emph{Topology}.
-\newblock Topology. Prentice-Hall, 2000.
+\newblock \emph{Introduction to Topology}.
+\newblock Topology. Prentice-Hall, 2nd. edition, 2000.
 \newblock ISBN 9780131784499.
+
+\bibitem[Villani(2008)]{Villani2008}
+Cédric Villani.
+\newblock \emph{Optimal Transport: Old and New}, volume 338 of Grundlehren der
+  mathematischen Wissenschaften.
+\newblock Springer Science and Business Media, 2008.
 
 \end{thebibliography}
