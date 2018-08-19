@@ -6,9 +6,6 @@ Let $X$ be a linear space.
 \end{definition}
 \begin{definition}[Graph and Epigraph]
 \end{definition}
-\begin{definition}[Infimal Convolution]
-\end{definition}
-
 \begin{theorem}[Hahn-Banach separation theorem]
 \end{theorem}
 
@@ -57,7 +54,12 @@ Let $X$ be a Banach space, let $f:X\rightarrow \Realex$ be a functional over $X$
 \begin{corollary} 
 	A function $f:\Real^d \rightarrow \Realex$ is convex and lower-semicontinuous if and only if $f^{**}=f$.
 \end{corollary}
-
+\begin{definition}[Cyclically monotone]
+A set $A\subset \Real^d\times\Real^d$ is said to be cyclically monotone if for every $N\in \Naturals$,  every permutation $\sigma$ and every finite family of points $\braces{(x_1, p_1), \dots, (x_N, p_N)}\in A$, we have
+\begin{equation}
+	\sum_{i=1}^{N}\anglesbox{x_i, p_i} \geq \sum_{i=1}^{N}\anglesbox{x_i, p_{\sigma_i}}.
+\end{equation}
+\end{definition}
 \begin{definition}[Subdifferential]
 	Given a proper convex function $f: X\rightarrow (-\infty, \infty]$, the subdifferential of such a function is the mapping $\partial f: X\rightarrow X^*$ defined by,
 	\begin{equation*}
