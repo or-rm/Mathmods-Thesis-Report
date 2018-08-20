@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  19 AUG 2018 06:35
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  20 AUG 2018 04:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1772,9 +1772,17 @@ Overfull \hbox (20.81253pt too wide) in paragraph at lines 187--188
 etting arbitrary values for $[][] [] []$
  []
 
-[18] [19] [20]) (./TeX/chapter-4.tex [21] [22
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 251--254
 
-]
+ []
+
+[19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
+
+ []
+
+[21]) (./TeX/chapter-4.tex [22]
 Chapter 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1805,7 +1813,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-[23]
+[23
+
+]
 File: ./Pictures/Monge-Problem-densities.png Graphic file (type QTm)
  <use  "./Pictures/Monge-Problem-densities.png" >
 File: ./Pictures/OscillatingMeasure.png Graphic file (type QTm)
@@ -1915,10 +1925,10 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 40166 strings out of 493638
- 739570 string characters out of 6146796
+ 40172 strings out of 493638
+ 739681 string characters out of 6146796
  847268 words of memory out of 5000000
- 42852 multiletter control sequences out of 15000+600000
+ 42858 multiletter control sequences out of 15000+600000
  13677 words of font info for 159 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,14n,94p,10425b,618s stack positions out of 5000i,500n,10000p,200000b,80000s

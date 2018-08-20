@@ -28,7 +28,7 @@ Given the matrix nature of the formulation for discrete measures we can compute 
 \subsection{Simplex Method Algorithm and Duality.}
 We can solve the problem using the simplex method.
 \begin{equation}
-	\Theta(\mu, \nu)=\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
+	\Theta(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
 \end{equation}
 \subsection{The simplex method is Not polynomial time.}
 Consider the following example
@@ -40,7 +40,7 @@ Consider the following example
 \subsection{Sinkhorn-Knopp Algorithm.}
 Consider the problem adding a regularization.
 \begin{equation}
-	\Theta_\epsilon(\mu, \nu)=\argmin{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
+	\Theta_\epsilon(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
 \end{equation}
 Where $H(\gamma)$ is the Shannon's Entropy defined for a matrix,
 \begin{equation}

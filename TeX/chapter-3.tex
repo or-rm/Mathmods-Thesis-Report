@@ -139,9 +139,9 @@ Pivoting vectors as explained above we can generate a new basic solution from an
 
 The fundamental theorem of the linear programming shows that it is only necessary to consider basic feasible solutions of the problem. Until this moment we have not considered the possibility of having as result of the pivoting process a degenerated basic feasible solution. 
 
-For the sake of simplicity, we assume that every basic feasible solution is nondegenerated. This assumption simplifies the description of the simplex method, however the arguments can be modified to include degenerated basic feasible solutions.
+For the sake of simplicity, we assume that every basic feasible solution is non-degenerated. This assumption simplifies the description of the simplex method, however the arguments can be modified to include degenerated basic feasible solutions.
 
-Suppose we have the basic feasible solution $\mathbf{x}=\left(x_1, x_2, \dots, x_m, 0,0, \dots, 0\right)$. We are assuming nondegeneracy of the solutions, therefore $x_i>0$ for $i=1,\dots, n$. 
+Suppose we have the basic feasible solution $\mathbf{x}=\left(x_1, x_2, \dots, x_m, 0,0, \dots, 0\right)$. We are assuming non-degeneracy of the solutions, therefore $x_i>0$ for $i=1,\dots, n$. 
 
 Imagine we want to introduce in the basis the vector $\mathbf{a}_l$, with $l>m$. Since the vectors $\mathbf{a}_i$, for $i=1\dots m$, form a basis. Manipulating the basis representation for $\mathbf{b}$ and $\mathbf{a}_l$, 
 \begin{align*}
@@ -200,7 +200,7 @@ where,
 From this equation, we can determine if there is any advantage in introducing to the basis one of the nonbasic variables.
 \begin{theorem}[Improvement of basic feasible solution]
 
-Given a nondegenerated basic feasible solution with corresponding objective value $z_0$, suppose that for there is $j$, such that $c_j − z_j < 0$ holds. 
+Given a non-degenerated basic feasible solution with corresponding objective value $z_0$, suppose that for there is $j$, such that $c_j − z_j < 0$ holds. 
 
 Then there is a feasible solution with objective value $z < z_0$. If the column $\mathbf{a}_j$ can be substituted for some vector in the original basis to yield a new basic feasible solution, this new solution will have $z<z_0$. If $\mathbf{a}_j$ cannot be substituted to yield a basic feasible solution, then the feasible solutions are unbounded and the objective function can be made arbitrarily small.
 \end{theorem}
@@ -242,13 +242,16 @@ Since the main role in this method is played by the constants $c_j-z_j$ we refer
 
 We can summarize the simplex algorithm in the following steps:
 \begin{enumerate}
-	\item Construct a tableau \eqref{eq: Linear Programming tableau} corresponding to a basic feasible solution. The relative cost coefficients $r_j$ can be found by row reduction.
-	\item If $r_j\geq 0$ for all $j$,then the current basic feasible solution is optimal; stop.
+	\item Construct a tableau \eqref{eq: Linear Programming tableau} corresponding to a basic feasible solution and compute the relative cost coefficients $r_j$. For this purpose we can use row reduction.
+	\item If $r_j\geq 0$ for all $j$, then the current basic feasible solution is optimal; stop.
 	\item Select $l$ such that $r_l<0$ to determine which nonbasic variable is to become basic.
 	\item Calculate the ratios $y_{i,0}/y_{i,l}$ for $y_{i,l}>0$, $i=1,2,\dots, m$. If no $y_{i,l}>0$. then problem is unbounded; stop. Otherwise, select $k$ as the index $i$ corresponding to the minimum ratio. 
 	\item Apply the pivoting procedure to introduce $\mathbf{a}_l$ substituting $\mathbf{a}_k$ in the basis. Return to step 1.
 \end{enumerate} 
-
+Assuming non-degeneracy it is possible to prove in a easy way the convergence of the algorithm. The process stops only if optimality or unboundedness is discovered.
+If the algorithm does not find neither optimality or unboundedness, the objective value is strictly decreased. Since there are only a finite number of possible basic feasible solutions, and the basis do not repeat because of the strictly decrease of the objective value. The algorithm must reach a basis satisfying one of the two terminating conditions.
+\\
+\subsubsection{Revised simplex method.}
 The revised simplex method is a scheme for ordering the computations required by the simplex method, so that unnecessary calculations are avoided. A basic solution has the form $\mathbf{x}=\parentheses{\mathbf{x}_{\mathbf{B}}, \mathbf{0}}$, where $\mathbf{x}_\mathbf{B}=\mathbf{B}^{-1}\mathbf{b}$. 
 
 For any $\mathbf{x}_{\mathbf{D}}$ the necessary value of $\mathbf{x}_{\mathbf{B}}$ as follows,
@@ -333,10 +336,10 @@ for all $\mathbb{x}\geq \mathbf{0}$, and $\alpha\geq 0$. Setting $\alpha=0$ we h
 \section{Complementary Slackness.}
 
 \begin{theorem}
-Let $\mathbf{x}$ and $\pmb{\lambda}$ be feasible solutions for the primal and dual programs, respectively. A necessary and sufficient condition that they both be optimal solutions is that for all $i$.
+Let $\mathbf{x}$ and $\pmb{\lambda}$ be feasible solutions for the primal and dual programs, respectively. A necessary and sufficient condition that they both be optimal solutions is that for all $i$
 \begin{itemize}
-	\item $x_i>0 \implies \pmb{\lambda}^\top \mathbf{a}_i=c_i$
-	\item $x_i=0 \impliedby \pmb{\lambda}^\top \mathbf{a}_i<c_i$ 
+	\item $x_i>0 \implies \pmb{\lambda}^\top \mathbf{a}_i=c_i$,
+	\item $x_i=0 \impliedby \pmb{\lambda}^\top \mathbf{a}_i<c_i$. 
 \end{itemize}
 
 \end{theorem}
@@ -346,11 +349,50 @@ If the above conditions hold, then $\parentheses{\pmb{\lambda}^\top \mathbf{A}-\
 \end{proof}
 
 \subsection{The Dual simplex Method.}
-For general linear programs the dual simplex method is most frequently used,
+For general linear programs the dual simplex method is most frequently used, since it is more efficient to work with the dual tableau instead, making use of the complementary slackness conditions to recover the primal solution.\\
+
+Given a linear program in its primal form, let $\mathbf{B}$ a basis such that a vector $\pmb{\lambda}$  defined by $\pmb\lambda^\top=\mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}$ is feasible for the dual. We say that $\mathbf{x}_{\mathbf{B}}=\mathbf{B}^{-1}\mathbf{b}$ is \textbf{dual feasible}. If $\mathbf{x}_\mathbf{B}\geq 0$ then this solution is also primal feasible.  
+The vector $\pmb\lambda$ is feasible for the dual, therefore it satisfies $\pmb\lambda_j\leq c_j$ for all $j=1, 2, \dots, n$. Without loss of generality assume the first columns $\mathbf{A}$ form a the basis, then
+\begin{equation}
+	\pmb{\lambda}^\top \mathbf{a}_j = c_j, \quad \text{ for } j=1, \dots, m
+\end{equation}
+
+Assuming non-degeneracy there is an inequality,
+\begin{equation}
+	\pmb{\lambda}^\top\mathbf{a}_j<c_j, \quad \text{ for } j=m+1,\dots, n
+\end{equation}
+We find a new $\bar{\pmb{\lambda}}$ in which the inequality becomes an equality and vice-versa. We need to find $\bar{\pmb{\lambda}}$ such that increases the objective value $\mathbf{b}^\top\pmb{\lambda}$.
+Let $\pmb{\beta}^{i}$ the $i$-th row of $\mathbf{B}^{-1}$, note that $\pmb{\beta}^{i}\mathbf{a}_j=y_{i,j}$. Setting,
+
+ \begin{equation}
+ 	\bar{\pmb{\lambda}}^\top=\pmb{\lambda}^\top -\epsilon\pmb{\beta}^i 
+ \end{equation}
+ we have  $\bar{\pmb{\lambda}}^\top\mathbf{a}_j=\pmb{\lambda}^\top -\epsilon\pmb{\beta}^i\mathbf{a}_j$. 
+ \begin{align}
+		&\bar{\pmb{\lambda}}^\top \mathbf{a}_j=c_j & &\text{for } j=1,2,\dots, m\ \mand\ i\neq j\\
+ 	&\bar{\pmb{\lambda}}^\top \mathbf{a}_j=c_j-\epsilon y_{i, j}& &\text{for } j=m+1,m+2,\dots, n \\
+ 	&\bar{\pmb{\lambda}}^\top\mathbf{a}_i=c_i-\epsilon 
+ \end{align}
+ In the other hand,
+ \begin{equation}
+ 	\bar{\pmb{\lambda}}^\top=\pmb{\lambda}^\top \mathbf{b}-\epsilon\parentheses{ \mathbf{x}_{\mathbf{B}}}_i
+ \end{equation}
+ The idea behind the algorithm is 
+\begin{enumerate}
+	\item We start with a dual feasible solution $\mathbf{x}_{\mathbf{B}}$, if $\mathbf{x}_{\mathbf{B}}\geq 0$ the solution is optimal. $\mathbf{x}_{\mathbf{B}}$ is not nonnegative we can find $i$ such that the $i$-th component of $\mathbf{x}_{\mathbf{B}}$ is less than zero, i.e. $\parentheses{ \mathbf{x}_{\mathbf{B}}}_i<0$.
+	\item If all $y_{i,j}\geq 0$, for $j=1,2,\dots,n$, then the dual has no maximum, due to the fact we have feasibility of $\bar{\pmb\lambda}$ for any choice of $\epsilon>0$. 
+	\\
+	If $y_{i,j}<0$ for some $j$, we set
+	\begin{equation*}
+		\epsilon_0=\frac{z_l-c_l}{y_{i,l}}=\min_{j=1,2,\dots,n}\braces{\frac{z_j-c_j}{y_{i,j}}:\quad y_{i,j}<0}
+	\end{equation*}
+	\item Form a new basis $\mathbf{B}$ by pivoting $\mathbf{a}_i$ and $\mathbf{a}_l$. Using this basis determine the new $\mathbf{x}_{\mathbf{B}}$ and return to Step 1.
+\end{enumerate}
 \subsection{The Primal-Dual Simplex Method.}
 This method begins with a feasible solution to the dual problem that is improved at each step by optimizing an associated restricted primal problem. As the method progresses it can be regarded as striving to achieve the complementary slackness conditions for optimality. 
 
 The primal-dual method was developed for solving a linear program arising in network flow problems, and it continues to be the most efficient procedure for these problems.
+
 
 Consider the linear program \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone}. Also, consider it dual stated by the equations \eqref{eq: Dual Linear Programming Max} and \eqref{eq: Dual Linear Programming Constraints}.  
 
