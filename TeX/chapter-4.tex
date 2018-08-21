@@ -200,17 +200,14 @@ Where $\delta_{x_i}$ is the Dirac mass at point $x_i$. Consider $N$ open balls o
 	\label{fig: No deterministic coupling.}
 	\end{center}	
 \end{figure}
-\section{Properties of Optimal plans.}
 
-\begin{theorem}[Convexity of optimal plans]
-	The set of solutions $\bar\gamma\in\Pi(\mu,\nu)$ for the Kantorovich's problem is a convex set.
-\end{theorem}
-\begin{proof}
-	We see immediately that if $\gamma_1$ and $\gamma_2$ solve the Kantorovich's problem, for any $t\in[0,1]$, the plan $\gamma=t\gamma_1+(1-t)\gamma_2$, also solves the problem. 
-\end{proof}
-\begin{theorem}[Convexity of the cost function]
-	
-\end{theorem}
+
+
+\subsection{Existence of a minimizer for Kantorovich's Problem.}
+
+
+\subsubsection{Properties of transportation plans.}
+
 \begin{lemma}
 	Let $X$ be a metric space. If $f:X\rightarrow\Realex$ is a lower semi-continuous function, bounded from below, then the functional  $J:\PMeasureSp(X)\rightarrow \Realex$ defined on the space of finite positive measures on $X$, given by
 	\begin{equation*}
@@ -226,13 +223,58 @@ Where $\delta_{x_i}$ is the Dirac mass at point $x_i$. Consider $N$ open balls o
 	Every $J_n$ is continuous for the weak convergence. We set $J(\mu)=\int f \dmu$. We see that $J_n(\mu) \leq J(\mu)$ for any $\mu$. Since our functions are bounded, and $f$ is bounded from below, and our measures are finite, we can make use of monotone convergence theorem, $J_n(\mu)\rightarrow J(\mu)$, having as result $J(\mu)=\sup_{n} J_n(\mu)$. Since we have that $J(\mu)$ is the supremum of continuous functions we can assure that that $J$ is lower semicontinuous.
 \end{proof}
 \begin{theorem}[Lower-semicontinuity of the cost function]
-Let $X$ and $Y$ two Polish spaces, and $c:X\times Y\rightarrow\Real\cup\braces{+\infty}$ is a real valued lower semicontinuous function bounded from below. Then the functional $K:\PlanSp(X\times Y)\rightarrow \Real\cup\braces{+\infty}$, 
-\begin{equation}
+	Let $X$ and $Y$ two Polish spaces, and $c:X\times Y\rightarrow\Real\cup\braces{+\infty}$ is a real valued lower semicontinuous function bounded from below. Then the functional $K:\PlanSp(X\times Y)\rightarrow \Real\cup\braces{+\infty}$, 
+	\begin{equation}
 	K(\gamma):=\int_{X\times Y}c\diff\gamma,
-\end{equation}
-is lower semicontinuous. \label{th: l.s.c of c.}
+	\end{equation}
+	is lower semicontinuous. \label{th: l.s.c of c.}
+	\begin{proof}
+		This is a consequence of lemma \ref{lemma: Monotone Convergence implies l.s.c} setting $f=c$ over $X\times Y$.
+	\end{proof}
+
+The beauty of Kantorovich's formulation lies on the fact that the set of transport plans is compact under weak convergence making it a suitable framework where we can use the Weierstrass' criterion to show the existence of a minimizer. 
+
+\begin{theorem} Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in \PlanSp(Y)$ and a cost function $c: X\times Y \rightarrow \Real$ a continuous function. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
+\end{theorem}
 \begin{proof}
-	This is a consequence of lemma \ref{lemma: Monotone Convergence implies l.s.c} setting $f=c$ over $X\times Y$.
+	To prove the existence we make use of the Weierstrass’ criterion for existence of minimizers. Therefore, we need to prove that $\Kantorovich$ is at least lower semicontinuous and compactness of the space $\Pi(\mu, \nu)$ under some topology. 
+	
+	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$. 
+	
+	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$. Weak-* compactness in dual spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. And in this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$. 
+	
+	We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
+\end{proof}
+
+Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer. 
+
+\begin{theorem}
+	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
+\end{theorem}
+
+\begin{proof}
+By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ is lower semicontinuous. We apply again Weierstrass criterion proving existence of a minimizer.
+\end{proof}
+
+\begin{theorem}
+Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then the Kantorovich's problem \eqref{eq: Kantorovich's Problem.} admits a solution.
+\end{theorem}
+
+\begin{proof}
+Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
+\begin{align*}
+	\gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
+\end{align*}  
+Given the arbitrary way to choose $\epsilon$, this shows tightness of all sequences in $\Pi(\mu, \nu)$ and hence compactness.
+\end{proof}
+
+
+\subsection{Properties of Optimal plans}
+\begin{theorem}[Convexity of optimal plans]
+	The set of solutions $\bar\gamma\in\Pi(\mu,\nu)$ for the Kantorovich's problem is a convex set.
+\end{theorem}
+\begin{proof}
+	We see immediately that if $\gamma_1$ and $\gamma_2$ solve the Kantorovich's problem, for any $t\in[0,1]$, the plan $\gamma=t\gamma_1+(1-t)\gamma_2$, also solves the problem. 
 \end{proof}
 \end{theorem}
 An interesting property of an optimal coupling between two measures, is that optimality remains after restricting the plan to a non zero measure subset of $X\times Y$. 
@@ -270,44 +312,6 @@ The last theorem tells us that transferring part of the initial mass to part of 
 
 \begin{proof}
 	Let $\gamma$ be the unique optimal coupling between $\mu$ and $\nu$. Let $\overline\gamma$ be any optimal transfer plan coupling $\hat{\mu}$ and $\hat{\nu}$. Define $\gamma'$ as we did in the last proof $\gamma'=(\gamma-\tilde{\gamma})+\alpha\overline{\gamma}$, with $\alpha=\tilde\gamma(X\times Y)$. This implies that $K(\gamma')=K(\gamma)$. Since the coupling for $\mu$ and $\nu$ is unique $\gamma'=\gamma$, which implies $\tilde\gamma=\alpha\gamma$ then $\tilde{\gamma}=\hat{\gamma}$ 
-\end{proof}
-
-\subsection{Existence of a minimizer for Kantorovich's Problem.}
-
-The beauty of Kantorovich's formulation lies on the fact that the set of transport plans is compact under weak convergence making it a suitable framework where we can use the Weierstrass' criterion to show the existence of a minimizer. 
-
-\begin{theorem} Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in \PlanSp(Y)$ and a cost function $c: X\times Y \rightarrow \Real$ a continuous function. Then \eqref{eq: Kantorovich's Problem.} admits a solution.
-\end{theorem}
-\begin{proof}
-	To prove the existence we make use of the Weierstrass’ criterion for existence of minimizers. Therefore, we need to prove that $\Kantorovich$ is at least lower semicontinuous and compactness of the space $\Pi(\mu, \nu)$ under some topology. 
-	
-	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$. 
-	
-	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$. Weak-* compactness in dual spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. And in this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$. 
-	
-	We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
-\end{proof}
-
-Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer. 
-
-\begin{theorem}
-	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
-\end{theorem}
-
-\begin{proof}
-By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ is lower semicontinuous. We apply again Weierstrass criterion proving existence of a minimizer.
-\end{proof}
-
-\begin{theorem}
-Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then the Kantorovich's problem \eqref{eq: Kantorovich's Problem.} admits a solution.
-\end{theorem}
-
-\begin{proof}
-Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
-\begin{align*}
-	\gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
-\end{align*}  
-Given the arbitrary way to choose $\epsilon$, this shows tightness of all sequences in $\Pi(\mu, \nu)$ and hence compactness.
 \end{proof}
 
 \section{Kantorovich's formulation as relaxation of Monge's formulation.}
@@ -433,15 +437,14 @@ Notice that for any $\gamma\in \Pi(\mu, \nu)$,
 
 Then we see that the objective value of the dual problem is less or equal than the primal Kantorovich's problem, as long as the pair $(\phi, \psi)$ is admissible.
 
-Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To tackle we need to characterize functions by means of $c-$concavity.
+Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the conditions needed to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
 
 \begin{definition}
-	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real\cup\braces{-\infty}$, a cost function over from $X$ to $Y$. 
-	Given a function $\omega: X\rightarrow \Realex$, we define its $c$-concave transform of $\omega$, the function $\omega^c: Y\rightarrow \Realex$ by
+	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real$, a real valued cost function bounded from below. Given a function $\omega: X\rightarrow \Real\cup\braces{-\infty}$, we define its $c$-concave transform of $\omega$, the function $\omega^c: Y\rightarrow \Realex$ by
 	\begin{equation}
 	\omega^c(y)=\inf_{x\in X}\parentheses{c(x,y)-\omega(x)}
 	\end{equation}
-	In similar way, we can define the $\bar{c}-$transform of $\xi: Y\rightarrow \Realex$ by
+	In similar way, we can define the $\bar{c}-$transform of $\xi: Y\rightarrow \Real\cup\braces{-\infty}$ by
 	\begin{equation}
 	\xi^{\bar{c}}(x)=\inf_{y\in Y}\parentheses{c(x, y)-\xi(y)}
 	\end{equation}
@@ -516,6 +519,43 @@ This result makes use only of their definition to be proven, since $c-$concave f
 of something. Its convex counterpart needs the Hahn Banach theorem due to convex functions are not defined via $\sup$ of affine functions, but via the
 convexity inequality. 
 
+
+\begin{lemma}[Improvement through c-transforms]
+	Let $X$ and $Y$ be two Polish spaces. Let $c:X\times Y \rightarrow \Real$ be a real valued cost function bounded from below. Let $\phi:X\rightarrow \Real$ and $\psi:Y\rightarrow\Real$ be two bounded real valued functions such that $\forall (x,y)\in X\times$ we have $\phi(x)+\psi(y)\leq c(x,y)$. Then, 
+	\begin{enumerate}
+		\item $\phi^c(y)+\phi(x)\leq c(x,y)$ and $\psi^{\bar c}(x)+\psi(y)\leq c(x,y)$. 
+		\item $\phi(x)+\psi(y)\leq\phi^c(y)+\phi(x) $ and $\phi(x)+\psi(y)\leq\psi^{\bar c}(x)+\psi(y)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\begin{enumerate}
+\item  We see that 
+\begin{align*}
+c(x,y)&=\phi(x)+c(x,y)-\phi(x)\\
+		&\geq\phi(x)+\inf_{z\in X} \parentheses{c(z,y)-\phi(z)}=\phi(x)+\phi^c(y)
+\end{align*}
+And the same for $c(x,y)=\psi(y)+\psi^{\bar c}(y)$.
+
+\item  Note that $\forall x\in X$,
+\begin{equation*}
+\psi(y)\leq c(x,y)-\phi(x)\implies\psi(y)\leq \inf_{x\in X}\parentheses{c(x,y)-\phi(x)}=\phi^c(y). 
+\end{equation*}	
+Similarly $\forall y \in Y$,
+\begin{equation*}
+\phi(x)\leq c(x,y)-\psi(y)\implies\phi(x)\leq\inf_{y\in Y}\parentheses{c(x,y)-\psi(y)}=\psi^{\bar{c}}(x).
+\end{equation*}	
+\end{enumerate}	
+	
+\end{proof}
+As stated in \cite{Villani2008} and every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can again apply the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
+\begin{lemma}
+	Let $X$ and $Y$ be two Polish spaces. 
+\end{lemma}
+\begin{theorem}
+	
+\end{theorem}
 
 Now we are able to introduce $c-$monotonicity, we will see the importance of this construction in order to formalize the relation between the dual problem and primal problem of Kantorovich's optimal transport problem formulation. 
 
@@ -638,7 +678,7 @@ Therefore, $\hat{\gamma}<\gamma$ contradicting the assumption that $\gamma$ is o
 \end{proof}
 
 \begin{theorem}
-	Suppose that $X$ and $Y$ are Polish spaces and that $c:X\times Y\rightarrow \Real$ is uniformly continuous  and bounded. Then the problem \eqref{eq: Transportation Dual problem} admits a solution $\left(\phi, \psi\right)$. Moreover $\psi=\phi^c$ and the objective value of \eqref{eq: Transportation Dual problem} is equal to the objective value of the Kantorovich's problem \eqref{eq: Kantorovich's Problem.}. 
+	Suppose that $X$ and $Y$ are Polish spaces and suppose that $c:X\times Y\rightarrow \Real$ is uniformly continuous  and bounded. Then the problem \eqref{eq: Transportation Dual problem} admits a solution $\left(\phi, \psi\right)$. Moreover $\psi=\phi^c$ and the objective value of \eqref{eq: Transportation Dual problem} is equal to the objective value of the Kantorovich's problem \eqref{eq: Kantorovich's Problem.}. 
 \end{theorem}
 
 \begin{proof}
@@ -670,7 +710,7 @@ This equality holds because of $\gamma$ being optimal is concentrated on a $c-$c
 
 By definition of $\Delta$ in the dual problem \eqref{eq: Transportation Dual problem},
 	\begin{equation}
-		\Delta \geq \int_{X}\phi\dmu +\int_{Y}\phi^c\dnu = \int_{X\times Y}c\diff\gamma=\min\eqref{eq: Kantorovich's Problem.}
+		\sup\eqref{eq: Transportation Dual problem}=\Delta \geq \int_{X}\phi\dmu +\int_{Y}\phi^c\dnu = \int_{X\times Y}c\diff\gamma=\min\eqref{eq: Kantorovich's Problem.}
 	\end{equation}  
 	We have that $\sup\eqref{eq: Transportation Dual problem}\leq \min\eqref{eq: Kantorovich's Problem.}$ and we have an admissible optimal pair $(\phi, \phi^c)$, hence the desired equality for both problems $\max\eqref{eq: Transportation Dual problem}= \min\eqref{eq: Kantorovich's Problem.}$ holds.
 \end{proof}
@@ -687,16 +727,38 @@ We have proved that the optimal plan is concentrated in a $c-$cyclically monoton
 	Proving in this way that $\gamma$ is optimal.
 \end{proof}
 If $c$ is lower semicontinuous we cannot assure the existence of an optimal pair, but we can assure duality.
+\begin{lemma}[Stability]
+	Let $X$ and $Y$ be Polish spaces. Let $\mu$ and $\nu$ be two probability measures defined on $X$ and $Y$ respectively. Let $\parentheses{c_n}_{n\in \Naturals}$ be a sequence of lower-semicontinuous bounded from below functions converging uniformly increasingly to a cost function $c$ also bounded from below. Let $\gamma_n$ be a solution for the Kantorovich's problem for $c_n$,
+	\begin{equation*}
+		\gamma_n=\argmin{\gamma\in \Pi(\mu, \nu)}K(\gamma_n)=\argmin{\gamma\in \Pi(\mu, \nu)} \parentheses{\int_{X\times Y}c_n\diff\gamma}
+	\end{equation*}
+	and let $\gamma$ be a solution for the Kantorovich's problem with $c$ as cost function. Then,
+	\begin{equation*}
+		\lim_{n\rightarrow \infty}K(\gamma_n)=K(\gamma).
+	\end{equation*}
+\end{lemma}
+
 \begin{theorem}[Duality and $c$ l.s.c.]
-	
+	Let $X$ and $Y$ be Polish spaces and $c:X\times Y\rightarrow \Real \cup\braces{+\infty}$ is bounded from below and lower semicontinuous, the equality $\sup\eqref{eq: Transportation Dual problem}=\min\eqref{eq: Kantorovich's Problem.}$.
 \end{theorem}	
 \subsection{Duality by convex analysis.}
+We can prove duality introducing a perturbation as follows, 
+\begin{proposition}
+	Suppose $X$ and $Y$ are compact sets and $c$ is continuous. Then there exists a solution $\parentheses{\phi, \psi}$ for the 
+\end{proposition}
 \begin{definition}
-	Suppose that $X$ and $Y$ are compact metric spaces and $c:X\times Y\rightarrow \Real$ is continuous. For every $p\in C(X\times Y)$, let $H:C(X\times Y)\rightarrow \Realex$ be a perturbation of the problem,
+	Suppose that $X$ and $Y$ are compact metric spaces and $c:X\times Y\rightarrow \Real$ is uniformly continuous. For every $p\in C(X\times Y)$, let $H_\gamma:C(X\times Y)\rightarrow \Realex$ be a perturbation of the problem,
 	\begin{equation}
-	H(p)=-\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
+	H_\gamma(p)=-\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
 	\end{equation}	
 \end{definition}
+
+\begin{lemma}
+	Using the above definition terminology, $H_\gamma$ is convex.
+\end{lemma}
+\begin{proof}
+	Take $p_0, p_1 \in C(X\times Y)$,  
+\end{proof}
 \subsection{Brenier's theorem}
 
 \begin{theorem}[Brenier's theorem]

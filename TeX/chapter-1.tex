@@ -245,9 +245,9 @@ Continuity is a strong requirement. Luckily, we can assure the existence of a mi
 
 \begin{theorem}[Weierstrass' criterion for existence of minimizers]
 	If $f: X\rightarrow\Realex$ is lower semi-continuous and $X$ is compact, then there exists $\hat x \in X$ such $f(\hat x)=\min\braces{f(x):\ x\in X}$.
-	\begin{proof}
-		Define $l:=\inf\braces{f(x): \, x \in X} \in \Realex$, notice that $l=+\infty$ only if $f$ is identically $+\infty$, then this case is trivial since any point minimizes $f$. By compactness there exists a minimizing sequence $x_n$, that is $f(x_n)\rightarrow l$. By compactness we can extract a subsequence converging to some $\hat x$ such that $\hat x \in X$. By lower-semicontinuity of $f$, we have that $f(\hat x)\liminf_n f(x_n)=l$. Since $l$ is the infimum $l\leq f(\hat x)$. This proves that $l=f(\hat{x}) \in \Real$.
-	\end{proof}
+%	\begin{proof}
+%		Define $l:=\inf\braces{f(x): \, x \in X} \in \Realex$, notice that $l=+\infty$ only if $f$ is identically $+\infty$, then this case is trivial since any point minimizes $f$. By compactness there exists a minimizing sequence $x_n$, that is $f(x_n)\rightarrow l$. By compactness we can extract a subsequence converging to some $\hat x$ such that $\hat x \in X$. By lower-semicontinuity of $f$, we have that $f(\hat x)\liminf_n f(x_n)=l$. Since $l$ is the infimum $l\leq f(\hat x)$. This proves that $l=f(\hat{x}) \in \Real$.
+%	\end{proof}
 \end{theorem}
 
 We can apply the above analysis using a notion of upper-semicontinuity and compactness to find the maximum.
@@ -450,14 +450,14 @@ The dominated convergence theorem and Fatou’s theorem remain valid if in place
 \begin{definition}
 	A sequence $\mu_n$ probability measures over $X$ is said to be tight if for every $\epsilon> 0$, there exists a compact subset $K\subset X$ such that $\mu_n\parentheses{X\backslash K}< \epsilon$ for every $n$.
 \end{definition}
-
-
-\begin{theorem}[Prokhorov]
-	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
-\end{theorem}
 \begin{theorem}[Prokhorov]
 	If $X$ is a Polish space, then a set $P \subset \PlanSp(X)$ is precompact for the weak topology if and only if it is tight.
 \end{theorem}
+
+\begin{theorem}[Prokhorov for tight sequences]
+	Suppose that $\mu_n $ is a tight sequence of probability measures over a Polish space $X$. Then there exists $\mu\in\PlanSp(X)$ and a subsequence $\mu_{n_k}$ such that $\mu_{n_k}\rightharpoonup \mu $, in duality with $C_b(X)$. Conversely, every sequence $\mu_{n_k}\rightharpoonup \mu$ is tight.
+\end{theorem}
+
 \begin{definition}
 	Let $\parentheses{X, \mathcal A, \mu}$ be a probability space. Then every Borel-measurable mapping $\X: X\rightarrow \Real$ with for all $B\in \mathcal B(\Real) $ is a random variable, denoted by $\X: \parentheses{X, \mathcal A}\rightarrow \parentheses{\Real, \mathcal B (\Real)} $
 \end{definition}

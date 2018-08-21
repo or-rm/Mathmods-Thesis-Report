@@ -388,18 +388,8 @@ Let $\pmb{\beta}^{i}$ the $i$-th row of $\mathbf{B}^{-1}$, note that $\pmb{\beta
 	\end{equation*}
 	\item Form a new basis $\mathbf{B}$ by pivoting $\mathbf{a}_i$ and $\mathbf{a}_l$. Using this basis determine the new $\mathbf{x}_{\mathbf{B}}$ and return to Step 1.
 \end{enumerate}
-\subsection{The Primal-Dual Simplex Method.}
-This method begins with a feasible solution to the dual problem that is improved at each step by optimizing an associated restricted primal problem. As the method progresses it can be regarded as striving to achieve the complementary slackness conditions for optimality. 
-
-The primal-dual method was developed for solving a linear program arising in network flow problems, and it continues to be the most efficient procedure for these problems.
-
-
-Consider the linear program \eqref{eq: Linear Programming Min}, \eqref{eq: Linear Programming Constraints} and \eqref{eq: Linear Programming cone}. Also, consider it dual stated by the equations \eqref{eq: Dual Linear Programming Max} and \eqref{eq: Dual Linear Programming Constraints}.  
-
-Given a feasible solution $\pmb{\lambda}$ to the dual, define the subset $P$ of $1,2,\dots, n$ by $i\in P$ if $\pmb{\lambda}\mathbf{a}_i=c_i$ where $\mathbf{a}_i$ is the $i$-th column of $\mathbf{A}$. Thus, since $\pmb{\lambda}$ is dual feasible.
 
 \section{Min-Max Theorems}
-
 \begin{equation}
 \max_{\mathbf y\in Y}\parentheses{\min_{\mathbf x \in X}	\parentheses{\mathbf{x}^\top\mathbf{A}\mathbf{y}+\mathbf{B}\mathbf{x} +\mathbf{C}\mathbf{y}}} =\min_{\mathbf x\in X}\parentheses{\max_{\mathbf y \in Y}	\parentheses{\mathbf{x}^\top\mathbf{A}\mathbf{y}+\mathbf{B}\mathbf{x} +\mathbf{C}\mathbf{y}}}
 \end{equation}

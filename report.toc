@@ -12,16 +12,16 @@
 \contentsline {section}{\numberline {3.2}Duality}{20}{section.3.2}
 \contentsline {section}{\numberline {3.3}Complementary Slackness.}{21}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Dual simplex Method.}{21}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}The Primal-Dual Simplex Method.}{22}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Min-Max Theorems}{22}{section.3.4}
 \contentsline {chapter}{\numberline {4}Optimal Transport Theory}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Properties of Optimal plans.}{28}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Existence of a minimizer for Kantorovich's Problem.}{29}{subsection.4.1.1}
-\contentsline {section}{\numberline {4.2}Kantorovich's formulation as relaxation of Monge's formulation.}{30}{section.4.2}
-\contentsline {section}{\numberline {4.3}Cyclical Monotonicity and Duality.}{32}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Duality}{32}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Duality by convex analysis.}{38}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Brenier's theorem}{39}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.0.1}Existence of a minimizer for Kantorovich's Problem.}{28}{subsection.4.0.1}
+\contentsline {subsubsection}{Properties of transportation plans.}{28}{subsection.4.0.1}
+\contentsline {subsection}{\numberline {4.0.2}Properties of Optimal plans}{29}{subsection.4.0.2}
+\contentsline {section}{\numberline {4.1}Kantorovich's formulation as relaxation of Monge's formulation.}{30}{section.4.1}
+\contentsline {section}{\numberline {4.2}Cyclical Monotonicity and Duality.}{32}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Duality}{32}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Duality by convex analysis.}{39}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Brenier's theorem}{40}{subsection.4.2.3}
 \contentsline {chapter}{\numberline {5}Computation of an Optimal Transport}{41}{chapter.5}
 \contentsline {section}{\numberline {5.1}Linear Programming Formulation.}{41}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Simplex Method Algorithm and Duality.}{41}{subsection.5.1.1}

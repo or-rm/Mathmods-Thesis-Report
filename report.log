@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  20 AUG 2018 04:03
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  22 AUG 2018 00:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1879,35 +1879,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--195
  []
 
 File: ./Pictures/No-Transport-Map.png Graphic file (type QTm)
-<use  "./Pictures/No-Transport-Map.png" > [27] [28] [29]
-File: ./Pictures/No-Optimal-Transport.png Graphic file (type QTm)
+<use  "./Pictures/No-Transport-Map.png" > [27]
 
-<use  "./Pictures/No-Optimal-Transport.png" > [30]
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 206.
+
+[28] [29]
+File: ./Pictures/No-Optimal-Transport.png Graphic file (type QTm)
+ <use  "./Pictures/No-Optimal-Transport.png" > [30]
 Missing character: There is no ̋ in font [fonts/Arial_Italic.ttf]/OT:mapping=te
 x-text;mapping=tex-text;!
- [31] [32] [33] [34] [35]
-Overfull \hbox (7.29567pt too wide) in paragraph at lines 580--581
+ [31] [32] [33]
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
+
+ []
+
+[35]
+Overfull \hbox (7.29567pt too wide) in paragraph at lines 620--621
 \EU1/BookmanOldStyle(0)/m/n/10 can say that every $[][]$cyclically monotone set
  is contained in the graph of the $[][]$superdifferential
  []
 
+[36]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 594.
+LaTeX Font Warning: Command \small invalid in math mode on input line 634.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 594.
+(Font)              scaled to size 9.00014pt on input line 634.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 594.
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 645--646
+(Font)              scaled to size 8.99986pt on input line 634.
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 685--686
 
  []
 
-[37] [38]) (./TeX/chapter-5.tex [39] [40
-
-]
+[38] [39]) (./TeX/chapter-5.tex [40]
 Chapter 5.
-[41]) (./TeX/chapter-6.tex [42]
+[41
+
+]) (./TeX/chapter-6.tex [42]
 Chapter 6.
 ) (./report.bbl [43
 
@@ -1925,11 +1936,11 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 40172 strings out of 493638
- 739681 string characters out of 6146796
- 847268 words of memory out of 5000000
- 42858 multiletter control sequences out of 15000+600000
- 13677 words of font info for 159 fonts, out of 8000000 for 9000
+ 40178 strings out of 493638
+ 739904 string characters out of 6146796
+ 846267 words of memory out of 5000000
+ 42861 multiletter control sequences out of 15000+600000
+ 13701 words of font info for 162 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,14n,94p,10425b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 
