@@ -1,0 +1,240 @@
+\chapter{Preliminaries.}
+We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications.
+
+ 
+\section{Definitions and important theorems to remember.}
+
+%\begin{definition}[Projection of a Cartesian Product.]
+%	Let $X$ and $Y$ be  two arbitrary sets. Let  $\proj_x: X\times Y \rightarrow X$ be a function defined by,
+%	\begin{equation*}
+%	\proj_x(x,y)= x.
+%	\end{equation*}
+%	Equivalently, let $\proj_y: X\times Y \rightarrow Y$ be the function defined by,
+%	\begin{equation*}
+%	\proj_y(x,y)=y
+%	\end{equation*}
+%	These maps $\proj_x$ and $\proj_y$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
+%\end{definition}
+\subsection{Topology.}
+We start with the definition of topology that is needed to introduce a notion of continuity and convergence. We recall some important notions used during the development of the present text, for a deeper and better understanding of theory we refer to \cite{munkres2000topology} for more details in topology. 
+\\
+
+A set $X$ endowed with a topology $\mathcal{T}$ is a \textbf{topological space}. The elements of a topology are called \textbf{open} sets. Any set of $X$ that is a complement of a set in $\mathcal T$ is called a \textbf{closed} set. We call a neighborhood of $x\in X$ to any set in $\mathcal{T}$ that contains $x$.
+
+The \textbf{interior} of a set $A$, is defined as the biggest open set contained in $A$. Similarly, the \textbf{closure} of a set $A$, is defined as the smallest closed set containing $A$. We use indistinctly the notation $\inter(A)$ and $A^{\circ}$ for the interior of a set $A$. In the same way, for the closure we use the notation $\closu(A)$ or $\bar{A}$. We remark that a set is open if and only if $A=A^{\circ}$, and a set is closed if and only if $A=\bar{A}$.
+\\
+
+ If $A$ is a subset of a topological space $X$, a point $x\in X$ is called a \textbf{limit point} of $A$ if every neighborhood of $x$ intersects $A$ in some point different than $x$ itself. A subset of topological space is closed if and only if contains all its limit points.    
+\\
+A subset $D$ of a topological space $X$ is \textbf{dense} in $X$ if for any point $x$ in $X$, any neighborhood of $x$ containing at least one point from $D$, different of $x$. Equivalently, $D$ is dense in $X$ if and only if it is identically to its closure in $X$, i.e. $D=\closu (D)$. A topological space is called \textbf{separable} if it contains a countable, dense subset.
+\\
+
+
+
+Let $X$ be a topological space  endowed with a topology $\mathcal{T}$. If $Z$ is a subset of $X$ the collection $\mathcal{T}_Z=\braces{Z\cap U: \ U \in \mathcal{T}}$ is called the \textbf{subspace topology} of $Z$ and $Z$ is called a \textbf{subspace} of $X$. That is the topology of $Z$ is composed by all the intersections of the open sets of $X$ with $Z$. 
+
+
+\begin{definition}[Continuity]
+Let $X$ and $Y$ be topological spaces. A function $f:X\rightarrow Y$ is said to be continuous if for each open subset $V$ of $Y$, the set $f^{-1}(V)$ is an open subset of $X$.\label{def: Continuity} 
+\end{definition}
+Continuity not only depends upon the function $f$, but also in the topologies specified for the range and the domain of $f$. The support $\supp(f)$ of a continuous real valued function $f$ is the closure of the set $\braces{x\in X:\ f(x)\neq 0}$.\\
+
+A sequence $\parentheses{x_n}_{n\in \Naturals}$ in $X$ is a countable indexed set of elements in $X$. We say that a sequence converges to the point $x$ of $X$ if for each neighborhood $U$ of $x$ there is a positive integer $M\in\Naturals$, such that $x_n\in U$, for all $n\geq M$. We use the notation $x_n\rightarrow x$, or $\lim_{n\rightarrow \infty} x_n = x$, to denote convergence of a sequence to a point $x$. \\
+
+The notion of sequences is useful for tracking compactness in topological spaces satisfying the \emph{first axiom of countability for topological spaces}\footnote{Topological spaces with a countable topological basis at each of its points, i.e. for any $x\in X$ there is a countable collection $\mathcal{B}$ of neighborhoods of $x$, such that each neighborhood contains at least one of the elements of $\mathcal{B}$}. Although for arbitrary topological spaces we can use the notion of nets. A \textbf{net} is a generalization of sequences for arbitrary topological spaces. A net in $X$ is a function $f$ from a directed set\footnote{Any set with a partial order $J$ relation} $\mathcal{J}$ into $X$. If $\alpha \in \mathcal{J}$, we usually denote $f(\alpha)=x_\alpha$. We use the notation $(x_\alpha)_{\alpha \in \mathcal{J}}$ to refer a net. Every sequence is a net but the converse does not hold.
+
+Topologies in which one element is not a closed set, or in which a sequence can converge to more than one point, are not really interesting for practical problems. If such things are allowed the theorems that one can prove are limited. To overcome this situation the mathematician Felix Hausdorff suggested topological spaces where for each pair of points we can find disjoint neighborhoods. We call a \textbf{Hausdorff space} a topological space $X$ endowed with a topology $\mathcal{T}$, such that for each pair $x_1$, $x_2$ of distinct points in $X$, there exists a neighborhood $U_1$ of $x_1$, and there exists a neighborhood $U_2$ of $x_2$, such that $U_1$ and $U_2$ are disjoint.  In Hausdorff spaces every convergent net converges to at most one point. 
+\\
+
+A distance $d$ over $X$ is a nonnegative real valued function $d:X\times X\rightarrow \Real$ satisfying, symmetry, triangle inequality and the property that the distance between any element to itself is zero. That is,
+\begin{enumerate}
+	\item $d(x, y)=d(y,x)$, for all $x,y \in X$.
+	\item Symmetry: $d(x,y)=0 \iff x=y$, for all $x,y \in X$. 
+	\item Triangle inequality: $d(x,z)\leq d(x,y)+d(y,z)$ for all $x,y,z\in X$.
+\end{enumerate}
+Given a set $X$ with distance $d$, and a real number $\epsilon >0$, we call open ball the set,
+\begin{equation*}
+	\ball{x}{\epsilon}=\braces{y| d(x,y)<\epsilon}
+\end{equation*} 
+
+The collection of all $\epsilon-$ open balls $\ball{x}{\epsilon}$, for each $x\in X$ and $\epsilon>0$, is a basis for the topology on $X$, called the metric topology. A set $U$ is open in a metric topology induced by $d$ if and only if for each $y\in U$, there is $\delta>0$ such that $\ball{y}{\delta}\subset U$.\\
+
+A topological space $X$ is said to be \textbf{metrizable} if there exists a metric $d$ on the set $X$ that induces the topology of $X$. A \textbf{metric space} is a metrizable space $X$ together with a specific metric $d$. Every metrizable space satisfies the first axiom of countability.\\
+
+Given a metric space $X$ the diameter $\diam$ of set $A\subset X$ is given by,
+\begin{equation*}
+	\diam(A)=\sup\braces{d(x,y): \quad x, y \in A}.
+\end{equation*} 
+We say that $A$ is a bounded subset of a metric space $X$ if there is $M\in \Real_+$ such that $\diam(A)<M$
+\begin{definition}[Continuity in metric spaces]
+	The definition \ref{def: Continuity} for metric spaces is equivalent to say: A function $f:X\rightarrow Y$ defined from a metrizable space $(X, d_X)$ to a metrizable space $(Y, d_Y)$ is continuous if $\forall \epsilon\in\Real$ and $\epsilon>0$ there is $\delta \in \Real$ and $\delta>0$ such that,
+	\begin{equation*}
+		d_X(x, y)<\delta \implies d_Y(f(x),f(y))<\epsilon
+	\end{equation*}
+\end{definition}
+If $X$ is topological space and $A\subset X$. If there is a sequence of points of $A$ converging to $x$, then $x\in\closu A$. The converse holds if $X$ is metrizable. \\
+
+Let $f: X\rightarrow Y$ be continuous function between to topological spaces. If $(x_n)_{n\in \Naturals}$ is a sequence converging to $x$, then the sequence $f(x_n)$ converges to $f(x)$. If $X$ satisfies the first axiom of countability we can invert the implication. Therefore for a metrizable space $X$ the converse holds. 
+
+
+In topology we can find different notions of compactness. We start with the usual notion, a topological space $X$ is called \textbf{compact} if every open covering contains a finite subcover also covering $X$. A metrizable space $X$ is compact if and only if is sequentially compact. Every compact metric space is separable. \\
+
+
+Every closed subspace of a compact space is compact. Every compact subspace of a Hausdorff space is closed. The image of a compact space under a continuous map is compact. The product of \emph{finitely many} compact spaces is compact. \\
+
+A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footnote{Given a metric space $X$, a sequence $\parentheses{x_n}_{n\in\Naturals}$ is said to be Cauchy, if for every real $\epsilon>0$ there is $N$ such that for all $m,n>N$ pair $d(x_m, x_n)<\epsilon$} has a limit in $X$. Every compact metric space is complete. We call \textbf{Polish space} to any topological space that is separable and completely metrizable. 
+
+
+\begin{theorem}[Extreme value theorem]
+	Let $f:X\rightarrow \Real$ be a continuous real valued function. If $X$ is compact, then there exist points $u$ and $v$ in $X$ such that $f(u)\leq f(x)\leq f(v)$ for all $x\in X$.
+\end{theorem}
+ We use the notation $C(X)$ to refer the set of real valued continuous functions $f:X\rightarrow \Real$ defined on $X$. We denote by $C_b(X)$ the set of bounded continuous functions, that is $f\in C_b(X) \iff f\in C(x)\ \mand\ \sup_{x\in X} \abs{f(x)}<\infty$. We denote by $C_c(X)$ the set of continuous functions with compact support. \\
+  
+  
+ \begin{definition}[Uniform Continuity]
+	A function $f$ from the metric space $(X, d_X)$ to the metric space $(Y, d_Y)$ is said to be \textbf{uniformly continuous} if for every $\epsilon>0$, and for every pair of points $x_0$, $x_1$ of $X$ there is a common $\delta>0$ such that,
+	\begin{equation}
+		d_X(x_0, x_1)<\delta \implies d_Y(f(x_0), f(x_1))<\epsilon
+	\end{equation}  
+\end{definition}
+If a function $f$ is continuous on a compact set, then $f$ is uniformly continuous.
+%\begin{definition}
+%	Let $(X, d_X)$ and $(Y, d_Y)$ be two metric spaces. The approximation speed is given byThe modulus of a continuity\footnote{Also know as first modulus of continuity $\omega_1$, since this definition can be extended for smoother functions. In \cite{Steffens2006HistoryofApprox} is mentioned how the modulus of continuity plays an important role as a measure of the size of the error with respect to an approximation scheme. Lebesgue was the first one to use the name $\omega$ for real valued functions.} $\omega$ of a continuous function $f:X\times\rightarrow Y$ is given by,
+%	\begin{equation*}
+%		\omega(\delta, f)=\sup_{d_x(x,y)<\delta} d_Y(f(x), f(y))
+%	\end{equation*}
+%
+%\end{definition}
+%%%%%%%%%%%%%
+%If $f$ is uniformly continuous there exists a nonnegative increasing function $\omega$ such that $\lim_{\delta\rightarrow 0} \omega(\delta)\rightarrow 0$ and $\omega(0)=0$ and acts as the modulus of continuity of $f$.
+A space $X$ is said to be \textbf{locally compact} at $x$ if there is some compact subspace $K$ of $X$ that contains a neighborhood of $x$. If $X$ is locally compact at each $x$ we call it just locally compact. Equivalently a topological space is locally compact if each of its points has an open neighborhood whose closure is compact. Any compact space is locally compact.
+
+On locally compact spaces $X$. We denote by $C_0(X)$ the set of continuous functions vanishing at infinity, i.e. $f\in C_0(X) \iff f \in C(X)\ \mand \ \forall \epsilon >0,\ \exists K\subset X$ such that $K$ is compact and $\abs{f(x)}<\epsilon$, for all $x\in X\backslash K$. 
+
+We see that for any locally compact topological space $C_0(X)\subset C_b(X)\subset C(X)$. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$.
+
+
+
+
+
+\subsection{Functional Analysis}
+\begin{definition}[Lower Semicontinuous]
+\end{definition}
+\begin{theorem}[Arzela-Ascoli]
+\end{theorem}
+\begin{definition}[Vector Space]
+\end{definition}
+\begin{definition}[Linear map]	
+\end{definition}
+\begin{definition}[Affine maps]
+\end{definition}
+\begin{definition}[Duality]
+\end{definition}
+\begin{theorem}[Banach-Alaoglu]
+Let $X$ be an arbitrary normed space, and let $X^*$ be its dual. A closed unit ball $B\subset X^*$ is weak-star compact.
+\end{theorem}
+\begin{theorem}[Banach-Alaoglu weak-star sequentially compactness]
+Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the weak-star topology on a closed ball $B\subset X^*$ is metrizable. 
+\end{theorem}
+\begin{corollary} Let $X$ be a separable normed vector space and let $X^*$ be its topological dual space. Then every bounded sequence $(\phi_n)_{n\in \Naturals}\in X$ has a weak-star convergent subsequence.
+\end{corollary}
+\begin{theorem}[Weak Topology is not metrizable]
+	content...
+\end{theorem}
+We pay special attention to direct method of calculus of variations and Weierstrass criterion for minimizers.
+\begin{theorem}[Direct Method of Calculus of Variations]
+\end{theorem}
+\subsection{Convex Analysis.}
+
+\subsection{Measure Theory.}
+All measures considered in this text are Borel measures on Polish spaces, equipped with
+their respective Borel $\sigma$-algebra.
+\cite{Milan2000TpicsWeakconvProbs}
+\begin{theorem}[Regular Measure]
+	The outer measure coincides with the inner measure. That is 
+\end{theorem}
+\begin{definition}[Support of a measure.]
+	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
+	\begin{equation}
+	\spt(\mu)\ :=\underset{\small{\begin{array}{c}
+			\mu(X\backslash A)=0\\ A=\closu A  \end{array}}}{\bigcap A} 		
+	\end{equation} 
+\end{definition}
+
+Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$.  It is a linear vector space; a norm can be introduced by the variation of a measure:
+\begin{equation}
+	\abs{m}=m^+(X)+m^-(X)
+\end{equation}
+where, 
+\begin{align*}
+	m^+(X):=\sup\braces{m(B):\ B \in \mathcal{A}} \\
+	m^-(X):=-\inf
+\end{align*}
+\begin{theorem}[Aleksandrov]
+	For an arbitrary topological space $X$ any linear continuous functional on $C(X)$ is of the form,
+	\begin{equation}
+		\phi(f)=\anglesbox{f,m}=\int_{X}f(x)\diff m(x)
+	\end{equation}
+	Moreover,
+	\begin{equation}
+		\abs{m}=\sup_{\norm{f}_X\leq 1}\abs{\int_{X}f(x)\diff m(x)}
+	\end{equation}
+	There is an isometrical, isomorphical and one to one mapping between the space of all continuous linear functionals on $C(X)$ and the space of $\MeasureSp(X)$; We write $C(X)=\MeasureSp(X)$
+\end{theorem}
+
+\begin{theorem}[Luizin]
+	Let $X$ be a locally compact Hausdorff space, let $\mathcal A$ be a $\sigma-$algebra on $X$ containing the Borel $\sigma-$algebra of $X$. Let $\mu$ a regular measure on $(X, \mathcal A)$ and let $f:X\rightarrow \Real$ be $\mathcal A$-measurable. If $A$ belongs to $\mathcal{A}$ and satisfies $\mu(A)<\infty$ and given a positive number $\epsilon>0$, then there is a compact $K\subset X$ such that $\mu(X\backslash K)<\epsilon$ and the restriction $\domainrestr{K}{f}$ is continuous in $K$. Moreover, there is a function $g\in C_c(K)$ such that $g(x)=f(x)$ for each $x\in K$. 
+\end{theorem}
+
+It follows that the supremum of a collection of continuous (or lower semicontinuous) functions is
+lower semicontinuous and that each lower semicontinuous function on a Hausdorff
+space is Borel measurable.
+
+
+
+The space of probabilities $\PlanSp(X)$ is not closed in $\MeasureSp(X)$. 
+
+
+The structure of the second dual $C(X)^{**}$ is too complex, but it is well known that $B(X)-$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$
+
+
+A set $\Pi$ of probability measures is relatively compact if any sequence of probability measures $\mu_n \in \Pi$ contains a subsequence $(\mu_{n_k})_{n_k\in \Naturals}$ which converges weak-star to a probability measure in $\PlanSp(X)$.
+
+We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu\in \PlanSp(X)$ and any positive real number $\epsilon>0$ there is a compact $K\subset X$ such that $\mu(X\backslash K)\leq \epsilon$. We also say that a set of probabilities $\Gamma$ is tight if $\forall \mu \in \Gamma$, $\mu$ is tight.
+
+
+
+\begin{theorem}
+	If $X$ is a complete and separable topological space, then $\PlanSp(X)$ is tight.
+\end{theorem}
+
+\begin{theorem}[Prohorov]
+	Let $X$ an arbitrary metric space and let $\Gamma$ be a tight set of measures. Then $\Gamma$ is relatively compact.
+\end{theorem}
+
+
+\subsubsection{Results for Image Measure.}
+\begin{definition}[Image Measure]
+	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
+	\begin{equation*}
+	\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
+	\end{equation*}
+\end{definition}
+
+\begin{lemma}
+If $\mu$, $\nu$ are two probability measures on the real line $\Real$ and $\mu$ is atomless, then there exists at least a map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
+\end{lemma}
+	
+\begin{lemma}
+There exists a Borel map $\sigma_d: \Real^d\rightarrow \Real$ which is injective, its image is a Borel subset of $\Real$, and its inverse map is Borel measurable as well.
+\end{lemma}
+		
+\begin{theorem}
+	If $\mu$ and $\nu$ are two probability measures on $\Real^d$ and $\mu$ is atomless, then there exists at least a map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
+\end{theorem}
+			
+\begin{theorem}
+	Consider on a compact metric space $X$, endowed with a probability $\rho \in \PlanSp(X)$, a sequence of partitions $G_n$, each $G_n$ being a family of disjoint subsets, $\bigcup_{i\in I_n}C_{i,n}=X$ for every $n$. Suppose that $size(G_n):=\max_i \parentheses{\diam\parentheses{C_{i,n}}}$ tends to $0$ as $n\rightarrow \infty$ and consider a sequence of probability measures $\rho_n$ on $X$ such that, for every $n$ and $i\in I_p$, we have $\rho_n(C_{i,n})$. Then $\rho_n\weakconvergence\rho$.
+\end{theorem}
+
+

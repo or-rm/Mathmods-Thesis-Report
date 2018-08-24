@@ -5,23 +5,38 @@
 	$\Realex$ & $ \Real \cup \braces{\pm\infty}$. That is $[-\infty, \infty]$ \\
 	$\Real_+ $ & The set of nonnegative real numbers, that is the interval $[0, \infty)$.\\
 	$\Realex_+$ & The set of nonnegative extended real numbers, that is the interval $[0, \infty]$\\
-	$\delta_x$ & The Dirac mass at point x. \\
 	$\Real^d $ & The $d$-dimensional Euclidean space.\\
-	$\id$ & Identity map.\\
+	$B\backslash A$ & Given a set $B$ and a subset $A\subset B$, the set $B\backslash A$ is the complement of A in $B$.\\
+	$A\cup B$ & Union of two sets.\\
+	$A\cap B$ & Intersection of two sets.\\
+	$\proj_X$& Projection of $X$. Given two sets $X$ and $Y$ the projection of $X$ is the function $\proj_X:X\times Y\rightarrow X$, \\
+	& defined by $\proj_X(x,y)=x$.\\
+	$\proj_Y$& Projection of $Y$. Given two sets $X$ and $Y$ the projection of $Y$ is the function $\proj_Y:X\times Y\rightarrow Y$,\\
+	&  defined by $\proj_Y(x,y)=y$.\\
+	$\indicator{\Omega} $ & Indicator function of a set $\Omega\subset X$. If $x\in \Omega$, then $\indicator{\Omega}(x)=1$. If $x\in X\backslash\Omega$, we have $\indicator{\Omega}(x)=0$.\\
+	$\ball{x}{\epsilon}$ & Open ball with radius $\epsilon$ centered at $x$.\\
+	$\overline{\mathit{B}}\parentheses{x;\epsilon} $ & Closed ball with radius $\epsilon$ centered at $x$.\\
+	$\supp(f)$ & Support of a continuous function $f$.\\
+	$\id$ & Identity map. That is $\id: X\rightarrow X$, defined by $\id(x)=x$.\\
+	l.s.c. & Lower semicontinuous. \\
+	$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
+	$\D T(x)$ & Jacobian matrix of a map $T(x)$. \\
+	$\domainrestr{\Omega}{f}$ & The restriction of a function $f$ to a set $\Omega$. \\
 	$\MeasureSp\parentheses{X}$ & Space of measures on $X$. \\
 	$\PMeasureSp\parentheses{X}$ & Space of positive measures on $X$. \\
 	$\PlanSp\parentheses{X}$ & Space of probabilities on $X$. \\	
 	$\mu \ll\nu$ & The measure $\mu$ is absolutely continuous with respect to the measure $\nu$. \\
-	$\indicator{\Omega} $ & Indicator function of a set $\Omega$. If $x\in \Omega$ then $\indicator{\Omega}(x)=1$. If $x\in \Omega^c$, we have $\indicator{\Omega}(x)=0$.\\
 	$\mu \measurerestr A$ & A measure $\mu$ is restricted to a set $A$.\\
 	$\omega_d$ & The Measure of the unite ball in $\Real^d$. \\
-	$\wedge$ & The min operator, that is $a\wedge b:=\min\braces{a,b}$. \\
-	$\vee$ & The max operator, that is $a\vee b:=\max\braces{a,b}$. \\
-	$\D T(x)$ & Jacobian matrix of a map $T(x)$. \\
+%	$\wedge$ & The min operator, that is $a\wedge b:=\min\braces{a,b}$. \\
+%	$\vee$ & The max operator, that is $a\vee b:=\max\braces{a,b}$. \\
 	$\Tmeasure{\mu}{T}$ &  The image measure (or pushforward measure) of $\mu$ through the map $T$.\\
-	$\domainrestr{\Omega}{f}$ & The restriction of a function $f$ to a set $\Omega$. \\
+	$\spt(\mu)$& Support of a measure $\mu$.\\
+	i.i.d. & Independent and identical probability distributions.\\
+	$\Lebesgue^p$ & Lebesgue measure on $\Real^p$\\
+	$\Hausdorff\measurerestr A$ & Hausdorff measure applied to some set $A \subset \Real^d$. \\
+	$\delta_x$ & The Dirac mass at point x. \\
 	$\TransPlansSet{\mu}{\nu}$ & The set of transport plans from $\mu$ to $\nu$.\\
-	$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
 	$\WassersteinDist{p}$ & Wasserstein distance of order $p$. \\	
 	$\WassersteinSp{p}$ & Wasserstein space of order $p$.\\
  	$\gamma_T$ & The transport plan in $\TransPlansSet{\mu}{\nu}$ induced by a map $T$. That is $\gamma_T = (\id, T)_\#\mu$ and $T_\#\mu=\nu$. \\
@@ -30,10 +45,4 @@
 	$\mu \otimes \nu$ & The product measure of $\mu$ and $\nu$ such that $\mu \otimes \nu (A\times B)= \mu(A)\nu(B)$.\\
 	$\mathbf{M}^{k\times h}$ & The set of real matrices with $k$ rows and $h$ columns. \\
 	$M^\top$ & Transpose of a matrix $M$. \\
-	i.i.d. & Independent and identical probability distributions.\\
-	l.s.c. & Lower semicontinuous. \\
-	$\Lebesgue^p$ & Lebesgue measure on $\Real^p$\\
-	$\Hausdorff\measurerestr A$ & Hausdorff measure applied to some set $A \subset \Real^d$. \\
-	$\ball{x}{\epsilon}$ & Open ball with radius $\epsilon$ centered at $x$.\\
-	$\overline{\mathit{B}}\parentheses{x;\epsilon} $ & Closed ball with radius $\epsilon$ centered at $x$.\\	
 \end{tabular}

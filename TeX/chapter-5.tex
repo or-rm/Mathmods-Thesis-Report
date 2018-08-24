@@ -15,13 +15,14 @@ Let $\nu$ a probability measure defined over $Y$,
 where $Y=\braces{y_1, y_2, \dots, y_m}$ and $0\leq\mathbf{b}=\braces{b_1, b_2, \dots, b_m}$, and $\sum_{i=1}^{m}b_i=1$. 
 Let $(\pmb{\gamma})_{i,j}=\gamma_{i,j}$ be a joint probability distribution with marginals given by $\mu$ and $\nu$. That is,
 \begin{align}
-	P(x_i|Y)=\sum_{j=1}^{m}\gamma_{i,j}=a_i\\ P(y_j|X)=\sum_{i=1}^{n}\gamma_{i,j}=b_j
+	\sum_{j=1}^{m}\gamma_{i,j}=a_i\\ \sum_{i=1}^{n}\gamma_{i,j}=b_j
 \end{align}
-Let $c:X\times Y \rightarrow \Real$ a cost function. Since we $X$ and $Y$ are finite dimensional, we find convenient to use the following notation,
+Let $c:X\times Y \rightarrow \Real$ a cost function. Since we know that $X$ and $Y$ are finite dimensional, we find convenient to use the following notation,
 \begin{equation}
 	(\mathbf C)_{i,j}=c_{i,j}=c(x_i, y_j)
 \end{equation}
-Given the matrix nature of the formulation for discrete measures we can compute the total cost by the Frobenius inner product of the two matrices, since $\mathbf{C}$ and $\pmb{\gamma}$ have the same dimensions.
+
+Given the matrix nature of the optimal transport problem for discrete measures we can compute the total cost by the Frobenius inner product\footnote{For matrices with real entries the product is defined as $\anglesbox{A, B}=\tr(A^\top B)$.} of the two matrices, since $\mathbf{C}$ and $\pmb{\gamma}$ have the same dimensions.
 \begin{equation}
 	\anglesbox{\mathbf{C}, \pmb{\gamma}}=\sum_{\substack{1\leq i \leq n \\ 1\leq j\leq m}}c_{i,j}\gamma_{i,j}=\tr\parentheses{\mathbf{C}^\top\pmb{\gamma}}
 \end{equation}
@@ -30,7 +31,7 @@ We can solve the problem using the simplex method.
 \begin{equation}
 	\Theta(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
 \end{equation}
-\subsection{The simplex method is Not polynomial time.}
+\subsubsection{The simplex method is Not polynomial time.}
 Consider the following example
 \begin{align}
 	\max \sum_{j=1}^{n} 10^{n-j}x_j\\

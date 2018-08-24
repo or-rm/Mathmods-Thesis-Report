@@ -68,8 +68,7 @@ Then take the sequence $f_n:[0,1]\rightarrow [0,1]$,
 \end{equation}
 
 
-We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to check that $\mu\parentheses{f_n^{-1}\left(A\right)}=\Lebesgue^1\parentheses{A}$ for every open set $A\in [0,1]$. In the other hand, the sequence converges weakly to $f_n\weakconvergence f=\frac{1}{2}$, which obviously makes $\Tmeasure{\mu}{f}\neq\Lebesgue^1\measurerestr [0,1]$. 
-
+We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to check that $\mu\parentheses{f_n^{-1}\left(A\right)}=\Lebesgue^1\parentheses{A}$ for every open set $A\in [0,1]$. In the other hand, this is sequence of oscillating function converging weakly\footnote{A sequence of bounded periodic functions converges weakly to its mean value.} to its mean value $f_n\weakconvergence f=\frac{1}{2}$, which  makes $\Tmeasure{\mu}{f}\neq\Lebesgue^1\measurerestr [0,1]$.
 \begin{figure}[H]
 	\begin{center}
 \includegraphics[width=0.5\textwidth]{OscillatingMeasure}
@@ -84,7 +83,7 @@ We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to ch
 \end{equation}
 \end{problem}
 
-Monge analyzed geometric properties of the solution to this problem. Although, the question of the existence of a optimal map stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove existence of a minimizer. \\
+Monge analyzed geometric properties of the solution to this problem. Although, the question for the existence of an optimal map stayed open until a Russian mathematician named Leonid Vitaliyevich Kantorovich introduced in the paper \cite{Kantorovich1942} a suitable framework to study its optimality conditions and prove the existence of a minimizer. \\
 
 When we formulate our factories-customer problem through finding an assignation map, we are excluding the situations in which one customer can be supplied by two or more factories, or in the case of the Monge's problem we are ignoring the possibility of splitting a unit of mass into small pieces that can be assigned simultaneously to different places. \\
 
@@ -119,7 +118,7 @@ We use the notation $\Pi(\mu, \nu)$ to refer the \textbf{set of couplings} of $\
 
 \begin{lemma}[Existence of a coupling]
 	\label{lm: Existence of a coupling}
-Let $\mu$ and $\nu$ be probability measures over the measurable spaces $\parentheses{X, \mathcal{A}_X}$ and $\parentheses{Y, \mathcal{A}_Y}$. That is $\exists \gamma \in \PlanSp(X\times Y)$, such that $\gamma\in\Pi(\mu, \nu)$.
+Let $\mu$ and $\nu$ be probability measures over the measurable spaces $\parentheses{X, \mathcal{A}_X}$ and $\parentheses{Y, \mathcal{A}_Y}$. Then, there exists  $\exists \gamma \in \PlanSp(X\times Y)$, such that $\gamma\in\Pi(\mu, \nu)$.
 \end{lemma}
 \begin{proof}
 	Take $\gamma=\mu\otimes\nu$.
@@ -207,7 +206,6 @@ Where $\delta_{x_i}$ is the Dirac mass at point $x_i$. Consider $N$ open balls o
 
 
 \subsubsection{Properties of transportation plans.}
-
 \begin{lemma}
 	Let $X$ be a metric space. If $f:X\rightarrow\Realex$ is a lower semi-continuous function, bounded from below, then the functional  $J:\PMeasureSp(X)\rightarrow \Realex$ defined on the space of finite positive measures on $X$, given by
 	\begin{equation*}
@@ -256,6 +254,13 @@ Continuity for the cost function and compactness of the metric spaces can be dem
 By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ is lower semicontinuous. We apply again Weierstrass criterion proving existence of a minimizer.
 \end{proof}
 
+
+\begin{lemma}
+	The set of couplings $\Pi(\mu, \nu)$ between two probability measures $\mu$ and $\nu$ defined over two Polish spaces $X$ and $Y$ is tight.
+\end{lemma}
+\begin{proof}
+	.....
+\end{proof}
 \begin{theorem}
 Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then the Kantorovich's problem \eqref{eq: Kantorovich's Problem.} admits a solution.
 \end{theorem}
@@ -440,15 +445,15 @@ Then we see that the objective value of the dual problem is less or equal than t
 Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the conditions needed to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
 
 \begin{definition}
-	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real$, a real valued cost function bounded from below. Given a function $\omega: X\rightarrow \Real\cup\braces{-\infty}$, we define its $c$-concave transform of $\omega$, the function $\omega^c: Y\rightarrow \Realex$ by
+	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real$, a real valued cost function bounded from below. Given a function $\zeta: X\rightarrow \Real\cup\braces{-\infty}$, we define its $c$-concave transform of $\zeta$, the function $\zeta^c: Y\rightarrow \Realex$ by
 	\begin{equation}
-	\omega^c(y)=\inf_{x\in X}\parentheses{c(x,y)-\omega(x)}
+	\zeta^c(y)=\inf_{x\in X}\parentheses{c(x,y)-\zeta(x)}
 	\end{equation}
 	In similar way, we can define the $\bar{c}-$transform of $\xi: Y\rightarrow \Real\cup\braces{-\infty}$ by
 	\begin{equation}
 	\xi^{\bar{c}}(x)=\inf_{y\in Y}\parentheses{c(x, y)-\xi(y)}
 	\end{equation}
-	A function $\psi$ defined on $Y$ is said to be $\bar c-$concave if it is not identically to $-\infty$ and there exists $\omega$ defined on $X$, such that $\psi=\omega^c$. Similarly, a function $\phi$ defined on $X$ is said to be $ c-$concave if it is not identically to $-\infty$ and there exists $\xi$ defined on $Y$ such that $\phi=\xi^{\bar{c}}$.
+	A function $\psi$ defined on $Y$ is said to be $\bar c-$concave if it is not identically to $-\infty$ and there exists $\zeta$ defined on $X$, such that $\psi=\zeta^c$. Similarly, a function $\phi$ defined on $X$ is said to be $ c-$concave if it is not identically to $-\infty$ and there exists $\xi$ defined on $Y$ such that $\phi=\xi^{\bar{c}}$.
 \end{definition}
 
 We use a bar to denote the difference between the transformation respect to the first and the second parameter of the cost function. This notation becomes trivial if we deal with symmetric cost functions.
@@ -549,14 +554,23 @@ Similarly $\forall y \in Y$,
 \end{enumerate}	
 	
 \end{proof}
-As stated in \cite{Villani2008} and every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can again apply the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
+Every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can  apply again the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
 \begin{lemma}
-	Let $X$ and $Y$ be two Polish spaces. 
+	Let $X$ and $Y$ be two Polish spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\zeta$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\zeta$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
 \end{lemma}
 \begin{theorem}
-	
+	Let $A\subset X$ and $B\subset Y$ be two compact subsets of two Polish Spaces $X$ and $Y$. Let $\mu$ and $\nu$ be probability measures defined on $A$ and $B$ respectively. And let $c:A\times B\rightarrow \Real$ be a continuous and finite cost function. Then the problem, 
+	\begin{equation*}
+		\sup\braces{\int_A \phi \dmu+\int_B \psi \dnu:\quad \phi\in C_b(A),\ \psi \in C_b(B),\ \phi(a)+\psi(b)\leq c(a,b),\ \forall (a,b)\in A\times B}
+	\end{equation*} 
+	admits a feasible solution $(\phi, \psi)$. Moreover $\psi=\phi^c$, then the problem is equivalent to restrict the search to $\phi\in c-conc(A)$. That is our problem is reduced to,
+	\begin{equation}
+		\max\braces{\int_A \phi \dmu+\int_B \phi^c \dnu:\quad \phi\in c-conc(A)}
+	\end{equation}
 \end{theorem}
+\begin{proof}
 
+\end{proof}
 Now we are able to introduce $c-$monotonicity, we will see the importance of this construction in order to formalize the relation between the dual problem and primal problem of Kantorovich's optimal transport problem formulation. 
 
 We start considering again our factories-costumers transportation problem. This time assume that the consortium is in charge of the transportation and it has already a plan to transport the products from factories to stores. 
@@ -627,13 +641,6 @@ We can provide an extension of Rockafellar's theorem in terms of $c-$concave fun
 	\label{th: c-cyclically in superdifferential}
 \end{theorem}
 
-\begin{definition}[Support of transport plan.]
-	Given a separable metric space $X$, the support of a measure $\gamma$ is defined as the smallest closed set on which $\gamma$ is concentrated,
-	\begin{equation}
-	\spt(\gamma)\ :=\underset{\small{\begin{array}{c}
-			\gamma(X\backslash A)=0\\ A=\bar{A}  \end{array}}}{\bigcap A} 		
-	\end{equation} 
-\end{definition}
 \begin{theorem}
 	Let $X$ and $Y$ be two Polish spaces. If $\gamma$ is an optimal transport plan for the cost $c:X\times Y \rightarrow \Real$ and $c$ is continuous then $\spt(\gamma)$ is a $c$-cyclically monotone set.
 	\label{th: support in c-cyclically}
