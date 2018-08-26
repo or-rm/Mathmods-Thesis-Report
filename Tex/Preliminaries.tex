@@ -3,7 +3,7 @@ We start this chapter reminding the basic definitions and theorems in topology a
 
 
  
-\section{Definitions and important theorems to remember.}
+%\section{Definitions and important theorems to remember.}
 
 %\begin{definition}[Projection of a Cartesian Product.]
 %	Let $X$ and $Y$ be  two arbitrary sets. Let  $\proj_x: X\times Y \rightarrow X$ be a function defined by,
@@ -16,7 +16,7 @@ We start this chapter reminding the basic definitions and theorems in topology a
 %	\end{equation*}
 %	These maps $\proj_x$ and $\proj_y$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
 %\end{definition}
-\subsection{Topology.}
+\section{Topology.}
 We start with the definition of topology that is needed to introduce a notion of continuity and convergence. We recall some important notions used during the development of the present text, for further details about this topic we refer \cite{munkres2000topology}. 
 \\
 
@@ -122,12 +122,12 @@ On locally compact spaces $X$. We denote by $C_0(X)$ the set of continuous funct
 We see that for any locally compact topological space $C_0(X)\subset C_b(X)\subset C(X)$. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$.
 
 
-A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $x_0$ if given $\epsilon>0$, there is a neighborhood $U$ of $x_0$ such that for all $x\in U$ and all $f\in F$, $d(f(x), f(x_0))<\epsilon$. If $F$ is equicontinuous at all $x\in X$ we just call it equicontinuous.
+A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $x_0$ if given $\epsilon>0$, there is a neighborhood $U$ of $x_0$ such that for all $x\in U$ and all $f\in F$, $d(f(x), f(x_0))<\epsilon$. If $F$ is \textbf{equicontinuous} at all $x\in X$ we just call it equicontinuous. The subset $F\subset C(X)$ is \textbf{equibounded} if there is a constant $M$ such that, $\abs{f(x)}\leq M$ for all $f\in F$ and all $x\in X$.
 \begin{theorem}[Arzel\`a-Ascoli]
-	Let $X$ be a compact metric space;  The a subset $K\subset C(X)$ is pre-compact in the uniform topology (the topology induced by the distance $d(f,g)=\sup_{\alpha\in X} \abs{f(\alpha)-g(\alpha)}$), if and only if it is equicontinuous and pointwise bounded.
+	Let $X$ be a compact metric space;  The subset $K\subset C(X)$ is pre-compact in the uniform topology (the topology induced by the distance $d(f,g)=\sup_{\alpha\in X} \abs{f(\alpha)-g(\alpha)}$), if and only if it is equicontinuous and equibounded.
 \end{theorem}
 
-\subsection{Functional Analysis}
+\section{Functional Analysis}
 Some notions in functional analysis are needed when we are trying to optimize a functional. 
 
 
@@ -292,7 +292,9 @@ Given a subset $Z$ of a metric space $X$ and a function $f: Z\rightarrow \Real$ 
 \begin{theorem}
 	Let $E$ be a subset of a metric space $X$. Any uniformly continuous bounded function $f:E\rightarrow\Real$ can be extended to a function $g:X\rightarrow \Real$ with the same modulus of continuity, supremum and infimum.
 \end{theorem}
-*********************
+
+
+************************
 A  lower-semicontinuous, proper and convex function $f$ on a reflexive Banach space $X$ takes a minimum value on every bounded, convex and closed subset $M$ of $X$. In other words, $\exists x_0 \in M$ such that
 \begin{equation}
 f(x_0)=\inf\braces{f(x):\ x\in M}
@@ -311,14 +313,10 @@ A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ ar
 
 
 
-\subsection{Measure Theory.}
+\section{Convergence of Probability measures.}
 
 Let $X$ a topological space. 
-A probability measure on 
-
-
-
-\cite{Milan2000TpicsWeakconvProbs}
+A probability measure on \cite{Milan2000TpicsWeakconvProbs}
 \begin{theorem}[Regular Measure]
 	A measure such that the outer measure coincides with the inner measure.
 \end{theorem}
@@ -329,7 +327,12 @@ A probability measure on
 			\mu(X\backslash A)=0\\ A=\closu A  \end{array}}}{\bigcap A} 		
 	\end{equation} 
 \end{definition}
-
+\begin{definition}[Image Measure]
+	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
+	\begin{equation*}
+	\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
+	\end{equation*}
+\end{definition}
 Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$. The set of generalized measures on $X$ is a linear space; a norm can be introduced by the so called total variation of the whole space $X$:
 \begin{equation}
 	\norm{m}=\abs{m}(X)=m^+(X)+m^-(X)
@@ -375,14 +378,8 @@ We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu
 	Let $X$ be a Polish space. Then there is a complete metric $d_0$ over $\PlanSp(X)$ equivalently to the weak topology. Moreover, let $K\subset \PlanSp(X)$ be a subset in $\PlanSp(X)$. Then $K$ is tight if and only if $\closu K$ in the weak topology of $\PlanSp(X)$ is pre-compact.
 \end{theorem}
 
-\subsubsection{Results for Image Measure.}
+\subsection{Results for Image Measure.}
 We state some definitions to prove density of transport plans induced by maps in the set of transport maps (Lemma \ref{lem: Density of maps.}). The proof of the following theorems and lemmas as well as Lemma \ref{lem: Density of maps.} are detailed in \cite{Santambrogio2015OT}.
-\begin{definition}[Image Measure]
-	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
-	\begin{equation*}
-	\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
-	\end{equation*}
-\end{definition}
 
 \begin{lemma}
 If $\mu$, $\nu$ are two probability measures on the real line $\Real$ and $\mu$ is atomless, then there exists at least a map $T$ such that $\Tmeasure{\mu}{T}=\nu$.

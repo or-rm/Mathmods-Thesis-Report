@@ -394,6 +394,7 @@ Approaching the problem in this way gives us the flexibility to supply each cust
 
 Imagine that the consortium changed its policy and it has decided not to be responsible any longer for the transportation of the goods, letting the customers to solve this problem by themselves (assume that the consortium has the monopoly of the goods and the customers have no choice but to adhere to this policy). An entrepreneur feeling that he can ship the goods more efficiently that the consortium did, he intend to buy the goods at the factories and selling them at the customers' stores. Then, he must negotiate with the consortium the prices $-\phi(x)$ that he is able to pay at each factory for the goods and the selling prices $\psi(y)$ at each customers' store. In order to succeed, he need to be competitive and should do it better than the consortium did. Therefore, he must be able that cover with the difference of the sale prices the transportation costs and they should be less than the consortium's costs $\psi(y)+\phi(x)\leq c(x,y)$. He is subject to this constraint and he should negotiate with the consortium and the customers the prices $\phi(x)$ and $\psi(y)$ in order to obtain the maximum profit.
 
+
 \subsection{Duality}
 We see that for any $\gamma \in \MeasureSp_+(X\times Y)$ we have,
 \begin{equation}
@@ -418,16 +419,12 @@ Note that,
 	-\infty & \text{otherwise}.
  \end{cases}
 \end{equation}
-In the other hand, equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} it is not really useful if we are not able to exchange the $\min$ and $\sup$. 
-
-For a moment suppose that the conditions that allow to exchange them do exist, we can rewrite the equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} as follows,
+In the other hand, equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} it is not really useful if we are not able to exchange the $\min$ and $\sup$; for a moment suppose that the conditions that allow to exchange them do exist, we can rewrite the equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} as follows,
 \begin{equation}
 	\Kantorovich=\sup_{\phi, \psi}\parentheses{\int_{X}\phi\dmu+\int_{Y}\psi\dnu+\inf_{\gamma}\int_{X\times Y}\parentheses{c(x,y)-\parentheses{\phi(x)+\psi(y)}}\diff\gamma}
 \end{equation}
 
-If it exists $(x,y) \in X\times Y$ such that $\phi(x)+\psi(y)>c$, we can find measures $\gamma$ concentrated on the set where the strict inequality holds and mass tending to infinity, sending the value of the integral to $-\infty$.  
-
-The above equation motivates the dual formulation of the problem,
+If it exists $(x,y) \in X\times Y$ such that $\phi(x)+\psi(y)>c$, we can find measures $\gamma$ concentrated on the set where the strict inequality holds and mass tending to infinity, sending the value of the integral to $-\infty$. The above equation motivates the dual formulation of the problem,
 
 \begin{problem}
 Given $\mu\in\PlanSp(X)$, $\nu\in\PlanSp(Y)$, and the cost function $c:X\times Y\rightarrow \Real_+$ we refer as the dual formulation of the transport problem \eqref{eq: Transportation Dual problem},
@@ -442,7 +439,8 @@ Notice that for any $\gamma\in \Pi(\mu, \nu)$,
 
 Then we see that the objective value of the dual problem is less or equal than the primal Kantorovich's problem, as long as the pair $(\phi, \psi)$ is admissible.
 
-Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the conditions needed to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
+
+ Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the conditions needed to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
 
 \begin{definition}
 	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real$, a real valued cost function bounded from below. Given a function $\zeta: X\rightarrow \Real\cup\braces{-\infty}$, we define its $c$-concave transform of $\zeta$, the function $\zeta^c: Y\rightarrow \Realex$ by
@@ -558,19 +556,43 @@ Every lower semicontinuous function on a Polish space is always measurable. The 
 \begin{lemma}
 	Let $X$ and $Y$ be two compact metric spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\omega$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\omega$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
 \end{lemma}
+\begin{proof}
+	Given $\phi$, we set $g_x(y)=c(x,y)-\phi(x)$. The function $c(x,y)$ is uniformly continuous, we know that the modulus of continuity for $c$ is subadditive and nondecreasing, then
+	\begin{align*}	
+	\abs{g_x(y)-g_x(y')}&=\abs{c(x,y)-g(x)-c(x,y')+g(x)}\\
+	&=\abs{c(x,y)-c(x,y')}\\
+&<\omega(d((x,y),(x,y'))\\
+	&\leq\omega(d(x,x)+d(y,y'))\\
+	&\leq\omega(d(y,y'))
+	\end{align*} 
+ Then, $g_x$ share the same modulus of continuity, for all $x$. By definition of $c-$concave transform  $\phi^c(y)=\inf_{x\in X} g_x(y)$. If $g_x(y)\leq g_x(y')+\omega(d(y,y'))$ we take the infimum in both sides and we get $\phi^c(y)\leq \phi^c(y')+\omega(d(y,y'))$. Repeating the same argument exchanging $y$ and $y'$ in the inequality, we have $\phi^c(y')\leq \phi^c(y)+\omega(d(y,y'))$. Therefore $\phi^c$ shares the same modulus of continuity than $c$ implying that $\phi^c$ is uniformly continuous. The proof follows the same structure for the $\bar{c}-$concave transform. 
+\end{proof}
 \begin{theorem}
 	Let $A\subset X$ and $B\subset Y$ be two compact subsets of two Polish Spaces $X$ and $Y$. Let $\mu$ and $\nu$ be probability measures defined on $A$ and $B$ respectively. And let $c:A\times B\rightarrow \Real$ be a continuous and finite cost function. Then the problem, 
 	\begin{equation*}
-		\sup\braces{\int_A \phi \dmu+\int_B \psi \dnu:\quad \phi\in C_b(A),\ \psi \in C_b(B),\ \phi(a)+\psi(b)\leq c(a,b),\ \forall (a,b)\in A\times B}
+		\sup\braces{\int_A \phi \dmu+\int_B \psi \dnu:\quad \phi\in C(A),\ \psi \in C(B),\ \phi(a)+\psi(b)\leq c(a,b),\ \forall (a,b)\in A\times B}
 	\end{equation*} 
-	admits a feasible solution $(\phi, \psi)$. Moreover $\psi=\phi^c$, then the problem is equivalent to restrict the search to $\phi\in c-conc(A)$. That is our problem is reduced to,
-	\begin{equation}
-		\max\braces{\int_A \phi \dmu+\int_B \phi^c \dnu:\quad \phi\in c-conc(A)}
-	\end{equation}
+%	admits a feasible solution $(\phi, \psi)$. Moreover $\psi=\phi^c$, then the problem is equivalent to restrict the search to $\phi\in c-conc(A)$. That is our problem is reduced to,
+%	\begin{equation}
+%		\max\braces{\int_A \phi \dmu+\int_B \phi^c \dnu:\quad \phi\in c-conc(A)}
+%	\end{equation}
 \end{theorem}
 \begin{proof}
+The cost function is defined in over the compact set $A\times B$, then is bounded and uniformly continuous. We can take a maximizing sequence $(\phi_n, \psi_n)_{n\in \Naturals}$, by means of $c-$transforms we can improve it. The new sequence is uniformly continuous with same modulus of continuity than $c$.  We still denote the new improved sequence by $\phi_n$ and $\psi_n$. Each pair $\phi_n, \psi_n$ is continuous defined on an compact set, implying that both functions are bounded. We can subtract from $\phi_n$ its minimum and add it to $\psi_n$, this does not change the value of the functional. Therefore without any loss of generality we can substitute the sequence by a new one such that $\min \phi_n =0$ and $\psi_n$ is increased by the respective minimum of its partner. We have then that $\max \phi_n \leq \omega(X)$.
 
+Since $\psi_n$ is the $c-$concave transform, we have for all $y\in Y$, $\psi_n(y)\inf_{x\in X}(c(x,y)-\phi_n(x))$, therefore
+ \begin{equation}
+ 	\min_{(x,y)\in X\times Y}(c(x,y))-\omega(X)\leq\psi_n(y)\leq \max c,
+ \end{equation}
+ Proving that all the members of the sequence are bounded by the same constants.  By the means of the Arzel\`a-Ascoli theorem the sequence $(\phi_n, \psi_n)$ converges uniformly to a pair of continuous functions in $(\phi, \psi)$. Then by uniform convergence,
+ \begin{equation}
+ 	\int_A \phi_n\dmu + \int_B \psi_n\dnu\rightarrow  	\int_A \phi\dmu + \int_B \psi\dnu
+ \end{equation} 
+ Uniform convergence implies pointwise convergence therefore, $\phi_n(x)+\psi_n(y)\leq c(x,y)$ implies that $\phi(x)+\phi(y)\leq c(x,y)$. Finding in this way an admissible pair for the problem.
 \end{proof}
+
+The functions $\phi$ and $\psi$ are known in the literature related with optimal transport as Kantorovich's potentials. Recall the factories-customers problem, with an entrepreneur in charge of the transportation. A function $c$ represents the cost for an agent to move a unit of mass from a factory $y\in Y$ to a customer $x\in X$. It is natural that our entrepreneur will take the merchandise to supply each customer from the closest factory. However, a more natural situation is the possibility that each customer $x\in X$ negotiates the price $\phi(x)$ that is able to pay for each unit of product. The entrepreneur will try to obtain the maximum profit possible, for this purpose he needs to know at each factory which customers to distribute from there such that the profit is maximum $\zeta(y)=\sup_{x\in X}\phi(x)-c(x,y)=-\inf_{x\in X} c(x,y)-\phi(y)=-\phi^c(x)$, that is exactly the negative of the $c-$concave transform of the price $\phi(x)$ that each customer is able pay. We can imagine a similar situation but instead of hiring an entrepreneur we set the prices $\psi(y)$ at each factory $y\in Y$. It is natural that each customer will try to minimize the purchase costs $\psi_{-}(y)$ plus transportation costs, that is $\inf_{y\in Y}c(x,y)+\psi(y)$. From the perspective of the factory $\psi(y)=-\psi_{-}(y)$, that leads to the $\bar{c}$ transform of the prices we are setting at each factory. 
+
 Now we are able to introduce $c-$monotonicity, we will see the importance of this construction in order to formalize the relation between the dual problem and primal problem of Kantorovich's optimal transport problem formulation. 
 
 We start considering again our factories-costumers transportation problem. This time assume that the consortium is in charge of the transportation and it has already a plan to transport the products from factories to stores. 
