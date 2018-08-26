@@ -1,5 +1,6 @@
 \chapter{Preliminaries.}
-We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications.
+We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. It is meant to be a really brief abstract of the definitions, motivations and results needed to give the formalism of the next chapters, adapted to the notation used in this project. For a structured construction of the theory or details of the proofs for the results here discussed we give the respective references.
+
 
  
 \section{Definitions and important theorems to remember.}
@@ -16,7 +17,7 @@ We start this chapter reminding the basic definitions and theorems in topology a
 %	These maps $\proj_x$ and $\proj_y$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
 %\end{definition}
 \subsection{Topology.}
-We start with the definition of topology that is needed to introduce a notion of continuity and convergence. We recall some important notions used during the development of the present text, for a deeper and better understanding of theory we refer to \cite{munkres2000topology} for more details in topology. 
+We start with the definition of topology that is needed to introduce a notion of continuity and convergence. We recall some important notions used during the development of the present text, for further details about this topic we refer \cite{munkres2000topology}. 
 \\
 
 A set $X$ endowed with a topology $\mathcal{T}$ is a \textbf{topological space}. The elements of a topology are called \textbf{open} sets. Any set of $X$ that is a complement of a set in $\mathcal T$ is called a \textbf{closed} set. We call a neighborhood of $x\in X$ to any set in $\mathcal{T}$ that contains $x$.
@@ -37,7 +38,7 @@ Let $X$ be a topological space  endowed with a topology $\mathcal{T}$. If $Z$ is
 \begin{definition}[Continuity]
 Let $X$ and $Y$ be topological spaces. A function $f:X\rightarrow Y$ is said to be continuous if for each open subset $V$ of $Y$, the set $f^{-1}(V)$ is an open subset of $X$.\label{def: Continuity} 
 \end{definition}
-Continuity not only depends upon the function $f$, but also in the topologies specified for the range and the domain of $f$. The support $\supp(f)$ of a continuous real valued function $f$ is the closure of the set $\braces{x\in X:\ f(x)\neq 0}$.\\
+Continuity not only depends upon the function $f$, but also in the topologies specified for the range and the domain of $f$. We say that $f$ is an \textbf{homeomorphism} if $f$ is bijective, continuous and $f^{-1}$ is also continuous. The support $\supp(f)$ of a continuous real valued function $f$ is the closure of the set $\braces{x\in X:\ f(x)\neq 0}$.\\
 
 A sequence $\parentheses{x_n}_{n\in \Naturals}$ in $X$ is a countable indexed set of elements in $X$. We say that a sequence converges to the point $x$ of $X$ if for each neighborhood $U$ of $x$ there is a positive integer $M\in\Naturals$, such that $x_n\in U$, for all $n\geq M$. We use the notation $x_n\rightarrow x$, or $\lim_{n\rightarrow \infty} x_n = x$, to denote convergence of a sequence to a point $x$. \\
 
@@ -65,7 +66,8 @@ Given a metric space $X$ the diameter $\diam$ of set $A\subset X$ is given by,
 \begin{equation*}
 	\diam(A)=\sup\braces{d(x,y): \quad x, y \in A}.
 \end{equation*} 
-We say that $A$ is a bounded subset of a metric space $X$ if there is $M\in \Real_+$ such that $\diam(A)<M$
+We say that $A$ is a bounded subset of a metric space $X$ if there is $M\in \Real_+$ such that $\diam(A)<M$.
+
 \begin{definition}[Continuity in metric spaces]
 	The definition \ref{def: Continuity} for metric spaces is equivalent to say: A function $f:X\rightarrow Y$ defined from a metrizable space $(X, d_X)$ to a metrizable space $(Y, d_Y)$ is continuous if $\forall \epsilon\in\Real$ and $\epsilon>0$ there is $\delta \in \Real$ and $\delta>0$ such that,
 	\begin{equation*}
@@ -77,13 +79,18 @@ If $X$ is topological space and $A\subset X$. If there is a sequence of points o
 Let $f: X\rightarrow Y$ be continuous function between to topological spaces. If $(x_n)_{n\in \Naturals}$ is a sequence converging to $x$, then the sequence $f(x_n)$ converges to $f(x)$. If $X$ satisfies the first axiom of countability we can invert the implication. Therefore for a metrizable space $X$ the converse holds. 
 
 
-In topology we can find different notions of compactness. We start with the usual notion, a topological space $X$ is called \textbf{compact} if every open covering contains a finite subcover also covering $X$. A metrizable space $X$ is compact if and only if is sequentially compact. Every compact metric space is separable. \\
+
+A \textbf{ cover} is a family $\mathcal B$ of subsets of $X$ such that the union of all its sets is equal to $X$. If all the sets in the family $\mathcal A$ are open we call it an open cover. 
+
+In topology we can find different notions of compactness. We start with the usual notion, a topological space $X$ is called \textbf{compact} if every open covering contains a finite subcover also covering $X$. A metrizable space $X$ is compact if and only if is sequentially compact. Every compact metric space is separable. The importance of the metrizability consists of the fact that all the topological properties can be characterized by sequences. \\
 
 
-Every closed subspace of a compact space is compact. Every compact subspace of a Hausdorff space is closed. The image of a compact space under a continuous map is compact. The product of \emph{finitely many} compact spaces is compact. \\
+Every closed subspace of a compact space is compact. Every compact subspace of a Hausdorff space is closed. The image of a compact space under a continuous map is compact. The product of \emph{finitely many} compact spaces is compact. We call \textbf{pre-compact} to any set whose closure is compact. \\
 
-A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footnote{Given a metric space $X$, a sequence $\parentheses{x_n}_{n\in\Naturals}$ is said to be Cauchy, if for every real $\epsilon>0$ there is $N$ such that for all $m,n>N$ pair $d(x_m, x_n)<\epsilon$} has a limit in $X$. Every compact metric space is complete. We call \textbf{Polish space} to any topological space that is separable and completely metrizable. 
+A metric space $X$ is said to be \textbf{totally bounded} if for every $\epsilon>0$, there is a finite covering of $X$. A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footnote{Given a metric space $X$, a sequence $\parentheses{x_n}_{n\in\Naturals}$ is said to be Cauchy, if for every real $\epsilon>0$ there is $N$ such that for all $m,n>N$ pair $d(x_m, x_n)<\epsilon$} has a limit in $X$. Every compact metric space is complete. 
+A metric space is compact if and only if it is complete and totally bounded.
 
+We call \textbf{Polish space} to any topological space that is separable and completely metrizable. There is a subtle difference between complete metric space and completely metrizable space, that is exists a distance $d$ that such that the space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.
 
 \begin{theorem}[Extreme value theorem]
 	Let $f:X\rightarrow \Real$ be a continuous real valued function. If $X$ is compact, then there exist points $u$ and $v$ in $X$ such that $f(u)\leq f(x)\leq f(v)$ for all $x\in X$.
@@ -97,7 +104,8 @@ A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footno
 		d_X(x_0, x_1)<\delta \implies d_Y(f(x_0), f(x_1))<\epsilon
 	\end{equation}  
 \end{definition}
-If a function $f$ is continuous on a compact set, then $f$ is uniformly continuous.
+If a function $f$ is continuous on a compact set, then $f$ is uniformly continuous.\\
+
 %\begin{definition}
 %	Let $(X, d_X)$ and $(Y, d_Y)$ be two metric spaces. The approximation speed is given byThe modulus of a continuity\footnote{Also know as first modulus of continuity $\omega_1$, since this definition can be extended for smoother functions. In \cite{Steffens2006HistoryofApprox} is mentioned how the modulus of continuity plays an important role as a measure of the size of the error with respect to an approximation scheme. Lebesgue was the first one to use the name $\omega$ for real valued functions.} $\omega$ of a continuous function $f:X\times\rightarrow Y$ is given by,
 %	\begin{equation*}
@@ -107,29 +115,115 @@ If a function $f$ is continuous on a compact set, then $f$ is uniformly continuo
 %\end{definition}
 %%%%%%%%%%%%%
 %If $f$ is uniformly continuous there exists a nonnegative increasing function $\omega$ such that $\lim_{\delta\rightarrow 0} \omega(\delta)\rightarrow 0$ and $\omega(0)=0$ and acts as the modulus of continuity of $f$.
-A space $X$ is said to be \textbf{locally compact} at $x$ if there is some compact subspace $K$ of $X$ that contains a neighborhood of $x$. If $X$ is locally compact at each $x$ we call it just locally compact. Equivalently a topological space is locally compact if each of its points has an open neighborhood whose closure is compact. Any compact space is locally compact.
+A space $X$ is said to be \textbf{locally compact} at $x$ if there is some compact subspace $K$ of $X$ that contains a neighborhood of $x$.If $X$ is locally compact at each $x$ we call it just locally compact. Equivalently a topological space is locally compact if each of its points has an open neighborhood whose closure is compact. Any compact space is locally compact.
 
 On locally compact spaces $X$. We denote by $C_0(X)$ the set of continuous functions vanishing at infinity, i.e. $f\in C_0(X) \iff f \in C(X)\ \mand \ \forall \epsilon >0,\ \exists K\subset X$ such that $K$ is compact and $\abs{f(x)}<\epsilon$, for all $x\in X\backslash K$. 
 
 We see that for any locally compact topological space $C_0(X)\subset C_b(X)\subset C(X)$. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$.
 
 
-
-
+A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $x_0$ if given $\epsilon>0$, there is a neighborhood $U$ of $x_0$ such that for all $x\in U$ and all $f\in F$, $d(f(x), f(x_0))<\epsilon$. If $F$ is equicontinuous at all $x\in X$ we just call it equicontinuous.
+\begin{theorem}[Arzel\`a-Ascoli]
+	Let $X$ be a compact metric space;  The a subset $K\subset C(X)$ is pre-compact in the uniform topology (the topology induced by the distance $d(f,g)=\sup_{\alpha\in X} \abs{f(\alpha)-g(\alpha)}$), if and only if it is equicontinuous and pointwise bounded.
+\end{theorem}
 
 \subsection{Functional Analysis}
+Some notions in functional analysis are needed when we are trying to optimize a functional. 
+
+
+The \textbf{epigraph} of a real valued function $f:X\rightarrow \Realex$ is the set $\epi(f)=\braces{(x,t)\in X\times t:\ f(t)\leq t}$. Given a topological space $X$ we say that \textbf{limit inferior} of real valued function $f:X\rightarrow \Realex$ as $x$ tends to $x_0$ is defined as
+\begin{equation*}
+	\liminf_{x\rightarrow x_0} f(x):=\sup_{\substack{x_0\in A\\A=\inter A}} \parentheses{\inf_{x\in A\backslash \braces{x_0}} f(x)}
+\end{equation*}
 \begin{definition}[Lower Semicontinuous]
-\end{definition}
-\begin{theorem}[Arzela-Ascoli]
+	\label{def: l.s.c.}
+	Let $X$ be a topological space and let $f:X\rightarrow \Realex$.
+	\begin{itemize}
+		\item The function $f$ is lower semicontinuous (abbreviated as l.s.c.) if the set $\braces{x\in X:\ f(x)<t}$ is closed for every $t\in \Real$.
+		\item The function $f$ is sequentially lower semicontinuous if the set $\braces{x \in X:\ f(x)\leq t}$ is \emph{sequentially closed} for every $t\in \Real$.
+		\item The function $f$ is upper semicontinuous if $-f$ is lower semicontinuous.   
+	\end{itemize}
+\end{definition}	 
+
+The statement $f$ is lower semicontinuous is equivalent to the epigraph of $f$ is closed. Simultaneously, $f$ is lower semicontinuous if and only if $\forall x_0 \in X$, $f(x_0)\leq \liminf_{x\rightarrow x_0}$. In similar way, a function is sequentially lower semicontinuous if and only if its epigraph is sequentially closed. Moreover, $f$ is sequentially lower semicontinuous if and only if for each sequence $\parentheses{x_n}_{n\in\Naturals}$  converging to $x_0$, $f(x_0)\leq \liminf_n f(x_n)$.\\
+
+Functions that are lower semicontinuous can be written as the pointwise supremum of a family of lower semicontinuous functions. 
+\begin{theorem}Let $X$ be a topological space and let $(f_\alpha)_{\alpha\in \mathcal{J}}$ be a net (finite, countable or uncountable) of lower semicontinuous (or sequentially lower semicontinuous) functions defined on $X$ onto the extended real line, $f_\alpha: X\rightarrow \Realex$. Then the function $f$ defined by,
+	\begin{equation*}
+		f=\sup_{\alpha\in\mathcal{J}}f_\alpha
+	\end{equation*}
+is lower semicontinuous (sequentially lower semicontinuous).
+In addition if the family is finite, the function $f_{-}$ defined by,
+\begin{equation*}
+	f_{-}= \min_{\alpha\in\mathcal{J}} f_\alpha
+\end{equation*}
+is also lower semicontinuous (sequentially lower semicontinuous).
 \end{theorem}
-\begin{definition}[Vector Space]
+
+\begin{theorem}[Weierstrass]
+	Let $X$ be a topological space, let $K\subset X$ be compact (respectively sequentially compact), and let $f:X\rightarrow \Realex$ be a lower semicontinuous (respectively sequentially lower semicontinuous) function.
+	Then there exists $x_0\in K$ such that,
+	\begin{equation*}
+		f(x_0)=\min_{x\in K} f(x)
+	\end{equation*}
+\end{theorem}
+We pay special attention to direct method of calculus of variations and Weierstrass criterion for minimizers.
+
+
+A \textbf{linear space} $V$ over the scalar field $\Real$ is a set of points, or vectors, on which are defined operations of vector addition and scalar multiplication with the following properties:
+\begin{enumerate}
+	\item The set $V$ is a commutative group with respect to the operation $+$ of vector addition, that is for all $v,w,u\in X$, we have that $v+w=w+v$ and $v+(w+u)=(v+w)+u$, there is a zero vector $0$ such that $v+0=v$ for all $v\in V$, and for each $v\in V$ there is a unique vector $-v$ such that $v+(-v)=0$. \\
+	\item 	For all $v,w\in V$ and $\alpha, \beta \in \Real$, we have that $1v=v$, $\alpha(v+w)=\alpha v+\alpha w$, $\alpha (\beta x)=\beta(\alpha v)=(\alpha\beta) v$ and $(\alpha+\beta)v=\alpha v+\beta v$.
+\end{enumerate}
+
+\begin{definition}[Norms and Seminorms]
+A mapping $p: X \rightarrow \Real$ is called a \textbf{seminorm} on a vector space $V$ if it has the following properties:
+	\begin{itemize}
+		\item $p(\lambda{v})\leq \abs{\alpha}p(v)$ $\forall v \in V$ and $\forall \alpha \in \Real$, (absolutely scalable).
+		\item $p(u+v)\leq p(u)+p(v)$, $\forall u,v\in V$, (subadditive).
+	\end{itemize}
+These conditions imply that $p(x)\geq 0$ for all $x\in X$. If $p$ has the strong condition $p(x)>0$ for $X\backslash \braces{0}$ then $p$ is called a \textbf{norm}. If $p$ is a norm we usually use the symbol $\norm{\cdot}$, to denote $\norm{x}=p(x)$.  
 \end{definition}
-\begin{definition}[Linear map]	
-\end{definition}
-\begin{definition}[Affine maps]
-\end{definition}
+
+%\begin{definition}[Norm on a Linear Space]
+%	A norm on a linear space $V$ is a function $\norm{\cdot}:V\rightarrow \Real$ following the properties:
+%	\begin{enumerate}
+%		\item $\norm{v}\geq 0$, for all $v\in V$.
+%		\item $\norm{\alpha v}=\abs{\alpha}\norm{v}$, for all $v\in V$ and $\alpha \in \Real$.
+%		\item $\norm{v+w}\leq \norm{v}+\norm{w}$, for all $v, w\in V$.
+%		\item $\norm{v}=0 \iff v=0$. 
+%	\end{enumerate}
+%\end{definition}
+
+A linear space is a metric space with a distance $d(v,w)=\norm{v-w}$. A linear subspace is a subset of a linear space that is also a linear space. A complete vector space is called a \textbf{Banach space}.
+
+
+\begin{theorem}(Tonelli's Method)
+	Let $X$ be a normed space and let $f:V\rightarrow \Realex$ be not identically to $\infty$. The Tonelli's method
+	\begin{enumerate}
+		\item Consider a minimizing sequence $\braces{x_n}_{n\in \Naturals}\subset X$, that is a sequence such that
+		\begin{equation*}
+		\lim_{n\rightarrow\infty}f(v_n)=\inf_{v\in V}f(v)
+		\end{equation*}
+		\item Prove that the sequence $\parentheses{v_n}_{n\in \Naturals}$ admits a subsequence $\braces{v_{n_k}}_{n_k\in \Naturals}$ that converges with respect to some topology $\mathcal T$ to some point $v_0\in V$.
+		\item Establish sequential lower semicontinuity of $f$ with respect $\mathcal T$.
+		\item In the view of previous steps, conclude $v_0$ is a minimum of $f$ given that,
+		\begin{equation}
+			\inf_{v\in V}f(v)=\lim_{n\rightarrow\infty }f(v_n)=\lim_{n_k\rightarrow \infty}f(v_{n_k})\geq f(v_0)\geq \inf_{v\in V}f(v)
+		\end{equation}
+	\end{enumerate}
+\end{theorem}
+%\begin{theorem}
+%	Let $X$ be a locally compact Hausdorff; give $C_0(X)$ the uniform topology. A subset $B\subset C_0(X)$ has a compact closure if and only if it is pointwise bounded, equicontinuous and vanishes uniformly at infinity. 
+%\end{theorem}
+A map from a vector space $X$ onto a vector space $Y$ is said to be linear if $T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)$ for all $x,y\in X$ and all $\alpha, \beta \in \Real$. A linear operator $T$, from $X$ onto $Y$ is continuous if and only if is bounded, i.e. $T(M)$ is bounded for every bounded subset of $M\subset X$. The set $\mathcal{L}(X,Y)$ of linear bounded operators defined on a linear space $(X, \norm{\cdot}_X)$ onto the linear space $(Y, \norm{\cdot}_Y)$ becomes a linear normed space, with the norm defined by
+\begin{equation*}
+	\norm{T}:=\sup\braces{\norm{T(x)}_Y; \norm{x}_X\leq 1}=\inf\braces{K:\ \norm{T(x)_Y\leq K\norm{x}_X},\ \forall x \in X}
+\end{equation*}
+If $Y$ is Banach then $L(X, Y)$ is also Banach.
 \begin{definition}[Duality]
 \end{definition}
+Any linear continuous operator is weakly continuous.
 \begin{theorem}[Banach-Alaoglu]
 Let $X$ be an arbitrary normed space, and let $X^*$ be its dual. A closed unit ball $B\subset X^*$ is weak-star compact.
 \end{theorem}
@@ -138,20 +232,95 @@ Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the 
 \end{theorem}
 \begin{corollary} Let $X$ be a separable normed vector space and let $X^*$ be its topological dual space. Then every bounded sequence $(\phi_n)_{n\in \Naturals}\in X$ has a weak-star convergent subsequence.
 \end{corollary}
-\begin{theorem}[Weak Topology is not metrizable]
-	content...
-\end{theorem}
-We pay special attention to direct method of calculus of variations and Weierstrass criterion for minimizers.
-\begin{theorem}[Direct Method of Calculus of Variations]
-\end{theorem}
+
 \subsection{Convex Analysis.}
+We introduce some notions in convexity since this concept plays an important role in optimization. Convex sets and functions have nice properties that can be exploit in the development of theorems in optimization. 
+ 
+A subset $E$ of a vector space $V$ is convex if for all $v_1$, $v_2$ in $E$ and all $\alpha \in (0,1)$ we have that $\alpha v_1+(1-\alpha)v_2=v\in E$.
+A particular class of topological linear spaces with richer properties is the class of\textbf{ locally convex spaces}; these are topological linear spaces with the property that for every element there exists a base of neighborhoods consisting of convex sets.
+
+ 
+A function $f: V \rightarrow \Realex$ is convex if and only if $\epi(f)$ is a convex set.
+
+Let $\alpha\in [0,1]$, a function $f:V\rightarrow \Realex$ defined on a vector space $V$ is said to be \textbf{convex} if $f(\alpha v_1+(1-\alpha)v_2)\leq \alpha f(v_1)+(1-\alpha)f(v_2)$. We call it \textbf{strictly convex} if the inequality holds strictly. We call the function \textbf{proper} if it is convex and does not take the value $-\infty$ and it is not equally to $\infty$. We call a function $f$ \textbf{concave} if $-f$ is convex. \\
+
+Note that taking $v_1\neq v_2$ and $v_2=0$, if $f$ is convex for all $v_1$ then $f(\alpha v_1)\leq \alpha f(v_1)$ for all $v_1\in V$; the inequality inverts if $f$ is concave. Every norm is a convex function. If $f$ is concave we have that $f(\alpha v_1+(1-\alpha)v_2)\geq \alpha f(v_1)+(1-\alpha)f(v_2)$, for all $t\in [0,1]$.
+
+Given any nonempty subset $A$ of $X$, the function $\one_A$ on $X$, defined by
+
+\begin{equation*}
+	\one_A(x)=\begin{cases}
+	0 & \text{if } x \in A\\
+	\infty & \text{if } x \neq A
+	\end{cases}
+\end{equation*}
+is called the indicator function of $A$. 
+
+%If $E$ is a subset of the vector space $V$, then the function $f:E\rightarrow \Realex$ is said to be convex if the extension.
+%\begin{equation*}
+%	\bar f(v)=\begin{cases}
+%	f(v) &  \text{if } v\in E\\
+%	\infty & \text{if }v \notin E
+%	\end{cases}
+%\end{equation*} 
+%is a convex function in $V$.
+
+\begin{theorem}[Hahn-Banach theorem]
+	Let $X$ be a real linear space, let $p$ be a real convex function on $X$ and let $Y$ be a linear subspace of $X$. 
+\end{theorem}
+
+
+In relation with concavity we have the modulus of continuity of a continuous function. For example, the following are examples of characterization of functions.
+\begin{definition}
+	Let $X$ be a metric space with a distance $d_X$ and let $Z \subset X$. A function $f: X\rightarrow \Real$ onto a metric space $Y$ with a distance $d_Y$ is said to be,
+	\begin{itemize}
+		\item \textbf{Lipschitz continuous} if
+		\begin{equation*}
+		\mathrm{Lip}(f; Z):=\sup\braces{\frac{d_Y(f(x), f(y))}{d_X(x,y)}: \ x,y \in Z, x\neq y} < \infty
+		\end{equation*}
+		\item \textbf{locally Lipschitz continuous} if for every compact $K\subset Z$,
+		\begin{equation*}
+		\sup\braces{\frac{d_Y(f(x), f(y))}{d_X(x,y)}: \ v,w \in K, v\neq w}<\infty
+		\end{equation*}
+		\item  \textbf{H\"older continuous} with exponent\footnote{Note that we have introduced a norm notation.} $0<\alpha<1$ if,
+		\begin{equation*}
+			\norm{f}_{C^{0,\alpha}(E)}:=\sup\braces{\frac{d_Y(f(x),f(y))}{d_X(x,y)}: \ x, y \in E, x\neq y}<\infty.
+		\end{equation*}
+	\end{itemize}
+\end{definition}
+Given a subset $Z$ of a metric space $X$ and a function $f: Z\rightarrow \Real$ the \textbf{modulus of continuity} $\omega:\Real_+\rightarrow \Real_+$ defined by $\omega(\delta;f)=\sup\braces{\abs{f(x)-f(y)}: x,y \in Z, d(x,y)<\delta}$. Note that $f$ is uniformly continuous if and only if $\omega(\delta; f)\rightarrow 0$ as $\delta\downarrow 0$, that is continuous at zero. The modulus of continuity of uniformly continuous function is subadditive. The \textbf{concave modulus of continuity} $\overline{\omega}:\Realex_+\rightarrow \Realex_+$ is defined as the smallest concave function above $\omega$. If $K=X$ and $f$ is uniformly continuous, then it is always possible to replace $\omega$ with $\overline{\omega}$.
+\begin{theorem}
+	Let $E$ be a subset of a metric space $X$. Any uniformly continuous bounded function $f:E\rightarrow\Real$ can be extended to a function $g:X\rightarrow \Real$ with the same modulus of continuity, supremum and infimum.
+\end{theorem}
+*********************
+A  lower-semicontinuous, proper and convex function $f$ on a reflexive Banach space $X$ takes a minimum value on every bounded, convex and closed subset $M$ of $X$. In other words, $\exists x_0 \in M$ such that
+\begin{equation}
+f(x_0)=\inf\braces{f(x):\ x\in M}
+\end{equation}
+\begin{definition}
+	Let $V$ be a locally convex topological vector space, let $f:
+	V\rightarrow\Realex$, and let $v_0 \in V$ be such that $f(v_0)\in\Real$. The function $f$ is said to be subdifferentiable at $v_0$ if there exists $v*\in V*$ such that,
+	\begin{equation}
+	f(v)\geq f(v_0)+\anglesbox{v*, v-v_0}_{V*,V}, \quad 
+	\end{equation} 
+\end{definition}
+
+A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ are just the solutions to the equation  $x\in\partial f(x)$.
+
+
+
+
 
 \subsection{Measure Theory.}
-All measures considered in this text are Borel measures on Polish spaces, equipped with
-their respective Borel $\sigma$-algebra.
+
+Let $X$ a topological space. 
+A probability measure on 
+
+
+
 \cite{Milan2000TpicsWeakconvProbs}
 \begin{theorem}[Regular Measure]
-	The outer measure coincides with the inner measure. That is 
+	A measure such that the outer measure coincides with the inner measure.
 \end{theorem}
 \begin{definition}[Support of a measure.]
 	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
@@ -161,14 +330,14 @@ their respective Borel $\sigma$-algebra.
 	\end{equation} 
 \end{definition}
 
-Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$.  It is a linear vector space; a norm can be introduced by the variation of a measure:
+Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$. The set of generalized measures on $X$ is a linear space; a norm can be introduced by the so called total variation of the whole space $X$:
 \begin{equation}
-	\abs{m}=m^+(X)+m^-(X)
+	\norm{m}=\abs{m}(X)=m^+(X)+m^-(X)
 \end{equation}
 where, 
 \begin{align*}
 	m^+(X):=\sup\braces{m(B):\ B \in \mathcal{A}} \\
-	m^-(X):=-\inf
+	m^-(X):=-\inf\braces{m(B):\ B \in \mathcal{A}}
 \end{align*}
 \begin{theorem}[Aleksandrov]
 	For an arbitrary topological space $X$ any linear continuous functional on $C(X)$ is of the form,
@@ -186,34 +355,28 @@ where,
 	Let $X$ be a locally compact Hausdorff space, let $\mathcal A$ be a $\sigma-$algebra on $X$ containing the Borel $\sigma-$algebra of $X$. Let $\mu$ a regular measure on $(X, \mathcal A)$ and let $f:X\rightarrow \Real$ be $\mathcal A$-measurable. If $A$ belongs to $\mathcal{A}$ and satisfies $\mu(A)<\infty$ and given a positive number $\epsilon>0$, then there is a compact $K\subset X$ such that $\mu(X\backslash K)<\epsilon$ and the restriction $\domainrestr{K}{f}$ is continuous in $K$. Moreover, there is a function $g\in C_c(K)$ such that $g(x)=f(x)$ for each $x\in K$. 
 \end{theorem}
 
-It follows that the supremum of a collection of continuous (or lower semicontinuous) functions is
-lower semicontinuous and that each lower semicontinuous function on a Hausdorff
-space is Borel measurable.
-
+It follows that the supremum of a collection of continuous (or lower semicontinuous) functions is lower semicontinuous and that each lower semicontinuous function on a Hausdorff space is Borel measurable. 
 
 
 The space of probabilities $\PlanSp(X)$ is not closed in $\MeasureSp(X)$. 
 
 
-The structure of the second dual $C(X)^{**}$ is too complex, but it is well known that $B(X)-$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$
-
+The structure of the second dual $C(X)^{**}$ can be really complex, although it is known that $\MeasureSp_b(X)$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$
 
 A set $\Pi$ of probability measures is relatively compact if any sequence of probability measures $\mu_n \in \Pi$ contains a subsequence $(\mu_{n_k})_{n_k\in \Naturals}$ which converges weak-star to a probability measure in $\PlanSp(X)$.
 
 We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu\in \PlanSp(X)$ and any positive real number $\epsilon>0$ there is a compact $K\subset X$ such that $\mu(X\backslash K)\leq \epsilon$. We also say that a set of probabilities $\Gamma$ is tight if $\forall \mu \in \Gamma$, $\mu$ is tight.
 
-
-
 \begin{theorem}
 	If $X$ is a complete and separable topological space, then $\PlanSp(X)$ is tight.
 \end{theorem}
 
-\begin{theorem}[Prohorov]
-	Let $X$ an arbitrary metric space and let $\Gamma$ be a tight set of measures. Then $\Gamma$ is relatively compact.
+\begin{theorem}[Prokhorov and Polish spaces]
+	Let $X$ be a Polish space. Then there is a complete metric $d_0$ over $\PlanSp(X)$ equivalently to the weak topology. Moreover, let $K\subset \PlanSp(X)$ be a subset in $\PlanSp(X)$. Then $K$ is tight if and only if $\closu K$ in the weak topology of $\PlanSp(X)$ is pre-compact.
 \end{theorem}
 
-
 \subsubsection{Results for Image Measure.}
+We state some definitions to prove density of transport plans induced by maps in the set of transport maps (Lemma \ref{lem: Density of maps.}). The proof of the following theorems and lemmas as well as Lemma \ref{lem: Density of maps.} are detailed in \cite{Santambrogio2015OT}.
 \begin{definition}[Image Measure]
 	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
 	\begin{equation*}
@@ -234,7 +397,5 @@ There exists a Borel map $\sigma_d: \Real^d\rightarrow \Real$ which is injective
 \end{theorem}
 			
 \begin{theorem}
-	Consider on a compact metric space $X$, endowed with a probability $\rho \in \PlanSp(X)$, a sequence of partitions $G_n$, each $G_n$ being a family of disjoint subsets, $\bigcup_{i\in I_n}C_{i,n}=X$ for every $n$. Suppose that $size(G_n):=\max_i \parentheses{\diam\parentheses{C_{i,n}}}$ tends to $0$ as $n\rightarrow \infty$ and consider a sequence of probability measures $\rho_n$ on $X$ such that, for every $n$ and $i\in I_p$, we have $\rho_n(C_{i,n})$. Then $\rho_n\weakconvergence\rho$.
+	Consider a compact metric space $X$, endowed with a probability measure $\rho \in \PlanSp(X)$, a sequence of partitions $G_n$ such that each $G_n=(C_\alpha)_{\alpha \in \mathcal{J}_n}$ is a family of disjoint subsets satisfying $\bigcup_{i\in \mathcal{J}_n}C_{i,n}=X$ for every $n$. Suppose that $size(G_n):=\max_i \parentheses{\diam\parentheses{C_{i,n}}}$ tends to $0$ as $n\rightarrow \infty$ and consider a sequence of probability measures $\rho_n$ on $X$ such that, for every $n$ and $i\in I_p$, we have $\rho_n(C_{i,n})$. Then $\rho_n\weakconvergence\rho$.
 \end{theorem}
-
-

@@ -51,6 +51,17 @@ Where $H(\gamma)$ is the Shannon's Entropy defined for a matrix,
 \begin{theorem}
 	The Linear programming program after adding the regularization, becomes a strictly convex program.
 \end{theorem}
+\begin{lemma}
+	For all $g\in \Real^N$, $\nabla^2 H(g)$ admits $\lambda_N=0$ as eigenvalue with its associated normalized eigenvector $v_N= \frac{1}{N}\one_N\in \Real^N$, which means that $\mathrm{rank}(\nabla^2 H(g))\leq N-1$ for all $g\in \Real^N$ and $\gamma\in \Sigma_N$
+\end{lemma}
+\begin{proof}
+\begin{align*}
+	\nabla^2 H(g) v_N &=\frac{1}{\epsilon}\diag(\alpha)K\frac{q}{K\alpha}-\frac{1}{\epsilon}\diag(\alpha)K\diag(\frac{q}{(K\alpha)^2})\\
+	&=\frac{1}{\epsilon}\diag(\alpha)K\frac{q}{K\alpha}-\frac{1}{\epsilon}K\frac{q}{K\alpha}
+	&=0
+\end{align*}
+and $\lambda_N=0$ is an eigenvalue of $\nabla^2H(q)$
+\end{proof}
 \begin{theorem}
 	$\Theta_\epsilon(\mu, \nu)$ converges to the solution with maximum entropy as $\epsilon\rightarrow 0$
 \end{theorem}

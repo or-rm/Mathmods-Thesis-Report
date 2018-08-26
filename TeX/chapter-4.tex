@@ -1,5 +1,5 @@
 \chapter{Optimal Transport Theory}
-
+\label{chr: Optimal Transport Theory.}
 To introduce the optimal transport problem please imagine we are asked by a consortium of factories to design a plan for distributing their products among its many customers in such a way that the transportation costs are minimal. \\
 
 
@@ -68,7 +68,7 @@ Then take the sequence $f_n:[0,1]\rightarrow [0,1]$,
 \end{equation}
 
 
-We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to check that $\mu\parentheses{f_n^{-1}\left(A\right)}=\Lebesgue^1\parentheses{A}$ for every open set $A\in [0,1]$. In the other hand, this is sequence of oscillating function converging weakly\footnote{A sequence of bounded periodic functions converges weakly to its mean value.} to its mean value $f_n\weakconvergence f=\frac{1}{2}$, which  makes $\Tmeasure{\mu}{f}\neq\Lebesgue^1\measurerestr [0,1]$.
+We see that the sequence satisfies $\Tmeasure{\mu}{f_{n}}=\mu$. It is easy to check that $\mu\parentheses{f_n^{-1}\left(A\right)}=\Lebesgue^1\parentheses{A}$ for every open set $A\in [0,1]$. In the other hand, this is sequence of oscillating function converges weakly to its mean value $f_n\weakconvergence f=\frac{1}{2}$ by means of the Riemmann-Lebesgue theorem\footnote{Let $u\in L^p_{\mathrm{loc}}(\Real^N)$, be $Q-$ periodic, i.e. $u(x+e_i)=u(x)$ for any canonical basis $e_i$ of $\Real^N$, with $1\leq i\leq N$. For every $\epsilon>0$ and any $x\in\Real^N$, we set $u_\epsilon(x)=u(x/\epsilon)$. Then $u_\epsilon\weakconvergence \bar{u}$ in $L(E)$ for every bounded measurable set $E\subset \Real^N$ where $\bar{u}=const=\int_{Q(0,1)}u(y)\dy$. We can find the proof of this theorem in \cite{Fonseca2007ModCalculculusofVar} in the section of \emph{Weak convergence for $L^p$ spaces}.}, which makes $\Tmeasure{\mu}{f}\neq\Lebesgue^1\measurerestr [0,1]$.
 \begin{figure}[H]
 	\begin{center}
 \includegraphics[width=0.5\textwidth]{OscillatingMeasure}
@@ -169,7 +169,7 @@ The increasing rearrangement coupling is useful to construct the \textit{Knothe-
 	\item We repeat the construction, adding one variable after another. For example, after the assignation $x_1\rightarrow y_1$ has been determined, the conditional probability of $x_2$ is seen as a one-dimensional probability on a small slice of width $\dx_1$, and it can be transported to the conditional probability of $y_2$ seen as one dimensional probability of a slice of width $\dy_1$. After $n$ constructions, this procedure maps $\Y=T(\X)$.
 \end{enumerate} 
 
-The \textit{Knothe-Rosenblatt coupling} has the property that its Jacobian matrix of the change of variable $T$ is upper triangular with positive entries on the diagonal. 	
+The \textit{Knothe-Rosenblatt coupling} has the property that its Jacobian matrix for the change of variable $T$ is upper triangular with positive entries on the diagonal. 	
 
 
 \begin{lemma}[Gluing lemma] If $\Z$ is a function of $\Y$ and $\Y$ is a function of $\X$, then $\Z$ is a function of $\X$. Let $(X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(\X_1 , \X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , \Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(\Z_1 , \Z_2, \Z_3)$ such that $(\Z_1, \Z_2)$ has the same law as $(\X_1 ,\X_2)$ and $(\Z_2, \Z_3)$ has the same law as $(\Y_2, \Y_3)$.
@@ -237,11 +237,11 @@ The beauty of Kantorovich's formulation lies on the fact that the set of transpo
 \begin{proof}
 	To prove the existence we make use of the Weierstrass’ criterion for existence of minimizers. Therefore, we need to prove that $\Kantorovich$ is at least lower semicontinuous and compactness of the space $\Pi(\mu, \nu)$ under some topology. 
 	
-	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$. 
+	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$ defined in a compact space $X\times Y$. 
 	
-	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$. Weak-* compactness in dual spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. And in this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$. 
+	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$.  weak-* compactness in the dual of compact metric spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. In this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$.  We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. 
 	
-	We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
+	This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
 \end{proof}
 
 Continuity for the cost function and compactness of the metric spaces can be demanding requirements. However we can substitute them by milder conditions for the existence of a minimizer. 
@@ -256,21 +256,21 @@ By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ 
 
 
 \begin{lemma}
-	The set of couplings $\Pi(\mu, \nu)$ between two probability measures $\mu$ and $\nu$ defined over two Polish spaces $X$ and $Y$ is tight.
+	The set of couplings $\Pi(\mu, \nu)$ between two probability measures $\mu$ and $\nu$ defined over two Polish spaces $X$ and $Y$ respectively, is tight.
 \end{lemma}
 \begin{proof}
-	.....
+Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
+\begin{align*}
+\gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
+\end{align*}  
+Given the arbitrary way to choose $\epsilon$, $\Pi(\mu,\nu)$ is tight.
 \end{proof}
 \begin{theorem}
 Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then the Kantorovich's problem \eqref{eq: Kantorovich's Problem.} admits a solution.
 \end{theorem}
 
 \begin{proof}
-Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
-\begin{align*}
-	\gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
-\end{align*}  
-Given the arbitrary way to choose $\epsilon$, this shows tightness of all sequences in $\Pi(\mu, \nu)$ and hence compactness.
+ By Prokhorov the tightness of transport plans, we have relatively compactness of the transport plans and lower semicontinuity of the cost function. Applying Weirestrass criterion we obtain the existence of an optimizer.
 \end{proof}
 
 
@@ -374,7 +374,7 @@ The idea is that the mass of each point $x\in D$ is split in two and equally dis
 From the last example we see that a sequence of deterministic couplings converges to a transportation plan that is a solution for Kantorovich's problem \eqref{eq: Kantorovich's Problem.}, but clearly it is not for Monge's problem \eqref{eq: Monge's Problem.}. We also gave one example where \eqref{eq: Monge's Problem.} has no solution. Assume for a moment that Monge's  situation where indeed does exist a solution for Monge's problem, then the following question arises: Is there any situation where Monge's problem and Kantorovich's problem have the same solution?
 
 \begin{lemma}
-On a compact subset  ̋$\Omega \subset \Real^d$, the set of plans $\gamma_T$ induced by a transport is dense in the set of plans $\Pi(\mu, \nu) $ whenever $\mu$ is atomless.
+On a compact subset  ̋$\Omega \subset \Real^d$, the set of plans $\gamma_T$ induced by a transport is dense in the set of plans $\Pi(\mu, \nu) $ whenever $\mu$ is atomless.\label{lem: Density of maps.}
 \end{lemma}
 
 \begin{theorem}
@@ -556,7 +556,7 @@ Similarly $\forall y \in Y$,
 \end{proof}
 Every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can  apply again the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
 \begin{lemma}
-	Let $X$ and $Y$ be two Polish spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\zeta$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\zeta$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
+	Let $X$ and $Y$ be two compact metric spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\omega$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\omega$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
 \end{lemma}
 \begin{theorem}
 	Let $A\subset X$ and $B\subset Y$ be two compact subsets of two Polish Spaces $X$ and $Y$. Let $\mu$ and $\nu$ be probability measures defined on $A$ and $B$ respectively. And let $c:A\times B\rightarrow \Real$ be a continuous and finite cost function. Then the problem, 
@@ -750,10 +750,8 @@ If $c$ is lower semicontinuous we cannot assure the existence of an optimal pair
 \end{theorem}	
 \subsection{Duality by convex analysis.}
 We can prove duality introducing a perturbation as follows, 
-\begin{proposition}
-	Suppose $X$ and $Y$ are compact sets and $c$ is continuous. Then there exists a solution $\parentheses{\phi, \psi}$ for the 
-\end{proposition}
 \begin{definition}
+	\label{def: H perturbation}
 	Suppose that $X$ and $Y$ are compact metric spaces and $c:X\times Y\rightarrow \Real$ is uniformly continuous. For every $p\in C(X\times Y)$, let $H_\gamma:C(X\times Y)\rightarrow \Realex$ be a perturbation of the problem,
 	\begin{equation}
 	H_\gamma(p)=-\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
@@ -761,11 +759,30 @@ We can prove duality introducing a perturbation as follows,
 \end{definition}
 
 \begin{lemma}
-	Using the above definition terminology, $H_\gamma$ is convex.
+	Under the setting of definition \ref{def: H perturbation}, $H_\gamma$ is convex.
 \end{lemma}
 \begin{proof}
-	Take $p_0, p_1 \in C(X\times Y)$,  
+	Take $p_0, p_1 \in C(X\times Y)$,  with their optimal potentials $(\phi_0, \psi_0)$ and $(\phi_1, \psi_1)$. For $\alpha\in[0,1]$, define $p_\alpha=\alpha p_0+(1-\alpha)p_1$, $\phi_\alpha=\alpha \phi_0+(1-\alpha)\phi_1$ and $\psi_\alpha=\alpha \psi_0+(1-\alpha)\psi_1$. The pair $(\phi_\alpha, \psi_\alpha)$ is admissible for $-H(p_\alpha)$.
+	We have,
+	\begin{equation*}
+		H(p_\alpha)\leq -\parentheses{\int_X\phi_t\dmu+\int_Y\psi_t\dnu}=\alpha H(p_0)+(1-\alpha)H(p_1).
+	\end{equation*}
+\begin{lemma}
+	Under the setting of definition \ref{def: H perturbation}, $H_\gamma$ is lower semicontinuous for the uniform convergence on the compact set $X\times Y$.
+\end{lemma}
+	For lower semicontinuity, take a sequence $\parentheses{p_n}_{n\in\Naturals}$ converging uniformly to $p$, $p_n\rightarrow p$. Extract a subsequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ approaching to limit inferior of $H(p_n)$. By the means of uniform convergence and the converse implication of Arzel\`a-Ascoli theorem, the sequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ is equicontinuous and bounded. 
+	Thus, the optimal potentials $(\phi_{n_k}, \psi_{n_k})$ are also equicontinuous and bounded, with $\phi_{n_k}\rightarrow \phi$ and  $\psi_{n_k}\rightarrow \psi$ uniformly. The sequence satisfies $\phi_{n_k}(x)+\psi_{n_k}\leq c(x,y)-p_{n_k}(x,y)$.  Hence, 
+	\begin{equation}
+		H(p)\leq -\parentheses{\int_X \phi\dmu+\int_Y\psi\dnu}=\lim_{n\rightarrow \infty}H(p_{n_k})=\liminf_{n\in\Naturals}\ H(p_n).
+	\end{equation}
 \end{proof}
+Taking the Legendre transform of $H^*:\MeasureSp(X\times Y)\rightarrow \Real\cup\braces{+\infty}$. For every $\gamma\in \MeasureSp(X\times Y)$, we have
+\begin{align*}
+	H^*(\gamma)&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma -H(p)\\
+	&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma +\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}\\
+	&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma +\sup\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
+\end{align*}
+The above expression is exactly the equation 
 \subsection{Brenier's theorem}
 
 \begin{theorem}[Brenier's theorem]
@@ -783,12 +800,20 @@ We can prove duality introducing a perturbation as follows,
 
 
 \begin{theorem}[Distance between two Gaussians]
-	The optimal transport between two gaussians for cost function $c(x,y)=\abs{x-y}^2$ is given by a translation map.
+	The optimal transport plan for a cost function $c(x,y)=\abs{x-y}^2$ between two Gaussians in $\Real^d$ is given by an translation map.
+	That is, $\mu$ is a probability measure for the space $X=\Real^m$, defined by,
+	\begin{equation*}
+	\mu(A)=\int_{}	
+	\end{equation*}
+	and $\nu$ is a probability measure for the space $Y=\Real^n$ defined by,
+	\begin{equation*}
+		content...
+	\end{equation*} 
+	Then $\gamma\in \Pi(\mu,\nu)$ that solves the Kantorovich's problem is given by 
+	\begin{equation}
+		\gamma=\parentheses{x, m_\nu+A\parentheses{x-m_\mu}}
+	\end{equation}
 \end{theorem}
-
-\begin{proof}
-	
-\end{proof}
 
 %\section{****Wasserstein Spaces. $\WassersteinSp{p}$}
 
