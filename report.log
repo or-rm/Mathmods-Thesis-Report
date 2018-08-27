@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  26 AUG 2018 06:25
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  27 AUG 2018 03:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1795,64 +1795,84 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--89
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
 [8]
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 327.
+ []
+
+[9]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 402.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 327.
+(Font)              scaled to size 9.00014pt on input line 402.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 327.
-[9]) (./TeX/chapter-3.tex [10]
+(Font)              scaled to size 8.99986pt on input line 402.
+[10] [11]) (./TeX/chapter-3.tex [12]
 Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-[11
+[13
 
-] [12] [13]
+] [14] [15]
 Overfull \hbox (20.81253pt too wide) in paragraph at lines 187--188
 []\EU1/BookmanOldStyle(0)/m/n/10 We can construct nonbasic feasible solution, s
 etting arbitrary values for $[][] [] []$
  []
 
-[14]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 251--254
 
  []
 
-[15] [16]
+[17] [18]
 Underfull \hbox (badness 10000) in paragraph at lines 352--353
 
  []
 
-[17]) (./TeX/chapter-4.tex [18]
+[19]) (./TeX/chapter-4.tex [20]
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1883,14 +1903,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-[19
+[21
 
 ]
 File: ./Pictures/Monge-Problem-densities.png Graphic file (type QTm)
  <use  "./Pictures/Monge-Problem-densities.png" >
 File: ./Pictures/OscillatingMeasure.png Graphic file (type QTm)
 
-<use  "./Pictures/OscillatingMeasure.png" > [20]
+<use  "./Pictures/OscillatingMeasure.png" > [22]
 Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
@@ -1915,7 +1935,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-[21]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
@@ -1925,7 +1945,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
-[22]
+[24]
 Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
@@ -1936,51 +1956,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--194
  []
 
 File: ./Pictures/No-Transport-Map.png Graphic file (type QTm)
-<use  "./Pictures/No-Transport-Map.png" > [23]
+<use  "./Pictures/No-Transport-Map.png" > [25]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 205.
 
-[24] [25]
+[26] [27]
 File: ./Pictures/No-Optimal-Transport.png Graphic file (type QTm)
  <use  "./Pictures/No-Optimal-Transport.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26]
-[27]
+ [28]
+[29]
 Missing character: There is no ̋ in font [fonts/Arial_Italic.ttf]/OT:mapping=te
 x-text;mapping=tex-text;!
- [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 555--556
+ [30] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
-[31] [32] [33]
-Overfull \hbox (7.29567pt too wide) in paragraph at lines 656--657
+[33] [34] [35]
+Overfull \hbox (7.29567pt too wide) in paragraph at lines 659--660
 \EU1/BookmanOldStyle(0)/m/n/10 can say that every $[][]$cyclically monotone set
  is contained in the graph of the $[][]$superdifferential
  []
 
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 714--715
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
-[35] [36] [37]) (./TeX/chapter-5.tex [38]
+[37] [38] [39]) (./TeX/chapter-5.tex [40]
 Chapter 4.
-[39
+[41
 
-]) (./TeX/chapter-6.tex [40]
+]) (./TeX/chapter-6.tex [42]
 Chapter 5.
-) (./report.bbl [41
+) (./report.bbl [43
 
-] [42
+] [44
 
 ])
 \Changes@OutFile=\write6
 \openout6 = `report.soc'.
 
- [43]
+ [45]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./report.aux)
@@ -1989,11 +2009,11 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
  40165 strings out of 493638
- 739277 string characters out of 6146796
- 844268 words of memory out of 5000000
+ 739283 string characters out of 6146796
+ 845268 words of memory out of 5000000
  42861 multiletter control sequences out of 15000+600000
  11929 words of font info for 146 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,14n,94p,10425b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (51 pages).
+Output written on report.pdf (53 pages).

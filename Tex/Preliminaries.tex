@@ -1,5 +1,5 @@
 \chapter{Preliminaries.}
-We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. It is meant to be a really brief abstract of the definitions, motivations and results needed to give the formalism of the next chapters, adapted to the notation used in this project. For a structured construction of the theory or details of the proofs for the results here discussed we give the respective references.
+We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. It is meant to work as a really brief summary of the definitions, motivations and results needed to give the formalism of the next chapters, adapted to the notation used in this project. For a structured construction of the theory or details of the proofs for the results here discussed we give the respective references.
 
 
  
@@ -90,7 +90,10 @@ Every closed subspace of a compact space is compact. Every compact subspace of a
 A metric space $X$ is said to be \textbf{totally bounded} if for every $\epsilon>0$, there is a finite covering of $X$. A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footnote{Given a metric space $X$, a sequence $\parentheses{x_n}_{n\in\Naturals}$ is said to be Cauchy, if for every real $\epsilon>0$ there is $N$ such that for all $m,n>N$ pair $d(x_m, x_n)<\epsilon$} has a limit in $X$. Every compact metric space is complete. 
 A metric space is compact if and only if it is complete and totally bounded.
 
-We call \textbf{Polish space} to any topological space that is separable and completely metrizable. There is a subtle difference between complete metric space and completely metrizable space, that is exists a distance $d$ that such that the space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.
+We call \textbf{Polish space} to any topological space that is separable and completely metrizable. There is a subtle difference between complete metric space and completely metrizable space, that is exists a distance $d$ that such that the space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.\\
+
+Each closed subspace, and each open subspace, of a Polish space is Polish. The product of a finite or infinite sequence of Polish spaces is
+Polish.
 
 \begin{theorem}[Extreme value theorem]
 	Let $f:X\rightarrow \Real$ be a continuous real valued function. If $X$ is compact, then there exist points $u$ and $v$ in $X$ such that $f(u)\leq f(x)\leq f(v)$ for all $x\in X$.
@@ -122,7 +125,7 @@ On locally compact spaces $X$. We denote by $C_0(X)$ the set of continuous funct
 We see that for any locally compact topological space $C_0(X)\subset C_b(X)\subset C(X)$. If $X$ is compact we have $C_0(X)=C_b(X)=C(X)$.
 
 
-A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $x_0$ if given $\epsilon>0$, there is a neighborhood $U$ of $x_0$ such that for all $x\in U$ and all $f\in F$, $d(f(x), f(x_0))<\epsilon$. If $F$ is \textbf{equicontinuous} at all $x\in X$ we just call it equicontinuous. The subset $F\subset C(X)$ is \textbf{equibounded} if there is a constant $M$ such that, $\abs{f(x)}\leq M$ for all $f\in F$ and all $x\in X$.
+A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $x_0$ if given $\epsilon>0$, there is a neighborhood $U$ of $x_0$ such that for all $x\in U$ and all $f\in F$, $d(f(x), f(x_0))<\epsilon$. If $F$ is \textbf{equicontinuous} at all $x\in X$ we just call it equicontinuous. The subset $F\subset C(X)$ is \textbf{equibounded} if there is a common constant $M$ such that, $\abs{f(x)}\leq M$ for all $f\in F$ and all $x\in X$.
 \begin{theorem}[Arzel\`a-Ascoli]
 	Let $X$ be a compact metric space;  The subset $K\subset C(X)$ is pre-compact in the uniform topology (the topology induced by the distance $d(f,g)=\sup_{\alpha\in X} \abs{f(\alpha)-g(\alpha)}$), if and only if it is equicontinuous and equibounded.
 \end{theorem}
@@ -131,7 +134,8 @@ A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $
 Some notions in functional analysis are needed when we are trying to optimize a functional. 
 
 
-The \textbf{epigraph} of a real valued function $f:X\rightarrow \Realex$ is the set $\epi(f)=\braces{(x,t)\in X\times t:\ f(t)\leq t}$. Given a topological space $X$ we say that \textbf{limit inferior} of real valued function $f:X\rightarrow \Realex$ as $x$ tends to $x_0$ is defined as
+The \textbf{epigraph} of a real valued function $f:X\rightarrow \Realex$ is the set $\epi(f)=\braces{(x,t)\in X\times t:\ f(t)\leq t}$. In similar way, we define the \textbf{graph} $\graph(f)$ of a function $f$ as the set defined by the expression $\graph(f)=\braces{(x,y)\in X\times Y:\ f(x)=y}$. \\
+Given a topological space $X$ we say that \textbf{limit inferior} of real valued function $f:X\rightarrow \Realex$ as $x$ tends to $x_0$ is defined as
 \begin{equation*}
 	\liminf_{x\rightarrow x_0} f(x):=\sup_{\substack{x_0\in A\\A=\inter A}} \parentheses{\inf_{x\in A\backslash \braces{x_0}} f(x)}
 \end{equation*}
@@ -218,15 +222,46 @@ A linear space is a metric space with a distance $d(v,w)=\norm{v-w}$. A linear s
 %\end{theorem}
 A map from a vector space $X$ onto a vector space $Y$ is said to be linear if $T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)$ for all $x,y\in X$ and all $\alpha, \beta \in \Real$. A linear operator $T$, from $X$ onto $Y$ is continuous if and only if is bounded, i.e. $T(M)$ is bounded for every bounded subset of $M\subset X$. The set $\mathcal{L}(X,Y)$ of linear bounded operators defined on a linear space $(X, \norm{\cdot}_X)$ onto the linear space $(Y, \norm{\cdot}_Y)$ becomes a linear normed space, with the norm defined by
 \begin{equation*}
-	\norm{T}:=\sup\braces{\norm{T(x)}_Y; \norm{x}_X\leq 1}=\inf\braces{K:\ \norm{T(x)_Y\leq K\norm{x}_X},\ \forall x \in X}
+	\norm{T}:=\sup\braces{\norm{T(x)}_Y; \norm{x}_X\leq 1}=\inf\braces{K:\ \norm{T(x)_Y\leq K\norm{x}_X},\ \forall x \in X}.
 \end{equation*}
-If $Y$ is Banach then $L(X, Y)$ is also Banach.
-\begin{definition}[Duality]
-\end{definition}
-Any linear continuous operator is weakly continuous.
+If $Y$ is Banach then $L(X, Y)$ is also Banach. We call the dual of a Banach space $X$ the space $X^*=L(X,\Real)$ that is also Banach. 
+
+\subsubsection{Duality.}
+Two linear spaces $X$ and $Y$, define a \textbf{dual system} if a fixed bilinear functional on their product is given $\anglesbox{\cdot, \cdot}_{X,Y}: X\times Y \rightarrow \Realex$. The dual system is called \textbf{separated} if for every $x\in X\backslash\braces{0}$ there is $y\in Y$ such that $\anglesbox{x,y}_{X,Y}\neq 0$ and for every $y\in Y\backslash\braces{0}$ there is $x\in X$ such that $(x,y)\neq 0$.
+
+For each $x$ we can define the application $T_x:Y\rightarrow \Realex$ by $T_x(y)=\anglesbox{x,y}_{X,Y}$, for all $y\in Y$, we see that $T_x$ is a linear functional on $Y$ and the mapping $x\mapsto T_x$, is linear and injective. Thus the elements of $X$ can be identified with the linear functionals on $Y$. In a similar way, the elements of $Y$ can be considered as linear functionals of $X$, identifying an element $y\in Y$ with $T_y(x)=\anglesbox{x,y}_{X,Y}$.
+ 
+Therefore, each dual system of linear spaces defines a mapping from either of the two linear spaces into the space of linear functionals on the other.
+
+We define the topology $\sigma(X,Y)$ over $X$ in duality with $Y$ (or $Y$-topology of $X$), as the smallest topology which makes the linear functionals $T_y$ continuous. The roles of $X$ and $Y$ are interchangeable here. 
+
+A sequence $(x_n)_{n\in \Naturals}$ in $X$ is $\sigma(X, Y)$-convergent to $x_0\in X$ if and only if the sequence of real values $\parentheses{\anglesbox{x_n, y}_{X,Y}}_{n\in \Naturals}$ converges to $\anglesbox{x_0, y}_{X,Y}\in\Real$, for each $y\in Y$. The roles of $X$ and $Y$ are interchangeable here, we have equivalent convention for $\sigma(Y,X)$-convergence.
+
+%Setting,
+%\begin{align*}
+%	f_y(x)=\abs{\anglesbox{x,y}}=\abs{T_y(x)}, \quad \forall x \in X\\
+%	g_x(y)=\abs{\anglesbox{x,y}}=\abs{T_x(y)}, \quad \forall y \in Y
+%\end{align*}
+%we observe that $F=\braces{f_y: y\in Y}$ is a family of seminorms on $X$ and $G=\braces{g_x: x\in X}$ is a family of seminorms on $Y$. 
+
+
+We can construct a bilinear form $\anglesbox{\cdot, \cdot}:X\times X^*\rightarrow \Real$ defined by $\anglesbox{x,x^*}=x^*(x)$, for $x^*\in X^*$ and $x \in X$. The weak topology is the smallest topology for which all the bounded linear functionals are continuous, that is $\sigma(X, X^*)$. We call this topology the weak topology of $X$.  
+
+In general, $X$ is not possible to identify a linear operator of $X^*$ with an element from $X$, then $X$ and $X^*$ do not always play a symmetric role in the bilinear form. When we can represent each element of $X^{**}$ with an element of $X$ we call the space $X$ reflexive.\\
+
+Although, it is not possible to inject $X^{**}$ onto $X$, it is possible to inject $X$ onto $X^{**}$, since the map $x^*\mapsto x^*(x)$ defined over the dual $X^*$ is linear for all $x\in X$. Then we create a topology  $\sigma(X^*, X)$ of $X^*$ in  duality with $X$, we call this topology weak-star topology of $X^*$.
+
+A bounded linear operator of normed space $X$ is continuous if and only if it is \textbf{weakly continuous}, that is continuous on the weak topology.\\
 \begin{theorem}[Banach-Alaoglu]
 Let $X$ be an arbitrary normed space, and let $X^*$ be its dual. A closed unit ball $B\subset X^*$ is weak-star compact.
 \end{theorem}
+
+\begin{corollary}
+The closed unit ball of the dual of a normed space is weak-star closed.
+\end{corollary}
+If a sequence $\parentheses{x_n}_{n\in\Naturals}\subset X^*$ is weak convergent to $x_0*\in X^*$, then
+$\norm{x^*_0}\leq \liminf_{n\to\infty}\norm{x^*_n}$, if a sequence $\parentheses{x^*_n}_{n\in\Naturals}\subset X^*$ is weak-star convergent to $x_0*\in X^*$, then
+$\norm{x^*_0}\leq \liminf_{n\to\infty}\norm{x^*_n}$.
 \begin{theorem}[Banach-Alaoglu weak-star sequentially compactness]
 Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the weak-star topology on a closed ball $B\subset X^*$ is metrizable. 
 \end{theorem}
@@ -237,10 +272,15 @@ Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the 
 We introduce some notions in convexity since this concept plays an important role in optimization. Convex sets and functions have nice properties that can be exploit in the development of theorems in optimization. 
  
 A subset $E$ of a vector space $V$ is convex if for all $v_1$, $v_2$ in $E$ and all $\alpha \in (0,1)$ we have that $\alpha v_1+(1-\alpha)v_2=v\in E$.
-A particular class of topological linear spaces with richer properties is the class of\textbf{ locally convex spaces}; these are topological linear spaces with the property that for every element there exists a base of neighborhoods consisting of convex sets.
+In other words, $E$ contains all line segments between points in $E$. We denote by $[v_1, v_2]$, a line segment with extreme points $v_1, v_2$.\\
+A subset of the linear space $X$ is said to be \textbf{affine} set if whenever it contains $x_1$ and $x_2$ it also contains $\alpha x_1+\beta x_2$ for arbitrary $\alpha, \beta \in \Real$ satisfying $\alpha+\beta=1$.
 
- 
-A function $f: V \rightarrow \Realex$ is convex if and only if $\epi(f)$ is a convex set.
+The intersection of many arbitrary convex (affine) sets is again convex (affine) set. A function $f: V \rightarrow \Realex$ is convex if and only if $\epi(f)$ is a convex set.\\
+
+A \textbf{hyperplane} is a subset $H\subset X$ of a linear space $X$, identified by a pair $(f, k)$ such that $f$ is a real valued linear functional defined on $X$ and $k\in \Real$, such that
+\begin{equation}
+	H=\braces{x\in X: f(x)=k}
+\end{equation}
 
 Let $\alpha\in [0,1]$, a function $f:V\rightarrow \Realex$ defined on a vector space $V$ is said to be \textbf{convex} if $f(\alpha v_1+(1-\alpha)v_2)\leq \alpha f(v_1)+(1-\alpha)f(v_2)$. We call it \textbf{strictly convex} if the inequality holds strictly. We call the function \textbf{proper} if it is convex and does not take the value $-\infty$ and it is not equally to $\infty$. We call a function $f$ \textbf{concave} if $-f$ is convex. \\
 
@@ -254,7 +294,12 @@ Given any nonempty subset $A$ of $X$, the function $\one_A$ on $X$, defined by
 	\infty & \text{if } x \neq A
 	\end{cases}
 \end{equation*}
-is called the indicator function of $A$. 
+is called the indicator function of $A$. The subset $A$ of X is convex if and only if its indicator function $\one_A$ is convex.
+
+A particular class of topological linear spaces with richer properties is the class of \textbf{locally convex spaces}; these are topological linear spaces with the property that for every element there exists a base of neighborhoods consisting of convex sets. A locally convex space is Hausdorff if and only if it has a separated family of seminorms. 
+
+
+A convex set is closed if and only if it is weakly closed. The closed unit ball of a normed space is weakly closed.
 
 %If $E$ is a subset of the vector space $V$, then the function $f:E\rightarrow \Realex$ is said to be convex if the extension.
 %\begin{equation*}
@@ -266,8 +311,31 @@ is called the indicator function of $A$.
 %is a convex function in $V$.
 
 \begin{theorem}[Hahn-Banach theorem]
-	Let $X$ be a real linear space, let $p$ be a real convex function on $X$ and let $Y$ be a linear subspace of $X$. 
+	Let $X$ be a real linear space, let $p$ be a real convex function on $X$ and let $Y$ be a linear subspace of $X$. If a linear functional $T_0$ defined on $Y$ satisfies,
+	\begin{equation*}
+		T_0(y)=p(y),\quad \forall y \in Y
+	\end{equation*}
+	then $T_0$ can be extended to a linear functional $T$ defined on all of $X$, satisfying
+	\begin{equation*}
+		T(x)\leq p(x),\quad \forall x \in X
+	\end{equation*}
 \end{theorem}
+
+\begin{theorem}[Geometric version of Hahn-Banach theorem]
+If $A$ is a convex set with a nonempty interior and if $M$ is an affine set
+which contains no interior point of $A$, then there exists a closed hyperplane which contains $M$ and which again contains no interior point of $A$.
+\end{theorem}
+
+
+For a hyperplane $H\subset X$ characterized by a pair $(f,k)$ composed of a linear functional $f$ and a real value $k$, we have two open half spaces, $\braces{x\in X: f(x)<k}$, $\braces{x\in X: f(x)>k}$.
+The implications of the above Hanh-Banach theorems, is that a convex set which contains no point of a hyperplane is contained in one of the two open half spaces determined by that hyperplane. Indeed, if $f(x_1)>k$ and $f(x_2)<k$, it exists $\alpha\in[0,1]$ such that $f(\alpha x_1+(1-\alpha)x_2)=k$, hence $x_1$ and $x_2$ cannot be contained in a convex set which is disjoint from the hyperplane $f(x)=k$.
+
+
+A  lower-semicontinuous, proper and convex function $f$ on a reflexive Banach space $X$ takes a minimum value on every bounded, convex and closed subset $M$ of $X$. In other words, $\exists x_0 \in M$ such that
+\begin{equation}
+f(x_0)=\inf\braces{f(x):\ x\in M}
+\end{equation}
+
 
 
 In relation with concavity we have the modulus of continuity of a continuous function. For example, the following are examples of characterization of functions.
@@ -293,33 +361,40 @@ Given a subset $Z$ of a metric space $X$ and a function $f: Z\rightarrow \Real$ 
 	Let $E$ be a subset of a metric space $X$. Any uniformly continuous bounded function $f:E\rightarrow\Real$ can be extended to a function $g:X\rightarrow \Real$ with the same modulus of continuity, supremum and infimum.
 \end{theorem}
 
-
-************************
-A  lower-semicontinuous, proper and convex function $f$ on a reflexive Banach space $X$ takes a minimum value on every bounded, convex and closed subset $M$ of $X$. In other words, $\exists x_0 \in M$ such that
-\begin{equation}
-f(x_0)=\inf\braces{f(x):\ x\in M}
-\end{equation}
-\begin{definition}
-	Let $V$ be a locally convex topological vector space, let $f:
-	V\rightarrow\Realex$, and let $v_0 \in V$ be such that $f(v_0)\in\Real$. The function $f$ is said to be subdifferentiable at $v_0$ if there exists $v*\in V*$ such that,
+A subset $A\subset X\times X^*$ is called monotone if $\anglesbox{x_1-x_2, y_1-y_2}\geq 0$, for any segment $[x_i, y_i]\in A$.
+\begin{definition}[Convex Conjugate]
+	Let $f$ a function defined on a linear space $X$, $f:X\to\Realex$. The function $f:X^*\to\Realex$ defined by,
 	\begin{equation}
-	f(v)\geq f(v_0)+\anglesbox{v*, v-v_0}_{V*,V}, \quad 
-	\end{equation} 
+		f^*(x^*)=\sup\braces{\anglesbox{x,x^*}-f(x);\ x\in X}, \quad x^*\in X^*,
+	\end{equation} is called the conjugate function of $f$. 
 \end{definition}
 
-A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ are just the solutions to the equation  $x\in\partial f(x)$.
+Any convex, proper and lower-semicontinuous function is bounded from below by an affine function. A lower-semicontinuous convex function is proper if and only its conjugate is proper. Let $f: X\to\Real\cup\braces{+\infty}$ be any function nonidentically to $+\infty$. Then $f^{**}=f$ if and only if $f$ is convex and lower semicontinuous on $X$. A proper function $f$ is convex and lower-semicontinuous on $X$ if and only if it is the supremum of a family of affine continuous functions.
 
+\begin{definition}[Subdifferential]
+	Let $X$ be a real Banach space and let be $X^*$ be its dual with a norm $\norm{\cdot}$. Given the proper convex function $f:X\rightarrow \Real\cup\braces{\infty}$, the \textbf{subdifferential} of $f$  is the multivalued mapping $\partial f:X\to2^{X^*}$
+	\begin{equation*}
+		\partial f(x)=\braces{x^*\in X^*;\quad f(x)-f(u)\leq \anglesbox{x-u, x^*},\ \forall u \in X.}		
+	\end{equation*}
+\end{definition}
 
+\begin{theorem}
+	Let $f:X\to\Real\cup\braces{\infty}$ be a proper convex function. Then, then, $x^*\in\partial f(x)\iff f(x)+f^*(x^*)\leq\anglesbox{x, x^*}\iff f(x)+f^*(x^*)=\anglesbox{x, x^*}$
+\end{theorem}
+A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ are just the solutions to the equation  $0\in\partial f(x)$.
+
+%\begin{theorem}[Rockafellar]
+%Let X be a real Banach space and let f be a lower-semicontinuous proper convex function on X. Then, $\partial(f)$ is maximal monotone operator from $X$ to $X^*$.
+%\end{theorem}
 
 
 
 \section{Convergence of Probability measures.}
 
 Let $X$ a topological space. 
-A probability measure on \cite{Milan2000TpicsWeakconvProbs}
-\begin{theorem}[Regular Measure]
-	A measure such that the outer measure coincides with the inner measure.
-\end{theorem}
+A probability measure on 
+A measure such that the outer measure coincides with the inner measure.
+Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$
 \begin{definition}[Support of a measure.]
 	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
 	\begin{equation}
@@ -333,6 +408,8 @@ A probability measure on \cite{Milan2000TpicsWeakconvProbs}
 	\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
 	\end{equation*}
 \end{definition}
+
+The following results can be found in \cite{Milan2000TpicsWeakconvProbs}.
 Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$. The set of generalized measures on $X$ is a linear space; a norm can be introduced by the so called total variation of the whole space $X$:
 \begin{equation}
 	\norm{m}=\abs{m}(X)=m^+(X)+m^-(X)
@@ -342,6 +419,7 @@ where,
 	m^+(X):=\sup\braces{m(B):\ B \in \mathcal{A}} \\
 	m^-(X):=-\inf\braces{m(B):\ B \in \mathcal{A}}
 \end{align*}
+
 \begin{theorem}[Aleksandrov]
 	For an arbitrary topological space $X$ any linear continuous functional on $C(X)$ is of the form,
 	\begin{equation}
@@ -364,20 +442,26 @@ It follows that the supremum of a collection of continuous (or lower semicontinu
 The space of probabilities $\PlanSp(X)$ is not closed in $\MeasureSp(X)$. 
 
 
-The structure of the second dual $C(X)^{**}$ can be really complex, although it is known that $\MeasureSp_b(X)$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$
+
+The structure of the second dual $C(X)^{**}$ can be really complex, although it is known that $\MeasureSp_b(X)$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$.
 
 A set $\Pi$ of probability measures is relatively compact if any sequence of probability measures $\mu_n \in \Pi$ contains a subsequence $(\mu_{n_k})_{n_k\in \Naturals}$ which converges weak-star to a probability measure in $\PlanSp(X)$.
 
 We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu\in \PlanSp(X)$ and any positive real number $\epsilon>0$ there is a compact $K\subset X$ such that $\mu(X\backslash K)\leq \epsilon$. We also say that a set of probabilities $\Gamma$ is tight if $\forall \mu \in \Gamma$, $\mu$ is tight.
-
+\begin{theorem}
+	Let $X$ be a separable metric space. Then the weak-star
+	topology on $\MeasureSp_+(X)$ is metrizable.
+\end{theorem}
 \begin{theorem}
 	If $X$ is a complete and separable topological space, then $\PlanSp(X)$ is tight.
 \end{theorem}
-
+If $X$ is compact any set of probability measures is pre-compact.
 \begin{theorem}[Prokhorov and Polish spaces]
 	Let $X$ be a Polish space. Then there is a complete metric $d_0$ over $\PlanSp(X)$ equivalently to the weak topology. Moreover, let $K\subset \PlanSp(X)$ be a subset in $\PlanSp(X)$. Then $K$ is tight if and only if $\closu K$ in the weak topology of $\PlanSp(X)$ is pre-compact.
 \end{theorem}
-
+\begin{corollary}[Prokhorov in metric]
+	Let $X$ a metric space and let $(\mu_n)_{n\in\Naturals}$ be a sequence of Borel measures, such that $\sup_n(\mu_n)<\infty$. Then there exists a subsequence  $\parentheses{\mu_{n_k}\in \Naturals}$ of $(\mu_n)_{n\in\Naturals}$, such that converges weak-star in the dual $C_b(X)^*$ of the bounded functionals of $X$. 
+\end{corollary}
 \subsection{Results for Image Measure.}
 We state some definitions to prove density of transport plans induced by maps in the set of transport maps (Lemma \ref{lem: Density of maps.}). The proof of the following theorems and lemmas as well as Lemma \ref{lem: Density of maps.} are detailed in \cite{Santambrogio2015OT}.
 

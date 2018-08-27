@@ -398,7 +398,7 @@ Imagine that the consortium changed its policy and it has decided not to be resp
 \subsection{Duality}
 We see that for any $\gamma \in \MeasureSp_+(X\times Y)$ we have,
 \begin{equation}
-\sup_{\phi, \psi} \parentheses{\int_X \phi\dmu +\int_Y\psi\dnu-\int_{X\times Y}\parentheses{\phi(x)+\psi(y)}\diff \gamma} = \begin{cases}
+\sup_{\phi, \psi} \parentheses{\int_X \phi\dmu +\int_Y\psi\dnu-\int_{X\times Y}\parentheses{\phi(x)+\psi(y)}\diff \gamma} = \indicator{\Pi(\mu,\nu)}{(\gamma)}=\begin{cases}
 0 & \text{if } \gamma \in \Pi(\mu, \nu) \\
 +\infty & \text{otherwise}.	
 \end{cases}\label{eq: Constrain indicator}
@@ -414,7 +414,7 @@ Therefore, we can rewrite the Kantorovich's transport problem as an unconstraine
 \end{align}
 Note that,
 \begin{equation}
- \inf_{\gamma}\int_{X\times Y}\parentheses{c(x,y)-\parentheses{\phi(x)+\psi(y)}} \diff \gamma =\begin{cases}
+\inf_{\gamma}\int_{X\times Y}\parentheses{c(x,y)-\parentheses{\phi(x)+\psi(y)}} \diff \gamma =\begin{cases}
 	0 & \text{ if } \phi(x)+\psi(y)\leq c(x,y),\quad \forall (x,y)\in X\times Y \\
 	-\infty & \text{otherwise}.
  \end{cases}
@@ -516,7 +516,8 @@ An interesting property of $c-$concave transforms is that taking $c-$, $\bar c -
 	\begin{equation*}
 	\phi^{c\bar cc}(y)\leq \inf_{\tilde x \in X}\parentheses{c(\tilde x, y)-\phi(\tilde x)}=\phi^{c}(y)  
 	\end{equation*} 
-	Having as result that for any $\phi$, $\phi^{c\bar c c}=\phi^c$. We can use this fact to prove the theorem \ref{th: C-concave envelope}, as we can find it in \cite{Villani2008}. 
+	Having as result that for any $\phi$, $\phi^{c\bar c c}=\phi^c$. We can use this fact to prove the theorem \ref{th: C-concave envelope}, as we can find it in \cite{Villani2008OT}
+	proceeding through $c-$convexity-$c-$concavity. 
 
 This result makes use only of their definition to be proven, since $c-$concave functions are exactly defined as $c-$transform
 of something. Its convex counterpart needs the Hahn Banach theorem due to convex functions are not defined via $\sup$ of affine functions, but via the
@@ -553,6 +554,9 @@ Similarly $\forall y \in Y$,
 	
 \end{proof}
 Every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can  apply again the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
+
+The functions $\phi$ and $\psi$ are known in the literature related with optimal transport as Kantorovich's potentials. Recall the factories-customers problem, with an entrepreneur in charge of the transportation. A function $c$ represents the cost for an agent to move a unit of mass from a factory $y\in Y$ to a customer $x\in X$. It is natural that our entrepreneur will take the merchandise to supply each customer from the closest factory. However, a more natural situation is the possibility that each customer $x\in X$ negotiates the price $\phi(x)$ that is able to pay for each unit of product. The entrepreneur will try to obtain the maximum profit possible, for this purpose he needs to know at each factory which customers to distribute from there such that the profit is maximum $\zeta(y)=\sup_{x\in X}\phi(x)-c(x,y)=-\inf_{x\in X} c(x,y)-\phi(y)=-\phi^c(x)$, that is exactly the negative of the $c-$concave transform of the price $\phi(x)$ that each customer is able pay. We can imagine a similar situation but instead of hiring an entrepreneur we set the prices $\psi(y)$ at each factory $y\in Y$. It is natural that each customer will try to minimize the purchase costs $\psi_{-}(y)$ plus transportation costs, that is $\inf_{y\in Y}c(x,y)+\psi(y)$. From the perspective of the factory $\psi(y)=-\psi_{-}(y)$, leading to the $\bar{c}-$concave transform of the prices we are setting at each factory. 
+	
 \begin{lemma}
 	Let $X$ and $Y$ be two compact metric spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\omega$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\omega$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
 \end{lemma}
@@ -591,7 +595,6 @@ Since $\psi_n$ is the $c-$concave transform, we have for all $y\in Y$, $\psi_n(y
  Uniform convergence implies pointwise convergence therefore, $\phi_n(x)+\psi_n(y)\leq c(x,y)$ implies that $\phi(x)+\phi(y)\leq c(x,y)$. Finding in this way an admissible pair for the problem.
 \end{proof}
 
-The functions $\phi$ and $\psi$ are known in the literature related with optimal transport as Kantorovich's potentials. Recall the factories-customers problem, with an entrepreneur in charge of the transportation. A function $c$ represents the cost for an agent to move a unit of mass from a factory $y\in Y$ to a customer $x\in X$. It is natural that our entrepreneur will take the merchandise to supply each customer from the closest factory. However, a more natural situation is the possibility that each customer $x\in X$ negotiates the price $\phi(x)$ that is able to pay for each unit of product. The entrepreneur will try to obtain the maximum profit possible, for this purpose he needs to know at each factory which customers to distribute from there such that the profit is maximum $\zeta(y)=\sup_{x\in X}\phi(x)-c(x,y)=-\inf_{x\in X} c(x,y)-\phi(y)=-\phi^c(x)$, that is exactly the negative of the $c-$concave transform of the price $\phi(x)$ that each customer is able pay. We can imagine a similar situation but instead of hiring an entrepreneur we set the prices $\psi(y)$ at each factory $y\in Y$. It is natural that each customer will try to minimize the purchase costs $\psi_{-}(y)$ plus transportation costs, that is $\inf_{y\in Y}c(x,y)+\psi(y)$. From the perspective of the factory $\psi(y)=-\psi_{-}(y)$, that leads to the $\bar{c}$ transform of the prices we are setting at each factory. 
 
 Now we are able to introduce $c-$monotonicity, we will see the importance of this construction in order to formalize the relation between the dual problem and primal problem of Kantorovich's optimal transport problem formulation. 
 
@@ -768,10 +771,10 @@ If $c$ is lower semicontinuous we cannot assure the existence of an optimal pair
 \end{lemma}
 
 \begin{theorem}[Duality and $c$ l.s.c.]
-	Let $X$ and $Y$ be Polish spaces and $c:X\times Y\rightarrow \Real \cup\braces{+\infty}$ is bounded from below and lower semicontinuous, the equality $\sup\eqref{eq: Transportation Dual problem}=\min\eqref{eq: Kantorovich's Problem.}$.
+	Let $X$ and $Y$ be Polish spaces. If $c:X\times Y\rightarrow \Real \cup\braces{+\infty}$ is bounded from below and lower semicontinuous, then the equality $\sup\eqref{eq: Transportation Dual problem}=\min\eqref{eq: Kantorovich's Problem.}$ holds.
 \end{theorem}	
 \subsection{Duality by convex analysis.}
-We can prove duality introducing a perturbation as follows, 
+We can prove duality between the two problems introducing a perturbation as follows, 
 \begin{definition}
 	\label{def: H perturbation}
 	Suppose that $X$ and $Y$ are compact metric spaces and $c:X\times Y\rightarrow \Real$ is uniformly continuous. For every $p\in C(X\times Y)$, let $H_\gamma:C(X\times Y)\rightarrow \Realex$ be a perturbation of the problem,
@@ -825,7 +828,7 @@ The above expression is exactly the equation
 	The optimal transport plan for a cost function $c(x,y)=\abs{x-y}^2$ between two Gaussians in $\Real^d$ is given by an translation map.
 	That is, $\mu$ is a probability measure for the space $X=\Real^m$, defined by,
 	\begin{equation*}
-	\mu(A)=\int_{}	
+	\mu(A)=\frac{1}{2}\int_{A}\dx	
 	\end{equation*}
 	and $\nu$ is a probability measure for the space $Y=\Real^n$ defined by,
 	\begin{equation*}
