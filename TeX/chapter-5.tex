@@ -1,44 +1,181 @@
 \chapter{Computation and Applications of an Optimal Transport}
-The approximation of an optimal transport is a challenging problem, computationally speaking. We have found a rich literature on it, and many recent advances in this topic have arisen in the very last years. 
+The approximation of an optimal transport is a computationally expensive problem.  In this chapter we present the discrete formulation of the Kantorovich's problem. We can see that the discrete Kantorovich's problem is a subcase of a general linear program.
 %We can attack this problem by the approaches of \textbf{First  Discretize then Optimize} or \textbf{First Optimize then Discretize}
-\section{Linear Programming Formulation.}
-Let $X$ and $Y$ be two finite sets having $n$ and $m$ elements respectively. Let $\mu$ a probability measure defined over $X$,
+\section{Discrete Formulation and Linear Programming.}
+We represent the vector $\one_n=\parentheses{1,1,\dots,1}^\top\in \Real^n$ the vector composed of $n$ $1$'s, and the vector composed of $n$ $0$'s as $\zeros_n=\parentheses{0,0,\dots, 0}^\top\in\Real^n$. We call a simplex $\Sigma_n$ the convex set of vectors $\pmb{p}=\parentheses{p_1, \dots, p_n}^\top\in \Real^n$ such that, 
+\begin{equation}
+	\Sigma_n=\braces{\mathbf{p} \in \Real^n: \ \sum_{i=1}^{n}{p_i}=1\ \mand\ \mathbf{p}\geq 0 }.
+\end{equation}
+Let $X=\braces{x_1, x_2, \dots, x_n}$ be a finite set of $n$ elements. Let $\mu$ a probability measure defined over $X$. Since $X$ is a finite set, we can express the probability measure $\mu$ as follows,
 \begin{equation}
 	\mu=\sum_{i=1}^{n} a_i \delta_{x_i},
-\end{equation} 
-where $X=\braces{x_1, x_2, \dots, x_n}$ and $0\leq\mathbf{a}=\braces{a_1, a_2, \dots, a_n}$, and $\sum_{i=1}^{n}a_i=1$.
-
-Let $\nu$ a probability measure defined over $Y$,
+\end{equation}.
+where $\mathbf{a}=\parentheses{a_1, a_2, \dots, a_n}^\top \in \Sigma_n$. In this section we represent the Kronocker's delta $X\to \braces{0,1}$ defined over a finite set $X$ by the equation,
+\begin{equation*}
+\forall x_i\in X\quad	\delta_{x_i}(x)=\begin{cases}
+	1 & x=x_i \\
+	0 & x\neq x_i
+	\end{cases}.
+\end{equation*}  
+Hence we have that $\mu(x_i)=a_i$ for all $x_i\in X$. Using the same notation, let $Y=\braces{y_1, y_2, \dots, y_m}$ be a finite set of $m$ elements. Let $\nu$ be a probability measure defined over $Y$ defined by,
 \begin{equation}
 	\nu=\sum_{i=1}^{m} b_i \delta_{y_i},
 \end{equation}
-where $Y=\braces{y_1, y_2, \dots, y_m}$ and $0\leq\mathbf{b}=\braces{b_1, b_2, \dots, b_m}$, and $\sum_{i=1}^{m}b_i=1$. 
-Let $(\pmb{\gamma})_{i,j}=\gamma_{i,j}$ be a joint probability distribution with marginals given by $\mu$ and $\nu$. That is,
+where $\mathbf{b}=\braces{b_1, b_2, \dots, b_m}^\top\in \Sigma_m$,  and $\delta_{y_i}: Y\to\braces{0,1}$ is a Kronecker's delta defined on $Y$. We see that $\mu$ and $\nu$ are identified by a vector $\mathbf{a}\in \Sigma_n$ and $\mathbf{b}\in \Sigma_m$ respectively. 
+
+We can construct a coupling between $\mu$ and $\nu$, using matrix notation. Let $\mathbf{M}^{n\times m}\ni\pmb{\gamma}$ be a matrix of $n\times m$ real entries, i.e. $(\pmb{\gamma})_{i,j}$ with its marginals given by $\mathbf{a}$ and $\mathbf{b}$,
 \begin{align}
-	\sum_{j=1}^{m}\gamma_{i,j}=a_i\\ \sum_{i=1}^{n}\gamma_{i,j}=b_j
+	 \pmb{\gamma}\, \one_m=\sum_{j=1}^{m}\gamma_{i,j}=a_i\quad \mand \quad \pmb{\gamma}^\top\one_n=\sum_{i=1}^{n}\gamma_{i,j}=b_j \label{eq: matrix prob marginals}
 \end{align}
-Let $c:X\times Y \rightarrow \Real$ a cost function. Since we know that $X$ and $Y$ are finite dimensional, we find convenient to use the following notation,
+From the equation \ref{eq: matrix prob marginals},  and the fact that $\mathbf{a}\in\Sigma_n$, we can see that the sum of all the entries of $\pmb{\gamma}$ is also $1$,
 \begin{equation}
-	(\mathbf C)_{i,j}=c_{i,j}=c(x_i, y_j)
+ 	\sum_{i=1}^{n}\sum_{j=1}^{m}\gamma_{i,j}=\sum_{i=1}^{n}a_i=\sum_{j=1}^{m}\sum_{i=1}^{n}\gamma_{i,j}=\sum_{j=1}^{m}b_j=1 
+ \end{equation}
+Therefore we can see $\pmb{\gamma}$ as a joint probability measure over the space $X\times Y$ with marginals given by $\mu$ and $\nu$.
+
+Let $c:X\times Y \rightarrow \Real$ a cost function. The $X$ and $Y$ are finite sets with $n$ and $m$ elements respectively, therefore we can use a matrix $\mathbf{C}\in \mathbf{M}^{n\times m}$ to represent the cost function.
+\begin{equation}
+	(\mathbf C)_{i,j}=c_{i,j}=c(x_i, y_j).
 \end{equation}
 
-Given the matrix nature of the optimal transport problem for discrete measures we can compute the total cost by the Frobenius inner product\footnote{For matrices with real entries the product is defined as $\anglesbox{A, B}=\tr(A^\top B)$.} of the two matrices, since $\mathbf{C}$ and $\pmb{\gamma}$ have the same dimensions.
+We see that the dimensions of $\mathbf{C}$ are equal to the dimensions of $\pmb{\gamma}$. Then given a transportation plan between $\mu$ and $\nu$ the total cost is given by,
 \begin{equation}
-	\anglesbox{\mathbf{C}, \pmb{\gamma}}=\sum_{\substack{1\leq i \leq n \\ 1\leq j\leq m}}c_{i,j}\gamma_{i,j}=\tr\parentheses{\mathbf{C}^\top\pmb{\gamma}}
+	\anglesbox{\mathbf{C}, \pmb{\gamma}}=\sum_{\substack{1\leq i \leq n \\ 1\leq j\leq m}}c_{i,j}\gamma_{i,j}=\tr\parentheses{\mathbf{C}^\top\pmb{\gamma}},
 \end{equation}
-\subsection{Simplex Method Algorithm and Duality.}
-We can solve the problem using the simplex method.
+where $\anglesbox{\cdot, \cdot}$ in this setting is the Frobenius inner product \footnote{For matrices with real entries the product is defined as $\anglesbox{A, B}=\tr(A^\top B)$.} of the two matrices.
+\subsection{Linear Programming Notation.}
+As mentioned before, the discrete formulation is a specific case of linear programming in finite dimensions. Given the discrete analysis presented above the transportation problem is reduced to,
 \begin{equation}
-	\Theta(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}
+	\Theta(\mu, \nu)=\min_{\pmb{\gamma}\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C}, \pmb{\gamma}}}\label{eq: Optimal Cost Frobenius}
 \end{equation}
-\subsubsection{The simplex method is Not polynomial time.}
-Consider the following example
+The vectorization $\mathrm{vec}(\mathbf{R})$ of a matrix $\mathbf{R}\in \mathbf{M}^{n\times m}$ is a linear transformation which converts the matrix into a column vector $\mathbf{m}\in \Real^{mn}$. If $\mathbf{z}\in \mathbf{M}^{1\times n}$ is one row matrix, we see that its vectorization $\mathrm{vec}(\mathbf{z})=\mathbf{z}^\top\in \Real^n$ is a column vector. Given two matrices $\mathbf{R}\in \mathbf{M}^{n\times k}$ and $\mathbf{P}\in \mathbf{M}^{k\times m}$ with real entries, this operation has the properties:
+\begin{align}
+	\mathrm{vec}(\mathbf{RP})=(\mathbf{I}_m\pmb{\otimes}\mathbf{R})\mathrm{vec}(\mathbf{P})=(\mathbf{P}^\top\pmb{\otimes}\mathbf{I}_n)\mathrm{vec}(\mathbf{R})\label{eq: product vectorization}
+\end{align}
+Let $\mathbf{R}$, $\mathbf{P}$ and $\mathbf{Q}$ be matrices such that we can compute the product $\mathbf{RPQ}$ and let $\mathbf{S}$ be the result of the product. We can write the equation $\mathbf{RPQ}=\mathbf{S}$ as,
+\begin{equation}
+\parentheses{\mathbf{Q}^\top \pmb{\otimes}\mathbf{R}}\mathrm{vec}(\mathbf{P})=\mathrm{vec}(\mathbf{S})\label{eq: vectorization product 3 matrices}
+\end{equation}
+ 
+And the Frobenius inner product between two matrices $\mathbf{R}$ and $\mathbf{P}$ in the space of real matrices $\mathbf{M}^{n\times m}$ can be written as,
+\begin{equation}
+	\tr(\mathbf{R^\top P})=\mathrm{vec}(\mathbf{R})^\top \mathrm{vec}(\mathbf{P})
+\end{equation}
+Applying the vectorization property for the Frobenius product \eqref{eq: Optimal Cost Frobenius} we have that,
+\begin{equation*}
+	\anglesbox{\mathbf{C},\pmb{\gamma}}=\mathbf{c}^\top \mathbf{p}.
+\end{equation*}
+The $nm$-dimensional vectors $\mathbf{c}=\mathrm{vec}(\mathbf{C})$ and $\mathbf{p}=\mathrm{vec}(\pmb{\gamma})$ are the vectorization of $\mathbf{C}$ and $\pmb{\gamma}$ equal to the stacked columns contained in the cost matrix and transportation plan respectively.
+
+Consider the constrain for $\mathbf{b}$ take the transpose and right multiply both sides by the identity,
+\begin{align*}
+	\one_n^\top\pmb{\gamma}\mathbf{I}_m=\mathbf{b}^\top\mathbf{I}_m=\mathbf{b}^\top
+\end{align*}
+
+Using \eqref{eq: product vectorization} in the constrains \eqref{eq: matrix prob marginals}, and the vectorization of a product of three matrices \eqref{eq: vectorization product 3 matrices} in the last equation we obtain, 
+\begin{align}
+	\pmb{\gamma}\one_m=\parentheses{\one_m^\top\pmb{\otimes}\mathbf{I}_n}\mathrm{vec}(\pmb{\gamma})=\parentheses{\one_m^\top\pmb{\otimes}\mathbf{I}_n}\mathbf{p}&=\mathbf{a}\\
+	\mathrm{vec}(\mathbf{b}^\top)=\parentheses{\mathbf{I}_m\pmb{\otimes}\one_n^\top}\mathrm{vec}(\pmb{\gamma})=\parentheses{\mathbf{I}_m\pmb{\otimes}\one_n^\top}\mathbf{p}&=\mathbf{b}\label{eq: constrain deduction}
+\end{align}
+Therefore, we can write the equation  \ref{eq: Optimal Cost Frobenius} as a linear program, 
+\begin{align}
+	&\min_{\mathbf{p}\in\Real^{mn}}\,&\mathbf{c}^\top \mathbf{p} &\\
+	&\subject& \mathbf{Ap}&=\begin{pmatrix}
+	\mathbf{a}\\\mathbf{b}
+	\end{pmatrix} &\\
+	& &\mathbf{p}&\geq 0 &,
+\end{align}
+where the linear operator of the constrain is given by a $(m+n)\times mn$ matrix,
+\begin{equation}
+	\mathbf{A}=\begin{pmatrix}
+	\one_m^\top \pmb{\otimes} \mathbf{I}_{n}\\
+	\mathbf{I}_{m
+		}\pmb{\otimes} \one_n^\top 
+	\end{pmatrix}=\begin{pmatrix}
+	\mathbf{I}_n&\dots &\dots& \mathbf{I}_n\\
+	\one_n^\top&\zeros_n^\top &\dots& \zeros_n^\top\\
+	\zeros_n^\top&\one_n^\top &\dots& \zeros_n^\top\\
+	\vdots&\vdots&\ddots& \vdots\\
+	\zeros_n^\top&\vdots&\ddots& \vdots\\
+	\end{pmatrix}
+\end{equation}
+Then the dual formulation of the problem is given by,
+\begin{align}
+	\max_{\mathbf{h}\in\Real^{m+n}}\ &\mathbf{h}^\top\begin{pmatrix}
+	\mathbf{a}\\\mathbf{b}
+	\end{pmatrix}\\
+	\subject& \mathbf{h}^\top\mathbf{A}\leq \mathbf{c}^\top.
+\end{align}
+\subsection{Duality.}
+We know that the primal and the dual problem reach the share the same optimal value. Without loss of generality we can write $\mathbf{h}=(\mathbf{f}, \mathbf{g})^\top$ as two vectors $\mathbf{f}\in \Real^n$ and $\mathbf{g}\in \Real^m$. Note matrix product $\mathbf{d}$, between
+$(\mathbf{f} \ \mathbf{g})=(f_1, f_2, \dots f_n, g_1, g_2\dots, g_m)$ and the matrix $\mathbf{A}$ can be written column by column using $\mathbf{A}^k$ to denote the $(k+1)$-th column of $\mathbf{A}$ for $0\leq k < nm$ as follows, 
+
+\begin{align}
+\mathbf{d}^{k+1}=(\mathbf{f} \ \mathbf{g})\mathbf{A}^k=f_{i+1}+g_{j+1},
+\end{align}
+where the indexes $i$ and $j$ are related by,
+\begin{equation}
+\begin{array}{ll}
+i&=k\,\text{mod}\,n \\ jn&=k-i
+\end{array}.	
+\end{equation}
+
+
+We remember that each natural $0\leq k\leq mn-1$, is represented uniquely by $k=nj+i$ with $0\leq j\leq m-1$ and $0\leq i \leq n-1$,  hence the product $\mathbf{h}^\top\mathbf{A}$ is exactly the direct sum $\mathbf{f}\pmb{\oplus}\mathbf{g}$. 
+
+In this way, the dual formulation of the Kantorovich's problem for the discrete is given by,
+\begin{align}
+\max_{\mathbf{(f,g)}\in \Real^{n+m}}\, &\anglesbox{\mathbf{f}, \mathbf{a}}+\anglesbox{\mathbf{g}, \mathbf{b}}\\	
+\subject\, &\mathbf{f}\pmb{\oplus}\mathbf{g}\leq \mathbf{c}^\top
+\end{align}
+
+This result reminds us the dual formulation for the continuous case. We see that the complexity of our problem is reduced from $nm$ to $(m+n)$.
+
+It is interesting analyzing the $\mathbf{C}-$ and $\overline{\mathbf{C}}-$ transforms of our variables $\mathbf{f}$ and $\mathbf{g}$. In equivalent way that we did before for the general formulation we define the transformations as follows,
+\begin{align}
+	\parentheses{\mathbf{f}^{\mathbf{C}}}_{j}&=\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f})_i}\\
+	\parentheses{\mathbf{g}^{\overline{\mathbf{C}}}}_{i}&=\min_{1\leq j\leq m}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{g})_j}.
+\end{align}
+As we did before we can check the improvement of a solution through $\mathbf{C}-$ and $\overline{\mathbf{C}}-$transforms. We check that for each $\parentheses{\mathbf{f}^{\mathbf{C}}}_{j}$ the constrained is satisfied,
+\begin{align*}
+	0&=-(\mathbf{f^{\mathbf{C}}})_j+\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f})_i}\\
+	0&=\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f^{\mathbf{C}}})_j-(\mathbf{f})_i}\\
+	0&\leq (\mathbf{C})_{i,j}-(\mathbf{f^{\mathbf{C}}})_j-(\mathbf{f})_i
+\end{align*} 
+For a given pair $(\mathbf{f,g})$ satisfying the constrain we have for all $1\leq i\leq n$ and $1\leq j\leq m$,
+\begin{align*}
+	(\mathbf{g})_j&\leq \mathbf{C}_{i,j}-(\mathbf{f})_i\\
+	&\leq \min_{1\leq i\leq n}\parentheses{\mathbf{C}_{i,j}-(\mathbf{f})_i} \\&\leq \parentheses{\mathbf{f^\mathbf{C}}}_j
+\end{align*} 
+Since $\mathbf{a}\in \Sigma_n$ and $\mathbf{b}\in \Sigma_m$ are positive,
+\begin{equation}
+	\anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}\leq \anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{f^C},\mathbf{b}}.
+\end{equation}
+Using similar arguments we can prove that the $\overline{\mathbf{C}}-$transform of $\mathbf{g}$ also satisfies the constrain and improves the objective value,
+\begin{align}
+	\anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}\leq \anglesbox{\mathbf{g^{\overline{C}}},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}
+\end{align}
+
+
+We see that $\mathbf{f}\leq\mathbf{x}$ implies $\mathbf{x^C}\leq \mathbf{f^C}$. And exactly as we did for the continuous case we have $\mathbf{f}\leq\mathbf{f^{C\overline{C}}}$ and $\mathbf{g}\leq\mathbf{f^{\overline{C}C}}$. And the process stabilizes in $\mathbf{f}=\mathbf{f^{C\overline{C}C}}$.
+The complementary slackness conditions for the discrete transportation problem can be read as follows,
+\begin{proposition}
+	Let $\pmb{\gamma}^\star$ and $\parentheses{\mathbf{f}^\star,\mathbf{g}^\star}$ be optimal solutions for the primal and
+	dual problems, respectively. Then, $\parentheses{\pmb{\gamma}_{i,j}} \parentheses{(\mathbf{C})_{i,j}− \mathbf{f}_i -
+	\mathbf{g}_j} = 0$ holds. That is, 
+	\begin{enumerate}
+		\item If $(\pmb{\gamma}^\star)_{i,j}>0 $ then necessarily $\parentheses{\mathbf{f}^{\star}}_i+\parentheses{\mathbf{g}^\star}_j=(\mathbf{C})_{i,j}$\\
+		\item  If  $\parentheses{\mathbf{f}^{\star}}_i+\parentheses{\mathbf{g}^\star}_j<(\mathbf{C})_{i,j}$ then necessarily $(\pmb{\gamma}^\star)_{i,j}>0$
+	\end{enumerate}
+\end{proposition}
+\subsection{The simplex method is not polynomial time.}
+The linear programming formulation of the optimal transport can be solved by any of the methods presented in this text. Although, the nature of the problem worths to consider Consider the following example
 \begin{align}
 	\max \sum_{j=1}^{n} 10^{n-j}x_j\\
 	\subject\ 2\sum_{j=1}^{i-1}10^{i-j}x_j+x_i \leq 
 \end{align}
 
-\subsection{Sinkhorn-Knopp Algorithm.}
+\section{Sinkhorn-Knopp Algorithm.}
 Consider the problem adding a regularization.
 \begin{equation}
 	\Theta_\epsilon(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}

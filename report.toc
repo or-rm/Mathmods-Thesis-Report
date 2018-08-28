@@ -22,14 +22,15 @@
 \contentsline {subsection}{\numberline {3.2.2}Duality by convex analysis.}{39}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Brenier's theorem}{39}{subsection.3.2.3}
 \contentsline {chapter}{\numberline {4}Computation and Applications of an Optimal Transport}{41}{chapter.4}
-\contentsline {section}{\numberline {4.1}Linear Programming Formulation.}{41}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Simplex Method Algorithm and Duality.}{42}{subsection.4.1.1}
-\contentsline {subsubsection}{The simplex method is Not polynomial time.}{42}{equation.4.1.7}
-\contentsline {subsection}{\numberline {4.1.2}Sinkhorn-Knopp Algorithm.}{42}{subsection.4.1.2}
-\contentsline {chapter}{\numberline {5}Applications}{43}{chapter.5}
-\contentsline {section}{\numberline {5.1}Wasserstein's Distances.}{43}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Statistical Distances}{43}{subsection.5.1.1}
-\contentsline {section}{\numberline {5.2}Data Assimilation of a Dynamic.}{43}{section.5.2}
-\contentsline {section}{\numberline {5.3}Isoperimetric Inequality.}{43}{section.5.3}
-\contentsline {chapter}{Bibliography}{45}{appendix*.12}
+\contentsline {section}{\numberline {4.1}Discrete Formulation and Linear Programming.}{41}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Linear Programming Notation.}{42}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Duality.}{43}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}The simplex method is not polynomial time.}{44}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Sinkhorn-Knopp Algorithm.}{44}{section.4.2}
+\contentsline {chapter}{\numberline {5}Applications}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Wasserstein's Distances.}{47}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Statistical Distances}{47}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Data Assimilation of a Dynamic.}{47}{section.5.2}
+\contentsline {section}{\numberline {5.3}Isoperimetric Inequality.}{47}{section.5.3}
+\contentsline {chapter}{Bibliography}{49}{appendix*.12}
 \contentsfinish 

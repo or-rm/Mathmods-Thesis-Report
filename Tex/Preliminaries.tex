@@ -286,15 +286,15 @@ Let $\alpha\in [0,1]$, a function $f:V\rightarrow \Realex$ defined on a vector s
 
 Note that taking $v_1\neq v_2$ and $v_2=0$, if $f$ is convex for all $v_1$ then $f(\alpha v_1)\leq \alpha f(v_1)$ for all $v_1\in V$; the inequality inverts if $f$ is concave. Every norm is a convex function. If $f$ is concave we have that $f(\alpha v_1+(1-\alpha)v_2)\geq \alpha f(v_1)+(1-\alpha)f(v_2)$, for all $t\in [0,1]$.
 
-Given any nonempty subset $A$ of $X$, the function $\one_A$ on $X$, defined by
+Given any nonempty subset $A$ of $X$, the function $\indicator{A}$ on $X$, defined by
 
 \begin{equation*}
-	\one_A(x)=\begin{cases}
+\indicator{A}(x)=\begin{cases}
 	0 & \text{if } x \in A\\
 	\infty & \text{if } x \neq A
 	\end{cases}
 \end{equation*}
-is called the indicator function of $A$. The subset $A$ of X is convex if and only if its indicator function $\one_A$ is convex.
+is called the indicator function of $A$. The subset $A$ of X is convex if and only if its indicator function $\indicator{A}$ is convex.
 
 A particular class of topological linear spaces with richer properties is the class of \textbf{locally convex spaces}; these are topological linear spaces with the property that for every element there exists a base of neighborhoods consisting of convex sets. A locally convex space is Hausdorff if and only if it has a separated family of seminorms. 
 
@@ -369,7 +369,12 @@ A subset $A\subset X\times X^*$ is called monotone if $\anglesbox{x_1-x_2, y_1-y
 	\end{equation} is called the conjugate function of $f$. 
 \end{definition}
 
-Any convex, proper and lower-semicontinuous function is bounded from below by an affine function. A lower-semicontinuous convex function is proper if and only its conjugate is proper. Let $f: X\to\Real\cup\braces{+\infty}$ be any function nonidentically to $+\infty$. Then $f^{**}=f$ if and only if $f$ is convex and lower semicontinuous on $X$. A proper function $f$ is convex and lower-semicontinuous on $X$ if and only if it is the supremum of a family of affine continuous functions.
+Any convex, proper and lower-semicontinuous function is bounded from below by an affine function. A lower-semicontinuous convex function is proper if and only its conjugate is proper. 
+\begin{theorem}[Convex Envelope Theorem]
+Let $X$ be a locally convex topological space. And let $f:X\rightarrow \Real\cup\braces{+\infty}$ be any functional nonidentically to $+\infty$. Then $f^{**}=f$ if and only if $f$ is convex and lower semicontinuous on $X$	
+\end{theorem}
+
+A proper function $f$ is convex and lower-semicontinuous on $X$ if and only if it is the supremum of a family of affine continuous functions.
 
 \begin{definition}[Subdifferential]
 	Let $X$ be a real Banach space and let be $X^*$ be its dual with a norm $\norm{\cdot}$. Given the proper convex function $f:X\rightarrow \Real\cup\braces{\infty}$, the \textbf{subdifferential} of $f$  is the multivalued mapping $\partial f:X\to2^{X^*}$
@@ -391,10 +396,7 @@ A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ ar
 
 \section{Convergence of Probability measures.}
 
-Let $X$ a topological space. 
-A probability measure on 
-A measure such that the outer measure coincides with the inner measure.
-Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$
+Let $X$ a topological space. A measure such that the outer measure coincides with the inner measure. Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$
 \begin{definition}[Support of a measure.]
 	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
 	\begin{equation}

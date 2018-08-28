@@ -249,7 +249,7 @@ Continuity for the cost function and compactness of the metric spaces can be dem
 \begin{theorem}
 	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
 \end{theorem}
-
+*********************************************
 \begin{proof}
 By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ is lower semicontinuous. We apply again Weierstrass criterion proving existence of a minimizer.
 \end{proof}
@@ -259,21 +259,27 @@ By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ 
 	The set of couplings $\Pi(\mu, \nu)$ between two probability measures $\mu$ and $\nu$ defined over two Polish spaces $X$ and $Y$ respectively, is tight.
 \end{lemma}
 \begin{proof}
+Let $\mu\in \PlanSp(X)$, $\nu \in \PlanSp(Y)$ and $\gamma \in \Pi(\mu, \nu)$. 	
+	
+	
+	
+	
 Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
 \begin{align*}
 \gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
 \end{align*}  
 Given the arbitrary way to choose $\epsilon$, $\Pi(\mu,\nu)$ is tight.
 \end{proof}
+
 \begin{theorem}
 Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a real valued lower semi-continuous cost function on the space $X\times Y$. Then the Kantorovich's problem \eqref{eq: Kantorovich's Problem.} admits a solution.
 \end{theorem}
 
 \begin{proof}
- By Prokhorov the tightness of transport plans, we have relatively compactness of the transport plans and lower semicontinuity of the cost function. Applying Weirestrass criterion we obtain the existence of an optimizer.
+ By Prokhorov and the tightness of the set of transport plans, we have compactness and lower semicontinuity of the cost function. Applying Weirestrass criterion we obtain the existence of an optimizer.
 \end{proof}
 
-
+***********************************************
 \subsection{Properties of Optimal plans}
 \begin{theorem}[Convexity of optimal plans]
 	The set of solutions $\bar\gamma\in\Pi(\mu,\nu)$ for the Kantorovich's problem is a convex set.
@@ -796,7 +802,7 @@ We can prove duality between the two problems introducing a perturbation as foll
 	Under the setting of definition \ref{def: H perturbation}, $H_\gamma$ is lower semicontinuous for the uniform convergence on the compact set $X\times Y$.
 \end{lemma}
 	For lower semicontinuity, take a sequence $\parentheses{p_n}_{n\in\Naturals}$ converging uniformly to $p$, $p_n\rightarrow p$. Extract a subsequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ approaching to limit inferior of $H(p_n)$. By the means of uniform convergence and the converse implication of Arzel\`a-Ascoli theorem, the sequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ is equicontinuous and bounded. 
-	Thus, the optimal potentials $(\phi_{n_k}, \psi_{n_k})$ are also equicontinuous and bounded, with $\phi_{n_k}\rightarrow \phi$ and  $\psi_{n_k}\rightarrow \psi$ uniformly. The sequence satisfies $\phi_{n_k}(x)+\psi_{n_k}\leq c(x,y)-p_{n_k}(x,y)$.  Hence, 
+	Thus, its corresponding optimal potentials $(\phi_{n_k}, \psi_{n_k})$ are also equicontinuous and bounded, with $\phi_{n_k}\rightarrow \phi$ and  $\psi_{n_k}\rightarrow \psi$ uniformly. The sequence satisfies $\phi_{n_k}(x)+\psi_{n_k}\leq c(x,y)-p_{n_k}(x,y)$.  Hence, 
 	\begin{equation}
 		H(p)\leq -\parentheses{\int_X \phi\dmu+\int_Y\psi\dnu}=\lim_{n\rightarrow \infty}H(p_{n_k})=\liminf_{n\in\Naturals}\ H(p_n).
 	\end{equation}
@@ -828,7 +834,7 @@ The above expression is exactly the equation
 	The optimal transport plan for a cost function $c(x,y)=\abs{x-y}^2$ between two Gaussians in $\Real^d$ is given by an translation map.
 	That is, $\mu$ is a probability measure for the space $X=\Real^m$, defined by,
 	\begin{equation*}
-	\mu(A)=\frac{1}{2}\int_{A}\dx	
+	\mu(A)=\frac{1}{2}\int_{A} \mathsf{e}^{(x-m_\mu)\top}\dx	
 	\end{equation*}
 	and $\nu$ is a probability measure for the space $Y=\Real^n$ defined by,
 	\begin{equation*}
