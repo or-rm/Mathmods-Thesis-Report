@@ -259,11 +259,6 @@ By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ 
 	The set of couplings $\Pi(\mu, \nu)$ between two probability measures $\mu$ and $\nu$ defined over two Polish spaces $X$ and $Y$ respectively, is tight.
 \end{lemma}
 \begin{proof}
-Let $\mu\in \PlanSp(X)$, $\nu \in \PlanSp(Y)$ and $\gamma \in \Pi(\mu, \nu)$. 	
-	
-	
-	
-	
 Fix $\epsilon>0$ and find two compact sets $K_x\subset X$ and $K_y\subset Y$ such that $\mu\parentheses{X\backslash K_x}<\epsilon$, and $\nu\parentheses{Y\backslash K_y}<\epsilon$. Then the set $K_X\times K_Y$ is compact in $X\times Y$ and, for any $\gamma_n\in \Pi(\mu, \nu)$, we have,
 \begin{align*}
 \gamma_n\parentheses{(X\times Y)\backslash \parentheses{K_X\times K_Y}}&\leq \gamma_n\parentheses{(X\backslash K_X)\times Y}+\gamma_n\parentheses{X\times \parentheses{Y\backslash K_y}}\\&=\mu\parentheses{X\backslash K_X}+\nu\parentheses{Y\backslash K_Y}\\&=2\epsilon
@@ -276,7 +271,7 @@ Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a rea
 \end{theorem}
 
 \begin{proof}
- By Prokhorov and the tightness of the set of transport plans, we have compactness and lower semicontinuity of the cost function. Applying Weirestrass criterion we obtain the existence of an optimizer.
+ By Prokhorov and the tightness of the set of transport plans between two probability measures, we have compactness. Theorem \eqref{th: l.s.c of c.} shows lower semicontinuity of the cost function. Applying Weierstrass criterion we obtain the existence of an optimizer.
 \end{proof}
 
 ***********************************************
