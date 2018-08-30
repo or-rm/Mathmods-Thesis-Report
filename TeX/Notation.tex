@@ -1,19 +1,17 @@
 \chapter*{Notation Table.}
-\begin{tabular}{ l l }
+\begin{longtable*}{ p{0.1\textwidth} p{0.8\textwidth} }
 	$\emptyset$ & Empty set \\
 	$\Real$ & Real numbers field. \\ 
 	$\Realex$ & $ \Real \cup \braces{\pm\infty}$. That is $[-\infty, \infty]$ \\
 	$\Real_+ $ & The set of nonnegative real numbers, that is the interval $[0, \infty)$.\\
 	$\Realex_+$ & The set of nonnegative extended real numbers, that is the interval $[0, \infty]$\\
-	$2^A$ & Set of all subsets of $A$. Power set of $A$.\\
+	$2^A$ & The Power set of $A$, that is the set of all subsets in $A$.\\
 	$\Real^d $ & The $d$-dimensional Euclidean space.\\
 	$B\backslash A$ & Given a set $B$ and a subset $A\subset B$, the set $B\backslash A$ is the complement of A in $B$.\\
 	$A\cup B$ & Union of two sets.\\
 	$A\cap B$ & Intersection of two sets.\\
-	$\proj_X$& Projection of $X$. Given two sets $X$ and $Y$ the projection of $X$ is the function $\proj_X:X\times Y\rightarrow X$, \\
-	& defined by $\proj_X(x,y)=x$.\\
-	$\proj_Y$& Projection of $Y$. Given two sets $X$ and $Y$ the projection of $Y$ is the function $\proj_Y:X\times Y\rightarrow Y$,\\
-	&  defined by $\proj_Y(x,y)=y$.\\
+	$\proj_X$& Projection of $X$. Given two sets $X$ and $Y$ the projection of $X$ is the function $\proj_X:X\times Y\rightarrow X$, defined by $\proj_X(x,y)=x$.\\
+	$\proj_Y$& Projection of $Y$. Given two sets $X$ and $Y$ the projection of $Y$ is the function $\proj_Y:X\times Y\rightarrow Y$, defined by $\proj_Y(x,y)=y$.\\
 	$\indicator{A} $ & Indicator function of a set $A\subset X$. If $x\in A$, then $\indicator{A}(x)=0$. If $x\in X\backslash A$, we have $\indicator{A}(x)=\infty$.\\
 	$\ball{x}{\epsilon}$ & Open ball with radius $\epsilon$ centered at $x$.\\
 	$\overline{\mathit{B}}\parentheses{x;\epsilon} $ & Closed ball with radius $\epsilon$ centered at $x$.\\
@@ -23,7 +21,7 @@
 	$\partial f$ & Subdifferential of a function $f$.\\
 	$\id$ & Identity map. That is $\id: X\rightarrow X$, defined by $\id(x)=x$.\\
 	l.s.c. & Lower semicontinuous. \\
-	%$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
+	$\Variation{F}{\rho}$ &  First variation of $F:\PlanSp\parentheses{X} \rightarrow \Real$, that is $\left.\dev{\epsilon}F\left(\rho +\epsilon\chi\right)\right|_{\epsilon=0}=\int\Variation{F}{\rho}\diff\chi$\\
 	$\D T(x)$ & Jacobian matrix of a map $T(x)$. \\
 	$\domainrestr{A}{f}$ & The restriction of a function $f$ to a set $A$. \\
 	$\MeasureSp\parentheses{X}$ & Space of measures on $X$. \\
@@ -48,7 +46,8 @@
 	$\Kantorovich$ & Kantorovich cost of a plan $\gamma$. \\	
 	$\mu \otimes \nu$ & The product measure of $\mu$ and $\nu$ such that $\mu \otimes \nu (A\times B)= \mu(A)\nu(B)$.\\
 	$\mathbf{M}^{k\times h}$ & The set of real matrices with $k$ rows and $h$ columns. \\
-	$M^\top$ & Transpose of a matrix $M$. \\
-	$\pmb{A\otimes B}$& Kronecker product between two matrices $\mathbf{A}$ and $\mathbf{B}$.\\
+	$\mathbf{A}^\top$ & Transpose of a matrix $\mathbf{A}$. \\
+	$\mathbf{A}\pmb{\otimes}\mathbf{B}$& Kronecker product between two matrices $\mathbf{A}$ and $\mathbf{B}$.\\
+	$\mathbf{f}\pmb{\oplus}\mathbf{g}$ & The direct sum of two vectors $\mathbf{f}$ and $\mathbf{g}$, a matrix whose entries are given by the sum of the entries of $\mathbf{f}$ and $\mathbf{g}$, that is  $(\mathbf{f}\pmb{\oplus}\mathbf{g})_{i,j}=(\mathbf{f})_i+(\mathbf{g})_j$.\\
 	$\mathbf{I}_n$ & Identity matrix of dimension $n$.
-\end{tabular}
+\end{longtable*}

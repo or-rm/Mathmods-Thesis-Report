@@ -803,9 +803,9 @@ We can prove duality between the two problems introducing a perturbation as foll
 \end{proof}
 Taking the Legendre transform of $H^*:\MeasureSp(X\times Y)\rightarrow \Real\cup\braces{+\infty}$. For every $\gamma\in \MeasureSp(X\times Y)$, we have
 \begin{align*}
-	H^*(\gamma)&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma -H(p)\\
-	&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma +\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}\\
-	&=\sup_{p\in C(X\times Y)}\int_{X\times Y}p\diff\gamma +\sup\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
+	H^*(\gamma)&=\sup_{p\in C(X\times Y)}\braces{\int_{X\times Y}p\diff\gamma -H(p)}\\
+	&=\sup_{p\in C(X\times Y)}\braces{\int_{X\times Y}p\diff\gamma +\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}}\\
+	&=\sup_{p\in C(X\times Y)}\braces{\int_{X\times Y}p\diff\gamma +\sup\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}}
 \end{align*}
 The above expression is exactly the equation 
 \subsection{Brenier's theorem}

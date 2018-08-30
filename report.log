@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 AUG 2018 07:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 AUG 2018 08:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1512,38 +1512,62 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 \c@subfigure=\count194
 \c@subtable=\count195
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip89
+\LTright=\skip90
+\LTpre=\skip91
+\LTpost=\skip92
+\LTchunksize=\count196
+\LTcapwidth=\dimen291
+\LT@head=\box63
+\LT@firsthead=\box64
+\LT@foot=\box65
+\LT@lastfoot=\box66
+\LT@cols=\count197
+\LT@rows=\count198
+\c@LT@tables=\count199
+\c@LT@chunks=\count266
+\LT@p@ftn=\toks50
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 11.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 12.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 12.
+
 (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
 Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
@@ -1580,19 +1604,19 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box63
-Package hyperref Info: Link coloring ON on input line 11.
+\AtBeginShipoutBox=\box67
+Package hyperref Info: Link coloring ON on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count196
+\c@section@level=\count267
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
+LaTeX Info: Redefining \ref on input line 12.
+LaTeX Info: Redefining \pageref on input line 12.
+LaTeX Info: Redefining \nameref on input line 12.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -1601,11 +1625,11 @@ LaTeX Info: Redefining \nameref on input line 11.
  ABD: EveryShipout initializing macros
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 38.
+(hyperref)                removing `\\' on input line 39.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 38.
+(hyperref)                removing `\\' on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
@@ -1694,12 +1718,12 @@ File: cover/logo.pdf Graphic file (type QTm)
 
 ]) (./lib/symbols.tex)
 (./lib/fields.tex) (./lib/boxing.tex
-\c@theorem=\count197
-\c@problem=\count198
-\c@definition=\count199
-\c@proposition=\count266
-\c@lemma=\count267
-\c@corollary=\count268
+\c@theorem=\count268
+\c@problem=\count269
+\c@definition=\count270
+\c@proposition=\count271
+\c@lemma=\count272
+\c@corollary=\count273
 ) (./lib/transport.tex)
 (./lib/operators.tex) [3] [4
 
@@ -1709,22 +1733,10 @@ File: cover/logo.pdf Graphic file (type QTm)
 
  [5] [6
 
-] (./TeX/Notation.tex)
-(./Tex/Preliminaries.tex
-Overfull \hbox (60.1911pt too wide) in paragraph at lines 2--1
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--1
-
- []
-
+] (./TeX/Notation.tex
 [1
 
-] [2
-
-]
+]) (./Tex/Preliminaries.tex [2]
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--22
@@ -1751,7 +1763,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-[3]
+[3
+
+]
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
 (Font)              scaled to size 8.00012pt on input line 45.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
@@ -2051,7 +2065,12 @@ Overfull \hbox (5.52806pt too wide) in paragraph at lines 293--294
 ion of the transportation plan given marginals
  []
 
-[47]) (./TeX/chapter-6.tex [48]
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
+
+ []
+
+) (./TeX/chapter-6.tex [48]
 Chapter 5.
 ) (./report.bbl [49
 
@@ -2062,17 +2081,17 @@ Chapter 5.
 \openout6 = `report.soc'.
 
  [51]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
  (./report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 84.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 85.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 85.
  ) 
 Here is how much of TeX's memory you used:
- 40235 strings out of 493638
- 741538 string characters out of 6146796
- 848268 words of memory out of 5000000
- 42914 multiletter control sequences out of 15000+600000
+ 40357 strings out of 493638
+ 743188 string characters out of 6146796
+ 849269 words of memory out of 5000000
+ 43030 multiletter control sequences out of 15000+600000
  13135 words of font info for 163 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,15n,94p,10425b,633s stack positions out of 5000i,500n,10000p,200000b,80000s

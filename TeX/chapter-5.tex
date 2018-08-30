@@ -171,7 +171,7 @@ The complementary slackness conditions for the discrete transportation problem c
 \subsection{The simplex method is not polynomial time.}
 The linear program for the optimal transport problem can be solved by any of the algorithms presented before in this text. Although neither of the methods above developed are polynomial-time. Victor Klee and George Minty exhibited a class of linear programs requiring an exponential number of iterations when solved by the conventional simplex method.
 As it is proved in  \cite{Konstantinos2008Klee-Minty} the following linear program under the pivoting rule of the least reduced cost, requires $2^n-1$ iterations before optimality is reached and, hence, they are exponential.
-\begin{align}
+\begin{align*}
 \min_{\mathbf{x}\in\Real^{2n}}&\quad \sum_{j=1}^{n}-\epsilon^{n-1}x_j \\
 \subject &\left\{ \begin{array}{rl}
 x_1+x_{n+1}&=1,\\
@@ -181,7 +181,7 @@ x_1+x_{n+1}&=1,\\
 2\sum_{j=1}^{n}\epsilon^{n-j}x_j+x_{2n}&=1
 \end{array}
 \right.
-\end{align}
+\end{align*}
 
 \subsection{Network Simplex Method.}
 In the other hand, we have abused of the terminology calling simplex method to the criterion of choosing the basis according to the value of the least reduced cost, but indeed the simplex method is a set of different ways to choose a basis in order to find an optimal solution. The nature of the transportation problem allows to implement different versions of the simplex algorithm that exploit \textbf{the mass conservation property}, also known as \emph{balanced transportation}, to develop more efficient algorithms.\\
@@ -260,7 +260,7 @@ We recommend \cite{Cuturi2018CompOT}, \cite{Orlin1997PolynomialTimeNetworkSimple
 
 
 \section{Sinkhorn-Knopp Algorithm.}
-The \emph{Shannon-Neumann anecdote} is a famous conversation between these two great mathematicians Claude Shannon\footnote{Claude Elwood Shannon (April 30, 1916 – February 24, 2001). American mathematician and electrical engineer known as the \textit{Father of the information theory}.} and  John Neumann\footnote{John von Neumann (December 28, 1903 – February 8, 1957). Hungarian-American mathematician and chemical engineering known for applications in many fields covering from computer sciences to physics and mathematics.}, that occurred in the time period fall 1940 to spring 1941 in New Jersey in which von Neumann suggested Shannon to use the term entropy. In April of 1961, Myron Tribus visits Shannon at his office at MIT and questions him about the reason behind his ``entropy'' name adoption.	
+The \emph{Shannon-Neumann anecdote} is a famous conversation between these two great mathematicians Claude Shannon\footnote{Claude Elwood Shannon (April 30, 1916 – February 24, 2001). American mathematician and electrical engineer known as the \textit{Father of the information theory}.} and  John Neumann\footnote{John von Neumann (December 28, 1903 – February 8, 1957). Hungarian-American mathematician and chemical engineering known for applications in many fields covering from computer sciences to physics and mathematics.}, that occurred in the time period fall 1940 to spring 1941 in New Jersey in which von Neumann suggested Shannon to use the term entropy in one of his papers. In April of 1961, Myron Tribus visits Shannon at his office at MIT and questions him about the reason behind his ``entropy'' name adoption.	
 
 Tribus recounts the Shannon interview \cite{Tribus1964Shannon} as such:
 \begin{quote}
@@ -301,19 +301,38 @@ This regularization produces a blurred prediction of the transportation plan giv
 	\begin{align}
 	0\leq \anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\anglesbox{\mathbf{C},\pmb{\gamma}} \label{eq: Optimality Frobenius},
 	\end{align}
-	and $\pmb{\gamma}_\alpha$ is optimal for $\eqref{eq: Regularized OT}$, we have
+	and $\pmb{\gamma}_\alpha$ is optimal for $\eqref{eq: Regularized OT}$, then
 	\begin{align}
-		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon_\alpha H(\pmb{\gamma})}-\parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\epsilon_\alpha H(\pmb{\gamma}_\alpha)}\\
-		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}}+\epsilon\parentheses{ H(\pmb{\gamma}_\alpha)- H(\pmb{\gamma})} \label{eq: Optimality Regularized}.
+		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon_\alpha H(\pmb{\gamma})}-\parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\epsilon_\alpha H(\pmb{\gamma}_\alpha)}\nonumber\\
+		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}}+\epsilon_\alpha\parentheses{ H(\pmb{\gamma}_\alpha)- H(\pmb{\gamma})} \label{eq: Optimality Regularized}.
 	\end{align}
 	Multiplying both sides of the inequality \eqref{eq: Optimality Frobenius} by two and adding it to the inequality \eqref{eq: Optimality Regularized} we have the following inequality,
 	\begin{align}
-		0\leq \anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\anglesbox{\mathbf{C},\pmb{\gamma}}\leq \epsilon\parentheses{H(\pmb{\gamma}_\alpha)-H(\pmb{\gamma})}.
+		0\leq \anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\anglesbox{\mathbf{C},\pmb{\gamma}}\leq \epsilon_\alpha\parentheses{H(\pmb{\gamma}_\alpha)-H(\pmb{\gamma})}.
 	\end{align}
-	We have $H$ and $\anglesbox{\mathbf{C}, \cdot}$ are continuous functions, therefore taking the limit $\alpha\rightarrow \infty$  
+	We have that $H$ and $\anglesbox{\mathbf{C}, \cdot}$ are continuous functions, therefore taking the limit $\alpha\rightarrow \infty$ and by the above inequality we obtain $\anglesbox{\mathbf{C},\pmb{\gamma}}= \anglesbox{\mathbf{C},\pmb{\gamma}^\star}$, implying that $\pmb{\gamma}^\star$ is optimal and feasible. Moreover, dividing by $\epsilon_\alpha$ we obtain that $H(\pmb{\gamma})\leq H(\pmb{\gamma}^\star)$ proving that in the limit we have an optimal feasible solution for \eqref{eq: Optimal Cost Frobenius} with higher entropy that anyone else that is also optimal.
 	\end{proof}
 \subsubsection{Sikhorn Algorithm}
-There are many methods that we can use to solve a convex program, for example one of the different versions of the Newton's methods or Backward propagation algorithm. Although recently the so called \textbf{Sinkhorn method} has taken the attention of many researches since it has a high level of parallelism making it GPU\footnote{Graphics Processing Unit.} friendly.
+There are many methods that we can use to solve a convex program, for example one of the different versions of the Newton's methods or Backward propagation algorithm. Although recently the so called \textbf{Sinkhorn method} has taken the attention of many researches since it has a high level of parallelism making it GPU\footnote{Graphics Processing Unit.} friendly.\\
+
+Consider the Lagrangian for the strictly convex program \eqref{eq: Regularized OT},
+\begin{equation}
+	\Lambda(\pmb{\gamma};\mathbf{f}, \mathbf{g})=\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon H(\pmb{\gamma})-\anglesbox{\mathbf{f}\ ,\ \pmb{\gamma}\one_m-\mathbf{a}}-\anglesbox{\mathbf{g}\ ,\ \pmb{\gamma}^\top\one_n-\mathbf{b}}
+\end{equation}
+where $\mathbf{f}$ and $\mathbf{g}$ are the Lagrange multipliers of the constrains \eqref{eq: matrix prob marginals}, the necessary condition for optimality should be satisfied,
+\begin{equation}
+	\frac{\delta\Lambda(\pmb{\gamma};\mathbf{f}, \mathbf{g})}{\delta (\pmb{\gamma})_{i,j}}=(\mathbf{C})_{i,j}+\epsilon\log(\pmb{\gamma}_{i,j})-(\mathbf{f})_i-(\mathbf{g})_{j}=0,
+\end{equation}
+which results for each entry of $\pmb{\gamma}$, 
+\begin{equation}
+	(\pmb{\gamma})_{i,j}=\exp\parentheses{{\frac{(\mathbf{f})_i+(\mathbf{g})_{j}-(\mathbf{C})_{i,j}}{\epsilon}}}=\mathsf{e}^{(\mathbf{f})_i/\epsilon}\mathsf{e}^{-(\mathbf{C})_{i,j}/\epsilon}\mathsf{e}^{(\mathbf{g})_j/\epsilon}
+\end{equation}
+
+We set $\mathbf{u}\in \Real^n$ and $\mathbf{v}\in\Real^m$ as 
+\begin{align}
+(\mathbf{u})_{i}&=\exp\parentheses{(\mathbf{f})_i}-\exp\parentheses{\epsilon}\quad \forall 1\leq i \leq n\\
+(\mathbf{v})_{j}&=\exp\parentheses{(\mathbf{g})_j}-\exp\parentheses{\epsilon}\quad \forall 1\leq j \leq m
+\end{align} 
 %\section{Applications.}
 %\section{Continuous Formulation.}
 %\subsection{Beckman Problem and Optimal Transport.}
@@ -321,6 +340,6 @@ There are many methods that we can use to solve a convex program, for example on
 
 \subsection{Examples.}
 
-The following examples were generated using the library of Optimal Transport developed for Python by R\'emi Flamary and Nicolas Courty \cite{flamary2017pot}.
+The following examples were generated using the library of Optimal Transport \cite{flamary2017pot} developed in Python by R\'emi Flamary and Nicolas Courty. 
 
 This example takes as cost function $c(x,y)=\frac{1}{2}\abs{x-y}^2$. 
