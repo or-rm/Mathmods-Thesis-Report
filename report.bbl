@@ -1,20 +1,41 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Billingsley(1999)]{Patrick1999ConverProbMeas}
+Patrick Billingsley.
+\newblock \emph{Convergence of Probability Measures}.
+\newblock Probability and Statistics. John Wiley and Sons., 2 edition, 1999.
+
+\bibitem[Cuturi(2018)]{Cuturi2018CompOT}
+Gabriel Peyr\'e;~Marco Cuturi.
+\newblock Computational optimal transport, 2018.
+\newblock URL \url{https://optimaltransport.github.io/}.
+
 \bibitem[David G.~Luenberger(2007)]{Luenberger2007LinNonLinProg}
 Yinyu~Ye David G.~Luenberger.
 \newblock \emph{Linear and Nonlinear Programming}.
 \newblock Springer, 2007.
+
+\bibitem[Flamary and Courty(2017)]{flamary2017pot}
+R\'emi Flamary and Nicolas Courty.
+\newblock Pot python optimal transport library, 2017.
+\newblock URL \url{https://github.com/rflamary/POT}.
 
 \bibitem[Kantorovich(1942)]{Kantorovich1942}
 L.~Kantorovich.
 \newblock On the translocation of masses.
 \newblock \emph{Dokl. Acad. Nauk. USSR}, 37\penalty0 (7-8):\penalty0 227--229,
   1942.
+
+\bibitem[Konstatinos~Paparrizos(2008)]{Konstantinos2008Klee-Minty}
+Dimitrios~Zissopoulos Konstatinos~Paparrizos, Nikolaos~Samaras.
+\newblock Linear programming: Klee–minty examples.
+\newblock In Pardalos~P. Floudas~C., editor, \emph{Encyclopedia of
+  Optimization.} Springer, Boston, 2 edition, 2008.
 
 \bibitem[Leoni(2007)]{Fonseca2007ModCalculculusofVar}
 Irene Fonseca;~Giovanni Leoni.
@@ -31,14 +52,26 @@ Milan Merkle.
 \bibitem[Munkres(2000)]{munkres2000topology}
 J.R. Munkres.
 \newblock \emph{Introduction to Topology}.
-\newblock Topology. Prentice-Hall, 2nd. edition, 2000.
+\newblock Series in Topology. Prentice-Hall, 2nd. edition, 2000.
 \newblock ISBN 9780131784499.
+
+\bibitem[Orlin(1997)]{Orlin1997PolynomialTimeNetworkSimplex}
+James~B. Orlin.
+\newblock A polynomial time primal network simplex algorithm for minimum cost
+  flows.
+\newblock \emph{Mathematical Programming}, 78:\penalty0 109--129, 1997.
 
 \bibitem[Santambrogio(2015)]{Santambrogio2015OT}
 Filippo Santambrogio.
 \newblock \emph{Optimal Transport for Applied Mathematicians.}, volume~87 of
   \emph{Progress in Nonlinear Differential Equations and Their Applications}.
 \newblock Springer, 2015.
+
+\bibitem[Tarjan(1997)]{Tarjan1997DynamicTreesNetworkSimplex}
+Robert~E. Tarjan.
+\newblock Dynamic trees as search trees via euler tours, applied to the network
+  simplex algorithm.
+\newblock \emph{Mathematical Programming}, 78:\penalty0 169--177, 1997.
 
 \bibitem[Villani(2008)]{Villani2008OT}
 Cédric Villani.

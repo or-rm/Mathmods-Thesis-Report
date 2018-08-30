@@ -378,7 +378,7 @@ Let $\pmb{\beta}^{i}$ the $i$-th row of $\mathbf{B}^{-1}$, note that $\pmb{\beta
  \begin{equation}
  	\bar{\pmb{\lambda}}^\top=\pmb{\lambda}^\top \mathbf{b}-\epsilon\parentheses{ \mathbf{x}_{\mathbf{B}}}_i
  \end{equation}
- The idea behind the algorithm is 
+ The idea behind the algorithm is:
 \begin{enumerate}
 	\item We start with a dual feasible solution $\mathbf{x}_{\mathbf{B}}$, if $\mathbf{x}_{\mathbf{B}}\geq 0$ the solution is optimal. $\mathbf{x}_{\mathbf{B}}$ is not nonnegative we can find $i$ such that the $i$-th component of $\mathbf{x}_{\mathbf{B}}$ is less than zero, i.e. $\parentheses{ \mathbf{x}_{\mathbf{B}}}_i<0$.
 	\item If all $y_{i,j}\geq 0$, for $j=1,2,\dots,n$, then the dual has no maximum, due to the fact we have feasibility of $\bar{\pmb\lambda}$ for any choice of $\epsilon>0$. 

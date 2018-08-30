@@ -2,22 +2,22 @@
 The approximation of an optimal transport is a computationally expensive problem.  In this chapter we present the discrete formulation of the Kantorovich's problem. We can see that the discrete Kantorovich's problem is a subcase of a general linear program.
 %We can attack this problem by the approaches of \textbf{First  Discretize then Optimize} or \textbf{First Optimize then Discretize}
 \section{Discrete Formulation and Linear Programming.}
-We represent the vector $\one_n=\parentheses{1,1,\dots,1}^\top\in \Real^n$ the vector composed of $n$ $1$'s, and the vector composed of $n$ $0$'s as $\zeros_n=\parentheses{0,0,\dots, 0}^\top\in\Real^n$. We call a simplex $\Sigma_n$ the convex set of vectors $\pmb{p}=\parentheses{p_1, \dots, p_n}^\top\in \Real^n$ such that, 
+We denote by $\one_n=\parentheses{1,1,\dots,1}^\top\in \Real^n$ the vector composed of $n$ $1$'s. The vector composed of $n$ $0$'s is denoted by $\zeros_n=\parentheses{0,0,\dots, 0}^\top\in\Real^n$. We call a simplex $\Sigma_n$ the convex set of vectors $\pmb{p}=\parentheses{p_1, \dots, p_n}^\top\in \Real^n$ such that, 
 \begin{equation}
 	\Sigma_n=\braces{\mathbf{p} \in \Real^n: \ \sum_{i=1}^{n}{p_i}=1\ \mand\ \mathbf{p}\geq 0 }.
 \end{equation}
 Let $X=\braces{x_1, x_2, \dots, x_n}$ be a finite set of $n$ elements. Let $\mu$ a probability measure defined over $X$. Since $X$ is a finite set, we can express the probability measure $\mu$ as follows,
 \begin{equation}
 	\mu=\sum_{i=1}^{n} a_i \delta_{x_i},
-\end{equation}.
-where $\mathbf{a}=\parentheses{a_1, a_2, \dots, a_n}^\top \in \Sigma_n$. In this section we represent the Kronocker's delta $X\to \braces{0,1}$ defined over a finite set $X$ by the equation,
+\end{equation}
+where $\mathbf{a}=\parentheses{a_1, a_2, \dots, a_n}^\top \in \Sigma_n$. In this section we represent the Kronocker's delta $\delta_{x_i}: X\to \braces{0,1}$ defined over a finite set $X$ by the equation,
 \begin{equation*}
 \forall x_i\in X\quad	\delta_{x_i}(x)=\begin{cases}
 	1 & x=x_i \\
 	0 & x\neq x_i
 	\end{cases}.
 \end{equation*}  
-Hence we have that $\mu(x_i)=a_i$ for all $x_i\in X$. Using the same notation, let $Y=\braces{y_1, y_2, \dots, y_m}$ be a finite set of $m$ elements. Let $\nu$ be a probability measure defined over $Y$ defined by,
+Hence, we have that $\mu(x_i)=a_i$ for all $x_i\in X$. Using the same notation, let $Y=\braces{y_1, y_2, \dots, y_m}$ be a finite set of $m$ elements. Let $\nu$ be a probability measure defined over $Y$ defined by,
 \begin{equation}
 	\nu=\sum_{i=1}^{m} b_i \delta_{y_i},
 \end{equation}
@@ -106,7 +106,7 @@ Then the dual formulation of the problem is given by,
 	\end{pmatrix}\\
 	\subject& \mathbf{h}^\top\mathbf{A}\leq \mathbf{c}^\top.
 \end{align}
-\subsection{Duality.}
+\subsection{$\mathbf{C}$-transform improvement and Duality.}
 We know that the primal and the dual problem reach the share the same optimal value. Without loss of generality we can write $\mathbf{h}=(\mathbf{f}, \mathbf{g})^\top$ as two vectors $\mathbf{f}\in \Real^n$ and $\mathbf{g}\in \Real^m$. Note matrix product $\mathbf{d}$, between
 $(\mathbf{f} \ \mathbf{g})=(f_1, f_2, \dots f_n, g_1, g_2\dots, g_m)$ and the matrix $\mathbf{A}$ can be written column by column using $\mathbf{A}^k$ to denote the $(k+1)$-th column of $\mathbf{A}$ for $0\leq k < nm$ as follows, 
 
@@ -165,22 +165,106 @@ The complementary slackness conditions for the discrete transportation problem c
 	\mathbf{g}_j} = 0$ holds. That is, 
 	\begin{enumerate}
 		\item If $(\pmb{\gamma}^\star)_{i,j}>0 $ then necessarily $\parentheses{\mathbf{f}^{\star}}_i+\parentheses{\mathbf{g}^\star}_j=(\mathbf{C})_{i,j}$\\
-		\item  If  $\parentheses{\mathbf{f}^{\star}}_i+\parentheses{\mathbf{g}^\star}_j<(\mathbf{C})_{i,j}$ then necessarily $(\pmb{\gamma}^\star)_{i,j}>0$
+		\item  If  $\parentheses{\mathbf{f}^{\star}}_i+\parentheses{\mathbf{g}^\star}_j<(\mathbf{C})_{i,j}$ then necessarily $(\pmb{\gamma}^\star)_{i,j}=0$
 	\end{enumerate}
 \end{proposition}
 \subsection{The simplex method is not polynomial time.}
-The linear programming formulation of the optimal transport can be solved by any of the methods presented in this text. Although, the nature of the problem worths to consider Consider the following example
+The linear program for the optimal transport problem can be solved by any of the algorithms presented before in this text. Although neither of the methods above developed are polynomial-time. Victor Klee and George Minty exhibited a class of linear programs requiring an exponential number of iterations when solved by the conventional simplex method.
+As it is proved in  \cite{Konstantinos2008Klee-Minty} the following linear program under the pivoting rule of the least reduced cost, requires $2^n-1$ iterations before optimality is reached and, hence, they are exponential.
 \begin{align}
-	\max \sum_{j=1}^{n} 10^{n-j}x_j\\
-	\subject\ 2\sum_{j=1}^{i-1}10^{i-j}x_j+x_i \leq 
+\min_{\mathbf{x}\in\Real^{2n}}&\quad \sum_{j=1}^{n}-\epsilon^{n-1}x_j \\
+\subject &\left\{ \begin{array}{rl}
+x_1+x_{n+1}&=1,\\
+2\parentheses{\epsilon x_1+x_2+x_{n+2}}&=1\\
+2\parentheses{\epsilon^2 x_1+\epsilon x_2+x_3+x_{n+3}}&=1\\
+\vdots&\vdots\\
+2\sum_{j=1}^{n}\epsilon^{n-j}x_j+x_{2n}&=1
+\end{array}
+\right.
 \end{align}
 
+\subsection{Network Simplex Method.}
+In the other hand, we have abused of the terminology calling simplex method to the criterion of choosing the basis according to the value of the least reduced cost, but indeed the simplex method is a set of different ways to choose a basis in order to find an optimal solution. The nature of the transportation problem allows to implement different versions of the simplex algorithm that exploit \textbf{the mass conservation property}, also known as \emph{balanced transportation}, to develop more efficient algorithms.\\
+
+\begin{equation*}
+\begin{array}{cccc|c}
+\gamma_{1,1}&\gamma_{2,1}&\dots&\gamma_{1,m}&a_{1}\\
+\gamma_{2,1}&\gamma_{2,2}&\dots&\gamma_{2,m}&a_{2}\\
+\vdots&\ddots&\ddots&\vdots&\vdots\\
+\gamma_{n,1}&\gamma_{n,2}&\dots&\gamma_{n,m}&a_{n}\\
+\hline
+b_{1}&b_{2}&\dots&b_{m}& 1\\
+\end{array}
+\end{equation*}
+
+The most common way to choose the basis in for optimal transport problems is the so called \textbf{Network simplex method}, which is polynomial time. The main idea behind this method is that a transportation plan can be seen as the graph of a network connecting sources and sinks, with a flow through the network satisfying that each source $x_i$ is flowing out $a_i$ units of mass, and sink $y_j$ is flowing into $b_j$ units of mass. Each edge connecting a source with a sink is associated with a cost $(\mathbf{C})_{i,j}$. 
+The Network simplex methods needs to be initialized with a feasible solution, this step can be done in a simple and efficient way using the North-west Corner Rule. The rule starts assigning the highest possible value to  $(\pmb{\gamma})_{1,1}=\min\braces{a_1, b_1}$. At each step the entry $(\pmb{\gamma})_{i,j}$ is chosen in order to saturate either the row at $i$, the column at $j$ or both. The rule finish until we reach the position $(\pmb{\gamma})_{n,m}$. Briefly, the North west rule can be summarized as follows:
+\begin{itemize}
+	\item Initialize $i=1$, $j=1$. And set $r\leftarrow a_1$ and $c\leftarrow b_1$.
+	\item While $i\leq n$, $j\leq m$,
+	\begin{enumerate}
+		\item Set $t\leftarrow \min\braces{c, r}$.
+		\item Set $\parentheses{\pmb{\gamma}}_{i,j}\leftarrow t$
+		\item Set $r\leftarrow r-t$ and $c\leftarrow c-t$. 
+		\item If $r=0$ then increment $i\leftarrow \min \braces{m,i+1}$, and update $r\leftarrow a_i$.
+		\item If $c=0$ then increment $j\leftarrow \min \braces{m,j+1}$, and update
+		$c\leftarrow b_j$.
+	\end{enumerate} 
+\end{itemize}
+
+
+The algorithm constructs the graph of an extreme point matrix $\pmb{\gamma}$. That is the transportation plan at each stage is a basic feasible solution of the constraints. It can be proved that the graph of a matrix $\pmb{\gamma}$ that is a basic feasible solution has no cycles, then the graph is a tree or a disjoint union of trees (called forest), and it has no more than $m+n-1$ non-zero entries. 
+
+The Network simplex method relies on the fact that complementary slackness conditions, $\pmb{\gamma}_{i,j}>0\implies(\mathbf{f})_i+(\mathbf{g})_j=(\mathbf{C})_{i,j}$, allows to find a pair $(\mathbf{f},\mathbf{g})$ (not necessarily dual feasible) for each feasible matrix $\pmb{\gamma}$ and by corollary \ref{cor: Dual Primal equality} if the pair is dual feasible then we have reached optimality. If the pair $(\mathbf{f}, \mathbf{g})$ is not feasible then it is modified to get closer to feasibility. 
+
+We can compute a complementary pair $(\mathbf{f}, \mathbf{g})$ starting from one some the edges satisfying $(\gamma)_{i_1',j_1'}>0$, then we set $(\mathbf{f})_{i_1'}=0$ and then we compute $(\mathbf{g})_{j_1'}=(\mathbf{C})_{i_1',j_1'}-\mathbf{f}_{i_1'}$. Imagine that does exist an edge of the graph $\pmb{\gamma}$ such that the corresponding entry is strictly greater than zero and it is connecting a source $x_{i_2'}$ to the sink $y_{j_1'}$, then we set $(\mathbf{f})_{i_2'}=(\mathbf{C})_{i_2',j_1'}-(\mathbf{g})_{j_1'}$, we repeat this process until we cover the whole tree. Since the graph is composed of a disjoint union of trees (If the graph is a tree and assuming the non-degeneracy condition we will cover all the nodes), we repeat for all the disconnected trees covering in this way all the elements of $\mathbf{f}$ and $\mathbf{g}$ (again assuming the non-degeneracy condition).
+ 
+\begin{figure}[H]
+ \begin{center}
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+	 	\caption{Graph of the network connecting sources and sinks.}
+	 	\includegraphics[width=0.8\textwidth]{Network-Flow-Graph}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+		\caption{Feasible transportation plan.}
+		\includegraphics[width=0.8\textwidth]{Network-Feasible-Flow-Graph}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+		\caption{Basic Feasible transportation plan.}
+		\includegraphics[width=0.8\textwidth]{Network-Basic-Feasible-Flow-Graph}
+	\end{subfigure}
+ \end{center}
+\end{figure}
+
+The network simplex algorithm maintains a basic feasible solution at each stage. Basically, given a basic feasible solution $\pmb{\gamma}$ we compute a complementary pair $(\mathbf{f},\mathbf{g})$ and we check for feasibility. If the complementary pair is not feasible we create a new edge in the graph from one of the pairs $(x_i,y_j)$ violating $\mathbf{C}_{i,j}<(\mathbf{f})_i+(\mathbf{g})_j$ to the edges to the graph. Two situations arise:
+\begin{itemize}
+	\item The graph keeps its property of being a forest, in this case we only recompute a complementary pair $(\mathbf{f}, \mathbf{g})$ for the new graph. This situation does not represent any change in $\pmb{\gamma}$, it is just the result of the arbitrary way we have found a pair $(\mathbf{f}, \mathbf{g})$.
+	\item The graph has a cycle, in this case we need to remove a pair from the graph of $\pmb{\gamma}$, to ensure that we have a forest and modify $\pmb{\gamma}$ in order to be consistent with the new graph. 
+	Let $i'_1\to j'_1\to i'_2\to j'_2\to i'_3\to\dots\to i'_K\to j'_K\to i'_1$ the directed path of the cycle we have created. Increase the flow of all the edges $(i', j')$ and decrease it by the same amount in the edges $(j',i')$.
+	Let $\tilde{\pmb{\gamma}}$ the new matrix resulting from this operation, that is,
+	\begin{equation*}
+		\begin{array}{lclc}
+		(\tilde{\pmb{\gamma}})_{i'_k,j'_k}&=&({\pmb{\gamma}})_{i'_k,j'_k}+\epsilon&\quad \forall k=1,\dots, K\\
+		(\tilde{\pmb{\gamma}})_{i'_{k+1}, j'_k}&=&({\pmb{\gamma}})_{i'_{k+1},j'_{k}}-\epsilon&\quad \forall k=1,\dots,K-1 \\
+		(\tilde{\pmb{\gamma}})_{i'_1, j'_k}&=&({\pmb{\gamma}})_{i'_1,j'_{K}}-\epsilon&
+		\end{array}
+	\end{equation*}
+	Take $\epsilon=\min\braces{\gamma_{i_{2}, j_{1}},\dots, \gamma_{i_{K}, j_{K-1}},\gamma_{1,K}}$, in order to keep the constrain $\tilde{\pmb{\gamma}}\geq 0$. Having in this way a tree, since we have removed an edge from a cycle, and we update the transport plan $\pmb{\gamma}\leftarrow\tilde{\pmb{\gamma}}$.
+\end{itemize}
+Briefly, we initialize the algorithm with a feasible solution $\pmb{\gamma}$ using the North-West rule, resulting into a feasible solution, (not necessarily basic feasible) and we compute a complementary pair $(\mathbf{f},\mathbf{g})$ for $\pmb{\gamma}$. We check for feasibility of the computed pair. If the pair is feasible we have an optimal solution. If the pair $(\mathbf{f},\mathbf{g})$ is not feasible we search for cycles and we make them disappear using the above explained procedure. We compute again the complementary pair $(\mathbf{f}, \mathbf{g}$  and we add to the graph of $\pmb{\gamma}$ the edge corresponding to the indexes that violate the complementary condition, and we continue with the above explained procedure. 
+
+We recommend \cite{Cuturi2018CompOT}, \cite{Orlin1997PolynomialTimeNetworkSimplex} and \cite{Tarjan1997DynamicTreesNetworkSimplex} for a detailed description of the algorithm (for example how to deal with degenerated solutions) and the proofs for the convergence and polynomial order of the Network simplex method.
+
+
 \section{Sinkhorn-Knopp Algorithm.}
-Consider the problem adding a regularization.
+In Consider a similar problem adding a regularization.
 \begin{equation}
-	\Theta_\epsilon(\mu, \nu)=\min_{\gamma\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
+	\Theta_\epsilon(\mu, \nu)=\min_{\pmb{\gamma}\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
 \end{equation}
-Where $H(\gamma)$ is the Shannon's Entropy defined for a matrix,
+Where $H(\pmb{\gamma})$ is the Shannon's Entropy defined for a matrix as,
 \begin{equation}
 	H(\pmb{\gamma})=-\sum_{\substack{1\leq i \leq n\\ 1\leq j \leq m}}\gamma_{i,j}\log(\gamma_{i,j})
 \end{equation} 
@@ -207,3 +291,4 @@ and $\lambda_N=0$ is an eigenvalue of $\nabla^2H(q)$
 %\subsection{Beckman Problem and Optimal Transport.}
 %\subsection{Proximal Splitting Algorithms.}
 
+\subsection{Programming examples}

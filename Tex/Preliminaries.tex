@@ -272,7 +272,9 @@ Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the 
 We introduce some notions in convexity since this concept plays an important role in optimization. Convex sets and functions have nice properties that can be exploit in the development of theorems in optimization. 
  
 A subset $E$ of a vector space $V$ is convex if for all $v_1$, $v_2$ in $E$ and all $\alpha \in (0,1)$ we have that $\alpha v_1+(1-\alpha)v_2=v\in E$.
-In other words, $E$ contains all line segments between points in $E$. We denote by $[v_1, v_2]$, a line segment with extreme points $v_1, v_2$.\\
+In other words, $E$ contains all line segments between points in $E$. We denote by $[v_1, v_2]$, a line segment with extreme points $v_1, v_2$.
+A point $x$ in a convex set $C$ is said to be an \textbf{extreme point} of $C$ if there are no two distinct points $x_1$ and $x_2$ in $C$ such that $x = \alpha x_1 + \parentheses{1-\alpha}x_2$ for some $0<\alpha <1$.
+\\
 A subset of the linear space $X$ is said to be \textbf{affine} set if whenever it contains $x_1$ and $x_2$ it also contains $\alpha x_1+\beta x_2$ for arbitrary $\alpha, \beta \in \Real$ satisfying $\alpha+\beta=1$.
 
 The intersection of many arbitrary convex (affine) sets is again convex (affine) set. A function $f: V \rightarrow \Realex$ is convex if and only if $\epi(f)$ is a convex set.\\
@@ -396,7 +398,7 @@ A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ ar
 
 \section{Convergence of Probability measures.}
 
-Let $X$ a topological space. A measure such that the outer measure coincides with the inner measure. Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$
+Let $X$ a topological space. A measure such that the outer measure coincides with the inner measure. Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$. In \cite{Patrick1999ConverProbMeas}.
 \begin{definition}[Support of a measure.]
 	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
 	\begin{equation}

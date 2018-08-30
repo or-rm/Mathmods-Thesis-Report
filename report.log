@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  28 AUG 2018 11:09
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 AUG 2018 03:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1648,8 +1648,8 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 zlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-File: Barcelona2.jpg Graphic file (type QTm)
- <use  "Barcelona2.jpg" >
+File: Barcelona3.png Graphic file (type QTm)
+ <use  "Barcelona3.png" >
 File: cover/logo_white.pdf Graphic file (type QTm)
  <use  "cover/logo_white.pdf" >
 [1
@@ -1830,23 +1830,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 254--255
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 285--286
+Underfull \hbox (badness 10000) in paragraph at lines 287--288
 
  []
 
 [9]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 404.
+LaTeX Font Warning: Command \small invalid in math mode on input line 406.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 404.
+(Font)              scaled to size 9.00014pt on input line 406.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 404.
+(Font)              scaled to size 8.99986pt on input line 406.
 [10] [11]) (./TeX/chapter-3.tex [12]
 Chapter 2.
 
@@ -1968,18 +1968,18 @@ Missing character: There is no ̋ in font [fonts/Arial_Italic.ttf]/OT:mapping=te
 x-text;mapping=tex-text;!
  [30] [31]
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 557--558
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
 [33] [34] [35]
-Overfull \hbox (7.29567pt too wide) in paragraph at lines 660--661
+Overfull \hbox (7.29567pt too wide) in paragraph at lines 659--660
 \EU1/BookmanOldStyle(0)/m/n/10 can say that every $[][]$cyclically monotone set
  is contained in the graph of the $[][]$superdifferential
  []
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 718--719
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
@@ -1987,22 +1987,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 718--719
 Chapter 4.
 [41
 
-] [42] [43]
+] [42]
+LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
+(Font)              scaled to size 12.00018pt on input line 109.
+LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
+(Font)              scaled to size 11.99982pt on input line 109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathbf' on input line 109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 109.
+
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
-[44]) (./TeX/chapter-6.tex [45] [46
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+[44]
+File: ./Pictures/Network-Flow-Graph.png Graphic file (type QTm)
+ <use  "./Pictures/Network-Flow-Graph.png" >
+File: ./Pictures/Network-Feasible-Flow-Graph.png Graphic file (type QTm)
+
+<use  "./Pictures/Network-Feasible-Flow-Graph.png" >
+File: ./Pictures/Network-Basic-Feasible-Flow-Graph.png Graphic file (type QTm)
+
+<use  "./Pictures/Network-Basic-Feasible-Flow-Graph.png" >
+Underfull \vbox (badness 1728) has occurred while \output is active []
+
+ [45]
+[46]) (./TeX/chapter-6.tex [47] [48
 
 ]
 Chapter 5.
-) (./report.bbl [47] [48
+) (./report.bbl [49] [50
 
 ])
 \Changes@OutFile=\write6
 \openout6 = `report.soc'.
 
- [49]
+ [51]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./report.aux)
@@ -2010,12 +2045,12 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 84.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 40182 strings out of 493638
- 739749 string characters out of 6146796
- 848269 words of memory out of 5000000
- 42873 multiletter control sequences out of 15000+600000
- 11969 words of font info for 151 fonts, out of 8000000 for 9000
+ 40226 strings out of 493638
+ 741315 string characters out of 6146796
+ 848268 words of memory out of 5000000
+ 42906 multiletter control sequences out of 15000+600000
+ 13127 words of font info for 162 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,14n,94p,10425b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,94p,10425b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (57 pages).
+Output written on report.pdf (59 pages).
