@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 AUG 2018 03:47
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.22)  30 AUG 2018 07:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1839,15 +1839,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 287--288
 
  []
 
-[9]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 406.
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
+
+ []
+
+[9] [10]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 405.
 
 LaTeX Font Info:    Font shape `EU1/CambriaMath(1)/m/n' will be
-(Font)              scaled to size 9.00014pt on input line 406.
+(Font)              scaled to size 9.00014pt on input line 405.
 LaTeX Font Info:    Font shape `EU1/CambriaMath(2)/m/n' will be
-(Font)              scaled to size 8.99986pt on input line 406.
-[10] [11]) (./TeX/chapter-3.tex [12]
+(Font)              scaled to size 8.99986pt on input line 405.
+[11]) (./TeX/chapter-3.tex [12]
 Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -2021,17 +2026,36 @@ File: ./Pictures/Network-Flow-Graph.png Graphic file (type QTm)
 File: ./Pictures/Network-Feasible-Flow-Graph.png Graphic file (type QTm)
 
 <use  "./Pictures/Network-Feasible-Flow-Graph.png" >
-File: ./Pictures/Network-Basic-Feasible-Flow-Graph.png Graphic file (type QTm)
+Underfull \hbox (badness 5592) in paragraph at lines 236--236
+[]\EU1/Arial(1)/m/n/9 (c) |Basic Feasible transportation
+ []
 
+File: ./Pictures/Network-Basic-Feasible-Flow-Graph.png Graphic file (type QTm)
 <use  "./Pictures/Network-Basic-Feasible-Flow-Graph.png" >
 Underfull \vbox (badness 1728) has occurred while \output is active []
 
  [45]
-[46]) (./TeX/chapter-6.tex [47] [48
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
 
-]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+
+Overfull \hbox (5.52806pt too wide) in paragraph at lines 293--294
+[]\EU1/BookmanOldStyle(0)/m/n/10 This regularization produces a blurred predict
+ion of the transportation plan given marginals
+ []
+
+[47]) (./TeX/chapter-6.tex [48]
 Chapter 5.
-) (./report.bbl [49] [50
+) (./report.bbl [49
+
+] [50
 
 ])
 \Changes@OutFile=\write6
@@ -2045,11 +2069,11 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 84.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 40226 strings out of 493638
- 741315 string characters out of 6146796
+ 40235 strings out of 493638
+ 741538 string characters out of 6146796
  848268 words of memory out of 5000000
- 42906 multiletter control sequences out of 15000+600000
- 13127 words of font info for 162 fonts, out of 8000000 for 9000
+ 42914 multiletter control sequences out of 15000+600000
+ 13135 words of font info for 163 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,15n,94p,10425b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
 

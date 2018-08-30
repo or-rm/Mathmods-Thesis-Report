@@ -28,7 +28,8 @@
 \contentsline {subsection}{\numberline {4.1.3}The simplex method is not polynomial time.}{44}{subsection.4.1.3}
 \contentsline {subsection}{\numberline {4.1.4}Network Simplex Method.}{44}{subsection.4.1.4}
 \contentsline {section}{\numberline {4.2}Sinkhorn-Knopp Algorithm.}{46}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Programming examples}{47}{subsection.4.2.1}
+\contentsline {subsubsection}{Sikhorn Algorithm}{48}{equation.4.2.35}
+\contentsline {subsection}{\numberline {4.2.1}Examples.}{48}{subsection.4.2.1}
 \contentsline {chapter}{\numberline {5}Applications}{49}{chapter.5}
 \contentsline {section}{\numberline {5.1}Wasserstein's Distances.}{49}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Statistical Distances}{49}{subsection.5.1.1}

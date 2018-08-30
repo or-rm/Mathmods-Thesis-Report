@@ -221,20 +221,20 @@ We can compute a complementary pair $(\mathbf{f}, \mathbf{g})$ starting from one
  
 \begin{figure}[H]
  \begin{center}
-	\begin{subfigure}{0.3\textwidth}
+	\begin{subfigure}{0.32\textwidth}
 		\centering
 	 	\caption{Graph of the network connecting sources and sinks.}
-	 	\includegraphics[width=0.8\textwidth]{Network-Flow-Graph}
+	 	\includegraphics[width=0.95\textwidth]{Network-Flow-Graph}
 	\end{subfigure}
-	\begin{subfigure}{0.3\textwidth}
+	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\caption{Feasible transportation plan.}
-		\includegraphics[width=0.8\textwidth]{Network-Feasible-Flow-Graph}
+		\includegraphics[width=0.95\textwidth]{Network-Feasible-Flow-Graph}
 	\end{subfigure}
-	\begin{subfigure}{0.3\textwidth}
+	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\caption{Basic Feasible transportation plan.}
-		\includegraphics[width=0.8\textwidth]{Network-Basic-Feasible-Flow-Graph}
+		\includegraphics[width=0.95\textwidth]{Network-Basic-Feasible-Flow-Graph}
 	\end{subfigure}
  \end{center}
 \end{figure}
@@ -252,7 +252,7 @@ The network simplex algorithm maintains a basic feasible solution at each stage.
 		(\tilde{\pmb{\gamma}})_{i'_1, j'_k}&=&({\pmb{\gamma}})_{i'_1,j'_{K}}-\epsilon&
 		\end{array}
 	\end{equation*}
-	Take $\epsilon=\min\braces{\gamma_{i_{2}, j_{1}},\dots, \gamma_{i_{K}, j_{K-1}},\gamma_{1,K}}$, in order to keep the constrain $\tilde{\pmb{\gamma}}\geq 0$. Having in this way a tree, since we have removed an edge from a cycle, and we update the transport plan $\pmb{\gamma}\leftarrow\tilde{\pmb{\gamma}}$.
+	Take $\epsilon=\min\braces{\gamma_{i_{2}, j_{1}},\dots, \gamma_{i_{K}, j_{K-1}},\gamma_{1,K}}$, in order to keep the constrain $\tilde{\pmb{\gamma}}\geq 0$. Having in this way a tree, since we have removed an edge from a cycle. Finally, we update the transport plan $\pmb{\gamma}\leftarrow\tilde{\pmb{\gamma}}$.
 \end{itemize}
 Briefly, we initialize the algorithm with a feasible solution $\pmb{\gamma}$ using the North-West rule, resulting into a feasible solution, (not necessarily basic feasible) and we compute a complementary pair $(\mathbf{f},\mathbf{g})$ for $\pmb{\gamma}$. We check for feasibility of the computed pair. If the pair is feasible we have an optimal solution. If the pair $(\mathbf{f},\mathbf{g})$ is not feasible we search for cycles and we make them disappear using the above explained procedure. We compute again the complementary pair $(\mathbf{f}, \mathbf{g}$  and we add to the graph of $\pmb{\gamma}$ the edge corresponding to the indexes that violate the complementary condition, and we continue with the above explained procedure. 
 
@@ -260,35 +260,67 @@ We recommend \cite{Cuturi2018CompOT}, \cite{Orlin1997PolynomialTimeNetworkSimple
 
 
 \section{Sinkhorn-Knopp Algorithm.}
-In Consider a similar problem adding a regularization.
+The \emph{Shannon-Neumann anecdote} is a famous conversation between these two great mathematicians Claude Shannon\footnote{Claude Elwood Shannon (April 30, 1916 – February 24, 2001). American mathematician and electrical engineer known as the \textit{Father of the information theory}.} and  John Neumann\footnote{John von Neumann (December 28, 1903 – February 8, 1957). Hungarian-American mathematician and chemical engineering known for applications in many fields covering from computer sciences to physics and mathematics.}, that occurred in the time period fall 1940 to spring 1941 in New Jersey in which von Neumann suggested Shannon to use the term entropy. In April of 1961, Myron Tribus visits Shannon at his office at MIT and questions him about the reason behind his ``entropy'' name adoption.	
+
+Tribus recounts the Shannon interview \cite{Tribus1964Shannon} as such:
+\begin{quote}
+	I thought of calling it ``information''. But the word was overly used,
+	so I decided to call it ``uncertainty''. When I discussed it with John von Neumann, he had a better idea: (...) ``You should call it entropy, for two reasons. In first place your uncertainty has been used in statistical mechanics under that name, so it already has a name. In second place, and more important, no one knows what entropy really is, so in a debate you will always have the advantage.''
+\end{quote}
+
+
+Informally, we can say that the term introduced by Shannon as \textbf{Entropy} quantifies how much information there is in a random signal, language. In relation to our problem, in \cite{Cuturi2018CompOT} is discussed the following: ``In practice actual traffic patterns in a network do not agree with those predicted by the solution of the optimal transport problem. Indeed, the former are more diffuse than the latter, which tend to rely on a few routes as a result of the sparsity of optimal couplings''. \\
+
+The maximum entropy of a set of events is reached when the probability of occurrence is uniform, hence we can interpret the entropy also as a measure of the chaos inside of a system.
+
+In general for any vector representing a probability measure the Shannon's Entropy $H(\mathbf{p}):\Real^{n}\to \Realex$ can be expressed as,
 \begin{equation}
-	\Theta_\epsilon(\mu, \nu)=\min_{\pmb{\gamma}\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}+\epsilon H(\pmb{\gamma})}
-\end{equation}
-Where $H(\pmb{\gamma})$ is the Shannon's Entropy defined for a matrix as,
-\begin{equation}
-	H(\pmb{\gamma})=-\sum_{\substack{1\leq i \leq n\\ 1\leq j \leq m}}\gamma_{i,j}\log(\gamma_{i,j})
+H(\mathbf{p})=\begin{cases}
+-\infty & \exists i \in \Naturals,\ 1\leq i \leq n \text{ and } \mathbf{p}_{i}=0\\
+-\sum_{i=1}^{n}p_i\parentheses{\log(p_i)-1} & \mathbf{p}>0
+\end{cases}
 \end{equation} 
 
+We can consider $\mathbf{p}=\text{vec}(\pmb{\gamma})$ as the vectorization of a transportation plan matrix. The entropy of the coupling is equivalent to then entropy of its vectorization, that is $H(\pmb{\gamma})=H(\mathbf{p})$. Note that given a matrix with positive entries the Hessian has the form $\delta^2 H(\mathbf{p})= −\diag\parentheses{\frac{1}{\pmb{\gamma}_{i,j}}}$, which implies that is strongly concave in $\mathbf{p}$. \\
+
+The idea is to introduce a strictly convex regularization to the transportation cost in order to have a strictly convex program and hence a unique solution for the problem. 
+\begin{equation}
+	\Theta(\mu, \nu; \epsilon)=\min_{\pmb{\gamma}\in \Pi(\mu, \nu)}{\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon H(\pmb{\gamma})}, \label{eq: Regularized OT}
+\end{equation}
+where $\epsilon>0$, and $\Pi(\mu,\nu)$ is the set of couplings between two probability measures $
+\mu$ and $\nu$ on finite dimensional spaces, identified by vectors $\mathbf{a}$ and $\mathbf{b}$ respectively.
+
+This regularization produces a blurred prediction of the transportation plan given marginals and transportation costs.
 \begin{theorem}
-	The Linear programming program after adding the regularization, becomes a strictly convex program.
+	Let $\tilde{\pmb{\gamma}}^{\epsilon}$ the solution for \eqref{eq: Regularized OT} converges to the solution $\pmb{\gamma}^\star$ that has the maximum entropy among the solutions $\pmb{\gamma}$ of the problem \eqref{eq: Optimal Cost Frobenius}  as $\epsilon\rightarrow 0$.
 \end{theorem}
-\begin{lemma}
-	For all $g\in \Real^N$, $\nabla^2 H(g)$ admits $\lambda_N=0$ as eigenvalue with its associated normalized eigenvector $v_N= \frac{1}{N}\one_N\in \Real^N$, which means that $\mathrm{rank}(\nabla^2 H(g))\leq N-1$ for all $g\in \Real^N$ and $\gamma\in \Sigma_N$
-\end{lemma}
 \begin{proof}
-\begin{align*}
-	\nabla^2 H(g) v_N &=\frac{1}{\epsilon}\diag(\alpha)K\frac{q}{K\alpha}-\frac{1}{\epsilon}\diag(\alpha)K\diag(\frac{q}{(K\alpha)^2})\\
-	&=\frac{1}{\epsilon}\diag(\alpha)K\frac{q}{K\alpha}-\frac{1}{\epsilon}K\frac{q}{K\alpha}
-	&=0
-\end{align*}
-and $\lambda_N=0$ is an eigenvalue of $\nabla^2H(q)$
-\end{proof}
-\begin{theorem}
-	$\Theta_\epsilon(\mu, \nu)$ converges to the solution with maximum entropy as $\epsilon\rightarrow 0$
-\end{theorem}
+	Consider a sequence $(\epsilon_\alpha)_{\alpha\in\Naturals} \to 0$ converging to zero, such that $\epsilon_\alpha>0$ for any $\alpha\in\Naturals$. Let $\pmb{\gamma}_\alpha$ the solution of the $\epsilon-$convex program for $\epsilon=\epsilon_\alpha$. The set of couplings $\Pi(\mu,\nu)$ is a closed convex subset of the simplex $\Sigma_{nm}$, therefore we can extract a convergent subsequence (for the sake of simplicity we use the same index of the sequence), such  $\pmb{\gamma}_{\alpha}\rightarrow \pmb{\gamma}^\star$ as $\alpha\rightarrow \infty$.  We are in a closed set therefore $\pmb{\gamma}^\star\in \Pi(\mu,\nu)$. 
+	
+	In the other hand consider any $\pmb{\gamma}$, such that $\Theta(\mu, \nu)=\anglesbox{\mathbf{C},\pmb{\gamma}}$. Since $\pmb{\gamma}$ is optimal for \eqref{eq: Optimal Cost Frobenius},
+	\begin{align}
+	0\leq \anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\anglesbox{\mathbf{C},\pmb{\gamma}} \label{eq: Optimality Frobenius},
+	\end{align}
+	and $\pmb{\gamma}_\alpha$ is optimal for $\eqref{eq: Regularized OT}$, we have
+	\begin{align}
+		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon_\alpha H(\pmb{\gamma})}-\parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\epsilon_\alpha H(\pmb{\gamma}_\alpha)}\\
+		0&\leq \parentheses{\anglesbox{\mathbf{C},\pmb{\gamma}}-\anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}}+\epsilon\parentheses{ H(\pmb{\gamma}_\alpha)- H(\pmb{\gamma})} \label{eq: Optimality Regularized}.
+	\end{align}
+	Multiplying both sides of the inequality \eqref{eq: Optimality Frobenius} by two and adding it to the inequality \eqref{eq: Optimality Regularized} we have the following inequality,
+	\begin{align}
+		0\leq \anglesbox{\mathbf{C},\pmb{\gamma}_\alpha}-\anglesbox{\mathbf{C},\pmb{\gamma}}\leq \epsilon\parentheses{H(\pmb{\gamma}_\alpha)-H(\pmb{\gamma})}.
+	\end{align}
+	We have $H$ and $\anglesbox{\mathbf{C}, \cdot}$ are continuous functions, therefore taking the limit $\alpha\rightarrow \infty$  
+	\end{proof}
+\subsubsection{Sikhorn Algorithm}
+There are many methods that we can use to solve a convex program, for example one of the different versions of the Newton's methods or Backward propagation algorithm. Although recently the so called \textbf{Sinkhorn method} has taken the attention of many researches since it has a high level of parallelism making it GPU\footnote{Graphics Processing Unit.} friendly.
 %\section{Applications.}
 %\section{Continuous Formulation.}
 %\subsection{Beckman Problem and Optimal Transport.}
 %\subsection{Proximal Splitting Algorithms.}
 
-\subsection{Programming examples}
+\subsection{Examples.}
+
+The following examples were generated using the library of Optimal Transport developed for Python by R\'emi Flamary and Nicolas Courty \cite{flamary2017pot}.
+
+This example takes as cost function $c(x,y)=\frac{1}{2}\abs{x-y}^2$. 
