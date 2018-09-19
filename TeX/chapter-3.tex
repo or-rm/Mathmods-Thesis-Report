@@ -1,6 +1,6 @@
 \chapter{Linear Programming}
 \label{ch: Linear Programming}
-Linear programming is a well studied branch of the mathematics that studies the optimization of linear functions under linear constrains. The study of linear programming started during the second part of the 1940s, as a technique military oriented problems. The literature in this branch is abundant and we can find theory . We dedicate one chapter to present important results for the finite dimensional part of this branch, since the discrete version of the optimal transport problem can be seen as linear program. The following results are based in \cite{Luenberger2007LinNonLinProg}.  \\
+Linear programming is a well studied branch in mathematics. It deals with optimization of linear functions under linear constraints. The study of linear programming started during the second part of the 1940s, as a technique to solve military oriented problems. We dedicate one chapter to present important results for the finite dimensional part of this branch, since the discrete version of the optimal transport problem can be seen as linear program. The following results are taken from \cite{Luenberger2007LinNonLinProg}.  \\
 
 We can formulate a finite dimensional linear programming problem in its general form as follows:
 
@@ -36,7 +36,7 @@ If one or more of the basic variables in a basic solution have value zero, is sa
 		\item If there is an optimal solution, there is an optimal basic feasible solution. 
 	\end{itemize}
 \end{theorem}
-Since for a problem having $n$ variables and $m$ constraints there are at most
+For a problem having $n$ variables and $m$ constraints there are at most
 \begin{equation*}
 	\binom{n}{m}=\frac{n!}{m!\parentheses{n-m}!}
 \end{equation*}
@@ -74,9 +74,9 @@ The constraint set $K$ corresponding to \eqref{eq: Linear Programming Constrains
 
 \section{Simplex Method.}
 
-The idea of the simplex method is to proceed from one basic feasible solution that belong to the constraint set of a problem in standard form to another, in such a way as to decrease the value of the objective function continually until a minimum is reached. 
+The idea of the simplex method is to proceed from one basic feasible solution that belongs to the constraint set of a linear program in standard form to another, in such a way to decrease the value of the objective function continually until a minimum is reached. 
 
-Pivoting in a set of simultaneous linear equations is crucial for the development of the algorithm. Remember that the matrix $A$ has $m$ rows and $n$ columns. Let us write the constraint $\mathbf{Ax}=\mathbf{b}$ as follows,
+Pivoting in a set of simultaneous linear equations is crucial for the development of the algorithm. Remember that the matrix $\mathbf{A}$ has $m$ rows and $n$ columns. Let us write the constraint $\mathbf{Ax}=\mathbf{b}$ as follows,
 \begin{equation*}
 x_1\mathbf{a}_1+x_2\mathbf{a}_2+\dots+x_n\mathbf{a}_n=\mathbf{b}
 \end{equation*}
@@ -107,23 +107,23 @@ Without loss of generality we can say that the first $m$ column vectors are line
 
 For simplicity we consider $y_{0,j}$ the representation for $\mathbf{b}$. Consider the process of changing a vector of the basis by another one. Take $\mathbf{a}_k$, with $1\leq k \leq m$, and we want to substitute it by a vector $\mathbf{a}_l$, with $m+1\leq l \leq n$.
 
-Since any vector $\mathbf{a}_j$ can be expressed in terms of the old basis,
+Since any vector $\mathbf{a}_j$ can be expressed in terms of the old basis we have,
 \begin{equation*}
 	\mathbf{a}_l = y_{kl}\mathbf{a}_k+\sum_{\begin{array}{c}
 		i=1\\i\neq k
-		\end{array}}^{m} y_{il}\mathbf{a}_{i}
+		\end{array}}^{m} y_{il}\mathbf{a}_{i}.
 \end{equation*}
 
-From which we solve for $\mathbf{a}_k$,
+From the above we solve for $\mathbf{a}_k$,
 \begin{equation*}
-	\mathbf{a}_k=\frac{1}{y_{kl}}\mathbf{a}_l-\sum_{\begin{array}{c}i=1\\i\neq k\end{array}}^{m} \frac{y_{il}}{y_{kl}}\mathbf{a}_{i}
+	\mathbf{a}_k=\frac{1}{y_{kl}}\mathbf{a}_l-\sum_{\begin{array}{c}i=1\\i\neq k\end{array}}^{m} \frac{y_{il}}{y_{kl}}\mathbf{a}_{i}.
 \end{equation*}
 
 Then we substitute $\mathbf{a}_{k}$ in the linear combination of the old basis for $\mathbf{a}_j$ by the above equation,
 \begin{equation*}
 	\mathbf{a}_j =\frac{y_{kj}}{y_{kl}}\mathbf{a}_l+\sum_{\begin{array}{c}
 			i=1 \\ i\neq k
-		\end{array}}^{m}\parentheses{y_{ij}-\frac{y_{il}}{y_{kl}}}\mathbf{a}_i
+		\end{array}}^{m}\parentheses{y_{ij}-\frac{y_{il}}{y_{kl}}}\mathbf{a}_i.
 \end{equation*} 
 
 Therefore, we write a new tableau for the system using the following set of equations,
@@ -131,12 +131,12 @@ Therefore, we write a new tableau for the system using the following set of equa
 \begin{equation}
 	\begin{cases}
 	y'_{k,j}= \frac{y_{k,j}}{y_{k,l}} & \\
-	y'_{i,j}= y_{i,j}-\frac{y_{i,l}}{y_{k,l}} &  \text{ for }i\neq k \ \mand \ 0\leq i\leq n 
+	y'_{i,j}= y_{i,j}-\frac{y_{i,l}}{y_{k,l}} &  \text{ for }i\neq k \ \mand \ 0\leq i\leq n. 
 	\end{cases}
 \end{equation}
 
 
-Pivoting vectors as explained above we can generate a new basic solution from an old one. The problem is that the nonnegative constrain can be violated after pivoting operations. Therefore, it is required to control the pair of variables whose roles are going to be interchanged, in order to take in account only basic feasible solutions.
+We can generate a new basic solution from an old one, by the mean of pivoting vectors as explained above . The problem is that the nonnegative constraint can be violated after pivoting operations. Therefore, it is required to control the pair of variables whose roles are going to be interchanged, in order to take in account only basic feasible solutions.
 
 The fundamental theorem of the linear programming shows that it is only necessary to consider basic feasible solutions of the problem. Until this moment we have not considered the possibility of having as result of the pivoting process a degenerated basic feasible solution. 
 
@@ -155,11 +155,11 @@ For simplicity take $\epsilon \geq 0$. Now we have a $m+1$ representation for $\
 
 If the minimum is achieved by more than one single index, the new solution is degenerated and any of the vectors with zero component can be regarded as the one leaving the basis.
 
-If all $y_{i,l}\leq 0$ no new basic feasible solution can be obtained. However, we can obtain feasible solutions with arbitrarily large coefficients. That is the set of feasible solutions is unbounded.  
+If all $y_{i,l}\leq 0$ no new basic feasible solution can be obtained. However, we can obtain feasible solutions with arbitrarily large coefficients. That is, the set of feasible solutions is unbounded.  
 
 Hence, given a basic feasible solution and arbitrary column vector $\mathbf{a}_l$ of $\mathbf{A}$. We can find either a new basic feasible solution with $\mathbf{a}_l$ as part of its basis and one of the old vectors removed from it, or a set of unbounded feasible solutions. 
 
-In summary, under the assumption that the coefficients $y_{1,0},\dots, y_{m,0}$ are nonnegative, implying that $x_1=y_{1,0},\ x_2=y_{2,0},\ \dots,\ x_m=y_{m,0}$ is feasible. We substitute a vector already in the basis by a vector $\mathbf{a}_l$, in such a way that the solution the new generated coefficients are feasible. We take the smallest ratio to keep the feasibility. In this way we can introduce $\mathbf{a}_l$ as part of the basis creating a new basic feasible solution. 
+In summary, the assumption that the coefficients $y_{1,0},\dots, y_{m,0}$ are nonnegative, implies that $x_1=y_{1,0},\ x_2=y_{2,0},\ \dots,\ x_m=y_{m,0}$ is feasible. We substitute a vector already in the basis by a vector $\mathbf{a}_l$, in such a way that the solution of the new generated coefficients are feasible. We take the smallest ratio to keep the feasibility. In this way we can introduce $\mathbf{a}_l$ as part of the basis creating a new basic feasible solution. 
 
 
 Assume that $\mathbf{A}$ can be written as follows,
@@ -249,7 +249,7 @@ We can summarize the simplex algorithm in the following steps:
 	\item Calculate the ratios $y_{i,0}/y_{i,l}$ for $y_{i,l}>0$, $i=1,2,\dots, m$. If no $y_{i,l}>0$. then problem is unbounded; stop. Otherwise, select $k$ as the index $i$ corresponding to the minimum ratio. 
 	\item Apply the pivoting procedure to introduce $\mathbf{a}_l$ substituting $\mathbf{a}_k$ in the basis. Return to step 1.
 \end{enumerate} 
-Assuming non-degeneracy it is possible to prove in a easy way the convergence of the algorithm. The process stops only if optimality or unboundedness is discovered.
+Assuming non-degeneracy it is possible to prove in an easy way the convergence of the algorithm. The process stops only if optimality or unboundedness is discovered.
 If the algorithm does not find neither optimality or unboundedness, the objective value is strictly decreased. Since there are only a finite number of possible basic feasible solutions, and the basis do not repeat because of the strictly decrease of the objective value. The algorithm must reach a basis satisfying one of the two terminating conditions.
 \\
 \subsubsection{Revised simplex method.}
@@ -268,8 +268,9 @@ Therefore, we substitute the above equation in the cost expression,
 \end{align*}
 
 
-Thus, the vector $\mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}\mathbf{B}^{-1}\mathbf{D}$ is the relative cost for non-basic variables. The components of this vector are used to determine which vector bring into the basis.
+Thus, the vector $\mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}\mathbf{B}^{-1}\mathbf{D}$ is the relative cost for non-basic variables. The components of this vector are used to determine which vector we will bring into the basis.\\
 
+In summary,
 \begin{enumerate}
 	\item Calculate the current relative cost coefficients $\mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{c}_{\mathbf{B}}\mathbf{B}^{-1}\mathbf{D}$. It is more efficient and numerically stable to solve the linear system $\mathbf{v}^\top = \mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}$, then compute the relative vector
 	$ \mathbf{r}_{\mathbf{D}}=\mathbf{c}_{\mathbf{D}}^\top-\mathbf{v}^\top\mathbf{B}^{-1}\mathbf{D}$. If $\mathbf{r}_{\mathbf{D}}\geq \mathbf{0}$ then the current solution is optimal, stop.
@@ -302,7 +303,7 @@ If $\mathbf{x}$ and $\pmb{\lambda}$ are feasible for \eqref{eq: Linear Programmi
 
 \begin{corollary}
 	\label{cor: Dual Primal equality}
-	If $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are feasible for the \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints} respectively and  $\mathbf{c}^\top \mathbf{x}_0=\pmb{\lambda}_0^\top\mathbf{b}$, then $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are optimal for their respective problems.
+	If $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are feasible for the constraints \eqref{eq: Linear Programming Constraints} and \eqref{eq: Dual Linear Programming Constraints} respectively and  $\mathbf{c}^\top \mathbf{x}_0=\pmb{\lambda}_0^\top\mathbf{b}$, then $\mathbf{x}_0$ and $\pmb{\lambda}_0$ are optimal for their respective problems.
 \end{corollary}
 
 This corollary is the result of the Weak Duality lemma. A feasible vector to the primal problem yields an upper bound on the value of the dual problem. In the other hand, a feasible vector to the dual problem yields a lower bound on the value of the primal problem. The values associated with the primal problem are all larger than the values associated with the dual problem. We see that having a feasible pair $\mathbf{x}_0$ and $\pmb{\lambda}_0$ for their respective problems, satisfying the equality means that each problem has reached its optimal value. 
@@ -353,7 +354,7 @@ If the above conditions hold, then $\parentheses{\pmb{\lambda}^\top \mathbf{A}-\
 For general linear programs the dual simplex method is most frequently used, since it is more efficient to work with the dual tableau instead, making use of the complementary slackness conditions to recover the primal solution.\\
 
 Given a linear program in its primal form, let $\mathbf{B}$ a basis such that a vector $\pmb{\lambda}$  defined by $\pmb\lambda^\top=\mathbf{c}_{\mathbf{B}}^\top\mathbf{B}^{-1}$ is feasible for the dual. We say that $\mathbf{x}_{\mathbf{B}}=\mathbf{B}^{-1}\mathbf{b}$ is \textbf{dual feasible}. If $\mathbf{x}_\mathbf{B}\geq 0$ then this solution is also primal feasible.  
-The vector $\pmb\lambda$ is feasible for the dual, therefore it satisfies $\pmb\lambda_j\leq c_j$ for all $j=1, 2, \dots, n$. Without loss of generality assume the first columns $\mathbf{A}$ form a the basis, then
+The vector $\pmb\lambda$ is feasible for the dual, therefore it satisfies $\pmb\lambda_j\leq c_j$ for all $j=1, 2, \dots, n$. Without loss of generality assume the first columns of $\mathbf{A}$ form a the basis, then
 \begin{equation}
 	\pmb{\lambda}^\top \mathbf{a}_j = c_j, \quad \text{ for } j=1, \dots, m
 \end{equation}

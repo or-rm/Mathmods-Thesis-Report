@@ -1,6 +1,6 @@
 \chapter{Optimal Transport Theory}
 \label{chr: Optimal Transport Theory.}
-To introduce the optimal transport problem please imagine we are asked by a consortium of factories to design a plan for distributing their products among its many customers in such a way that the transportation costs are minimal. \\
+To introduce the optimal transport problem please imagine we are asked by a consortium of factories to design a plan to distribute their products among its many customers in such a way that the transportation costs are minimal. \\
 
 
 We can start the approach of this problem considering the customers as members of the set $X$ and the factories as members of a set $Y$. We want to know which factory $y\in Y$ is going to supply a customer $x\in X$, i.e. we represent such assignation of a factory to a customer as map $y=T(x)\in Y$. Therefore, we can estimate the transportation cost $c(x, T(x))$ of supplying a customer $x$ with a factory $y=T(x)$.  \\
@@ -50,7 +50,7 @@ In other words, we need $T_\# \mu = \nu$.  Notice that given the context for whi
 	\includegraphics[width=0.4\textwidth]{Monge-Problem-densities.png}
 \end{figure}
 
-The equation \eqref{eq: PDE Monge condition.} is nonlinear in $T$ making difficult the analysis of the Monge's Problem. Moreover, the constrain makes this problem hard to handle since it is not close even under weak convergence. 
+The equation \eqref{eq: PDE Monge condition.} is nonlinear in $T$ making the analysis of the Monge's Problem really difficult. Moreover, the constraint makes this problem hard to handle since it is not close even under weak convergence. 
 
 
 To appreciate this fact, consider $\mu = \Lebesgue^1\measurerestr[0,1]$ and the hat functions $h_k$ defined as follow,
@@ -89,7 +89,7 @@ When we formulate our factories-customer problem through finding an assignation 
 
 The idea behind Kantorovich's formulation is to consider the transportation maps from one space to another as transportation plans, that is joint probability measures with their marginals given by the initial and final configurations.\\
 
-Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. We would like to know how much of our total material is distributed from $x$ to $y$, in such a way to be consistent with information we have the initial and final material configuration. That is, we would like to know the optimal way to concentrate mass to the points $(x, y)$ in such a way we are not creating neither destroying mass. \\
+Instead of assigning an element of $Y$ to each element of the set $X$, we can see the problem from a different perspective and assign a weight to the importance of the point $\left(x, y\right)\in X\times Y$. We would like to know how much of our total material is going to be distributed from $x$ to $y$, in such a way to be consistent with the information we have about the initial and final configuration of the material. That is, we would like to know the optimal way to concentrate mass to the points $(x, y)$ in such a way we are not creating neither destroying mass.\\
 
 Designing the transportation strategy using the above procedure is called a transport plan. In terms of probability theory, we are constructing a joint probability measure for $X\times Y$ with marginals given by the measures $\mu \in \PlanSp(X)$ and $\nu \in \PlanSp(Y)$. \\
 
@@ -113,7 +113,7 @@ Since definition \ref{def: Coupling} is given for measures on probabilistic spac
 We use the notation $\Pi(\mu, \nu)$ to refer the \textbf{set of couplings} of $\mu$ and $\nu$. That is,
 
 \begin{equation}
-\Pi(\mu, \nu)=\braces{\gamma \in \PlanSp\parentheses{X\times Y}: \Tmeasure{\gamma}{\parentheses{\proj_x}}=\mu \ \mand \ \Tmeasure{\gamma}{\parentheses{\proj_x}}=\nu}
+\Pi(\mu, \nu)=\braces{\gamma \in \PlanSp\parentheses{X\times Y}: \Tmeasure{\gamma}{\parentheses{\proj_x}}=\mu \ \mand \ \Tmeasure{\gamma}{\parentheses{\proj_y}}=\nu}
 \end{equation}
 
 \begin{lemma}[Existence of a coupling]
@@ -175,6 +175,17 @@ The \textit{Knothe-Rosenblatt coupling} has the property that its Jacobian matri
 \begin{lemma}[Gluing lemma] If $\Z$ is a function of $\Y$ and $\Y$ is a function of $\X$, then $\Z$ is a function of $\X$. Let $(X_i , \mu_i)$, $i = 1, 2, 3$,  be Polish probability spaces. If $(\X_1 , \X_2)$ is a coupling of $(\mu_1, \mu_2 )$ and $(\Y_2 , \Y_3)$ is a coupling of $(\mu_2, \mu_3)$, then it is possible to construct a triple of random variables $(\Z_1 , \Z_2, \Z_3)$ such that $(\Z_1, \Z_2)$ has the same law as $(\X_1 ,\X_2)$ and $(\Z_2, \Z_3)$ has the same law as $(\Y_2, \Y_3)$.
 \end{lemma}
 
+To understand the above lemma in terms of transportation plans, consider a plan $\gamma_{1,2,3}$ for the Cartesian product $X_1\times X_2\times X_3$, with marginals given by $\mu_1$, $\mu_2$ and $\mu_3$ respectively. Let $\gamma_{1,2}$ be a coupling between $\mu_1$ and $\mu_2$, and let $\gamma_{2,3}$ be a coupling between $\mu_2$ and $\mu_3$. Informally, we can disintegrate $\gamma_{1,2}$ and $\gamma_{2,3}$ as follows,
+\begin{align*}
+	\gamma_{1,2}(\dx_1\dx_2)&=\gamma_{1,2}(\dx_1|x_2)\mu_2(\dx_2)\\
+	\gamma_{2,3}(\dx_2\dx_3)&=\gamma_{2,3}(\dx_3|x_2)\mu_2(\dx_2),
+\end{align*}
+and reconstruct $\gamma_{1,2,3}$ as follows,
+\begin{align*}
+	\gamma_{1,2,3}(\dx_1\dx_2\dx_3)&=\gamma_{1,2}(dx_1|x_2)\mu(x_2)\gamma_{2,3}(\dx_2\dx_3)
+\end{align*}
+
+We use indistinctly the term coupling and transportation plan. Now we introduce the Kantorovich's problem.
 
 \begin{problem}Given $\mu \in \PlanSp\parentheses{X}$, $\nu \in \PlanSp\parentheses{Y}$, and $c: X\times Y \rightarrow \brackets{0, +\infty}$, we consider the problem
 	\begin{equation}
@@ -183,7 +194,7 @@ The \textit{Knothe-Rosenblatt coupling} has the property that its Jacobian matri
 where $\TransPlansSet{\mu}{\nu}$ is the set of \textit{transport plans}.
 \end{problem}
 
-It is a fact for The Kantorovich's formulation that it is always possible to find a transport plan, to see this fact it is enough to take $\gamma=\mu\otimes \nu$, as shown in lemma \ref{lm: Existence of a coupling}. By contrast, it is not always possible to find transportation maps (deterministic couplings).\\
+It is a fact for The Kantorovich's formulation that it is always possible to find a transport plan, to see this fact it is enough to take $\gamma=\mu\otimes \nu$, as shown in lemma \ref{lm: Existence of a coupling}. On the contrary, it is not always possible to find transportation maps (deterministic couplings).\\
 
 Consider a measure $\mu$ on $\Real^d$, concentrated on $N$ different atoms $x_i \in \Real^d$, 
 \begin{equation*}
@@ -237,9 +248,9 @@ The beauty of Kantorovich's formulation lies on the fact that the set of transpo
 \begin{proof}
 	To prove the existence we make use of the Weierstrass’ criterion for existence of minimizers. Therefore, we need to prove that $\Kantorovich$ is at least lower semicontinuous and compactness of the space $\Pi(\mu, \nu)$ under some topology. 
 	
-	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition since $c$ is already in $C(X\times Y)$ defined in a compact space $X\times Y$. 
+	We choose as a notion of convergence the weak convergence of probability measures in duality with $C_b(X\times Y)$. This immediately implies continuity for $\Kantorovich$ by definition, since $c$ is already in $C(X\times Y)$ defined in a compact space $X\times Y$. 
 	
-	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$.  weak-* compactness in the dual of compact metric spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. In this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$.  We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. 
+	Now take a sequence $\parentheses{\gamma_n}_{n\in\Naturals} \in \Pi(\mu, \nu)$. Since they are probability measures for all $n$ they are bounded in the dual of $C(X\times Y)$.  Weak-star compactness in the dual of compact metric spaces guarantees the existence of a convergent subsequence $\gamma_{n_k} \weakconvergence \gamma$. Let us fix $\phi \in C(X)$ and using $\int\phi(x) \diff \gamma_{n_k}=\int \phi \dmu$ and taking the limit we have $\int_{X\times Y}\phi(x) \diff \gamma=\int_{X} \phi \dmu$. In this way we prove that $\Tmeasure{\parentheses{\proj_x}}{\gamma}=\mu$.  We can repeat this argument for $\nu$, fixing $\psi \in C(Y)$ and taking the limit of $\int_{X\times Y} \psi(y) \diff \gamma_{n_k}=\int \psi \dnu$, implies $\int_{X\times Y} \psi(y) \diff \gamma=\int \psi \dnu$. 
 	
 	This proves that $\Tmeasure{\parentheses{\proj_y}}{\gamma}=\nu$. Hence, the limit $\gamma \in \Pi(\mu, \nu)$ showing that the set of couplings of $\mu$ and $\nu$ is sequentially compact. 
 \end{proof}
@@ -249,7 +260,6 @@ Continuity for the cost function and compactness of the metric spaces can be dem
 \begin{theorem}
 	Let $X$ and $Y$ be compact metric spaces, $\mu \in \PlanSp(X)$, $\nu \in\PlanSp(Y)$, and $c:X\times Y\rightarrow \Realex $  be lower semi-continuous and bounded from below. Then Kantorovich's problem admits a solution.
 \end{theorem}
-*********************************************
 \begin{proof}
 By theorem \ref{th: l.s.c of c.}, the functional $K(\gamma) =\int c\diff\gamma$ is lower semicontinuous. We apply again Weierstrass criterion proving existence of a minimizer.
 \end{proof}
@@ -273,7 +283,6 @@ Let $X$ and $Y$ be Polish spaces, and $c:X\times Y \rightarrow \Realex_+$, a rea
  By Prokhorov and the tightness of the set of transport plans between two probability measures, we have compactness. Theorem \eqref{th: l.s.c of c.} shows lower semicontinuity of the cost function. Applying Weierstrass criterion we obtain the existence of an optimizer.
 \end{proof}
 
-***********************************************
 \subsection{Properties of Optimal plans}
 \begin{theorem}[Convexity of optimal plans]
 	The set of solutions $\bar\gamma\in\Pi(\mu,\nu)$ for the Kantorovich's problem is a convex set.
@@ -360,7 +369,7 @@ We can find an upper boundary for the total cost $C(T_n)$,
 M(T_n)&=\int_{D}\abs{x-T_n(x)} \dmu(x)\\&=2n\int_{0}^{\frac{1}{2n}}\sqrt{1+4t^2} \dt\\ &\leq 2n\parentheses{\int_{0}^{\frac{1}{2n}}1+4t^2\dt}^{1/2}\parentheses{\int_{0}^{\frac{1}{2n}}\dt}^{1/2}\\ &= \sqrt{1+\frac{1}{3n^3}}\\&\leq 1+\frac{1}{n}
 \end{align*}
 
-Let $\gamma_{T_n}$ be deterministic coupling generated by $T_n$. We see that we can find always find a cheaper plan $\gamma_{T_{n+1}}$ for any $n\in \Naturals$. This sequence of transportation plans converges weakly to the plan $\gamma_{T_n}\weakconvergence \gamma_{T}=\frac{\gamma_{T^+}}{2}	+ \frac{\gamma_{T^-}}{2}$. Where $T^{+}$ and $T^{-}$ are given by:
+Let ${T_n}$ be an assignation map. We see that we can always find a cheaper map ${T_{n+1}}$ for any $n\in \Naturals$. This sequence of transportation maps converges weakly to the plan $\gamma_{T_n}\weakconvergence \gamma_{T}=\frac{\gamma_{T^+}}{2}+\frac{\gamma_{T^-}}{2}$. Where $T^{+}$ and $T^{-}$ are given by:
 
 \begin{align*}
 T^{+}(x)&=x+\begin{pmatrix} 1 \\ 0\end{pmatrix}\\
@@ -392,7 +401,7 @@ Approaching the problem in this way gives us the flexibility to supply each cust
 
 \section{Cyclical Monotonicity and Duality.}
 
-Imagine that the consortium changed its policy and it has decided not to be responsible any longer for the transportation of the goods, letting the customers to solve this problem by themselves (assume that the consortium has the monopoly of the goods and the customers have no choice but to adhere to this policy). An entrepreneur feeling that he can ship the goods more efficiently that the consortium did, he intend to buy the goods at the factories and selling them at the customers' stores. Then, he must negotiate with the consortium the prices $-\phi(x)$ that he is able to pay at each factory for the goods and the selling prices $\psi(y)$ at each customers' store. In order to succeed, he need to be competitive and should do it better than the consortium did. Therefore, he must be able that cover with the difference of the sale prices the transportation costs and they should be less than the consortium's costs $\psi(y)+\phi(x)\leq c(x,y)$. He is subject to this constraint and he should negotiate with the consortium and the customers the prices $\phi(x)$ and $\psi(y)$ in order to obtain the maximum profit.
+Imagine that the consortium changed its policy and it has decided not to be responsible any longer for the transportation of the goods, letting the customers to solve this problem by themselves (assume that the consortium has the monopoly of the goods and the customers have no choice but to adhere to this policy). An entrepreneur feeling that he can ship the goods more efficiently than the consortium did, he intend to buy the goods at the factories and sell them at the customers' stores. Then, he must negotiate with the consortium the prices $-\phi(x)$ that he is able to pay at each factory for the goods, and the selling prices $\psi(y)$ at each customers' store. In order to succeed, he needs to be competitive and should do it better than the consortium did. Therefore, he must be able to cover with the difference of the sale  prices, the transportation costs and they should be less than the consortium's costs $\psi(y)+\phi(x)\leq c(x,y)$. He is subject to this constraint and he should negotiate with the consortium and the customers the prices $\phi(x)$ and $\psi(y)$ in order to obtain the maximum profit.
 
 
 \subsection{Duality}
@@ -405,11 +414,11 @@ We see that for any $\gamma \in \MeasureSp_+(X\times Y)$ we have,
 \end{equation}
 where the supremum is taken among all bounded and continuous functions $\phi$, $\psi$. 
 
-Note that the result of this problem is $0$ if $\gamma$ satisfies the constrain of being a probability measure over $X\times Y$ with given marginals $\mu$ and $\nu$, and we obtain $\infty$ if $\gamma$ does not satisfy this constrain.
+Note that the result of this problem is $0$ if $\gamma$ satisfies the constraint of being a probability measure over $X\times Y$ with given marginals $\mu$ and $\nu$, and we obtain $\infty$ if $\gamma$ does not satisfy this constraint.
 
 Therefore, we can rewrite the Kantorovich's transport problem as an unconstrained minimization problem,    
 \begin{align}
-	\Kantorovich&=\min_{\gamma}\parentheses{\int_{X\times Y} c\diff\gamma +\int_{X} \phi \dmu +\int_{Y} \psi\dnu - \int_{X\times Y}\parentheses{\phi(x)+\psi(y)}\diff\gamma} \\
+	\Kantorovich&=\min_{\gamma}\parentheses{\int_{X\times Y} c\diff\gamma +\sup_{\phi, \psi}\left(\int_{X} \phi \dmu +\int_{Y} \psi\dnu - \int_{X\times Y}\parentheses{\phi(x)+\psi(y)}\diff\gamma\right)} \\
 	&=\sup_{\phi,\psi}\parentheses{ \int_{X}\phi\dmu+\int_{Y}\psi\dnu}+\min\parentheses{\int_{X\times Y}c(x,y)\diff\gamma-\sup_{\phi, \psi}\parentheses{\int_{X}\phi(x)\dmu+\int_{Y}\psi(y)\dnu}} \label{eq: Unconstrained Kantorovich with Perturbation.}
 \end{align}
 Note that,
@@ -418,10 +427,11 @@ Note that,
 	0 & \text{ if } \phi(x)+\psi(y)\leq c(x,y),\quad \forall (x,y)\in X\times Y \\
 	-\infty & \text{otherwise}.
  \end{cases}
+ \label{eq: Constrain indicator 2}
 \end{equation}
 In the other hand, equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} it is not really useful if we are not able to exchange the $\min$ and $\sup$; for a moment suppose that the conditions that allow to exchange them do exist, we can rewrite the equation \eqref{eq: Unconstrained Kantorovich with Perturbation.} as follows,
 \begin{equation}
-	\Kantorovich=\sup_{\phi, \psi}\parentheses{\int_{X}\phi\dmu+\int_{Y}\psi\dnu+\inf_{\gamma}\int_{X\times Y}\parentheses{c(x,y)-\parentheses{\phi(x)+\psi(y)}}\diff\gamma}
+	\Kantorovich=\sup_{\phi, \psi}\parentheses{\int_{X}\phi\dmu+\int_{Y}\psi\dnu+\inf_{\gamma}\int_{X\times Y}\parentheses{c(x,y)-\parentheses{\phi(x)+\psi(y)}}\diff\gamma} \label{eq: sup-inf Kantorovich}
 \end{equation}
 
 If it exists $(x,y) \in X\times Y$ such that $\phi(x)+\psi(y)>c$, we can find measures $\gamma$ concentrated on the set where the strict inequality holds and mass tending to infinity, sending the value of the integral to $-\infty$. The above equation motivates the dual formulation of the problem,
@@ -440,7 +450,7 @@ Notice that for any $\gamma\in \Pi(\mu, \nu)$,
 Then we see that the objective value of the dual problem is less or equal than the primal Kantorovich's problem, as long as the pair $(\phi, \psi)$ is admissible.
 
 
- Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the conditions needed to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
+ Since the set of admissible maps is not compact we cannot assure the existence of a maximizer. To find the necessary conditions to assure existence of the minimizer or a duality equality we need to characterize functions by means of $c-$concavity.
 
 \begin{definition}
 	Let $X$, $Y$ be two sets, let $c:X\times Y \rightarrow \Real$, a real valued cost function bounded from below. Given a function $\zeta: X\rightarrow \Real\cup\braces{-\infty}$, we define its $c$-concave transform of $\zeta$, the function $\zeta^c: Y\rightarrow \Realex$ by
@@ -457,7 +467,7 @@ Then we see that the objective value of the dual problem is less or equal than t
 We use a bar to denote the difference between the transformation respect to the first and the second parameter of the cost function. This notation becomes trivial if we deal with symmetric cost functions.
 For a given cost function $c:X\times Y\rightarrow \Real$. We denote by $c-conc(X)$ the set of $c-$concave  functions defined on $X$. In similar way, we denote by $\bar{c}-conc(Y)$ the set of $\bar{c}-$concave functions defined on $Y$. 
 
-The following theorem encompass the importance of using $c$-characterization for functions, it represents a generalization for the convex envelop theorem.
+The following theorem encompasses the importance of using $c$-characterization for functions, it represents a generalization for the convex envelop theorem.
 \begin{theorem}\label{th: C-concave envelope}
 Suppose that $c$ is real valued. For any $\phi: X\rightarrow \Real\cup \braces{-\infty}$, we have $\phi^{c\bar c}\geq \phi$. We have the equality $\phi^{c\bar c}=\phi$ if and only if $\phi$ is $c-$concave. Moreover, $\phi^{c\bar c}$ is the smallest $c-$concave function larger than $\phi$.
 \end{theorem}
@@ -504,7 +514,7 @@ Suppose that $c$ is real valued. For any $\phi: X\rightarrow \Real\cup \braces{-
 	Hence $\phi^{c\bar  c}$ is smaller than any $c-$concave function $\overline \phi$, larger than $\phi$. This proves that if the equality $\phi^{c\bar c}=\phi$ holds, then $\phi$ is a $c-$concave function.  
 \end{proof}
 
-An interesting property of $c-$concave transforms is that taking $c-$, $\bar c -$ and $c-$ concave transforms consecutively, is equivalent to apply just one a $c-$concave transform. Consider any $\phi:X\rightarrow \Real\cup\braces{-\infty}$, and take the $c\bar c c-$transform as follows,
+An interesting property of $c-$concave transforms is that taking $c-$, $\bar c -$ and $c-$ concave transforms consecutively, is equivalent to applying just one a $c-$concave transform. Consider any $\phi:X\rightarrow \Real\cup\braces{-\infty}$, and take the $c\bar c c-$transform as follows,
 	\begin{align*}
 	\phi^{c\bar cc}(y)&=\inf_{x\in X}\parentheses{c(x,y)-\phi^{c\bar c }(x)} \\
 	&=\inf_{x\in X}\parentheses{c(x,y)-\inf_{\tilde y \in Y}\parentheses{c(x, \tilde y)-\phi^{c}(\tilde y)}}\\
@@ -520,12 +530,11 @@ An interesting property of $c-$concave transforms is that taking $c-$, $\bar c -
 	proceeding through $c-$convexity-$c-$concavity. 
 
 This result makes use only of their definition to be proven, since $c-$concave functions are exactly defined as $c-$transform
-of something. Its convex counterpart needs the Hahn Banach theorem due to convex functions are not defined via $\sup$ of affine functions, but via the
-convexity inequality. 
+of something. Its convex version \ref{thm: Convex Envelope Theorem} needs the Hahn Banach theorem due to the fact that convex functions are not defined via $\sup$ of affine functions, but via the convexity inequality. 
 
 
 \begin{lemma}[Improvement through c-transforms]
-	Let $X$ and $Y$ be two Polish spaces. Let $c:X\times Y \rightarrow \Real$ be a real valued cost function bounded from below. Let $\phi:X\rightarrow \Real$ and $\psi:Y\rightarrow\Real$ be two bounded real valued functions such that $\forall (x,y)\in X\times$ we have $\phi(x)+\psi(y)\leq c(x,y)$. Then, 
+	Let $X$ and $Y$ be two Polish spaces. Let $c:X\times Y \rightarrow \Real$ be a real valued cost function bounded from below. Let $\phi:X\rightarrow \Real$ and $\psi:Y\rightarrow\Real$ be two bounded real valued functions such that $\forall (x,y)\in X\times Y$ we have $\phi(x)+\psi(y)\leq c(x,y)$. Then, 
 	\begin{enumerate}
 		\item $\phi^c(y)+\phi(x)\leq c(x,y)$ and $\psi^{\bar c}(x)+\psi(y)\leq c(x,y)$. 
 		\item $\phi(x)+\psi(y)\leq\phi^c(y)+\phi(x) $ and $\phi(x)+\psi(y)\leq\psi^{\bar c}(x)+\psi(y)$.
@@ -555,7 +564,7 @@ Similarly $\forall y \in Y$,
 \end{proof}
 Every lower semicontinuous function on a Polish space is always measurable. The last lemma allows to substitute a pair $\parentheses{\phi, \psi}$ by a pair $\parentheses{\phi,\phi^c}$ in order to increase the objective value of the problem \eqref{eq: Transportation Dual problem}. Following this procedure we can  apply again the same result substituting $\parentheses{\phi,\phi^c}$ by $\parentheses{\phi^{c\bar c}, \phi^c}$.  \\
 
-The functions $\phi$ and $\psi$ are known in the literature related with optimal transport as Kantorovich's potentials. Recall the factories-customers problem, with an entrepreneur in charge of the transportation. A function $c$ represents the cost for an agent to move a unit of mass from a factory $y\in Y$ to a customer $x\in X$. It is natural that our entrepreneur will take the merchandise to supply each customer from the closest factory. However, a more natural situation is the possibility that each customer $x\in X$ negotiates the price $\phi(x)$ that is able to pay for each unit of product. The entrepreneur will try to obtain the maximum profit possible, for this purpose he needs to know at each factory which customers to distribute from there such that the profit is maximum $\zeta(y)=\sup_{x\in X}\phi(x)-c(x,y)=-\inf_{x\in X} c(x,y)-\phi(y)=-\phi^c(x)$, that is exactly the negative of the $c-$concave transform of the price $\phi(x)$ that each customer is able pay. We can imagine a similar situation but instead of hiring an entrepreneur we set the prices $\psi(y)$ at each factory $y\in Y$. It is natural that each customer will try to minimize the purchase costs $\psi_{-}(y)$ plus transportation costs, that is $\inf_{y\in Y}c(x,y)+\psi(y)$. From the perspective of the factory $\psi(y)=-\psi_{-}(y)$, leading to the $\bar{c}-$concave transform of the prices we are setting at each factory. 
+The functions $\phi$ and $\psi$ are known in the literature related with optimal transport as Kantorovich's potentials. Recall the factories-customers problem, with an entrepreneur in charge of the transportation. A function $c$ represents the cost for an agent to move a unit of mass from a factory $y\in Y$ to a customer $x\in X$. It is natural that our entrepreneur will take the merchandise to supply each customer from the closest factory. However, a more natural situation is the possibility that each customer $x\in X$ negotiates the price $\phi(x)$ that is able to pay for each unit of product. The entrepreneur will try to obtain the maximum profit possible. For this purpose, at each factory he needs to know which customers supply from the factory, such that the profit $\zeta(y)$ is maximum, i.e. $\zeta(y)=\sup_{x\in X}\phi(x)-c(x,y)=-\inf_{x\in X} c(x,y)-\phi(y)=-\phi^c(x)$, this is exactly the negative of the $c-$concave transform of the price $\phi(x)$ that each customer is able pay. We can imagine a similar situation but this time we do not hire the entrepreneur, we just set the prices $\psi(y)$ at each factory $y\in Y$ and we wait for the customer to come. It is natural that each customer will try to minimize the purchase costs $\psi_{-}(y)$ plus transportation costs, that is\footnote{This is known as a $\bar{c}-$convex transform of $\psi$.} $\inf_{y\in Y}c(x,y)+\psi_-(y)$. From the perspective of the factory $\psi(y)=-\psi_{-}(y)$, leading to the $\bar{c}-$concave transform of the prices we are setting at each factory. 
 	
 \begin{lemma}
 	Let $X$ and $Y$ be two compact metric spaces. And let $c:X\times Y \rightarrow \Real$ be a uniform continuous function with continuity modulus $\omega$. Then $\phi^c(x)$ and $\psi^{\bar{c}}$ are uniformly continuous with continuity modulus $\omega$, for any $\phi\in C(X)$ and $\psi\in C(Y)$.
@@ -576,13 +585,14 @@ The functions $\phi$ and $\psi$ are known in the literature related with optimal
 	\begin{equation*}
 		\sup\braces{\int_A \phi \dmu+\int_B \psi \dnu:\quad \phi\in C(A),\ \psi \in C(B),\ \phi(a)+\psi(b)\leq c(a,b),\ \forall (a,b)\in A\times B}
 	\end{equation*} 
-%	admits a feasible solution $(\phi, \psi)$. Moreover $\psi=\phi^c$, then the problem is equivalent to restrict the search to $\phi\in c-conc(A)$. That is our problem is reduced to,
+	admits a feasible solution $(\phi, \psi)$. 
+	%Moreover $\psi=\phi^c$, then the problem is equivalent to restrict the search to $\phi\in c-conc(A)$. That is our problem is reduced to,
 %	\begin{equation}
 %		\max\braces{\int_A \phi \dmu+\int_B \phi^c \dnu:\quad \phi\in c-conc(A)}
 %	\end{equation}
 \end{theorem}
 \begin{proof}
-The cost function is defined in over the compact set $A\times B$, then is bounded and uniformly continuous. We can take a maximizing sequence $(\phi_n, \psi_n)_{n\in \Naturals}$, by means of $c-$transforms we can improve it. The new sequence is uniformly continuous with same modulus of continuity than $c$.  We still denote the new improved sequence by $\phi_n$ and $\psi_n$. Each pair $\phi_n, \psi_n$ is continuous defined on an compact set, implying that both functions are bounded. We can subtract from $\phi_n$ its minimum and add it to $\psi_n$, this does not change the value of the functional. Therefore without any loss of generality we can substitute the sequence by a new one such that $\min \phi_n =0$ and $\psi_n$ is increased by the respective minimum of its partner. We have then that $\max \phi_n \leq \omega(X)$.
+The cost function is defined over the compact set $A\times B$, then is bounded and uniformly continuous. We can take a maximizing sequence $(\phi_n, \psi_n)_{n\in \Naturals}$, by means of $c-$transforms we can improve it. The new sequence is uniformly continuous with same modulus of continuity than $c$.  We still denote the new improved sequence by $\phi_n$ and $\psi_n$. Each pair $\phi_n, \psi_n$ is continuous defined on an compact set, implying that both functions are bounded. We can subtract from $\phi_n$ its minimum and add it to $\psi_n$, this does not change the value of the functional. Therefore without any loss of generality we can substitute the sequence by a new one such that $\min \phi_n =0$ and $\psi_n$ is increased by the respective minimum of its partner. Then We have that $\max \phi_n \leq \omega(X)$.
 
 Since $\psi_n$ is the $c-$concave transform, we have for all $y\in Y$, $\psi_n(y)\inf_{x\in X}(c(x,y)-\phi_n(x))$, therefore
  \begin{equation}
@@ -600,7 +610,7 @@ Now we are able to introduce $c-$monotonicity, we will see the importance of thi
 
 We start considering again our factories-costumers transportation problem. This time assume that the consortium is in charge of the transportation and it has already a plan to transport the products from factories to stores. 
 
-Let $c(x,y)$ be the transportation cost of sending a unit of product from a factory $y$ to a customer $x$. Currently, the plan is expensive and we would like to make it cheaper.  For this purpose, we start redesigning the plan. We take a customer $x_1$ whose demand is in part supplied by a factory $y_1$. We take one unit of product from the demand supplied by $y_1$ and now we send it from a factory $y_2$. If send it a product from $y_2$ to $x_1$ is cheaper than doing it from $y_1$ to $x_1$, after the above rearrangement we see that we earned $c(x_1, y_2)-c(x_1,y_1)$. 
+Let $c(x,y)$ be the transportation cost of sending a unit of product from a factory $y$ to a customer $x$. Currently, the plan is expensive and we would like to make it cheaper.  For this purpose, we start redesigning the plan. We take a customer $x_1$ whose demand is in part supplied by a factory $y_1$. We take one unit of product from the demand supplied by $y_1$ and now we send it from a factory $y_2$. We send a product from $y_2$ to $x_1$ in such a way is cheaper than doing it from $y_1$ to $x_1$, after the above rearrangement we see that we earned $c(x_1, y_2)-c(x_1,y_1)$. 
 
 The supply of each factory is finite, then we have just taken one product from some store that is being supply by $y_2$, and we have sent it to $x_1$, leaving one product idle in $y_1$ and some store with a missing unit of product, without loss of generality let us call it $x_2$. Since we know that each customer needs to satisfy its demand, we take one product from a factory $y_3$ and we send it to the store $x_2$. Again we have one product missing in some store $x_3$, we continue this process redirecting one unit of product from a factory $y_{i+1}$ to a store $x_{i}$ until we finally have no choice to send the idle product in factory $y_1$ to a store $x_N$. 
 
@@ -622,7 +632,7 @@ Since any permutation $\sigma$ over the set $\braces{1, \dots, N}$ can be writte
 \end{equation}
 
 
-\begin{definition}
+\begin{definition}[$c-$superdifferential]
 Let $c:X\times Y \rightarrow \Real\cup\braces{+\infty}$ be a cost function. Let $\xi:Y\rightarrow \Real\cup\braces{-\infty}$ be a real valued function defined on $Y$. Using $c-$concavity characterization for functions we call the  $\bar c-$superdifferential of a function $\xi$ the $c$-cyclically monotone set,
 \begin{equation}
 	\partial^{\bar c} \xi=\braces{(x,y)\subset X\times Y;\quad \xi(y)+\xi^{\bar{c}}(x)=c(x,y)} 
@@ -773,13 +783,15 @@ If $c$ is lower semicontinuous we cannot assure the existence of an optimal pair
 \begin{theorem}[Duality and $c$ l.s.c.]
 	Let $X$ and $Y$ be Polish spaces. If $c:X\times Y\rightarrow \Real \cup\braces{+\infty}$ is bounded from below and lower semicontinuous, then the equality $\sup\eqref{eq: Transportation Dual problem}=\min\eqref{eq: Kantorovich's Problem.}$ holds.
 \end{theorem}	
+
 \subsection{Duality by convex analysis.}
-We can prove duality between the two problems introducing a perturbation as follows, 
+We can prove duality between the two problems introducing a perturbation \eqref{eq: H perturbation}, and then using convex analysis to prove a relation between the dual and primal transport problems. \\
+We can find an equivalent proof in \cite{Buttazzo2000MongeKantorovich} for cost functions satisfying the Lipschitz condition. As it is presented in \cite{Santambrogio2015OT} we do it for uniformly continuous cost functions, since we already have proved the existence of a minimizer.
 \begin{definition}
 	\label{def: H perturbation}
 	Suppose that $X$ and $Y$ are compact metric spaces and $c:X\times Y\rightarrow \Real$ is uniformly continuous. For every $p\in C(X\times Y)$, let $H_\gamma:C(X\times Y)\rightarrow \Realex$ be a perturbation of the problem,
 	\begin{equation}
-	H_\gamma(p)=-\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}
+	H_\gamma(p)=-\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)} \label{eq: H perturbation}
 	\end{equation}	
 \end{definition}
 
@@ -796,7 +808,8 @@ We can prove duality between the two problems introducing a perturbation as foll
 	Under the setting of definition \ref{def: H perturbation}, $H_\gamma$ is lower semicontinuous for the uniform convergence on the compact set $X\times Y$.
 \end{lemma}
 	For lower semicontinuity, take a sequence $\parentheses{p_n}_{n\in\Naturals}$ converging uniformly to $p$, $p_n\rightarrow p$. Extract a subsequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ approaching to limit inferior of $H(p_n)$. By the means of uniform convergence and the converse implication of Arzel\`a-Ascoli theorem, the sequence $\parentheses{p_{n_k}}_{n_k\in\Naturals}$ is equicontinuous and bounded. 
-	Thus, its corresponding optimal potentials $(\phi_{n_k}, \psi_{n_k})$ are also equicontinuous and bounded, with $\phi_{n_k}\rightarrow \phi$ and  $\psi_{n_k}\rightarrow \psi$ uniformly. The sequence satisfies $\phi_{n_k}(x)+\psi_{n_k}\leq c(x,y)-p_{n_k}(x,y)$.  Hence, 
+	Thus, its corresponding optimal potentials $(\phi_{n_k}, \psi_{n_k})$ are also equicontinuous and bounded, with $\phi_{n_k}\rightarrow \phi$ and  $\psi_{n_k}\rightarrow \psi$ uniformly. The sequence satisfies $\phi_{n_k}(x)+\psi_{n_k}\leq c(x,y)-p_{n_k}(x,y)$, therefore the limit satisfies the same inequality, making it a feasible solution.
+	Hence, 
 	\begin{equation}
 		H(p)\leq -\parentheses{\int_X \phi\dmu+\int_Y\psi\dnu}=\lim_{n\rightarrow \infty}H(p_{n_k})=\liminf_{n\in\Naturals}\ H(p_n).
 	\end{equation}
@@ -807,9 +820,35 @@ Taking the Legendre transform of $H^*:\MeasureSp(X\times Y)\rightarrow \Real\cup
 	&=\sup_{p\in C(X\times Y)}\braces{\int_{X\times Y}p\diff\gamma +\max\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}}\\
 	&=\sup_{p\in C(X\times Y)}\braces{\int_{X\times Y}p\diff\gamma +\sup\braces{\int_X\phi \dmu + \int_Y\psi \dnu: \quad \phi(x)+\psi(y)\leq c(x,y)-p(x,y)}}
 \end{align*}
-The above expression is exactly the equation 
+Note that, if $\gamma\neq \MeasureSp_+(X\times Y)$, then there is $p\leq 0$ such that $\int p_0 \diff\gamma$, and one can take $\phi=0$, $\psi=0$, $p=c+np_0$, and, for $n\rightarrow \infty$, we get $H^*(\gamma)=+\infty$. In the other hand, $\MeasureSp_+(X\times Y)$, we should choose the largest possible $p$, that is 
+$p(x,y)=c(x,y)-\phi(x)-\psi(y)$. This yields,
+\begin{equation}
+	H^*(\gamma)=\sup_{\psi, \phi} \int_{X\times Y} c(x,y)\diff\gamma.
+\end{equation}
+Therefore,
+\begin{equation*}
+	H^*(\gamma)=\sup_{\phi, \psi}\int_{X\times Y}c(x,y)\diff\gamma +\int_{\phi}\phi\dmu-\int_{\phi}\phi(x)\diff\gamma+\int_{Y}\phi\dnu-\int_{X\times Y}\psi(y)\diff\gamma,
+\end{equation*}
+this is exactly the same equation \eqref{eq: sup-inf Kantorovich}, then we can rewrite the constraints as follows,
+\begin{equation}
+	H^*(\gamma)=\begin{cases}
+	\Kantorovich & \text{if }\gamma\in \Pi(\mu,\nu)\\
+	+\infty & \text{otherwise}
+	\end{cases}
+\end{equation}
+We have that, 
+\begin{equation}
+\max\eqref{eq: Transportation Dual problem}=-H(0)=-H^{**}(0),
+\end{equation} 
+since $H$ is convex and lower semicontinuous. Moreover,
+ \begin{equation}
+ H^{**}(0)=\sup\parentheses{\anglesbox{0,\gamma}-H^*(\gamma)=-\inf (H^*)}=-\min\eqref{eq: Kantorovich's Problem.}.
+ \end{equation} 
+ 
+ In this way we have duality between the two problems \eqref{eq: Kantorovich's Problem.} and \eqref{eq: Transportation Dual problem} if $c$ is uniformly continuous defined on the $X\times Y$ Cartesian product of compact subsets of two Polish spaces. Note that we did not rely on the concept of $c-$cyclically monotonicity for proving the equality between the two problems.
+ 
 \subsection{Brenier's theorem}
-
+The following result is one of the most important results in the optimal transport theory. It brings consistence to many applications and allows to formulate many problems in terms of transportation maps. 
 \begin{theorem}[Brenier's theorem]
 	Let $\mu$, $\nu$ probability measures on $\Real^d$. Assume that $\mu$ is absolutely continuous with respect the Lebesgue measure, $\mu<<\Lebesgue^d$. Therefore,
 	\begin{enumerate}
@@ -820,25 +859,35 @@ The above expression is exactly the equation
 \end{theorem}
 
 \begin{theorem}
-	Let $\mu$, $\nu$  be probabilities over $\Real^d$ and $c(x,y)=\frac{1}{2}\abs{x-y}^2$. Suppose $\int \abs{x}^2 \dx <\infty$ and $\int \abs{y}\dy<\infty$. Consider
+Let $\mu$ and $\nu$ probability measures on a compact domain $\Omega\subset \Real^d$, there exists an optimal plan $\gamma$ for the cost $c(x,y)=h(\abs{x-y})$, with $h$ a strictly convex. The plan is unique and it has the form $\Tmeasure{(\id, T)}{\mu}$, provided $\mu$ is absolutely continuous and the boundary $\partial \Omega$ is negligible. Moreover, there exists a function $\phi$, such that $T$ and $\phi$ are related by,
+\begin{equation}
+	T(x)=x-\parentheses{\nabla h}^{-1}\parentheses{\nabla\phi(x)}
+\end{equation}
 \end{theorem}
 
 
 \begin{theorem}[Distance between two Gaussians]
-	The optimal transport plan for a cost function $c(x,y)=\abs{x-y}^2$ between two Gaussians in $\Real^d$ is given by an translation map.
-	That is, $\mu$ is a probability measure for the space $X=\Real^m$, defined by,
+	The optimal transport plan for a cost function $c(x,y)=\abs{x-y}^2$ between two Gaussians in $\Real^d$ is a deterministic coupling, given by an affine map.
+	That is, $\mu$ is a probability measure for the space $X=\Real^n$, defined by,
 	\begin{equation*}
-	\mu(A)=\frac{1}{2}\int_{A} \mathsf{e}^{(x-m_\mu)^\top}\dx	
+	\mu(A)=\frac{1}{\sqrt{2\pi\det(\pmb{\Sigma}_\mu)}}\int_{A} \mathsf{e}^{(\mathbf{x}-\mathbf{m}_\mu)^\top\pmb{\Sigma}_{\mu}^{-1}(\mathbf{x}-\mathbf{m}_\mu)}\diff\mathbf{x}, \quad \forall A\in X,
 	\end{equation*}
-	and $\nu$ is a probability measure for the space $Y=\Real^n$ defined by,
+	where $\pmb{\Sigma}_\mu$ is its covariance matrix and $\mathbf{m}_\mu$ is its first moment. Let $\nu$ be a probability measure for the space $Y=\Real^m$ defined by,
 	\begin{equation*}
-		content...
+	\nu(B)=\frac{1}{\sqrt{2\pi\det(\pmb{\Sigma}_\nu)}}\int_{B} \mathsf{e}^{(\mathbf{y}-\mathbf{m}_\nu)^\top\pmb{\Sigma}_{\nu}^{-1}(\mathbf{y}-\mathbf{m}_\nu)}\diff\mathbf{y}, \quad \forall B\in Y	
 	\end{equation*} 
-	Then $\gamma\in \Pi(\mu,\nu)$ that solves the Kantorovich's problem is given by 
+	where $\pmb{\Sigma}_\mu$ is its covariance matrix and $\mathbf{m}_\mu$ is its first moment.
+	
+	Then the plan $\gamma$ that solves the Kantorovich's problem is given by a translation map, that is $\gamma=\Tmeasure{(\id, T)}{\mu}$, where $T$ is defined by,
 	\begin{equation}
-		\gamma=\parentheses{x, m_\nu+A\parentheses{x-m_\mu}}
+		T(x)=\mathbf{m}_{\nu}+\mathbf{A}\parentheses{\mathbf{x}-\mathbf{m}_{\mu}},\quad \mathbf{x}\in\Real^n,
+	\end{equation}
+	and $\mathbf{A}$ is given by,
+	\begin{equation}
+		\mathbf{A}=\pmb{\Sigma}_\mu^{-\frac{1}{2}}\parentheses{\pmb{\Sigma}_\mu^{\frac{1}{2}}\pmb{\Sigma}_\nu\pmb{\Sigma}_\mu^{\frac{1}{2}}}^{\frac{1}{2}}\pmb{\Sigma}_\alpha^{-\frac{1}{2}}.
 	\end{equation}
 \end{theorem}
+
 
 %\section{****Wasserstein Spaces. $\WassersteinSp{p}$}
 

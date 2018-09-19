@@ -1,5 +1,5 @@
 \chapter{Computation and Applications of an Optimal Transport}
-The approximation of an optimal transport is a computationally expensive problem.  In this chapter we present the discrete formulation of the Kantorovich's problem. We can see that the discrete Kantorovich's problem is a subcase of a general linear program.
+The approximation of an optimal transport is a computationally expensive problem.  In this chapter we present the discrete formulation of the Kantorovich's problem.  We can see that the discrete Kantorovich's problem is a subcase of a general linear program. 
 %We can attack this problem by the approaches of \textbf{First  Discretize then Optimize} or \textbf{First Optimize then Discretize}
 \section{Discrete Formulation and Linear Programming.}
 We denote by $\one_n=\parentheses{1,1,\dots,1}^\top\in \Real^n$ the vector composed of $n$ $1$'s. The vector composed of $n$ $0$'s is denoted by $\zeros_n=\parentheses{0,0,\dots, 0}^\top\in\Real^n$. We call a simplex $\Sigma_n$ the convex set of vectors $\pmb{p}=\parentheses{p_1, \dots, p_n}^\top\in \Real^n$ such that, 
@@ -67,12 +67,12 @@ Applying the vectorization property for the Frobenius product \eqref{eq: Optimal
 \end{equation*}
 The $nm$-dimensional vectors $\mathbf{c}=\mathrm{vec}(\mathbf{C})$ and $\mathbf{p}=\mathrm{vec}(\pmb{\gamma})$ are the vectorization of $\mathbf{C}$ and $\pmb{\gamma}$ equal to the stacked columns contained in the cost matrix and transportation plan respectively.
 
-Consider the constrain for $\mathbf{b}$ take the transpose and right multiply both sides by the identity,
+Consider the constraint for $\mathbf{b}$ take the transpose and right multiply both sides by the identity,
 \begin{align*}
 	\one_n^\top\pmb{\gamma}\mathbf{I}_m=\mathbf{b}^\top\mathbf{I}_m=\mathbf{b}^\top
 \end{align*}
 
-Using \eqref{eq: product vectorization} in the constrains \eqref{eq: matrix prob marginals}, and the vectorization of a product of three matrices \eqref{eq: vectorization product 3 matrices} in the last equation we obtain, 
+Using \eqref{eq: product vectorization} in the constraints \eqref{eq: matrix prob marginals}, and the vectorization of a product of three matrices \eqref{eq: vectorization product 3 matrices} in the last equation we obtain, 
 \begin{align}
 	\pmb{\gamma}\one_m=\parentheses{\one_m^\top\pmb{\otimes}\mathbf{I}_n}\mathrm{vec}(\pmb{\gamma})=\parentheses{\one_m^\top\pmb{\otimes}\mathbf{I}_n}\mathbf{p}&=\mathbf{a}\\
 	\mathrm{vec}(\mathbf{b}^\top)=\parentheses{\mathbf{I}_m\pmb{\otimes}\one_n^\top}\mathrm{vec}(\pmb{\gamma})=\parentheses{\mathbf{I}_m\pmb{\otimes}\one_n^\top}\mathbf{p}&=\mathbf{b}\label{eq: constrain deduction}
@@ -85,7 +85,7 @@ Therefore, we can write the equation  \ref{eq: Optimal Cost Frobenius} as a line
 	\end{pmatrix} &\\
 	& &\mathbf{p}&\geq 0 &,
 \end{align}
-where the linear operator of the constrain is given by a $(m+n)\times mn$ matrix,
+where the linear operator of the constraint is given by a $(m+n)\times mn$ matrix,
 \begin{equation}
 	\mathbf{A}=\begin{pmatrix}
 	\one_m^\top \pmb{\otimes} \mathbf{I}_{n}\\
@@ -136,13 +136,13 @@ It is interesting analyzing the $\mathbf{C}-$ and $\overline{\mathbf{C}}-$ trans
 	\parentheses{\mathbf{f}^{\mathbf{C}}}_{j}&=\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f})_i}\\
 	\parentheses{\mathbf{g}^{\overline{\mathbf{C}}}}_{i}&=\min_{1\leq j\leq m}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{g})_j}.
 \end{align}
-As we did before we can check the improvement of a solution through $\mathbf{C}-$ and $\overline{\mathbf{C}}-$transforms. We check that for each $\parentheses{\mathbf{f}^{\mathbf{C}}}_{j}$ the constrained is satisfied,
+As we did before we can check the improvement of a solution through $\mathbf{C}-$ and $\overline{\mathbf{C}}-$transforms. We check that for each $\parentheses{\mathbf{f}^{\mathbf{C}}}_{j}$ the constraint is satisfied,
 \begin{align*}
 	0&=-(\mathbf{f^{\mathbf{C}}})_j+\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f})_i}\\
 	0&=\min_{1\leq i\leq n}\parentheses{(\mathbf{C})_{i,j}-(\mathbf{f^{\mathbf{C}}})_j-(\mathbf{f})_i}\\
 	0&\leq (\mathbf{C})_{i,j}-(\mathbf{f^{\mathbf{C}}})_j-(\mathbf{f})_i
 \end{align*} 
-For a given pair $(\mathbf{f,g})$ satisfying the constrain we have for all $1\leq i\leq n$ and $1\leq j\leq m$,
+For a given pair $(\mathbf{f,g})$ satisfying the constraint we have for all $1\leq i\leq n$ and $1\leq j\leq m$,
 \begin{align*}
 	(\mathbf{g})_j&\leq \mathbf{C}_{i,j}-(\mathbf{f})_i\\
 	&\leq \min_{1\leq i\leq n}\parentheses{\mathbf{C}_{i,j}-(\mathbf{f})_i} \\&\leq \parentheses{\mathbf{f^\mathbf{C}}}_j
@@ -151,7 +151,7 @@ Since $\mathbf{a}\in \Sigma_n$ and $\mathbf{b}\in \Sigma_m$ are positive,
 \begin{equation}
 	\anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}\leq \anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{f^C},\mathbf{b}}.
 \end{equation}
-Using similar arguments we can prove that the $\overline{\mathbf{C}}-$transform of $\mathbf{g}$ also satisfies the constrain and improves the objective value,
+Using similar arguments we can prove that the $\overline{\mathbf{C}}-$transform of $\mathbf{g}$ also satisfies the constraint and improves the objective value,
 \begin{align}
 	\anglesbox{\mathbf{f},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}\leq \anglesbox{\mathbf{g^{\overline{C}}},\mathbf{a}}+\anglesbox{\mathbf{g},\mathbf{b}}
 \end{align}
@@ -252,7 +252,7 @@ The network simplex algorithm maintains a basic feasible solution at each stage.
 		(\tilde{\pmb{\gamma}})_{i'_1, j'_k}&=&({\pmb{\gamma}})_{i'_1,j'_{K}}-\epsilon&
 		\end{array}
 	\end{equation*}
-	Take $\epsilon=\min\braces{\gamma_{i_{2}, j_{1}},\dots, \gamma_{i_{K}, j_{K-1}},\gamma_{1,K}}$, in order to keep the constrain $\tilde{\pmb{\gamma}}\geq 0$. Having in this way a tree, since we have removed an edge from a cycle. Finally, we update the transport plan $\pmb{\gamma}\leftarrow\tilde{\pmb{\gamma}}$.
+	Take $\epsilon=\min\braces{\gamma_{i_{2}, j_{1}},\dots, \gamma_{i_{K}, j_{K-1}},\gamma_{1,K}}$, in order to keep the constraint $\tilde{\pmb{\gamma}}\geq 0$. Having in this way a tree, since we have removed an edge from a cycle. Finally, we update the transport plan $\pmb{\gamma}\leftarrow\tilde{\pmb{\gamma}}$.
 \end{itemize}
 Briefly, we initialize the algorithm with a feasible solution $\pmb{\gamma}$ using the North-West rule, resulting into a feasible solution, (not necessarily basic feasible) and we compute a complementary pair $(\mathbf{f},\mathbf{g})$ for $\pmb{\gamma}$. We check for feasibility of the computed pair. If the pair is feasible we have an optimal solution. If the pair $(\mathbf{f},\mathbf{g})$ is not feasible we search for cycles and we make them disappear using the above explained procedure. We compute again the complementary pair $(\mathbf{f}, \mathbf{g}$  and we add to the graph of $\pmb{\gamma}$ the edge corresponding to the indexes that violate the complementary condition, and we continue with the above explained procedure. 
 
@@ -319,7 +319,7 @@ Consider the Lagrangian for the strictly convex program \eqref{eq: Regularized O
 \begin{equation}
 	\Lambda(\pmb{\gamma};\mathbf{f}, \mathbf{g})=\anglesbox{\mathbf{C},\pmb{\gamma}}-\epsilon H(\pmb{\gamma})-\anglesbox{\mathbf{f}\ ,\ \pmb{\gamma}\one_m-\mathbf{a}}-\anglesbox{\mathbf{g}\ ,\ \pmb{\gamma}^\top\one_n-\mathbf{b}}
 \end{equation}
-where $\mathbf{f}$ and $\mathbf{g}$ are the Lagrange multipliers of the constrains \eqref{eq: matrix prob marginals}, the necessary condition for optimality should be satisfied,
+where $\mathbf{f}$ and $\mathbf{g}$ are the Lagrange multipliers of the constraints \eqref{eq: matrix prob marginals}, the necessary condition for optimality should be satisfied,
 \begin{equation}
 	\frac{\delta\Lambda(\pmb{\gamma};\mathbf{f}, \mathbf{g})}{\delta (\pmb{\gamma})_{i,j}}=(\mathbf{C})_{i,j}+\epsilon\log(\pmb{\gamma}_{i,j})-(\mathbf{f})_i-(\mathbf{g})_{j}=0,
 \end{equation}
@@ -328,11 +328,35 @@ which results for each entry of $\pmb{\gamma}$,
 	(\pmb{\gamma})_{i,j}=\exp\parentheses{{\frac{(\mathbf{f})_i+(\mathbf{g})_{j}-(\mathbf{C})_{i,j}}{\epsilon}}}=\mathsf{e}^{(\mathbf{f})_i/\epsilon}\mathsf{e}^{-(\mathbf{C})_{i,j}/\epsilon}\mathsf{e}^{(\mathbf{g})_j/\epsilon}
 \end{equation}
 
-We set $\mathbf{u}\in \Real^n$ and $\mathbf{v}\in\Real^m$ as 
+Let $\mathbf{u}\in \Real^n$ and $\mathbf{v}\in\Real^m$ be two real vectors, and $\mathbf{K}\in \mathbf{M}^{nm}$ a $n\times m$ matrix, for $\forall 1\leq i \leq n$ and $\forall 1\leq j \leq m$ we set, 
 \begin{align}
-(\mathbf{u})_{i}&=\exp\parentheses{(\mathbf{f})_i}-\exp\parentheses{\epsilon}\quad \forall 1\leq i \leq n\\
-(\mathbf{v})_{j}&=\exp\parentheses{(\mathbf{g})_j}-\exp\parentheses{\epsilon}\quad \forall 1\leq j \leq m
+(\mathbf{u})_{i}&=\exp\parentheses{(\mathbf{f})_i}-\exp\parentheses{\epsilon}\quad \\
+(\mathbf{v})_{j}&=\exp\parentheses{(\mathbf{g})_j}-\exp\parentheses{\epsilon}\quad\\
+(\mathbf{K})_{i,j}&=-\exp\parentheses{(\mathbf{C})_{i,j}}+\exp\parentheses{\epsilon} 
 \end{align} 
+Hence we can write $\pmb{\gamma}$ in a closed form as follows,
+\begin{equation}
+	(\pmb{\gamma})=\diag({\mathbf{u}})\mathbf{K}\,\diag({\mathbf{v}})
+\end{equation}
+and the constraints,
+\begin{align}
+\mathbf{u}\pmb{\odot}\parentheses{\mathbf{K}\mathbf{v}}=\diag({\mathbf{u}})\mathbf{K}\,\diag({\mathbf{v}})\one_m&=\mathbf{a} \label{eq: matrix scaling a}\\ 
+\mathbf{v}\pmb{\odot}\parentheses{\mathbf{K}^\top\mathbf{u}}=\diag({\mathbf{v}})\mathbf{K}^\top\,\diag({\mathbf{u}})\one_n&=\mathbf{b} \label{eq: matrix scaling b},
+\end{align}
+where $\pmb{\odot}$ is the product entry by entry multiplication between two vectors. Also note that $\diag(\mathbf{u})\one_n=\mathbf{u}$ and $\diag(\mathbf{v})\one_m=\mathbf{v}$. The equations \eqref{eq: matrix scaling a} and \eqref{eq: matrix scaling b} are known as the \emph{ matrix scaling problem.}. 
+
+The above equations are the entry-wise product between two vectors, therefore if $\mathbf{u}$ and $\mathbf{v}$ are solutions of these equations they should satisfy,
+\begin{align}
+	\mathbf{u}&=\mathbf{a}\pmb{\oslash}(\mathbf{Kv}) \label{eq: LagrangeMultipliersSinkhorn}\\
+	\mathbf{v}&=\mathbf{b}\pmb{\oslash}(\mathbf{K}^\top\mathbf{u}),\label{eq: LagrangeMultipliersSinkhorn2}
+\end{align}
+
+where $\pmb{\oslash}$ is the division entry-wise. Sinkhorn algorithm exploits the form of the equations in order to find a solution for this condition. The algorithm is really simple, at step $k$ we compute: 
+\begin{align}
+	\mathbf{u}^{k+1}&:=\mathbf{a}\pmb{\oslash}(\mathbf{Kv}^{k})\\
+	\mathbf{v}^{k+1}&:=\mathbf{b}\pmb{\oslash}(\mathbf{Ku}^{k+1}),
+\end{align}
+starting from $\mathbf{v}^0=\one_m$, until reach convergence under some norm. Although the algorithm seems simple, the proof for its convergence it is not a trivial task, and it makes use of the Hilbert's Projective metric and the fact that a positive matrix is a strict contraction on the cone of positive vectors, for a detailed proof and details of the order of convergence we refer \cite{Joel1989ScalingMatrices}. Moreover, the simplicity of the algorithm allows to make the computations in parallel since we have the division entry-wise of two vectors. 
 %\section{Applications.}
 %\section{Continuous Formulation.}
 %\subsection{Beckman Problem and Optimal Transport.}
@@ -340,6 +364,67 @@ We set $\mathbf{u}\in \Real^n$ and $\mathbf{v}\in\Real^m$ as
 
 \subsection{Examples.}
 
-The following examples were generated using the library of Optimal Transport \cite{flamary2017pot} developed in Python by R\'emi Flamary and Nicolas Courty. 
+The following examples were generated using the library of Optimal Transport \cite{flamary2017pot} developed in Python by R\'emi Flamary and Nicolas Courty. The numerical examples takes as cost function $c(x,y)=\frac{1}{2}\abs{x-y}^2$. The source is given by a normal distribution $\mu\sim\mathcal{N}(15,5)$, with mean $m_\mu=15$ and standard deviation $\sigma_\mu=5$, and the target is given by a normal distribution $\nu\sim\mathcal{N}(70,10)$, with mean $m_\nu=70$ and $\sigma_\nu=10$. Note that the figure \ref{fig: EMD Gaussians.} resembles a linear map, and the figure is just a blurred version of this map.
 
-This example takes as cost function $c(x,y)=\frac{1}{2}\abs{x-y}^2$. 
+\begin{figure}[H]
+	\begin{center}
+		\caption{Numerical examples, $c(x,y)=\frac{1}{2}\abs{x-y}^2$.}
+		
+		\begin{subfigure}[t]{0.45\textwidth}
+			\caption{Two Normal distributions.}
+			\includegraphics[width=0.95\textwidth]{Distributions}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.45\textwidth}
+			\caption{Cost matrix, the darker the color the smaller the distance between two points. }
+			\includegraphics[width=0.95\textwidth]{EMD_Cost}
+		\end{subfigure}
+				\end{center}
+		\end{figure}
+\begin{figure}[H]
+	\begin{center}
+\caption{Optimal couplings for two Gaussians.}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\caption{Optimal transport plan, found using Network simplex algorithm.}
+			\includegraphics[width=0.95\textwidth]{EMD_Network}
+			\label{fig: EMD Gaussians.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\caption{Optimal regularized transport, found using Sinkhorn Algorithm.}
+			\includegraphics[width=0.95\textwidth]{EMD_Reg}
+			\label{fig: Sinkhorn Gaussians}
+		\end{subfigure}
+	\end{center}
+\end{figure}
+
+We present in figure \ref{fig: 2D Transport.} the transportation problem for two data sets $X$ and $Y$ in $\Real^2$. Using also the squared euclidean norm for $\Real^2$ as cost function, we compute a solution for the linear program ($\epsilon=0$) and the solutions for the regularized problems with $\epsilon= 1\times 10^{-3}$ and $\epsilon=1\times 10^{-1}$.
+
+\begin{figure}[H]
+	\begin{center}
+		\caption{Transportation for 2D data sets}
+		\begin{subfigure}{0.32\textwidth}
+			\caption{Solved using Network Simplex method, $\epsilon=0$}
+			\includegraphics[width=0.95\textwidth]{2DTransportEMD}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\caption{Solved using Sinkhorn method, $\epsilon=1\times 10^{-3}$}
+			\includegraphics[width=0.95\textwidth]{2DTransportSinkhorn}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\caption{Solved using Sinkhorn method, $\epsilon=1\times 10^{-1}$}
+			\includegraphics[width=0.95\textwidth]{2DTransportSinkhorn2}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\caption{Solution in matrix form,\\ $\epsilon=0$}
+			\includegraphics[width=0.95\textwidth]{2DTransportEMDMatrix}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+				\caption{Solution in matrix form,\\ $\epsilon=1\times 10^{-3}$}
+			\includegraphics[width=0.95\textwidth]{2DTransportSinkhornMatrix}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+				\caption{Solution in matrix form,\\ $\epsilon=1\times 10^{-1}$}
+			\includegraphics[width=0.95\textwidth]{2DTransportSinkhornMatrix2}
+		\end{subfigure}
+		\label{fig: 2D Transport.}
+	\end{center}
+\end{figure}

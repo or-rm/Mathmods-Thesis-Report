@@ -1,7 +1,5 @@
 \chapter{Preliminaries.}
-We start this chapter reminding the basic definitions and theorems in topology and measure theory, since they are needed to have a suitable framework to discuss the optimal transport problem and its applications. It is meant to work as a really brief summary of the definitions, motivations and results needed to give the formalism of the next chapters, adapted to the notation used in this project. For a structured construction of the theory or details of the proofs for the results here discussed we give the respective references.
-
-
+We start this text reminding some definitions and theorems in topology, functional analysis and measure theory, needed to have a suitable framework to discuss the optimal transport problem and its applications. This chapter is meant to work as a brief summary of the definitions, motivations and results necessary to give the formalism of the upcoming chapters, adapted to the notation used in this project. For further the proofs and structured construction of the theory we will present the respective references.
  
 %\section{Definitions and important theorems to remember.}
 
@@ -17,7 +15,7 @@ We start this chapter reminding the basic definitions and theorems in topology a
 %	These maps $\proj_x$ and $\proj_y$ are called the projections of $X\times Y$ onto $X$ and $Y$ respectively.	
 %\end{definition}
 \section{Topology.}
-We start with the definition of topology that is needed to introduce a notion of continuity and convergence. We recall some important notions used during the development of the present text, for further details about this topic we refer \cite{munkres2000topology}. 
+We recall some important notions in topology important to discuss continuity and convergence, for further details about this topic we refer \cite{munkres2000topology}, \cite{Morris1976DifferentialTopology}. 
 \\
 
 A set $X$ endowed with a topology $\mathcal{T}$ is a \textbf{topological space}. The elements of a topology are called \textbf{open} sets. Any set of $X$ that is a complement of a set in $\mathcal T$ is called a \textbf{closed} set. We call a neighborhood of $x\in X$ to any set in $\mathcal{T}$ that contains $x$.
@@ -74,7 +72,7 @@ We say that $A$ is a bounded subset of a metric space $X$ if there is $M\in \Rea
 		d_X(x, y)<\delta \implies d_Y(f(x),f(y))<\epsilon
 	\end{equation*}
 \end{definition}
-If $X$ is topological space and $A\subset X$. If there is a sequence of points of $A$ converging to $x$, then $x\in\closu A$. The converse holds if $X$ is metrizable. \\
+Let $X$ be topological space and $A\subset X$. If there is a sequence of points of $A$ converging to $x$, then $x\in\closu A$. The converse holds if $X$ is metrizable. \\
 
 Let $f: X\rightarrow Y$ be continuous function between to topological spaces. If $(x_n)_{n\in \Naturals}$ is a sequence converging to $x$, then the sequence $f(x_n)$ converges to $f(x)$. If $X$ satisfies the first axiom of countability we can invert the implication. Therefore for a metrizable space $X$ the converse holds. 
 
@@ -90,10 +88,9 @@ Every closed subspace of a compact space is compact. Every compact subspace of a
 A metric space $X$ is said to be \textbf{totally bounded} if for every $\epsilon>0$, there is a finite covering of $X$. A metric space $X$ is said to be \textbf{complete} if any Cauchy sequence\footnote{Given a metric space $X$, a sequence $\parentheses{x_n}_{n\in\Naturals}$ is said to be Cauchy, if for every real $\epsilon>0$ there is $N$ such that for all $m,n>N$ pair $d(x_m, x_n)<\epsilon$} has a limit in $X$. Every compact metric space is complete. 
 A metric space is compact if and only if it is complete and totally bounded.
 
-We call \textbf{Polish space} to any topological space that is separable and completely metrizable. There is a subtle difference between complete metric space and completely metrizable space, that is exists a distance $d$ that such that the space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.\\
+We call \textbf{Polish space} is any topological space that is separable and completely metrizable. There is a subtle difference between complete metric space and completely metrizable space.  And the difference lies on the words ``\textit{there exists at least a metric...}" in the completely metrizable definition, and ``\textit{given a metric}''. Complete metrizable is a topological property while completeness is a property of the chosen metric.\\
 
-Each closed subspace, and each open subspace, of a Polish space is Polish. The product of a finite or infinite sequence of Polish spaces is
-Polish.
+Each closed subspace, and each open subspace, of a Polish space is Polish. The product of a finite or infinite sequence of Polish spaces is Polish. Every space in this text is Polish, unless the contrary is stated.
 
 \begin{theorem}[Extreme value theorem]
 	Let $f:X\rightarrow \Real$ be a continuous real valued function. If $X$ is compact, then there exist points $u$ and $v$ in $X$ such that $f(u)\leq f(x)\leq f(v)$ for all $x\in X$.
@@ -131,8 +128,7 @@ A subset of functions $F\subset C(X)$ is said to be \textbf{equicontinuous at} $
 \end{theorem}
 
 \section{Functional Analysis}
-Some notions in functional analysis are needed when we are trying to optimize a functional. 
-
+Some notions in functional analysis are needed when we are trying to find optimal values for a given real valued function. We refer for further details of this section \cite{Barbu2012Optimization}, \cite{Fonseca2007ModCalculculusofVar}, \cite{Kreyszig1978FAME}, \cite{Clarke2013FAME}.  
 
 The \textbf{epigraph} of a real valued function $f:X\rightarrow \Realex$ is the set $\epi(f)=\braces{(x,t)\in X\times t:\ f(t)\leq t}$. In similar way, we define the \textbf{graph} $\graph(f)$ of a function $f$ as the set defined by the expression $\graph(f)=\braces{(x,y)\in X\times Y:\ f(x)=y}$. \\
 Given a topological space $X$ we say that \textbf{limit inferior} of real valued function $f:X\rightarrow \Realex$ as $x$ tends to $x_0$ is defined as
@@ -203,7 +199,7 @@ A linear space is a metric space with a distance $d(v,w)=\norm{v-w}$. A linear s
 
 
 \begin{theorem}(Tonelli's Method)
-	Let $X$ be a normed space and let $f:V\rightarrow \Realex$ be not identically to $\infty$. The Tonelli's method
+	Let $X$ be a normed space and let $f:V\rightarrow \Realex$ be not identically to $\infty$. The Tonelli's method provides conditions on $V$ and $f$ that ensure the existence of a minimum point for $f$:
 	\begin{enumerate}
 		\item Consider a minimizing sequence $\braces{x_n}_{n\in \Naturals}\subset X$, that is a sequence such that
 		\begin{equation*}
@@ -269,7 +265,7 @@ Let $X$ be a separable normed vector space, and let $X^*$ be its dual. Then the 
 \end{corollary}
 
 \subsection{Convex Analysis.}
-We introduce some notions in convexity since this concept plays an important role in optimization. Convex sets and functions have nice properties that can be exploit in the development of theorems in optimization. 
+Convexity plays an important role in optimization. Convex sets and functions have nice properties that can be exploit in the development of theorems in optimization, for further references please check \cite{Barbu2012Optimization}, \cite{Ekeland1999Convex}. 
  
 A subset $E$ of a vector space $V$ is convex if for all $v_1$, $v_2$ in $E$ and all $\alpha \in (0,1)$ we have that $\alpha v_1+(1-\alpha)v_2=v\in E$.
 In other words, $E$ contains all line segments between points in $E$. We denote by $[v_1, v_2]$, a line segment with extreme points $v_1, v_2$.
@@ -339,7 +335,7 @@ f(x_0)=\inf\braces{f(x):\ x\in M}.
 \end{equation}
 Moreover, $x_0$ is unique if $f$ is strictly convex. The last equation is also known as a \textbf{convex program}. \\
 
-On the other hand, in relation with concavity we have the modulus of continuity of a continuous function. For example, the following are examples of characterization of functions.
+On the other hand, in relation with concavity we have the modulus of continuity of a continuous function. The following definition presents some examples of characterizing a function according to an intrinsic property.
 \begin{definition}
 	Let $X$ be a metric space with a distance $d_X$ and let $Z \subset X$. A function $f: X\rightarrow \Real$ onto a metric space $Y$ with a distance $d_Y$ is said to be,
 	\begin{itemize}
@@ -357,7 +353,7 @@ On the other hand, in relation with concavity we have the modulus of continuity 
 		\end{equation*}
 	\end{itemize}
 \end{definition}
-Given a subset $Z$ of a metric space $X$ and a function $f: Z\rightarrow \Real$ the \textbf{modulus of continuity} $\omega:\Real_+\rightarrow \Real_+$ defined by $\omega(\delta;f)=\sup\braces{\abs{f(x)-f(y)}: x,y \in Z, d(x,y)<\delta}$. Note that $f$ is uniformly continuous if and only if $\omega(\delta; f)\rightarrow 0$ as $\delta\downarrow 0$, that is continuous at zero. The modulus of continuity of uniformly continuous function is subadditive. The \textbf{concave modulus of continuity} $\overline{\omega}:\Realex_+\rightarrow \Realex_+$ is defined as the smallest concave function above $\omega$. If $K=X$ and $f$ is uniformly continuous, then it is always possible to replace $\omega$ with $\overline{\omega}$.
+Given a subset $Z$ of a metric space $X$ and a function $f: Z\rightarrow \Real$ the \textbf{modulus of continuity} $\omega:\Real_+\rightarrow \Real_+$ defined by $\omega(\delta;f)=\sup\braces{\abs{f(x)-f(y)}: x,y \in Z, d(x,y)<\delta}$. Note that $f$ is uniformly continuous if and only if $\omega(\delta; f)\rightarrow 0$ as $\delta\downarrow 0$, that is continuous at zero. The modulus of continuity of uniformly continuous function is subadditive. The \textbf{concave modulus of continuity} $\overline{\omega}:\Realex_+\rightarrow \Realex_+$ is defined as the smallest concave function above $\omega$. If $K=X$ and $f$ is uniformly continuous, then it is always possible to replace $\omega$ with $\overline{\omega}$. For further details of the modulus of continuity we refer \cite{Steffens2006HistoryofApprox}, \cite{Zygmund} and \cite{Fonseca2007ModCalculculusofVar}.
 \begin{theorem}
 	Let $E$ be a subset of a metric space $X$. Any uniformly continuous bounded function $f:E\rightarrow\Real$ can be extended to a function $g:X\rightarrow \Real$ with the same modulus of continuity, supremum and infimum.
 \end{theorem}
@@ -372,7 +368,7 @@ A subset $A\subset X\times X^*$ is called monotone if $\anglesbox{x_1-x_2, y_1-y
 
 Any convex, proper and lower-semicontinuous function is bounded from below by an affine function. A lower-semicontinuous convex function is proper if and only its conjugate is proper. 
 \begin{theorem}[Convex Envelope Theorem]
-Let $X$ be a locally convex topological space. And let $f:X\rightarrow \Real\cup\braces{+\infty}$ be any functional nonidentically to $+\infty$. Then $f^{**}=f$ if and only if $f$ is convex and lower semicontinuous on $X$	
+Let $X$ be a locally convex topological space. And let $f:X\rightarrow \Real\cup\braces{+\infty}$ be any functional nonidentically to $+\infty$. Then $f^{**}=f$ if and only if $f$ is convex and lower semicontinuous on $X$.\label{thm: Convex Envelope Theorem}
 \end{theorem}
 
 A proper function $f$ is convex and lower-semicontinuous on $X$ if and only if it is the supremum of a family of affine continuous functions.
@@ -387,7 +383,7 @@ A proper function $f$ is convex and lower-semicontinuous on $X$ if and only if i
 \begin{theorem}
 	Let $f:X\to\Real\cup\braces{\infty}$ be a proper convex function. Then, then, $x^*\in\partial f(x)\iff f(x)+f^*(x^*)\leq\anglesbox{x, x^*}\iff f(x)+f^*(x^*)=\anglesbox{x, x^*}$
 \end{theorem}
-A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ are just the solutions to the equation  $0\in\partial f(x)$.
+Let $f$ proper convex functional defined on a Banach Space $X$, the minimum points of $f$ are just the solutions to the equation  $0\in\partial f(x)$.
 
 %\begin{theorem}[Rockafellar]
 %Let X be a real Banach space and let f be a lower-semicontinuous proper convex function on X. Then, $\partial(f)$ is maximal monotone operator from $X$ to $X^*$.
@@ -397,7 +393,148 @@ A proper convex function $f$ on a Banach Space $X$, the minimum points of $f$ ar
 
 \section{Convergence of Probability measures.}
 
-Let $X$ a topological space. A measure such that the outer measure coincides with the inner measure. Let X and Y be separable metrizable spaces, and let $f: X \to Y$ be Borel measurable. Then the graph of $f$ is a Borel subset of $X\times Y$. In \cite{Patrick1999ConverProbMeas}.
+The framework that Kantorovich proposed for the optimal transport problem requires aspects in measure theory and convergence of probability measures. We refer for further details in this section \cite{Donald2013MeasureTheory},\cite{Patrick1999ConverProbMeas}, \cite{Fonseca2007ModCalculculusofVar} and \cite{Milan2000TpicsWeakconvProbs}.
+
+Let $X$ be a set, endowed with a $\sigma$-algebra $\mathscr{A}(X)$, we call such a pair a \textbf{measurable space}. The Borel $\sigma$-algebra $\Borel(X)$ of $X$ is the $\sigma$-algebra constructed with all the open sets of the topology of $X$. A \textbf{measure} is a function $\mu$ from the $\sigma-$algebra to $\Realex$, satisfying non-negativity, null-empty set ($\mu(\emptyset)=0$) and countable additivity. A \textbf{Radon measure} is a measure on $\Borel(X)$ of a Hausdorff topological space $X$ that is finite on all compact sets.
+\begin{definition}[Signed measure]
+	Let $(X, \mathscr{B}(X))$ be a measurable space. A signed measure is a function $\lambda:\mathscr{B}(X)\to[-\infty, \infty]$, such that,
+	\begin{enumerate}
+		\item $\lambda(\emptyset)=0$;
+		\item $\lambda$ takes at most one of the two values $\infty$ and $-\infty$ that is, either one of these definitions holds:  $\lambda:\mathscr{B}(X)\to(-\infty, \infty]$, or
+		$\lambda:\mathscr{B}(X)\to[-\infty, \infty)$ 
+		\item For every countable collection $(E_i)\subset \mathscr{B}(X)$ of pairwise disjoint sets we have,
+		\begin{equation}
+			\lambda\parentheses{\bigcup_{n=1}^{\infty}E_n}=\sum_{n=1}^{\infty}\lambda(E_n)
+		\end{equation}
+	\end{enumerate}
+	\label{def: Signed Measure}
+\end{definition}
+A set function $\lambda:\mathscr{B}(X)\to [-\infty, \infty]$ is a signed measure if and only if it satisfies the second condition of the definition \ref{def: Signed Measure}, it is finitely additive and for every increasing sequence $E_n\subset\Borel(X)$, $\lambda(\bigcup_{n=1}^\infty E_n)=\lim_{n\rightarrow \infty} \lambda(E_n)$.
+
+\begin{definition}
+	Let $(X, \Borel(X))$ be a measurable space and let $\gamma$ be a signed measure. A set $E\in\Borel(X)$ is said to be positive (respectively negative) if $\lambda(F)\geq 0$ (respectively $\lambda(F)\leq 0$) for all $F\subset E$ with $F\in \Borel(X)$
+\end{definition}
+If $\lambda(E)$ is bounded, then there exists a positive measurable subset $F\subset E$ with $\lambda(F)>0$. Moreover, the space can be decomposed as $X=X^+\cup X^-$, where $X^-$ is negative and $X^+$ is positive. This result is known as the Hahn decomposition theorem. 
+If $(X^+, X^+_1)$ and $(X^-, X^-_1)$ are decompositions of a signed measure $\lambda$, then $\lambda(E)=0$ for every $E\subset\Borel(X)$ satisfying
+\begin{equation*}
+E\subset((X^+\backslash X^+_1)\cup(X^+_1\backslash X^+))\cup((X^-\backslash X^-_1)\cup(X^-_1\backslash X^-))
+\end{equation*}
+
+If $X$ is measurable and $\lambda$ is a signed measure we may uniquely decompose $X$ as $X=X^+\cup X^-$, where $X^+$ is positive and $X^-$ is negative. For $E\in \Borel(X)$ define,
+\begin{equation*}
+	\lambda^+(E):=\lambda(E\cap X), \quad \lambda^-(E):=-\lambda(E\cap X)
+\end{equation*}
+Then $\lambda^+$, $\lambda^-$ are measures with at least one of them finite. Moreover $\lambda(E)=\lambda^+(E)-\lambda^-(E)$ and for every $E=\Borel(X)$
+\begin{align*}
+	\lambda^+(E)&=\sup\braces{\lambda(F): F\subset E, F\in\Borel(X), F \text{is positive}}\\
+	\lambda^-(E)&=-\inf\braces{\lambda(F): F\subset E, F\in\Borel(X), F \text{is negative}}
+\end{align*}
+The measures are called, respectively, the upper and lower variation of $\lambda$, while the measure 
+\begin{equation*}
+\norm{\lambda}:=\lambda^++\lambda^-
+\end{equation*}
+is called the total variation of $\lambda$. For every $E\in\Borel(X)$ we have that,
+\begin{equation}
+	\norm{\lambda}(E)=\sup\braces{\sum_{n=1}^{\infty}\abs{\lambda(E_n)}:\quad \braces{E_n}\subset \Borel(X) \text{ partition of }E }
+\end{equation}
+\begin{theorem}[Jordan decomposition theorem]
+	Let $(X,\Borel(X))$ be a measurable space and let $\lambda:\Borel(X)\rightarrow [-\infty, \infty]$ be a signed measure. Then there exists a unique pair $(\lambda^+, \lambda^-)$ such that $\lambda=\lambda^+-\lambda^-$.
+\end{theorem}
+A \textbf{measurable function} is a function between two measurable spaces such that the preimage of any measurable set is measurable. Let $u$ be a measurable function, $\lambda$ a signed measure, and a measurable set $E\subset \Borel(X)$, if at least one of the two integrals $\int_E u(x)\diff\lambda^+$ or $\int_E u(x)\diff\lambda^-$ is finite the Lebesgue integral of $u$ over the measurable set $E$ is defined as 
+\begin{equation}
+	\int u\diff\lambda:=\int_Eu\diff\lambda^+-\int_E\diff\lambda^-.
+\end{equation}
+Given two signed measures, $\lambda$ and $\iota$, then $\lambda$ is said to be absolutely continuous with respect to $\iota$, denoted by $\lambda<<\iota$, if $\lambda(E)=0$ whenever $\iota(E)=0$. If $\lambda<<\iota$, there exists a measurable function $u$, such that $\iota(E)=\int_E u\diff\lambda$,  for any $E$ in $\Borel(X)$. 
+\\
+
+A finitely additive signed measure is a function $\lambda:\Borel(X)\rightarrow \Real$ such that, 
+\begin{enumerate}
+	\item $\lambda(\emptyset)=0$,
+	\item $\lambda$ is finitely additive, that is ,
+	\begin{equation*}
+		\lambda(E_1\cup E_2)=\lambda(E_1)+\lambda(E_2)
+	\end{equation*}
+	for all $E_1, E_2\in \Borel(X)$ with $E_1\cap E_2=\emptyset$. 
+	\item $\lambda$ is bounded, that is, its total variation norm is finite,
+	\begin{equation}
+		\norm{\lambda}(X):=\sup\braces{\sum_{n=1}^{l}\abs{\lambda(E_n)}: \braces{E_n}\subset \Borel(X) \text{finite partition of } X}<\infty.
+	\end{equation}
+\end{enumerate}
+The set of finitely additive signed measures is Banach space endowed with a norm $\norm{\cdot}(X)$. 
+We denote by $\MeasureSp(X)$ the set of all finite signed measures on $\Borel(X)$.  The set of all nonnegative, bounded, finitely additive  and \textbf{regular} measures on $\Borel(X)$ is denoted by $\MeasureSp_+(X)$. 
+
+\begin{definition}[Measure of vectors]
+	Let $X$ a measurable space. A set function $\lambda=(\lambda_1, \dots, \lambda_m):\Borel(X)\to\Real^m$ is a vectorial measure if each component $\lambda_i$, with $i=1,\dots,m$ is a signed measure. The total variation of $\lambda$ is defined by,
+	\begin{equation*}
+		\norm{\lambda}:=\norm{\lambda_1}+\dots\norm{\lambda_m}.
+	\end{equation*}
+\end{definition}
+
+%The following results can be found in \cite{Milan2000TpicsWeakconvProbs}.
+%. The set of generalized measures is denoted by $\MeasureSp(X)$. The set of generalized measures on $X$ is a linear space; a norm can be introduced by the so called total variation of the whole space $X$:
+%\begin{equation}
+%	\norm{m}=\abs{m}(X)=m^+(X)+m^-(X)
+%\end{equation}
+%where, 
+%\begin{align*}
+%	m^+(X):=\sup\braces{m(B):\ B \in \mathcal{A}_X} \\
+%	m^-(X):=-\inf\braces{m(B):\ B \in \mathcal{A}_X}
+%\end{align*}
+%
+%\begin{theorem}[Aleksandrov]
+%	For an arbitrary topological space $X$ any linear continuous functional on $C(X)$ is of the form,
+%	\begin{equation}
+%		\phi(f)=\anglesbox{f,m}=\int_{X}f(x)\diff m(x)
+%	\end{equation}
+%	Moreover,
+%	\begin{equation}
+%		\abs{m}=\sup_{\norm{f}_X\leq 1}\abs{\int_{X}f(x)\diff m(x)}
+%	\end{equation}
+%	There is an isometrical, isomorphical and one to one mapping between the space of all continuous linear functionals on $C(X)$ and the space of $\MeasureSp(X)$; We write $C(X)=\MeasureSp(X)$
+%\end{theorem}
+If $X$ is a compact topological space, all the signed measures the regular, finitely additive and bounded measures are countably additive.
+\begin{theorem}[Riesz representation theorem in $C_b(X)$]
+	Let $X$ a Polish space. Then every bounded linear functional $L:C_b(X)\rightarrow \Real$ is represented by a unique regular, finitely additive and bounded measure $\lambda$, in the sense that
+	\begin{equation}
+		L(u)=\int_{X}u\diff\lambda, \quad \forall u \in C_b(X) \label{eq: Linear Cb(X)}
+	\end{equation}
+	Moreover, the norm of $L$ coincides with the total variation norm $\norm{\lambda}(X)$. Conversely, every functional of the form \eqref{eq: Linear Cb(X)}, where $\lambda$ is a bounded linear functional on $C_b(X)$
+\end{theorem}
+
+Let $X$ be a compact Hausdorff space and let $C(X)=C_b(X)$ be the space of all continuous functions, then the dual of $C(X)$ can be identified with $\MeasureSp(X)$. Let $X$ be a separable metric space, then the weak-star
+topology on $\MeasureSp_+(X)$ is metrizable. If $X$ is a compact metric space, any bounded sequence of regular, finitely additive and  bounded measures $(\lambda_n)_{n\in\Naturals}$ is sequentially weakly-star compact.  In particular if $u\in C_b(X)$ then,
+\begin{equation*}
+	\lim_{k\rightarrow \infty}\int_{X}u\diff\lambda_{n_k}=\int_X u \diff\lambda,
+\end{equation*}
+for a subsequence $(\lambda_{n_k})_{n_k\in\Naturals}$ and for some $\lambda$ being bounded, regular and finitely additve measures. 
+
+\begin{theorem}[Luizin]
+	Let $X$ be a locally compact Hausdorff space, let $\mathcal A$ be a $\sigma-$algebra on $X$ containing the Borel $\sigma-$algebra of $X$. Let $\mu$ a regular measure on $(X, \mathcal A)$ and let $f:X\rightarrow \Real$ be $\mathcal A$-measurable. If $A$ belongs to $\mathcal{A}$ and satisfies $\mu(A)<\infty$ and given a positive number $\epsilon>0$, then there is a compact $K\subset X$ such that $\mu(X\backslash K)<\epsilon$ and the restriction $\domainrestr{K}{f}$ is continuous in $K$. Moreover, there is a function $g\in C_c(K)$ such that $g(x)=f(x)$ for each $x\in K$. 
+\end{theorem}
+
+It follows that the supremum of a collection of continuous (or lower semicontinuous) functions is lower semicontinuous and that each lower semicontinuous function on a Hausdorff space is Borel measurable.  A positive measure $\mu$ is said to be a probability measure if $\mu(X)=1$. The space of probability measures $\PlanSp(X)$ is not closed in $\MeasureSp(X)$. 
+
+%The structure of the second dual $C(X)^{**}$ can be really complex, although it is known that $\MeasureSp_b(X)$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$.
+
+A set $\Pi$ of probability measures is precompact if any sequence of probability measures $\mu_n \in \Pi$ contains a subsequence $(\mu_{n_k})_{n_k\in \Naturals}$ which converges weakly-star to a probability measure in $\PlanSp(X)$.
+
+We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu\in \PlanSp(X)$ and any positive real number $\epsilon>0$ there is a compact $K\subset X$ such that $\mu(X\backslash K)\leq \epsilon$. We also say that a set of probabilities $\Gamma$ is tight if $\forall \mu \in \Gamma$, $\mu$ is tight.
+\begin{theorem}
+ If $X$ is a complete and separable topological space, then $\PlanSp(X)$ is tight. If $X$ is compact any set of probability measures is pre-compact
+\end{theorem}
+
+\begin{theorem}[Prohorov]
+	Let $X$ be a metric space and let $\braces{\mu_n}$ be a sequence of Borel measures, $\mu_n:\Borel(X)\rightarrow 
+	\Real_+$, such that $\sup\mu_n(X)<\infty$. Assume that the elements of the sequence is tight. Then there exist a subsequence $\braces{\mu_k}$ of $\braces{\mu_n}$ and a Borel measure $\mu:\Borel(X)\rightarrow \Real$, such that $\mu_{n_k}$ converges weakly-star to $\mu$ in the dual of the continuous bounded functions of $X$. In particular if $X$ is a locally compact metric space, $\mu, \mu_n$ are finite Radon measures and $\mu_n$ converges weakly-star to $\mu\in \MeasureSp(X)$, then $\mu_n$ converges weakly-star in the $C_b(X)^*$ if and only if the sequence is tight.
+\end{theorem}
+%\begin{theorem}[Prokhorov and Polish spaces]
+%	Let $X$ be a Polish space. Then there is a complete metric $d_0$ over $\PlanSp(X)$ equivalently to the weak topology. Moreover, let $K\subset \PlanSp(X)$ be a subset in $\PlanSp(X)$. Then $K$ is tight if and only if $\closu K$ in the weak topology of $\PlanSp(X)$ is pre-compact.
+%\end{theorem}
+%\begin{corollary}[Prokhorov in metric]
+%	Let $X$ a metric space and let $(\mu_n)_{n\in\Naturals}$ be a sequence of Borel measures, such that $\sup_n(\mu_n)<\infty$. Then there exists a subsequence  $\parentheses{\mu_{n_k}\in \Naturals}$ of $(\mu_n)_{n\in\Naturals}$, such that converges weakly-star in the dual $C_b(X)^*$ of the bounded functionals of $X$. 
+%\end{corollary}
+\subsection{Image Measure.}
+We state some definitions useful to prove the density of transport plans induced by maps in the set of transportation plans (Lemma \ref{lem: Density of maps.}). The proof for the following theorems and lemmas, as well as for Lemma \ref{lem: Density of maps.}, are detailed in \cite{Santambrogio2015OT}.
 \begin{definition}[Support of a measure.]
 	Given a separable metric space $X$, the support of a measure $\mu$ is defined as the smallest closed set on which $\mu$ is concentrated, that is
 	\begin{equation}
@@ -406,68 +543,11 @@ Let $X$ a topological space. A measure such that the outer measure coincides wit
 	\end{equation} 
 \end{definition}
 \begin{definition}[Image Measure]
-	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_2\rightarrow \Realex_+$ is given by,
+	Let $\parentheses{X, \mathcal{A}_X}$  and $\parentheses{Y, \mathcal{A}_Y}$ be two measurable spaces. Let $T:X\rightarrow Y$ be a measurable map from $X$ to $Y$. Let $\mu$ be a measure $\mu: \mathcal{A}_X\rightarrow \Realex_+$, then the image measure (or pushforward measure) $\Tmeasure{\mu}{T}:\mathcal{A}_Y\rightarrow \Realex_+$ is given by,
 	\begin{equation*}
 	\Tmeasure{\mu}{T}(B) = \mu\parentheses{T^{-1}(B)}, \quad \forall B \in \mathcal{A}_Y.
 	\end{equation*}
 \end{definition}
-
-The following results can be found in \cite{Milan2000TpicsWeakconvProbs}.
-Let $\MeasureSp^+(X)$ be the set of all nonnegative, finite, finitely additive and regular measures of $\mathcal{A}_X$. The set of generalized measures is denoted by $\MeasureSp(X)$. The set of generalized measures on $X$ is a linear space; a norm can be introduced by the so called total variation of the whole space $X$:
-\begin{equation}
-	\norm{m}=\abs{m}(X)=m^+(X)+m^-(X)
-\end{equation}
-where, 
-\begin{align*}
-	m^+(X):=\sup\braces{m(B):\ B \in \mathcal{A}} \\
-	m^-(X):=-\inf\braces{m(B):\ B \in \mathcal{A}}
-\end{align*}
-
-\begin{theorem}[Aleksandrov]
-	For an arbitrary topological space $X$ any linear continuous functional on $C(X)$ is of the form,
-	\begin{equation}
-		\phi(f)=\anglesbox{f,m}=\int_{X}f(x)\diff m(x)
-	\end{equation}
-	Moreover,
-	\begin{equation}
-		\abs{m}=\sup_{\norm{f}_X\leq 1}\abs{\int_{X}f(x)\diff m(x)}
-	\end{equation}
-	There is an isometrical, isomorphical and one to one mapping between the space of all continuous linear functionals on $C(X)$ and the space of $\MeasureSp(X)$; We write $C(X)=\MeasureSp(X)$
-\end{theorem}
-
-\begin{theorem}[Luizin]
-	Let $X$ be a locally compact Hausdorff space, let $\mathcal A$ be a $\sigma-$algebra on $X$ containing the Borel $\sigma-$algebra of $X$. Let $\mu$ a regular measure on $(X, \mathcal A)$ and let $f:X\rightarrow \Real$ be $\mathcal A$-measurable. If $A$ belongs to $\mathcal{A}$ and satisfies $\mu(A)<\infty$ and given a positive number $\epsilon>0$, then there is a compact $K\subset X$ such that $\mu(X\backslash K)<\epsilon$ and the restriction $\domainrestr{K}{f}$ is continuous in $K$. Moreover, there is a function $g\in C_c(K)$ such that $g(x)=f(x)$ for each $x\in K$. 
-\end{theorem}
-
-It follows that the supremum of a collection of continuous (or lower semicontinuous) functions is lower semicontinuous and that each lower semicontinuous function on a Hausdorff space is Borel measurable. 
-
-
-The space of probabilities $\PlanSp(X)$ is not closed in $\MeasureSp(X)$. 
-
-
-
-The structure of the second dual $C(X)^{**}$ can be really complex, although it is known that $\MeasureSp_b(X)$ the set of all bounded Borel-measurable functions is a subset of $C(X)^{**}$.
-
-A set $\Pi$ of probability measures is relatively compact if any sequence of probability measures $\mu_n \in \Pi$ contains a subsequence $(\mu_{n_k})_{n_k\in \Naturals}$ which converges weak-star to a probability measure in $\PlanSp(X)$.
-
-We say that a probability measure $\mu$ on $X$ is \textbf{tight} if for any $\mu\in \PlanSp(X)$ and any positive real number $\epsilon>0$ there is a compact $K\subset X$ such that $\mu(X\backslash K)\leq \epsilon$. We also say that a set of probabilities $\Gamma$ is tight if $\forall \mu \in \Gamma$, $\mu$ is tight.
-\begin{theorem}
-	Let $X$ be a separable metric space. Then the weak-star
-	topology on $\MeasureSp_+(X)$ is metrizable.
-\end{theorem}
-\begin{theorem}
-	If $X$ is a complete and separable topological space, then $\PlanSp(X)$ is tight.
-\end{theorem}
-If $X$ is compact any set of probability measures is pre-compact.
-\begin{theorem}[Prokhorov and Polish spaces]
-	Let $X$ be a Polish space. Then there is a complete metric $d_0$ over $\PlanSp(X)$ equivalently to the weak topology. Moreover, let $K\subset \PlanSp(X)$ be a subset in $\PlanSp(X)$. Then $K$ is tight if and only if $\closu K$ in the weak topology of $\PlanSp(X)$ is pre-compact.
-\end{theorem}
-\begin{corollary}[Prokhorov in metric]
-	Let $X$ a metric space and let $(\mu_n)_{n\in\Naturals}$ be a sequence of Borel measures, such that $\sup_n(\mu_n)<\infty$. Then there exists a subsequence  $\parentheses{\mu_{n_k}\in \Naturals}$ of $(\mu_n)_{n\in\Naturals}$, such that converges weak-star in the dual $C_b(X)^*$ of the bounded functionals of $X$. 
-\end{corollary}
-\subsection{Results for Image Measure.}
-We state some definitions to prove density of transport plans induced by maps in the set of transport maps (Lemma \ref{lem: Density of maps.}). The proof of the following theorems and lemmas as well as Lemma \ref{lem: Density of maps.} are detailed in \cite{Santambrogio2015OT}.
-
 \begin{lemma}
 If $\mu$, $\nu$ are two probability measures on the real line $\Real$ and $\mu$ is atomless, then there exists at least a map $T$ such that $\Tmeasure{\mu}{T}=\nu$.
 \end{lemma}

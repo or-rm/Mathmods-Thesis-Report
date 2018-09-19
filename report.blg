@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: tudelft-report.bst
 Database file #1: report.bib
-You've used 14 entries,
+You've used 34 entries,
             2773 wiz_defined-function locations,
-            689 strings with 7020 characters,
-and the built_in function-call counts, 4815 in all, are:
-= -- 420
-> -- 155
-< -- 17
-+ -- 60
-- -- 46
-* -- 295
-:= -- 762
-add.period$ -- 47
-call.type$ -- 14
-change.case$ -- 54
-chr.to.int$ -- 14
-cite$ -- 28
-duplicate$ -- 282
-empty$ -- 493
-format.name$ -- 62
-if$ -- 1029
+            833 strings with 10492 characters,
+and the built_in function-call counts, 13040 in all, are:
+= -- 1134
+> -- 582
+< -- 35
++ -- 206
+- -- 172
+* -- 932
+:= -- 2056
+add.period$ -- 112
+call.type$ -- 34
+change.case$ -- 149
+chr.to.int$ -- 34
+cite$ -- 68
+duplicate$ -- 687
+empty$ -- 1215
+format.name$ -- 226
+if$ -- 2756
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 18
-newline$ -- 80
-num.names$ -- 58
-pop$ -- 136
+missing$ -- 44
+newline$ -- 183
+num.names$ -- 139
+pop$ -- 332
 preamble$ -- 1
-purify$ -- 43
+purify$ -- 125
 quote$ -- 0
-skip$ -- 189
+skip$ -- 479
 stack$ -- 0
-substring$ -- 118
-swap$ -- 24
-text.length$ -- 3
+substring$ -- 398
+swap$ -- 52
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 124
+type$ -- 304
 warning$ -- 0
-while$ -- 48
+while$ -- 118
 width$ -- 0
-write$ -- 193
+write$ -- 459

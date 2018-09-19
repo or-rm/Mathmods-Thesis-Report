@@ -1,29 +1,98 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Barbu and Precupanu(2012)]{Barbu2012Optimization}
+Viorel Barbu and Teodor Precupanu.
+\newblock \emph{Convexity and Optimization in Banach Spaces}.
+\newblock Springer Monographs in Mathematics. Springer, 4 edition, 2012.
+
+\bibitem[Benamou and Brenier(2000)]{Brenier2000Fluidmechanics}
+Jean-David Benamou and Yann Brenier.
+\newblock A computational fluid mechanics solution to the monge-kantorovich
+  mass transfer problem.
+\newblock \emph{Numerische Mathematik}, 84:\penalty0 375–393, 2000.
+
 \bibitem[Billingsley(1999)]{Patrick1999ConverProbMeas}
 Patrick Billingsley.
 \newblock \emph{Convergence of Probability Measures}.
 \newblock Probability and Statistics. John Wiley and Sons., 2 edition, 1999.
+
+\bibitem[Bouchitté and Buttazzo(2001)]{Buttazzo2000MongeKantorovich}
+Guy Bouchitté and Giuseppe Buttazzo.
+\newblock Characterization of optimal shapes and masses through
+  monge-kantorovich equation.
+\newblock \emph{J. Eur. Math. Soc.}, 3:\penalty0 139–168, 2001.
+
+\bibitem[Clarke(2013)]{Clarke2013FAME}
+Francis Clarke.
+\newblock \emph{Functional Analysis, Calculus of Variations and Optimal
+  Control}, volume 264 of \emph{Graduate Texts in Mathematics}.
+\newblock Springer, 2013.
+
+\bibitem[Cohn(2006)]{Donald2013MeasureTheory}
+Donald~L. Cohn.
+\newblock \emph{Measure Theory}.
+\newblock Birkh\"auser, 2 edition, 2006.
+
+\bibitem[Courty et~al.(2017)Courty, Flamary, Tuia, and
+  Rakotomamonjy]{Courty2017OTDA}
+N.~Courty, R.~Flamary, D.~Tuia, and A.~Rakotomamonjy.
+\newblock Optimal transport for domain adaptation.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 39\penalty0 (9):\penalty0 1853--1865, Sept 2017.
+\newblock ISSN 0162-8828.
+\newblock \doi{10.1109/TPAMI.2016.2615921}.
 
 \bibitem[Cuturi(2018)]{Cuturi2018CompOT}
 Gabriel Peyr\'e;~Marco Cuturi.
 \newblock Computational optimal transport, 2018.
 \newblock URL \url{https://optimaltransport.github.io/}.
 
-\bibitem[David G.~Luenberger(2007)]{Luenberger2007LinNonLinProg}
-Yinyu~Ye David G.~Luenberger.
-\newblock \emph{Linear and Nonlinear Programming}.
-\newblock Springer, 2007.
+\bibitem[de~Goes et~al.(2012)de~Goes, Breeden, Ostromoukhov, and
+  Desbrun]{deGoes:2012:BNOT}
+F.~de~Goes, K.~Breeden, V.~Ostromoukhov, and M.~Desbrun.
+\newblock Blue noise through optimal transport.
+\newblock \emph{ACM Trans. Graph. (SIGGRAPH Asia)}, 31, 2012.
 
-\bibitem[Flamary and Courty(2017)]{flamary2017pot}
-R\'emi Flamary and Nicolas Courty.
-\newblock Pot python optimal transport library, 2017.
-\newblock URL \url{https://github.com/rflamary/POT}.
+\bibitem[Ekeland and Témam(1999)]{Ekeland1999Convex}
+Ivar Ekeland and Roger Témam.
+\newblock \emph{Convex Analysis and Variational Problems}, volume~28 of
+  \emph{Classics in Applied Mathematics}.
+\newblock S.I.A.M., 1999.
+
+\bibitem[Figalli and Villani(2011)]{Figalli@2011}
+Alessio Figalli and C\'edric Villani.
+\newblock Nonlinear pde's and applications.
+\newblock \emph{Nonlinear PDE's and applications}, 2028:\penalty0 171--217,
+  2011.
+
+\bibitem[Fonseca and Leoni(2007)]{Fonseca2007ModCalculculusofVar}
+Irene Fonseca and Giovanni Leoni.
+\newblock \emph{Modern methods in the calculus of variations: Lp spaces}.
+\newblock Springer, 2007.
+\newblock ISBN 978-0-387-69006-3.
+
+\bibitem[Franklin and Lorenz(1989)]{Joel1989ScalingMatrices}
+Joel Franklin and Jens Lorenz.
+\newblock On the scaling of multidimensional matrices.
+\newblock \emph{LINEAR ALGEBRA AND ITS APPLICATlONS}, 114-115:\penalty0
+  717--735, 1989.
+
+\bibitem[Hirsch(1976)]{Morris1976DifferentialTopology}
+Morris~W. Hirsch.
+\newblock \emph{Differential Topology}.
+\newblock springer, 1976.
+\newblock ISBN 3-540-90148-5.
+
+\bibitem[Hulanicki et~al.(1989)Hulanicki, Wojtaszczyk, and Żelazko]{Zygmund}
+A.~Hulanicki, P.~Wojtaszczyk, and W.~Żelazko, editors.
+\newblock \emph{Selected Papers of Antoni Zygmund}, volume~3 of
+  \emph{Mathematics and Its Applications (East European Series)}.
+\newblock KLUWER ACADEMIC PUBLISHERS, 1989.
 
 \bibitem[Kantorovich(1942)]{Kantorovich1942}
 L.~Kantorovich.
@@ -37,11 +106,20 @@ Dimitrios~Zissopoulos Konstatinos~Paparrizos, Nikolaos~Samaras.
 \newblock In Pardalos~P. Floudas~C., editor, \emph{Encyclopedia of
   Optimization.} Springer, Boston, 2 edition, 2008.
 
-\bibitem[Leoni(2007)]{Fonseca2007ModCalculculusofVar}
-Irene Fonseca;~Giovanni Leoni.
-\newblock \emph{Modern methods in the calculus of variations: Lp spaces}.
+\bibitem[Kreyzig(1978)]{Kreyszig1978FAME}
+Erwin Kreyzig.
+\newblock \emph{NTRODUCTORY FUNCTIONAL ANALYSIS WITH~ APPLICATIONS}.
+\newblock Wiley's classics Library. JOHN WILEY \& SONS, 1978.
+
+\bibitem[L\'eonard(2012)]{Leonard2012Schrodinger}
+Christian L\'eonard.
+\newblock From the schr\"odinger problem to the monge–kantorovich problem.
+\newblock \emph{Functional Analysis}, 262:\penalty0 1879–1920, 2012.
+
+\bibitem[Luenberger and Ye(2007)]{Luenberger2007LinNonLinProg}
+David~G. Luenberger and Yinyu Ye.
+\newblock \emph{Linear and Nonlinear Programming}.
 \newblock Springer, 2007.
-\newblock ISBN 978-0-387-69006-3.
 
 \bibitem[Merkle(2000)]{Milan2000TpicsWeakconvProbs}
 Milan Merkle.
@@ -49,11 +127,23 @@ Milan Merkle.
 \newblock \emph{Zb. radova Mat. Inst. Beograd}, 9\penalty0 (17):\penalty0
   235--274, 2000.
 
-\bibitem[Munkres(2000)]{munkres2000topology}
-J.R. Munkres.
+\bibitem[Moselhy et~al.(2012)Moselhy, A., and Marzouk.]{Tarek2012OTFilter}
+El~Moselhy, Tarek A., and Youssef~M. Marzouk.
+\newblock Bayesian inference with optimal maps.
+\newblock \emph{ournal of Computational Physics 231}, 23:\penalty0 7815–7850,
+  2012.
+
+\bibitem[Munkres and J.R.(2000)]{munkres2000topology}
+Munkres and J.R.
 \newblock \emph{Introduction to Topology}.
 \newblock Series in Topology. Prentice-Hall, 2nd. edition, 2000.
 \newblock ISBN 9780131784499.
+
+\bibitem[Oliver(2014)]{Dean2014OTFilters}
+Dean~S. Oliver.
+\newblock Minimization for conditional simulation: Relationship to optimal
+  transport.
+\newblock \emph{Journal of Computational Physics}, 265:\penalty0 1--15, 2014.
 
 \bibitem[Orlin(1997)]{Orlin1997PolynomialTimeNetworkSimplex}
 James~B. Orlin.
@@ -61,11 +151,41 @@ James~B. Orlin.
   flows.
 \newblock \emph{Mathematical Programming}, 78:\penalty0 109--129, 1997.
 
+\bibitem[Papadakis(2015)]{Papadakis2015OTImageProcessing}
+Nicolas Papadakis.
+\newblock \emph{Optimal Transport for Image Processing}.
+\newblock PhD thesis, Signal and Image Processing. Universit\'e de Bordeaux,
+  l’Institut de Mathématiques de Bordeaux (UMR 5251), 12 2015.
+
+\bibitem[Rabin et~al.(2012)Rabin, Peyr\'e, Delon, and
+  Bernot]{Peyre2012TextureMixing}
+Julien Rabin, Gabriel Peyr\'e, Julie Delon, and Marc Bernot.
+\newblock Wasserstein barycenter and its application to texture mixing.
+\newblock \emph{Scale Space and Variational Methods in Computer Vision},
+  6667:\penalty0 435--446, 2012.
+
+\bibitem[R\'emi and Courty(2017)]{flamary2017pot}
+Flamary R\'emi and Nicolas Courty.
+\newblock Pot python optimal transport library, 2017.
+\newblock URL \url{https://github.com/rflamary/POT}.
+
 \bibitem[Santambrogio(2015)]{Santambrogio2015OT}
 Filippo Santambrogio.
 \newblock \emph{Optimal Transport for Applied Mathematicians.}, volume~87 of
   \emph{Progress in Nonlinear Differential Equations and Their Applications}.
 \newblock Springer, 2015.
+
+\bibitem[Steffens(2006)]{Steffens2006HistoryofApprox}
+Karl-Georg Steffens.
+\newblock \emph{The History of Approximation Theory. From Euler to Bernstein}.
+\newblock Birkh\"auser, 2006.
+
+\bibitem[Tanaka(1978)]{Tanaka1978Maxwell}
+Hitoshi Tanaka.
+\newblock Probabilistic treatment of the boltzmann equation of maxwellian
+  molecules.
+\newblock \emph{Wahrscheinlichkeitstheorie verw Gebiete}, 46:\penalty0 67--105,
+  1978.
 
 \bibitem[Tarjan(1997)]{Tarjan1997DynamicTreesNetworkSimplex}
 Robert~E. Tarjan.
